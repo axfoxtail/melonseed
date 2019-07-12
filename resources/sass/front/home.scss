@@ -1,0 +1,44 @@
+// Popular Activities Carousel
+.popular-carousel {
+	padding-top: 50px;
+	padding-bottom: 50px;
+	h2 {
+		text-align: left;
+		font-family: Montserrat;
+	  font-size: 30px;
+	  font-weight: 500;
+	  font-style: normal;
+	  font-stretch: normal;
+	  line-height: normal;
+	  letter-spacing: normal;
+	  color: #262626;
+	}
+}
+
+
+// Image Showcase Section
+.showcase {
+	.showcase-text {
+		padding: 3rem;
+		h2 {
+			font-family: Montserrat;
+		  font-size: 40px;
+		  font-weight: 500;
+		  font-style: normal;
+		  font-stretch: normal;
+		  line-height: normal;
+		  letter-spacing: normal;
+		  color: #000000;
+		}
+		.lead {
+			font-family: Montserrat;
+		  font-size: 18px;
+		  font-weight: 500;
+		  font-style: normal;
+		  font-stretch: normal;
+		  line-height: 1.39;
+		  letter-spacing: normal;
+		  color: #000000;
+		}
+	}
+}

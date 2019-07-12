@@ -1,0 +1,38 @@
+.navbar {
+	height: 68px;
+
+	.logo-container {
+		.navbar-brand {
+			font-family: Helvetica;
+			font-size: 25px;
+			font-weight: bold;
+			font-style: normal;
+			font-stretch: normal;
+			line-height: normal;
+			letter-spacing: normal;
+			text-align: justify;
+			color: #000000;
+		}		
+	}
+
+	.nav-container {
+		a {
+			font-family: Montserrat;
+			font-size: 20px;
+			font-weight: 500;
+			font-style: normal;
+			font-stretch: normal;
+			line-height: normal;
+			letter-spacing: normal;
+			text-align: center;
+			margin: 0 5px;
+		}
+		.nav-btn {
+			width: 105px;
+			height: 36px;
+			border-radius: 8px;
+			border: solid 2px #a845ff;
+		}
+		
+	}
+}
