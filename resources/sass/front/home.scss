@@ -16,6 +16,8 @@
 	.owl-carousel {
 		.owl-ele {
 			position: relative;
+			border-radius: 8px;
+			overflow: hidden;
 			.owl-img {
 				
 			}
@@ -83,6 +85,11 @@
 
 // Image Showcase Section
 .showcase {
+	.showcase-img {
+		img {
+			width: 100%;
+		}
+	}
 	.showcase-text {
 		padding: 3rem;
 		h2 {

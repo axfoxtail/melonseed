@@ -15,18 +15,49 @@
 
 
 // --- Share Style
-.btn-accent-border {
+.btn-accent-border, .btn-accent-border:hover {
 	border-color: $accent-color;
 	color: $accent-color;
 }
 
-.btn-accent {
+.btn-accent, .btn-accent:hover {
 	background-color: $accent-color;
 	color: $white;
 }
 
-.btn-primary {
+.btn-primary, .btn-primary:hover {
 	background-color: $primary-color;
 	border-color: $primary-color;
 	color: $white;
+}
+
+.display-inline {
+	display: inline-flex;
+}
+
+// --- --- Footer Style
+.footer {
+	.logo-container {
+		a {
+			font-family: Helvetica;
+		  font-size: 36px;
+		  font-weight: bold;
+		  font-style: normal;
+		  font-stretch: normal;
+		  line-height: normal;
+		  letter-spacing: normal;
+		  text-align: justify;
+		  color: $white;
+		}
+	}
+	.btn-footer-nav {
+		font-family: Montserrat;
+	  font-size: 30px;
+	  font-weight: 500;
+	  font-style: normal;
+	  font-stretch: normal;
+	  line-height: normal;
+	  letter-spacing: normal;
+	  color: #ffffff;
+	}
 }

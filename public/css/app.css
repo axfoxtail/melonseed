@@ -10730,6 +10730,8 @@ a.text-dark:focus {
 
 .popular-carousel .owl-carousel .owl-ele {
   position: relative;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .popular-carousel .owl-carousel .owl-ele .owl-hover {
@@ -10799,6 +10801,10 @@ a.text-dark:focus {
   color: #ffffff;
 }
 
+.showcase .showcase-img img {
+  width: 100%;
+}
+
 .showcase .showcase-text {
   padding: 3rem;
 }
@@ -10842,19 +10848,49 @@ a.text-dark:focus {
   color: #262626;
 }
 
-.btn-accent-border {
+.btn-accent-border,
+.btn-accent-border:hover {
   border-color: #a845ff;
   color: #a845ff;
 }
 
-.btn-accent {
+.btn-accent,
+.btn-accent:hover {
   background-color: #a845ff;
   color: #ffffff;
 }
 
-.btn-primary {
+.btn-primary,
+.btn-primary:hover {
   background-color: #30cbb7;
   border-color: #30cbb7;
+  color: #ffffff;
+}
+
+.display-inline {
+  display: inline-flex;
+}
+
+.footer .logo-container a {
+  font-family: Helvetica;
+  font-size: 36px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: justify;
+  color: #ffffff;
+}
+
+.footer .btn-footer-nav {
+  font-family: Montserrat;
+  font-size: 30px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
   color: #ffffff;
 }
 

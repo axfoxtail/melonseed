@@ -31,50 +31,50 @@
 				<div class="owl-carousel">
 				  <div class="owl-ele">
 				  	<div class="owl-img">
-				  		<img src="{{ asset('assets/img/bg-showcase-1.jpg') }}">
+				  		<img src="{{ asset('img/Swimming Lesson.jpg') }}">
 				  	</div>
 				  	<div class="owl-hover">
-				  		<a class="align-middle-center" href="">Swim Lessons</a>
+				  		<a class="align-middle-center" href="">Swimming Lessons</a>
 				  	</div>
 				  </div>
 				  <div class="owl-ele">
 				  	<div class="owl-img">
-				  		<img src="{{ asset('assets/img/bg-showcase-1.jpg') }}">
+				  		<img src="{{ asset('img/Skiing.jpg') }}">
 				  	</div>
 				  	<div class="owl-hover">
-				  		<a class="align-middle-center" href="">Swim Lessons</a>
+				  		<a class="align-middle-center" href="">Skiing</a>
 				  	</div>
 				  </div>
 				  <div class="owl-ele">
 				  	<div class="owl-img">
-				  		<img src="{{ asset('assets/img/bg-showcase-1.jpg') }}">
+				  		<img src="{{ asset('img/Indoor Climbing.jpg') }}">
 				  	</div>
 				  	<div class="owl-hover">
-				  		<a class="align-middle-center" href="">Swim Lessons</a>
+				  		<a class="align-middle-center" href="">Indoor Climbing</a>
 				  	</div>
 				  </div>
 				  <div class="owl-ele">
 				  	<div class="owl-img">
-				  		<img src="{{ asset('assets/img/bg-showcase-1.jpg') }}">
+				  		<img src="{{ asset('img/Soccer.jpg') }}">
 				  	</div>
 				  	<div class="owl-hover">
-				  		<a class="align-middle-center" href="">Swim Lessons</a>
+				  		<a class="align-middle-center" href="">Soccer</a>
 				  	</div>
 				  </div>
 				  <div class="owl-ele">
 				  	<div class="owl-img">
-				  		<img src="{{ asset('assets/img/bg-showcase-1.jpg') }}">
+				  		<img src="{{ asset('img/Music Lesson.jpg') }}">
 				  	</div>
 				  	<div class="owl-hover">
-				  		<a class="align-middle-center" href="">Swim Lessons</a>
+				  		<a class="align-middle-center" href="">Music Lesson</a>
 				  	</div>
 				  </div>
 				  <div class="owl-ele">
 				  	<div class="owl-img">
-				  		<img src="{{ asset('assets/img/bg-showcase-1.jpg') }}">
+				  		<img src="{{ asset('img/Drawing.jpg') }}">
 				  	</div>
 				  	<div class="owl-hover">
-				  		<a class="align-middle-center" href="">Swim Lessons</a>
+				  		<a class="align-middle-center" href="">Drawing</a>
 				  	</div>
 				  </div>
 				</div>
@@ -86,12 +86,11 @@
 	<section class="showcase">
 		<div class="container">
 			<div class="row">
-				<!-- <div class="col-lg-7 order-lg-2 text-white showcase-img" style="background-image: url('img/melonseed-home-02.png');"></div> -->
 				<div class="col-lg-7 order-lg-2 text-white showcase-img">
 					<img src="{{ asset('img/melonseed-home-02.png') }}">
 				</div>
 				<div class="col-lg-5 order-lg-1 my-auto showcase-text">
-					<h2>What we do  “Helping busy parents”</h2>
+					<h2>What we do  <br> “Helping busy parents”</h2>
 					<p class="lead mb-0">Simax helps parents find the perfect activities for 
 					their kids! With certified instructors and activities
 					across hundreds of cities we’re confident that 
@@ -132,7 +131,9 @@
 	        768:{ items:3.5, margin: 10, nav:false, },
 	        1024:{ items: 4.5, margin: 10, nav:false, },
 	        1100:{ items: 4.5, margin: 10, nav:true, }
-		    }
+		    },
+		    autoplay: true,
+		    autoplayTimeout: 3000
 		  });
 		});
 
