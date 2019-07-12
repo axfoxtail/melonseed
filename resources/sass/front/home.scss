@@ -13,6 +13,71 @@
 	  letter-spacing: normal;
 	  color: #262626;
 	}
+	.owl-carousel {
+		.owl-ele {
+			position: relative;
+			.owl-img {
+				
+			}
+			.owl-hover {
+				position: absolute;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				&:hover {
+					background-color: rgba(0, 0, 0, 0.1);
+				}
+				a {
+					-webkit-text-stroke: 0.5px #000000;
+				  font-family: Montserrat;
+				  font-size: 24px;
+				  font-weight: 600;
+				  font-style: normal;
+				  font-stretch: normal;
+				  line-height: normal;
+				  letter-spacing: normal;
+				  text-align: center;
+				  text-decoration: none;
+					width: 100%;
+				  color: $white;
+				}
+			}
+		}
+		.owl-nav {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			height: 30px;
+			width: 100%;
+			button {
+				position: absolute;
+				width: 30px;
+			  height: 30px;
+			  background-color: $primary-color !important;
+			  border-radius: 50%;
+			  &:focus, &:active {
+			  	outline: none;
+					border: none;
+			  }
+			  &.owl-prev {
+					left: -35px;
+			  }
+			  &.owl-next {
+					right: -35px;
+			  }
+			  span {
+			    position: absolute;
+			    top: 50%;
+			    left: 50%;
+			    transform: translate(-50%, -50%);
+			    padding-bottom: 7px;
+			    font-size: 60px;
+			  	line-height: 30px;
+			  	color: $white;
+			  }
+			}
+		}
+	}
 }
 
 
@@ -41,4 +106,23 @@
 		  color: #000000;
 		}
 	}
+}
+
+
+// Classes in your area
+.area-classes {
+	padding-top: 50px;
+	padding-bottom: 50px;
+	h2 {
+		text-align: left;
+		font-family: Montserrat;
+	  font-size: 30px;
+	  font-weight: 500;
+	  font-style: normal;
+	  font-stretch: normal;
+	  line-height: normal;
+	  letter-spacing: normal;
+	  color: #262626;
+	}
+	
 }

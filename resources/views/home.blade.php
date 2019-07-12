@@ -29,13 +29,54 @@
 			<h2 class="mb-4">Popular activities in Toronto</h2>
 			<div class="row">
 				<div class="owl-carousel">
-				  <div> Your Content </div>
-				  <div> Your Content </div>
-				  <div> Your Content </div>
-				  <div> Your Content </div>
-				  <div> Your Content </div>
-				  <div> Your Content </div>
-				  <div> Your Content </div>
+				  <div class="owl-ele">
+				  	<div class="owl-img">
+				  		<img src="{{ asset('assets/img/bg-showcase-1.jpg') }}">
+				  	</div>
+				  	<div class="owl-hover">
+				  		<a class="align-middle-center" href="">Swim Lessons</a>
+				  	</div>
+				  </div>
+				  <div class="owl-ele">
+				  	<div class="owl-img">
+				  		<img src="{{ asset('assets/img/bg-showcase-1.jpg') }}">
+				  	</div>
+				  	<div class="owl-hover">
+				  		<a class="align-middle-center" href="">Swim Lessons</a>
+				  	</div>
+				  </div>
+				  <div class="owl-ele">
+				  	<div class="owl-img">
+				  		<img src="{{ asset('assets/img/bg-showcase-1.jpg') }}">
+				  	</div>
+				  	<div class="owl-hover">
+				  		<a class="align-middle-center" href="">Swim Lessons</a>
+				  	</div>
+				  </div>
+				  <div class="owl-ele">
+				  	<div class="owl-img">
+				  		<img src="{{ asset('assets/img/bg-showcase-1.jpg') }}">
+				  	</div>
+				  	<div class="owl-hover">
+				  		<a class="align-middle-center" href="">Swim Lessons</a>
+				  	</div>
+				  </div>
+				  <div class="owl-ele">
+				  	<div class="owl-img">
+				  		<img src="{{ asset('assets/img/bg-showcase-1.jpg') }}">
+				  	</div>
+				  	<div class="owl-hover">
+				  		<a class="align-middle-center" href="">Swim Lessons</a>
+				  	</div>
+				  </div>
+				  <div class="owl-ele">
+				  	<div class="owl-img">
+				  		<img src="{{ asset('assets/img/bg-showcase-1.jpg') }}">
+				  	</div>
+				  	<div class="owl-hover">
+				  		<a class="align-middle-center" href="">Swim Lessons</a>
+				  	</div>
+				  </div>
 				</div>
 			</div>
 		</div>
@@ -45,7 +86,10 @@
 	<section class="showcase">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-7 order-lg-2 text-white showcase-img" style="background-image: url('img/melonseed-home-02.png');"></div>
+				<!-- <div class="col-lg-7 order-lg-2 text-white showcase-img" style="background-image: url('img/melonseed-home-02.png');"></div> -->
+				<div class="col-lg-7 order-lg-2 text-white showcase-img">
+					<img src="{{ asset('img/melonseed-home-02.png') }}">
+				</div>
 				<div class="col-lg-5 order-lg-1 my-auto showcase-text">
 					<h2>What we do  “Helping busy parents”</h2>
 					<p class="lead mb-0">Simax helps parents find the perfect activities for 
@@ -57,57 +101,47 @@
 		</div>
 	</section>
 
-	<!-- Testimonials -->
-	<section class="testimonials text-center bg-light">
+	<!-- Area | Location -->
+	<section class="area-classes text-center bg-light">
 		<div class="container">
-			<h2 class="mb-5">What people are saying...</h2>
+			<h2 class="mb-4">Classes in your area</h2>
 			<div class="row">
-				<div class="col-lg-4">
-					<div class="testimonial-item mx-auto mb-5 mb-lg-0">
-						<img class="img-fluid rounded-circle mb-3" src="assets/img/testimonials-1.jpg" alt="">
-						<h5>Margaret E.</h5>
-						<p class="font-weight-light mb-0">"This is fantastic! Thanks so much guys!"</p>
-					</div>
-				</div>
-				<div class="col-lg-4">
-					<div class="testimonial-item mx-auto mb-5 mb-lg-0">
-						<img class="img-fluid rounded-circle mb-3" src="assets/img/testimonials-2.jpg" alt="">
-						<h5>Fred S.</h5>
-						<p class="font-weight-light mb-0">"Bootstrap is amazing. I've been using it to create lots of super nice landing pages."</p>
-					</div>
-				</div>
-				<div class="col-lg-4">
-					<div class="testimonial-item mx-auto mb-5 mb-lg-0">
-						<img class="img-fluid rounded-circle mb-3" src="assets/img/testimonials-3.jpg" alt="">
-						<h5>Sarah W.</h5>
-						<p class="font-weight-light mb-0">"Thanks so much for making these free resources available to us!"</p>
-					</div>
-				</div>
+				<iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Eiffel+Tower+Paris+France" width="100%" height="532" frameborder="0" style="border:0" allowfullscreen></iframe>
 			</div>
 		</div>
 	</section>
+	
+	<!-- Styles -->
+	@push('contentCss')
+	<link rel="stylesheet" href="{{ asset('plugins/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('plugins/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css') }}">
+	@endpush
 
-	<!-- Call to Action -->
-	<section class="call-to-action text-white text-center">
-		<div class="overlay"></div>
-		<div class="container">
-			<div class="row">
-				<div class="col-xl-9 mx-auto">
-					<h2 class="mb-4">Ready to get started? Sign up now!</h2>
-				</div>
-				<div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-					<form>
-						<div class="form-row">
-							<div class="col-12 col-md-9 mb-2 mb-md-0">
-								<input type="email" class="form-control form-control-lg" placeholder="Enter your email...">
-							</div>
-							<div class="col-12 col-md-3">
-								<button type="submit" class="btn btn-block btn-lg btn-primary">Sign up!</button>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</section>
+	<!-- Scripts -->
+	@push('contentJs')
+	<script src="{{ asset('plugins/OwlCarousel2-2.3.4/dist/owl.carousel.min.js') }}"></script>
+	<script type="text/javascript">
+		// Owl Carousel
+		$(document).ready(function(){
+		  $(".owl-carousel").owlCarousel({
+		  	loop: true,
+		  	dots: false,
+		  	responsive: {
+	        0:{ items:2.5, margin: 5, nav:true },
+	        425:{ items:3, margin: 5, nav:false },
+	        768:{ items:3.5, margin: 10, nav:false, },
+	        1024:{ items: 4.5, margin: 10, nav:false, },
+	        1100:{ items: 4.5, margin: 10, nav:true, }
+		    }
+		  });
+		});
+
+
+		// Google Map
+
+	</script>
+
+
+	@endpush
+
 @endsection

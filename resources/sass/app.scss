@@ -14,3 +14,12 @@
 
 // Frontend Style
 @import 'front/app-front';
+
+
+// Shared Style
+.align-middle-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
