@@ -15,20 +15,35 @@
 
 
 // --- Share Style
-.btn-accent-border, .btn-accent-border:hover {
+.btn {
+	text-align: center;
+}
+.btn-accent-border, 
+.btn-accent-border:hover, 
+.btn-accent-border:active, 
+.btn-accent-border:focus {
 	border-color: $accent-color;
-	color: $accent-color;
+	color: $accent-color !important;
+	cursor: pointer;
 }
 
-.btn-accent, .btn-accent:hover {
+.btn-accent, 
+.btn-accent:hover, 
+.btn-accent:active, 
+.btn-accent:focus {
 	background-color: $accent-color;
-	color: $white;
+	color: $white !important;
+	cursor: pointer;
 }
 
-.btn-primary, .btn-primary:hover {
+.btn-primary, 
+.btn-primary:hover, 
+.btn-primary:active, 
+.btn-primary:focus {
 	background-color: $primary-color;
 	border-color: $primary-color;
-	color: $white;
+	color: $white !important;
+	cursor: pointer;
 }
 
 .display-inline {
@@ -58,6 +73,86 @@
 	  font-stretch: normal;
 	  line-height: normal;
 	  letter-spacing: normal;
-	  color: #ffffff;
+	  color: $white !important;
+	}
+}
+
+// Log In & Sign Up Style
+.login-modal {
+	.modal-dialog {
+		max-width: 90%;
+		width: 854px;
+		margin-top: 150px;
+		.modal-content {
+			width: 854px;
+			.nav-tabs {
+				.nav-item {
+					width: 50%;
+					.nav-link {
+						height: 74px;
+						background-color: $accent-color;
+						font-family: Montserrat;
+					  font-size: 35px;
+					  font-weight: 500;
+					  font-style: normal;
+					  font-stretch: normal;
+					  line-height: 100%;
+					  letter-spacing: normal;
+					  text-align: center;
+					  color: $white;
+						border: none;
+						outline: none;
+						padding: 16px;
+						&.active {
+							background-color: $white;
+							color: $dark;
+						}
+					}
+				}
+			}
+			.tab-content {
+				form {
+					margin: 3rem 5rem;
+					.form-control {
+						height: 93px;
+						border-radius: 8px;
+						font-family: BrownPro;
+					  font-size: 35px;
+					  font-weight: normal;
+					  font-style: normal;
+					  font-stretch: normal;
+					  line-height: normal;
+					  letter-spacing: normal;
+					  color: $dark;
+					}
+					.btn-outline-dark {
+						padding: 0;
+						display: block;
+						height: 45px;
+						float: right;
+						&.btn-google-login {
+							margin-bottom: 5px;
+						}
+						&.btn-twitter-login {
+							margin-top: 5px;
+						}
+						.btn-text {
+							border-right: solid 1px;
+							display: inline-flex;
+							height: 44px;
+							line-height: 45px;
+							margin-left: auto;
+							margin-right: auto;
+							padding-left: 20px;
+							padding-right: 20px;
+						}
+						.btn-icon {
+							width: 35px;
+							display: inline-block;
+						}
+					}
+				}
+			}
+		}
 	}
 }

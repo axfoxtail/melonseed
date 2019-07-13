@@ -44,8 +44,8 @@
 				<div class="nav-container">
 					<a class="btn" href="#">Activities</a>
 					<a class="btn" href="#">Providers</a>
-					<a class="btn nav-btn btn-accent-border" href="#">Log In</a>
-					<a class="btn nav-btn btn-accent" href="#">Sign Up</a>
+					<a class="btn nav-btn btn-accent-border" data-toggle="modal" data-target="#loginModal">Log In</a>
+					<a class="btn nav-btn btn-accent" data-toggle="modal" data-target="#loginModal">Sign Up</a>
 				</div>
 			</div>
 		</nav>
@@ -70,10 +70,10 @@
 					<div class="col-lg-5 h-100 text-center text-lg-right my-auto">
 						<ul class="list-inline mb-0">
 							<li class="list-inline-item">
-								<a class="btn nav-btn btn-accent-border" href="#">Log In</a>
+								<a class="btn nav-btn btn-accent-border" data-toggle="modal" data-target="#loginModal">Log In</a>
 							</li>
 							<li class="list-inline-item">
-								<a class="btn nav-btn btn-accent" href="#">Sign Up</a>
+								<a class="btn nav-btn btn-accent" data-toggle="modal" data-target="#loginModal">Sign Up</a>
 							</li>
 						</ul>
 					</div>
@@ -82,6 +82,78 @@
 		</footer>
 		
 	</div>
+
+	<!-- The Modal -->
+  <div class="modal login-modal" id="loginModal">
+		<div class="modal-dialog">
+		  <div class="modal-content">
+		  	<!-- Nav tabs -->
+			  <ul class="nav nav-tabs">
+			    <li class="nav-item">
+			      <a class="nav-link active" data-toggle="tab" href="#parents">Parents</a>
+			    </li>
+			    <li class="nav-item">
+			      <a class="nav-link" data-toggle="tab" href="#providers">Providers</a>
+			    </li>
+			  </ul>
+			  <!-- Tab panes -->
+			  <div class="tab-content">
+			    <div id="parents" class="container tab-pane active"><br>
+			      <form id="parents-form">
+					    <div class="form-group">
+					      <input type="text" class="form-control" id="usr">
+					      <label for="usr">Need to register a new account?</label>
+					    </div>
+					    <div class="form-group">
+					      <input type="password" class="form-control" id="pwd">
+					      <label for="pwd">Forgot Password?</label>
+					    </div>
+					    <div class="row">
+					      <div class="col-6">
+					      	<input type="submit" class="form-control btn btn-primary" value="Login">
+					      </div>
+					      <div class="col-6">
+									<button class="btn btn-outline-dark btn-google-login">
+										<div class="btn-text">
+									 		Login with Google 
+										</div>
+										<div class="btn-icon">
+									 		<i class='fab fa-google-plus-g'></i>
+										</div>
+								 	</button>
+									<button class="btn btn-outline-dark btn-twitter-login">
+										<div class="btn-text">
+									 		Login with Twitter 
+										</div>
+										<div class="btn-icon">
+									 		<i class='fab fa-twitter'></i>
+										</div>
+								 	</button>
+					      </div>
+					    </div>
+					  </form>
+			    </div>
+			    <div id="providers" class="container tab-pane fade"><br>
+			      <form id="providers-form">
+					    <div class="form-group">
+					      <input type="text" class="form-control" id="usr">
+					      <label for="usr">Need to register a new account?</label>
+					    </div>
+					    <div class="form-group">
+					      <input type="password" class="form-control" id="pwd">
+					      <label for="pwd">Forgot Password?</label>
+					    </div>
+					    <div class="row">
+					      <div class="col-6" style="margin-left: auto; margin-right: auto;">
+					      	<input type="submit" class="form-control btn btn-primary" value="Login">
+					      </div>
+					    </div>
+					  </form>
+			    </div>
+			  </div>
+		  </div>
+		</div>
+  </div>
 	
 
 	<!-- App JavaScript -->
