@@ -46,7 +46,7 @@ class ActivityController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('activities.detail');
     }
 
     /**

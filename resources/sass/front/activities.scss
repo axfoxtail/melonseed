@@ -101,6 +101,13 @@
 						  border: solid 1px #c2c2c2;
 						  background-color: $white;
 						  padding: 0;
+						  font-family: Montserrat;
+						  font-size: 15px;
+						  font-weight: normal;
+						  font-style: normal;
+						  font-stretch: normal;
+						  letter-spacing: normal;
+						  color: #262626;
 						}
 						.col-3 {
 							padding: 0;
@@ -125,12 +132,17 @@
 				  }
 				}
 				.activity-item-body {
+					border-radius: 8px;
+  				border: solid 2px rgba(89, 89, 89, 0.46);
 					.row {
 						margin-left: 0;
 						margin-right: 0;
 						padding: 10px 0;
 						border-radius: 3px;
 					  background-color: $white;
+					  &.border-1 {
+							border-radius: 8px;
+					  }
 					  .activity-detail-img {
 					  	width: 100%;
 					  	overflow: hidden;

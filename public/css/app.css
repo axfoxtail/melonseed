@@ -10954,6 +10954,13 @@ a.text-dark:focus {
   border: solid 1px #c2c2c2;
   background-color: #ffffff;
   padding: 0;
+  font-family: Montserrat;
+  font-size: 15px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: normal;
+  color: #262626;
 }
 
 .activities-container .filter-result .filter-result-body .activity-item .activity-item-header .row .col-3 {
@@ -10980,12 +10987,21 @@ a.text-dark:focus {
   border-left: solid 1px;
 }
 
+.activities-container .filter-result .filter-result-body .activity-item .activity-item-body {
+  border-radius: 8px;
+  border: solid 2px rgba(89, 89, 89, 0.46);
+}
+
 .activities-container .filter-result .filter-result-body .activity-item .activity-item-body .row {
   margin-left: 0;
   margin-right: 0;
   padding: 10px 0;
   border-radius: 3px;
   background-color: #ffffff;
+}
+
+.activities-container .filter-result .filter-result-body .activity-item .activity-item-body .row.border-1 {
+  border-radius: 8px;
 }
 
 .activities-container .filter-result .filter-result-body .activity-item .activity-item-body .row .activity-detail-img {
@@ -11036,6 +11052,115 @@ a.text-dark:focus {
   line-height: normal;
   letter-spacing: normal;
   color: #595959;
+}
+
+.detail-container {
+  font-family: Montserrat;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+}
+
+.detail-container .btn-back {
+  font-family: Montserrat;
+  font-size: 22px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #262626;
+  text-decoration: none;
+}
+
+.detail-container .detail-img-wrapper {
+  padding-right: 10%;
+  padding-bottom: 5%;
+}
+
+.detail-container .detail-img-wrapper .detail-img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.detail-container .activity-title {
+  font-size: 40px;
+  font-weight: 500;
+  color: #262626;
+}
+
+.detail-container .activity-title .rate-stars {
+  position: absolute;
+  font-size: 30px;
+  line-height: 50px;
+  right: -200px;
+}
+
+.detail-container .activity-place {
+  font-family: Montserrat;
+  font-size: 30px;
+  font-weight: 500;
+  color: #262626;
+}
+
+.detail-container .activity-contact {
+  font-size: 30px;
+}
+
+.detail-container .activity-contact-info {
+  font-size: 20px;
+}
+
+.detail-container .btn-visit {
+  width: 296px;
+  height: 93px;
+  font-family: BrownPro;
+  font-size: 40px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+}
+
+.detail-container .detail-description {
+  font-family: Montserrat;
+  font-size: 25px;
+  font-weight: normal;
+  color: #343434;
+}
+
+.detail-container .ad-sidebar {
+  float: right;
+  margin-top: 50px;
+}
+
+.reviews-container {
+  font-family: Montserrat;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #000000;
+}
+
+.reviews-container h2 {
+  display: inline-flex;
+}
+
+.reviews-container .rate-stars {
+  font-size: 30px;
+  line-height: 50px;
+  display: inline-block;
+}
+
+.reviews-container .reviews-content {
+  font-size: 25px;
+  font-weight: normal;
+  color: #393939;
 }
 
 .btn {
@@ -11248,5 +11373,9 @@ input[type=range]:focus::-webkit-slider-runnable-track {
   color: #ffffff;
   text-decoration: none;
   background-color: #30cbb7;
+}
+
+.rate-stars .checked {
+  color: #30cbb7;
 }
 

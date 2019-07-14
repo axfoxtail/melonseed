@@ -77,3 +77,9 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 		background-color: $primary-color;
 	}
 }
+
+.rate-stars {
+	.checked {
+		color: $primary-color;
+	}
+}
