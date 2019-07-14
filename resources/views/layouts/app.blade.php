@@ -42,8 +42,8 @@
 					<a class="navbar-brand" href="#">SIMAX</a>
 				</div>
 				<div class="nav-container">
-					<a class="btn" href="#">Activities</a>
-					<a class="btn" href="#">Providers</a>
+					<a class="btn" href="activities">Activities</a>
+					<a class="btn" href="providers">Providers</a>
 					<a class="btn nav-btn btn-accent-border" data-toggle="modal" data-target="#loginModal">Log In</a>
 					<a class="btn nav-btn btn-accent" data-toggle="modal" data-target="#loginModal">Sign Up</a>
 				</div>
@@ -61,10 +61,10 @@
 							<a class="navbar-brand" href="#">SIMAX</a>
 						</div>
 						<div class="col-4">
-							<a class="btn btn-footer-nav" href="#">Providers</a>
+							<a class="btn btn-footer-nav" href="providers">Providers</a>
 						</div>
 						<div class="col-4">
-							<a class="btn btn-footer-nav" href="#">Activities</a>
+							<a class="btn btn-footer-nav" href="activities">Activities</a>
 						</div>
 					</div>
 					<div class="col-lg-5 h-100 text-center text-lg-right my-auto">
@@ -159,7 +159,7 @@
 	<!-- App JavaScript -->
 	<script src="{{ asset('js/app.js') }}"></script>
 	@stack('contentJs')
-
+	
 </body>
 
 </html>

@@ -16,3 +16,9 @@
 // });
 
 Route::get('/', 'HomeController@Index');
+
+
+Route::resources([
+    'activities' => 'ActivityController',
+    'providers' => 'ProviderController'
+]);

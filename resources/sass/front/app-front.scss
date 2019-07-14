@@ -10,21 +10,15 @@
 
 // --- Content
 // ------ Home Page
-// --- Header
 @import 'home';
+
+// ------ Activities Page
+@import 'activities';
 
 
 // --- Share Style
 .btn {
 	text-align: center;
-}
-.btn-accent-border, 
-.btn-accent-border:hover, 
-.btn-accent-border:active, 
-.btn-accent-border:focus {
-	border-color: $accent-color;
-	color: $accent-color !important;
-	cursor: pointer;
 }
 
 .btn-accent, 
@@ -36,6 +30,15 @@
 	cursor: pointer;
 }
 
+.btn-accent-border, 
+.btn-accent-border:hover, 
+.btn-accent-border:active, 
+.btn-accent-border:focus {
+	border-color: $accent-color;
+	color: $accent-color !important;
+	cursor: pointer;
+}
+
 .btn-primary, 
 .btn-primary:hover, 
 .btn-primary:active, 
@@ -43,6 +46,15 @@
 	background-color: $primary-color;
 	border-color: $primary-color;
 	color: $white !important;
+	cursor: pointer;
+}
+
+.btn-primary-border, 
+.btn-primary-border:hover, 
+.btn-primary-border:active, 
+.btn-primary-border:focus {
+	border-color: $primary-color;
+	color: $primary-color !important;
 	cursor: pointer;
 }
 
