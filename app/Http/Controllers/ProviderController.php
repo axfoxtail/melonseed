@@ -24,6 +24,7 @@ class ProviderController extends Controller
     public function create()
     {
         //
+        return view('providers.create');
     }
 
     /**
