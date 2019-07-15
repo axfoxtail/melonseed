@@ -1,196 +1,233 @@
 .activities-container {
 
-	.filter-sidebar {
+  .filter-sidebar {
 
-		.filter-location {
-			&::after {
-		    display: none;
-			}
-			.btn-primary-border {
-				height: 53px;
-				border-width: 2px;
-				font-family: BrownPro;
-			  font-size: 25px;
-			  font-weight: normal;
-			  font-style: normal;
-			  font-stretch: normal;
-			  line-height: normal;
-			  letter-spacing: normal;
-			  color: #4c4c4c !important;
-			  padding-left: 5px;
-			}
-		}
+    h3 {
+      font-family: Montserrat;
+    }
 
-		.arrow.down {
-			position: absolute;
-		}
+    .filter-location {
 
-		.filter-range {
-			width: 100%;
-			padding-left: 20px;
-			padding-right: 20px;
-			input[type=range] {
-				&::before, &::after {
-			    content: "";
-			    display: inline-block;
-			    width: 15px;
-			    height: 15px;
-			    border-radius: 7.5px;
-			    background-color: $white;
-			    border: solid 2px $primary-color;
-			    margin-top: 7px;
-				}
-			}
-			.filter-range-min {
-				position: absolute;
-				top: 20px;
-				left: 22px;
-			}
-			.filter-range-max {
-				position: absolute;
-				top: 20px;
-				right: 20px;
-			}
-			.filter-distance {
-				width: 100%;
-			}
-		}
-	}
+      &::after {
+      display: none;
+      }
 
-	.filter-result {
-		.filter-result-header {
-			.filter-result-label {
-				font-family: BrownPro;
-			  font-size: 35px;
-			  font-weight: normal;
-			  font-style: normal;
-			  font-stretch: normal;
-			  line-height: normal;
-			  letter-spacing: normal;
-			  color: #4c4c4c
-			}
-			.filter-category, .filter-activity-type {
-				float: right;
-				.btn-primary-border {
-					height: 45px;
-					border-width: 2px;
-					font-family: Lato;
-				  font-size: 16px;
-				  font-weight: normal;
-				  font-style: normal;
-				  font-stretch: normal;
-				  line-height: normal;
-				  letter-spacing: normal;
-				  color: #262626 !important;
-				}
-			}
-		}
-		.filter-result-body {
-			padding: 10px 0;
-			.activity-item {
-				.activity-item-header {
-					a {
-						text-decoration: none;
-					}
-				  .row {
-				  	margin-left: 0;
-				  	margin-right: 0;
-						&.card-header {
-							height: 45px;
-						  border-radius: 3px;
-						  border: solid 1px #c2c2c2;
-						  background-color: $white;
-						  padding: 0;
-						  font-family: Montserrat;
-						  font-size: 15px;
-						  font-weight: normal;
-						  font-style: normal;
-						  font-stretch: normal;
-						  letter-spacing: normal;
-						  color: #262626;
-						}
-						.col-3 {
-							padding: 0;
-							.activity-img {
-							  width: 90px;
-								height: 45px;
-								overflow: hidden;
-							}
-							.activity-title {
-								padding: 0 10px;
-								display: inline-flex;
-							}
-							.activity-address, 
-							.activity-description, 
-							.activity-distance {
-								margin: 10px 0;
-								padding: 0 10px;
-								text-align: left;
-								border-left: solid 1px;
-							}
-						}
-				  }
-				}
-				.activity-item-body {
-					border-radius: 8px;
-  				border: solid 2px rgba(89, 89, 89, 0.46);
-					.row {
-						margin-left: 0;
-						margin-right: 0;
-						padding: 10px 0;
-						border-radius: 3px;
-					  background-color: $white;
-					  &.border-1 {
-							border-radius: 8px;
-					  }
-					  .activity-detail-img {
-					  	width: 100%;
-					  	overflow: hidden;
-					  	border-radius: 8px;
-					  }
-					  .activity-detail-title {
-							font-family: Montserrat;
-						  font-size: 22px;
-						  font-weight: 500;
-						  font-style: normal;
-						  font-stretch: normal;
-						  line-height: normal;
-						  letter-spacing: normal;
-						  color: #595959;
-					  }
-					  .activity-detail-age {
-							font-family: Montserrat;
-						  font-size: 20px;
-						  font-weight: 500;
-						  font-style: normal;
-						  font-stretch: normal;
-						  line-height: normal;
-						  letter-spacing: normal;
-						  color: #595959;
-					  }
-					  .activity-detail-palce {
-							font-family: Montserrat;
-						  font-size: 20px;
-						  font-weight: 500;
-						  font-style: normal;
-						  font-stretch: normal;
-						  line-height: normal;
-						  letter-spacing: normal;
-						  color: #595959;
-					  }
-					  .activity-status {
-					  	font-family: Montserrat;
-						  font-size: 22px;
-						  font-weight: 500;
-						  font-style: normal;
-						  font-stretch: normal;
-						  line-height: normal;
-						  letter-spacing: normal;
-						  color: #595959;
-					  }
-					}
-				}
-			}
-		}
-	}
+      .btn-primary-border {
+        height: 53px;
+        border-width: 2px;
+        font-family: BrownPro;
+        font-size: 25px;
+        font-weight: normal;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: #4c4c4c !important;
+        padding-left: 5px;
+      }
+    }
+
+    .arrow.down {
+      position: absolute;
+    }
+
+    .filter-range {
+      width: 100%;
+      padding-left: 20px;
+      padding-right: 20px;
+
+      input[type=range] {
+        &::before, &::after {
+        content: "";
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        border-radius: 7.5px;
+        background-color: $white;
+        border: solid 2px $primary-color;
+        margin-top: 7px;
+        }
+      }
+
+      .filter-range-min {
+        position: absolute;
+        top: 20px;
+        left: 22px;
+      }
+
+      .filter-range-max {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+      }
+
+      .filter-distance {
+        width: 100%;
+      }
+    }
+  }
+
+  .filter-result {
+
+    .filter-result-header {
+
+      .filter-result-label {
+        font-family: BrownPro;
+        font-size: 35px;
+        font-weight: normal;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: #4c4c4c
+      }
+
+      .filter-category, 
+      .filter-activity-type {
+        float: right;
+
+        .btn-primary-border {
+          height: 45px;
+          border-width: 2px;
+          font-family: Lato;
+          font-size: 16px;
+          font-weight: normal;
+          font-style: normal;
+          font-stretch: normal;
+          line-height: normal;
+          letter-spacing: normal;
+          color: #262626 !important;
+        }
+      }
+    }
+    .filter-result-body {
+      padding: 10px 0;
+
+      .activity-item {
+
+        .activity-item-header {
+          a {
+            text-decoration: none;
+          }
+
+          .row {
+          margin-left: 0;
+          margin-right: 0;
+
+            &.card-header {
+              height: 45px;
+              border-radius: 3px;
+              border: solid 1px #c2c2c2;
+              background-color: $white;
+              padding: 0;
+              font-family: Montserrat;
+              font-size: 15px;
+              font-weight: normal;
+              font-style: normal;
+              font-stretch: normal;
+              letter-spacing: normal;
+              color: #262626;
+            }
+
+            .col-3 {
+              padding: 0;
+
+              .activity-img {
+                width: 90px;
+                height: 45px;
+                overflow: hidden;
+              }
+
+              .activity-title {
+                padding: 0 10px;
+                display: inline-flex;
+              }
+
+              .activity-address, 
+              .activity-description, 
+              .activity-distance {
+                margin: 10px 0;
+                padding: 0 10px;
+                text-align: left;
+                border-left: solid 1px;
+              }
+
+              i.fa {
+                float: right;
+                font-size: 25px;
+                color: $accent-color;
+              }
+            }
+          }
+        }
+
+        .activity-item-body {
+          border-radius: 8px;
+          border: solid 2px rgba(89, 89, 89, 0.46);
+
+          .row {
+            margin-left: 0;
+            margin-right: 0;
+            padding: 10px 0;
+            border-radius: 3px;
+            background-color: $white;
+
+            &.border-1 {
+              border-radius: 8px;
+            }
+
+            .activity-detail-img {
+            width: 100%;
+            overflow: hidden;
+            border-radius: 8px;
+            }
+
+            .activity-detail-title {
+              font-family: Montserrat;
+              font-size: 22px;
+              font-weight: 500;
+              font-style: normal;
+              font-stretch: normal;
+              line-height: normal;
+              letter-spacing: normal;
+              color: #595959;
+            }
+
+            .activity-detail-age {
+              font-family: Montserrat;
+              font-size: 20px;
+              font-weight: 500;
+              font-style: normal;
+              font-stretch: normal;
+              line-height: normal;
+              letter-spacing: normal;
+              color: #595959;
+            }
+
+            .activity-detail-palce {
+              font-family: Montserrat;
+              font-size: 20px;
+              font-weight: 500;
+              font-style: normal;
+              font-stretch: normal;
+              line-height: normal;
+              letter-spacing: normal;
+              color: #595959;
+            }
+            
+            .activity-status {
+            font-family: Montserrat;
+              font-size: 22px;
+              font-weight: 500;
+              font-style: normal;
+              font-stretch: normal;
+              line-height: normal;
+              letter-spacing: normal;
+              color: #595959;
+            }
+          }
+        }
+      }
+    }
+  }
 }

@@ -10849,6 +10849,10 @@ a.text-dark:focus {
   color: #262626;
 }
 
+.activities-container .filter-sidebar h3 {
+  font-family: Montserrat;
+}
+
 .activities-container .filter-sidebar .filter-location::after {
   display: none;
 }
@@ -10985,6 +10989,12 @@ a.text-dark:focus {
   padding: 0 10px;
   text-align: left;
   border-left: solid 1px;
+}
+
+.activities-container .filter-result .filter-result-body .activity-item .activity-item-header .row .col-3 i.fa {
+  float: right;
+  font-size: 25px;
+  color: #a845ff;
 }
 
 .activities-container .filter-result .filter-result-body .activity-item .activity-item-body {
@@ -11173,9 +11183,29 @@ a.text-dark:focus {
   width: 100%;
 }
 
+.provider-create-container .provider-create-form h2 {
+  font-family: Montserrat;
+  font-size: 40px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #262626;
+}
+
 .provider-create-container .provider-create-form select,
 .provider-create-container .provider-create-form .btn {
   height: 45px;
+  border-width: 2px;
+  font-family: Lato;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #393939 !important;
 }
 
 .provider-create-container .provider-create-form label {
@@ -11219,6 +11249,10 @@ a.text-dark:focus {
 
 .provider-create-container .provider-create-form .upload-gird-wrapper .upload-item .plus-item-group .plus-text {
   text-align: center;
+}
+
+body {
+  font-family: Montserrat;
 }
 
 .btn {

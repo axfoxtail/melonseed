@@ -15,10 +15,14 @@
 // ------ Activities Page
 @import 'activities';
 @import 'activity-detail';
-@import 'provider-create';
+@import 'activity-create';
 
 
 // --- Share Style
+body {
+	font-family: Montserrat;
+}
+ 
 .btn {
 	text-align: center;
 }
@@ -66,7 +70,9 @@
 
 // --- --- Footer Style
 .footer {
+
 	.logo-container {
+
 		a {
 			font-family: Helvetica;
 		  font-size: 36px;
@@ -79,6 +85,7 @@
 		  color: $white;
 		}
 	}
+
 	.btn-footer-nav {
 		font-family: Montserrat;
 	  font-size: 30px;
@@ -93,15 +100,20 @@
 
 // Log In & Sign Up Style
 .login-modal {
+
 	.modal-dialog {
 		max-width: 90%;
 		width: 854px;
 		margin-top: 150px;
+
 		.modal-content {
 			width: 854px;
+
 			.nav-tabs {
+
 				.nav-item {
 					width: 50%;
+
 					.nav-link {
 						height: 74px;
 						background-color: $accent-color;
@@ -117,6 +129,7 @@
 						border: none;
 						outline: none;
 						padding: 16px;
+
 						&.active {
 							background-color: $white;
 							color: $dark;
@@ -124,9 +137,12 @@
 					}
 				}
 			}
+
 			.tab-content {
+
 				form {
 					margin: 3rem 5rem;
+
 					.form-control {
 						height: 93px;
 						border-radius: 8px;
@@ -139,17 +155,21 @@
 					  letter-spacing: normal;
 					  color: $dark;
 					}
+
 					.btn-outline-dark {
 						padding: 0;
 						display: block;
 						height: 45px;
 						float: right;
+
 						&.btn-google-login {
 							margin-bottom: 5px;
 						}
+
 						&.btn-twitter-login {
 							margin-top: 5px;
 						}
+
 						.btn-text {
 							border-right: solid 1px;
 							display: inline-flex;
@@ -160,6 +180,7 @@
 							padding-left: 20px;
 							padding-right: 20px;
 						}
+
 						.btn-icon {
 							width: 35px;
 							display: inline-block;

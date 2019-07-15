@@ -1,87 +1,89 @@
 .detail-container {
-	font-family: Montserrat;
+  font-family: Montserrat;
   font-style: normal;
   font-stretch: normal;
   line-height: normal;
   letter-spacing: normal;
 
   .btn-back {
-  	font-family: Montserrat;
-	  font-size: 22px;
-	  font-weight: normal;
-	  font-style: normal;
-	  font-stretch: normal;
-	  line-height: normal;
-	  letter-spacing: normal;
-	  color: #262626;
-	  text-decoration: none;
+    font-family: Montserrat;
+    font-size: 22px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #262626;
+    text-decoration: none;
   }
 
-	.detail-img-wrapper {
-		padding-right: 10%;
-		padding-bottom: 5%;
-		.detail-img {
-			width: 100%;
-			border-radius: 8px;
-		}
-	}
+  .detail-img-wrapper {
+    padding-right: 10%;
+    padding-bottom: 5%;
 
-	.activity-title {
-	  font-size: 40px;
-	  font-weight: 500;
-	  color: #262626;
-	  .rate-stars {
-	  	position: absolute;
-	  	font-size: 30px;
-	  	line-height: 50px;
-	  	right: -200px;
-	  }
-	}
+    .detail-img {
+      width: 100%;
+      border-radius: 8px;
+    }
+  }
 
-	.activity-place {
-		font-family: Montserrat;
-		font-size: 30px;
-		font-weight: 500;
-		color: #262626;
-	}
+  .activity-title {
+    font-size: 40px;
+    font-weight: 500;
+    color: #262626;
 
-	.activity-contact {
-		font-size: 30px;
-	}
+    .rate-stars {
+    position: absolute;
+    font-size: 30px;
+    line-height: 50px;
+    right: -200px;
+    }
+  }
 
-	.activity-contact-info {
-		font-size: 20px;
-	}
+  .activity-place {
+    font-family: Montserrat;
+    font-size: 30px;
+    font-weight: 500;
+    color: #262626;
+  }
 
-	.btn-visit {
-		width: 296px;
-		height: 93px;
-		font-family: BrownPro;
-  	font-size: 40px;
-	  font-weight: normal;
-	  font-style: normal;
-	  font-stretch: normal;
-	  line-height: normal;
-	  letter-spacing: normal;
-	  text-align: center;
-	  color: $white;
-	}
+  .activity-contact {
+    font-size: 30px;
+  }
 
-	.detail-description {
-		font-family: Montserrat;
-		font-size: 25px;
-		font-weight: normal;
-		color: #343434;
-	}
+  .activity-contact-info {
+    font-size: 20px;
+  }
 
-	.ad-sidebar {
-		float: right;
-		margin-top: 50px;
-	}
+  .btn-visit {
+    width: 296px;
+    height: 93px;
+    font-family: BrownPro;
+    font-size: 40px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: $white;
+  }
+
+  .detail-description {
+    font-family: Montserrat;
+    font-size: 25px;
+    font-weight: normal;
+    color: #343434;
+  }
+
+  .ad-sidebar {
+    float: right;
+    margin-top: 50px;
+  }
 }
 
 .reviews-container {
-	font-family: Montserrat;
+  font-family: Montserrat;
   font-style: normal;
   font-stretch: normal;
   line-height: normal;
@@ -89,18 +91,18 @@
   color: $black;
   
   h2 {
-  	display: inline-flex;
+  display: inline-flex;
   }
-	
-	.rate-stars {
-  	font-size: 30px;
-  	line-height: 50px;
-  	display: inline-block;
+  
+  .rate-stars {
+  font-size: 30px;
+  line-height: 50px;
+  display: inline-block;
   }
-	
-	.reviews-content {
-	  font-size: 25px;
-	  font-weight: normal;
-	  color: $dark;
-	}
+  
+  .reviews-content {
+    font-size: 25px;
+    font-weight: normal;
+    color: $dark;
+  }
 }

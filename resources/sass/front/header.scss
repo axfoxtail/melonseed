@@ -1,7 +1,6 @@
 .masthead {
   height: 656px;
 
-
   input {
     height: 89px;
     border-radius: 8px;
@@ -13,9 +12,11 @@
     line-height: normal;
     letter-spacing: normal;
     padding: 20px;
+
     &[type=submit] {
       width: calc(100% - 5px);
       margin-left: 5px;
+      
       &:hover {
         background-color: $primary-color;
         border-color: $primary-color;

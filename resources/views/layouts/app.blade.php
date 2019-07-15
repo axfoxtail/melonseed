@@ -7,6 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="">
 	<meta name="author" content="">
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 
 	<title>SIMAX | Melonseed</title>
 
@@ -42,8 +43,8 @@
 					<a class="navbar-brand" href="#">SIMAX</a>
 				</div>
 				<div class="nav-container">
-					<a class="btn" href="activities">Activities</a>
-					<a class="btn" href="providers">Providers</a>
+					<a class="btn" href="/activities">Activities</a>
+					<a class="btn" href="/activities/create">Providers</a>
 					<a class="btn nav-btn btn-accent-border" data-toggle="modal" data-target="#loginModal">Log In</a>
 					<a class="btn nav-btn btn-accent" data-toggle="modal" data-target="#loginModal">Sign Up</a>
 				</div>
@@ -61,10 +62,10 @@
 							<a class="navbar-brand" href="#">SIMAX</a>
 						</div>
 						<div class="col-4">
-							<a class="btn btn-footer-nav" href="providers">Providers</a>
+							<a class="btn btn-footer-nav" href="/activities/create">Providers</a>
 						</div>
 						<div class="col-4">
-							<a class="btn btn-footer-nav" href="activities">Activities</a>
+							<a class="btn btn-footer-nav" href="/activities">Activities</a>
 						</div>
 					</div>
 					<div class="col-lg-5 h-100 text-center text-lg-right my-auto">
