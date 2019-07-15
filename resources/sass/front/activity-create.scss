@@ -59,19 +59,31 @@
         height: 90px;
         border-radius: 8px;
         border: solid 1px #393939;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $primary-color;
+          color: $white;
+        }
+
+        &:active {
+          background-color: $primary-color;
+          opacity: 0.7;
+          color: $white;
+        }
 
         .plus-item-group {
-        padding: 20px 0;
+          padding: 20px 0;
 
-        .plus-icon {
-            font-size: 25px;
-          line-height: 20px;
-          text-align: center;
-        }
-        
-        .plus-text {
+          .plus-icon {
+              font-size: 25px;
+            line-height: 20px;
             text-align: center;
-        }
+          }
+          
+          .plus-text {
+              text-align: center;
+          }
         }
       }
     }

@@ -10712,6 +10712,10 @@ a.text-dark:focus {
   border-color: #30cbb7;
 }
 
+.masthead {
+  background-position: center -400px !important;
+}
+
 .popular-carousel {
   padding-top: 50px;
   padding-bottom: 50px;
@@ -11053,7 +11057,7 @@ a.text-dark:focus {
   color: #595959;
 }
 
-.activities-container .filter-result .filter-result-body .activity-item .activity-item-body .row .activity-status {
+.activities-container .filter-result .filter-result-body .activity-item .activity-item-body .row .link-detail {
   font-family: Montserrat;
   font-size: 22px;
   font-weight: 500;
@@ -11235,6 +11239,18 @@ a.text-dark:focus {
   height: 90px;
   border-radius: 8px;
   border: solid 1px #393939;
+  cursor: pointer;
+}
+
+.provider-create-container .provider-create-form .upload-gird-wrapper .upload-item:hover {
+  background-color: #30cbb7;
+  color: #ffffff;
+}
+
+.provider-create-container .provider-create-form .upload-gird-wrapper .upload-item:active {
+  background-color: #30cbb7;
+  opacity: 0.7;
+  color: #ffffff;
 }
 
 .provider-create-container .provider-create-form .upload-gird-wrapper .upload-item .plus-item-group {

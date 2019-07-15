@@ -144,8 +144,8 @@
                       <div class="row">
                         <a href="" class="btn btn-primary btn-lg">Visit Site</a>
                       </div>
-                      <div class="row activity-status">
-                          Now Enrolling                         
+                      <div class="row">
+                        <a class="link-detail" href="/activities/{{ $i }}">Now Enrolling</a>
                       </div>
                     </div>
                   </div>
