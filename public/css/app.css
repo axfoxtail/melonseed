@@ -10685,6 +10685,70 @@ a.text-dark:focus {
   border: solid 2px #a845ff;
 }
 
+.navbar .nav-container .nav-user-info {
+  position: relative;
+  padding: 0px;
+}
+
+.navbar .nav-container .nav-user-info .btn-user-info {
+  cursor: pointer;
+}
+
+.navbar .nav-container .nav-user-info .btn-user-info:hover {
+  opacity: 0.7;
+}
+
+.navbar .nav-container .nav-user-info .btn-user-info.dropdown-toggle::after {
+  display: none;
+}
+
+.navbar .nav-container .nav-user-info .btn-user-info .avatar-wrapper {
+  display: inline-flex;
+  position: relative;
+  top: 4px;
+}
+
+.navbar .nav-container .nav-user-info .btn-user-info .avatar-wrapper .avatar-img {
+  width: 45px;
+}
+
+.navbar .nav-container .nav-user-info .btn-user-info .user-info-wrapper {
+  display: inline-block;
+  position: relative;
+  top: -4px;
+  padding: 0, 10px;
+}
+
+.navbar .nav-container .nav-user-info .btn-user-info .user-info-wrapper .user-info-name {
+  text-align: center;
+  font-size: 17px;
+  font-weight: 600;
+  color: #a845ff;
+}
+
+.navbar .nav-container .nav-user-info .btn-user-info .user-info-wrapper .user-info-role {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 100;
+  color: #30cbb7;
+}
+
+.navbar .nav-container .nav-user-info .dropdown-menu {
+  margin-top: 7px;
+}
+
+.navbar .nav-container .nav-user-info .dropdown-menu .dropdown-item {
+  text-align: left;
+  margin: 0;
+  font-size: 16px;
+}
+
+.navbar .nav-container .nav-user-info .dropdown-menu .dropdown-item:hover,
+.navbar .nav-container .nav-user-info .dropdown-menu .dropdown-item:active {
+  background-color: #30cbb7;
+  color: #ffffff;
+}
+
 .masthead {
   height: 656px;
 }
@@ -10800,8 +10864,8 @@ a.text-dark:focus {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding-bottom: 7px;
-  font-size: 60px;
+  padding-bottom: 10px;
+  font-size: 50px;
   line-height: 30px;
   color: #ffffff;
 }
@@ -11375,15 +11439,15 @@ body {
   color: #393939;
 }
 
-.login-modal .modal-dialog .modal-content .tab-content form {
+.login-modal .modal-dialog .modal-content form {
   margin: 3rem 5rem;
 }
 
-.login-modal .modal-dialog .modal-content .tab-content form .form-control {
-  height: 93px;
+.login-modal .modal-dialog .modal-content form .form-control {
+  height: 70px;
   border-radius: 8px;
   font-family: BrownPro;
-  font-size: 35px;
+  font-size: 30px;
   font-weight: normal;
   font-style: normal;
   font-stretch: normal;
@@ -11392,35 +11456,73 @@ body {
   color: #393939;
 }
 
-.login-modal .modal-dialog .modal-content .tab-content form .btn-outline-dark {
+.login-modal .modal-dialog .modal-content form input[type=submit] {
+  margin-top: 9px;
+}
+
+.login-modal .modal-dialog .modal-content form .btn-outline-dark {
   padding: 0;
   display: block;
-  height: 45px;
+  height: 40px;
   float: right;
 }
 
-.login-modal .modal-dialog .modal-content .tab-content form .btn-outline-dark.btn-google-login {
+.login-modal .modal-dialog .modal-content form .btn-outline-dark.btn-google-login {
   margin-bottom: 5px;
 }
 
-.login-modal .modal-dialog .modal-content .tab-content form .btn-outline-dark.btn-twitter-login {
+.login-modal .modal-dialog .modal-content form .btn-outline-dark.btn-twitter-login {
   margin-top: 5px;
 }
 
-.login-modal .modal-dialog .modal-content .tab-content form .btn-outline-dark .btn-text {
+.login-modal .modal-dialog .modal-content form .btn-outline-dark .btn-text {
   border-right: solid 1px;
   display: inline-flex;
-  height: 44px;
-  line-height: 45px;
+  height: 39px;
+  line-height: 40px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 20px;
   padding-right: 20px;
 }
 
-.login-modal .modal-dialog .modal-content .tab-content form .btn-outline-dark .btn-icon {
+.login-modal .modal-dialog .modal-content form .btn-outline-dark .btn-icon {
   width: 35px;
   display: inline-block;
+}
+
+.login-modal .modal-dialog .modal-content form label.h5 {
+  margin-top: 5px;
+}
+
+.login-modal .modal-dialog .modal-content form .btn.toggle-on,
+.login-modal .modal-dialog .modal-content form .btn.toggle-off {
+  font-size: 25px;
+  line-height: 25px;
+}
+
+.login-modal .modal-dialog .modal-content form .trigger-signup:hover,
+.login-modal .modal-dialog .modal-content form .trigger-forgetpwd:hover {
+  text-decoration: underline;
+  color: #000000;
+  cursor: pointer;
+}
+
+.login-modal .modal-dialog .modal-content form .trigger-login-wrapper {
+  text-align: center;
+  padding: 10px;
+  cursor: default;
+  width: 100%;
+}
+
+.login-modal .modal-dialog .modal-content form .trigger-login-wrapper .link-login {
+  color: #a845ff;
+  cursor: pointer;
+}
+
+.login-modal .modal-dialog .modal-content form .trigger-login-wrapper .link-login:hover {
+  color: #30cbb7;
+  text-decoration: underline;
 }
 
 .align-middle-center {

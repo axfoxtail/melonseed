@@ -37,6 +37,71 @@
       border-radius: 8px;
       border: solid 2px #a845ff;
     }
-    
+
+    .nav-user-info {
+      position: relative;
+      padding: 0px;
+
+      .btn-user-info {
+        cursor: pointer;
+        
+        &:hover {
+          opacity: 0.7;
+        }
+
+        &.dropdown-toggle {
+
+          &::after {
+            display: none;
+          }
+        }
+
+        .avatar-wrapper {
+          display: inline-flex;
+          position: relative;
+          top: 4px;
+
+          .avatar-img {
+            width: 45px;
+          }
+        }
+
+        .user-info-wrapper {
+          display: inline-block;
+          position: relative;
+          top: -4px;
+          padding: 0, 10px;
+
+          .user-info-name {
+            text-align: center;
+            font-size: 17px;
+            font-weight: 600;
+            color: $accent-color;
+          }
+
+          .user-info-role {
+            text-align: center;
+            font-size: 14px;
+            font-weight: 100;
+            color: $primary-color;
+          }
+        }
+      }
+
+      & .dropdown-menu {
+        margin-top: 7px;
+
+        .dropdown-item {
+          text-align: left;
+          margin: 0;
+          font-size: 16px;
+
+          &:hover, &:active {
+            background-color: $primary-color;
+            color: $white;
+          }
+        }
+      }
+    }
   }
 }

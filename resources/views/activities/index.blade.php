@@ -3,7 +3,7 @@
 @section('content')
 
   <!-- Image Showcases -->
-  <section class="activities-container my-5">
+  <section class="activities-container bg-white my-5">
     <div class="container">
       <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 filter-sidebar">
@@ -167,12 +167,12 @@
 
   <!-- Styles -->
   @push('contentCss')
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.10/css/bootstrap-select.min.css">
+  
   @endpush
 
   <!-- Scripts -->
   @push('contentJs')
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.10/js/bootstrap-select.min.js"></script>
+  
   @endpush
 
 @endsection

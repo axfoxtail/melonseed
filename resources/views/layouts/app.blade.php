@@ -1,15 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>SIMAX | Melonseed</title>
+  <title>{{ config('app.name', 'Melonseed') }}</title>
 
   <!-- Bootstrap core CSS -->
   <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -28,30 +26,63 @@
   <!-- Bootstrap core JavaScript -->
   <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
 
+  <!-- Fonts -->
+  <link rel="dns-prefetch" href="//fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+  <!-- Additional CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.10/css/bootstrap-select.min.css">
+  <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/css/bootstrap4-toggle.min.css" rel="stylesheet">
+
   @stack('contentCss')
 
 </head>
-
-<body>
-  
+<body class="bg-white">
   <div id="app">
-    
     <!-- Navigation -->
-    <nav class="navbar navbar-light bg-light static-top">
+    <nav class="navbar navbar-light bg-white static-top">
       <div class="container">
         <div class="logo-container">
-          <a class="navbar-brand" href="/">SIMAX</a>
+          <a class="navbar-brand" href="/">Melonseed</a>
         </div>
         <div class="nav-container">
           <a class="btn" href="/activities">Activities</a>
           <a class="btn" href="/activities/create">Providers</a>
-          <a class="btn nav-btn btn-accent-border" data-toggle="modal" data-target="#loginModal">Log In</a>
-          <a class="btn nav-btn btn-accent" data-toggle="modal" data-target="#loginModal">Sign Up</a>
+          @guest
+            <a class="btn nav-btn btn-accent-border btn-login" data-toggle="modal" data-target="#loginModal">Log In</a>
+            <a class="btn nav-btn btn-accent btn-signup" data-toggle="modal" data-target="#signupModal">Sign Up</a>
+          @else
+            <div class="btn nav-user-info">
+              <a class="btn-user-info py-0 dropdown-toggle" data-toggle="dropdown">
+                <div class="avatar-wrapper">
+                  <img class="avatar-img img-thumbnail img-rounded" src="{{ asset('img/avatar-none/avatar11.png') }}">
+                </div>
+                <div class="user-info-wrapper">
+                  <div class="user-info-name">
+                    {{ Auth::user()->first_name ? Auth::user()->first_name : Auth::user()->username }}
+                  </div>
+                  <div class="user-info-role">
+                    {{ Auth::user()->is_provider ? 'Provider' : 'Parents' }}
+                  </div>
+                </div>
+              </a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="">Profile</a>
+                <a class="dropdown-item" href="{{ route('logout') }}"
+                  onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Log Out</a>
+              </div>
+            </div>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              @csrf
+            </form>
+          @endguest
         </div>
       </div>
     </nav>
 
-    @yield('content')
+    <main class="">
+      @yield('content')
+    </main>
 
     <!-- Footer -->
     <footer class="footer bg-dark">
@@ -59,7 +90,7 @@
         <div class="row">
           <div class="col-lg-7 h-100 text-center text-lg-left my-auto display-inline">
             <div class="col-4 logo-container">
-              <a class="navbar-brand" href="/">SIMAX</a>
+              <a class="navbar-brand" href="/">Melonseed</a>
             </div>
             <div class="col-4">
               <a class="btn btn-footer-nav" href="/activities/create">Providers</a>
@@ -70,97 +101,55 @@
           </div>
           <div class="col-lg-5 h-100 text-center text-lg-right my-auto">
             <ul class="list-inline mb-0">
-              <li class="list-inline-item">
-                <a class="btn nav-btn btn-accent-border" data-toggle="modal" data-target="#loginModal">Log In</a>
-              </li>
-              <li class="list-inline-item">
-                <a class="btn nav-btn btn-accent" data-toggle="modal" data-target="#loginModal">Sign Up</a>
-              </li>
+              @guest
+                <li class="list-inline-item">
+                  <a class="btn nav-btn btn-accent-border btn-login" data-toggle="modal" data-target="#loginModal">Log In</a>
+                </li>
+                <li class="list-inline-item">
+                  <a class="btn nav-btn btn-accent btn-signup" data-toggle="modal" data-target="#signupModal">Sign Up</a>
+                </li>
+              @else
+                <li class="list-inline-item">
+                  <a class="btn nav-btn btn-accent-border" href="{{ route('logout') }}"
+                   onclick="event.preventDefault();
+                         document.getElementById('logout-form').submit();">
+                  Log Out</a>
+                </li>
+              @endguest
             </ul>
           </div>
         </div>
       </div>
     </footer>
-    
-  </div>
 
-  <!-- The Modal -->
-  <div class="modal login-modal" id="loginModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-      <!-- Nav tabs -->
-        <ul class="nav nav-tabs">
-        <li class="nav-item">
-          <a class="nav-link active" data-toggle="tab" href="#parents">Parents</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#providers">Providers</a>
-        </li>
-        </ul>
-        <!-- Tab panes -->
-        <div class="tab-content">
-        <div id="parents" class="container tab-pane active"><br>
-          <form id="parents-form">
-            <div class="form-group">
-              <input type="text" class="form-control" id="usr">
-              <label for="usr">Need to register a new account?</label>
-            </div>
-            <div class="form-group">
-              <input type="password" class="form-control" id="pwd">
-              <label for="pwd">Forgot Password?</label>
-            </div>
-            <div class="row">
-              <div class="col-6">
-              <input type="submit" class="form-control btn btn-primary" value="Login">
-              </div>
-              <div class="col-6">
-                  <button class="btn btn-outline-dark btn-google-login">
-                    <div class="btn-text">
-                      Login with Google 
-                    </div>
-                    <div class="btn-icon">
-                      <i class='fab fa-google-plus-g'></i>
-                    </div>
-                  </button>
-                  <button class="btn btn-outline-dark btn-twitter-login">
-                    <div class="btn-text">
-                      Login with Twitter 
-                    </div>
-                    <div class="btn-icon">
-                      <i class='fab fa-twitter'></i>
-                    </div>
-                  </button>
-              </div>
-            </div>
-            </form>
-        </div>
-        <div id="providers" class="container tab-pane fade"><br>
-          <form id="providers-form">
-            <div class="form-group">
-              <input type="text" class="form-control" id="usr">
-              <label for="usr">Need to register a new account?</label>
-            </div>
-            <div class="form-group">
-              <input type="password" class="form-control" id="pwd">
-              <label for="pwd">Forgot Password?</label>
-            </div>
-            <div class="row">
-              <div class="col-6" style="margin-left: auto; margin-right: auto;">
-              <input type="submit" class="form-control btn btn-primary" value="Login">
-              </div>
-            </div>
-            </form>
-        </div>
-        </div>
-      </div>
-    </div>
   </div>
   
+  <!-- The Login Modal -->
+  @include('layouts.login-modal')
+  
+  <!-- The Sign Up Modal -->
+  @include('layouts.signup-modal');
 
   <!-- App JavaScript -->
   <script src="{{ asset('js/app.js') }}"></script>
+
+  <!-- Additional JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.10/js/bootstrap-select.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/js/bootstrap4-toggle.min.js"></script>
+
   @stack('contentJs')
   
-</body>
+  <script type="text/javascript">
+    function triggerSignup() {
+      document.getElementById('loginModal').click();
+      document.getElementsByClassName('btn-signup')[0].click();
+    }
 
+    function triggerLogin() {
+      document.getElementById('signupModal').click();
+      document.getElementsByClassName('btn-login')[0].click();
+    }
+  </script>
+
+</body>
 </html>

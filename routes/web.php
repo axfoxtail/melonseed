@@ -15,10 +15,14 @@
 //     return view('welcome');
 // });
 
-Route::get('/', 'HomeController@Index');
+Route::get('/', 'HomeController@index');
 
+// Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
 
 Route::resources([
     'activities' => 'ActivityController',
     'providers' => 'ProviderController'
 ]);
+

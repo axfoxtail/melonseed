@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'pgsql'),
+    'default' => env('DB_CONNECTION', 'mysql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -49,8 +49,8 @@ return [
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
             'database' => env('DB_DATABASE', 'melonseed'),
-            'username' => env('DB_USERNAME', 'sample'),
-            'password' => env('DB_PASSWORD', 'sample'),
+            'username' => env('DB_USERNAME', 'developer'),
+            'password' => env('DB_PASSWORD', 'strongPass!23'),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
@@ -69,8 +69,8 @@ return [
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '5432'),
             'database' => env('DB_DATABASE', 'melonseed'),
-            'username' => env('DB_USERNAME', 'sample'),
-            'password' => env('DB_PASSWORD', 'sample'),
+            'username' => env('DB_USERNAME', 'developer'),
+            'password' => env('DB_PASSWORD', 'strongPass!23'),
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
