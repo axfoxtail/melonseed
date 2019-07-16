@@ -21,6 +21,9 @@ Route::get('/', 'HomeController@index');
 
 Auth::routes();
 
+Route::get('profile/{id}/edit', 'UserController@edit')->middleware('auth');
+Route::put('profile/{id}', 'UserController@update')->middleware('auth');
+
 Route::resources([
     'activities' => 'ActivityController',
     'providers' => 'ProviderController'

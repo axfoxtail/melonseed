@@ -46,8 +46,8 @@
           <a class="navbar-brand" href="/">Melonseed</a>
         </div>
         <div class="nav-container">
-          <a class="btn" href="/activities">Activities</a>
-          <a class="btn" href="/activities/create">Providers</a>
+          <a class="btn" href="{{ url('/activities') }}">Activities</a>
+          <a class="btn" href="{{ url('/activities/create') }}">Providers</a>
           @guest
             <a class="btn nav-btn btn-accent-border btn-login" data-toggle="modal" data-target="#loginModal">Log In</a>
             <a class="btn nav-btn btn-accent btn-signup" data-toggle="modal" data-target="#signupModal">Sign Up</a>
@@ -67,7 +67,7 @@
                 </div>
               </a>
               <div class="dropdown-menu">
-                <a class="dropdown-item" href="">Profile</a>
+                <a class="dropdown-item" href="/profile/{{ Auth::user()->id }}/edit">Profile</a>
                 <a class="dropdown-item" href="{{ route('logout') }}"
                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Log Out</a>
               </div>
@@ -90,13 +90,13 @@
         <div class="row">
           <div class="col-lg-7 h-100 text-center text-lg-left my-auto display-inline">
             <div class="col-4 logo-container">
-              <a class="navbar-brand" href="/">Melonseed</a>
+              <a class="navbar-brand" href="{{ url('/') }}">Melonseed</a>
             </div>
             <div class="col-4">
-              <a class="btn btn-footer-nav" href="/activities/create">Providers</a>
+              <a class="btn btn-footer-nav" href="{{ url('/activities/create') }}">Providers</a>
             </div>
             <div class="col-4">
-              <a class="btn btn-footer-nav" href="/activities">Activities</a>
+              <a class="btn btn-footer-nav" href="{{ url('/activities') }}">Activities</a>
             </div>
           </div>
           <div class="col-lg-5 h-100 text-center text-lg-right my-auto">
@@ -111,8 +111,7 @@
               @else
                 <li class="list-inline-item">
                   <a class="btn nav-btn btn-accent-border" href="{{ route('logout') }}"
-                   onclick="event.preventDefault();
-                         document.getElementById('logout-form').submit();">
+                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                   Log Out</a>
                 </li>
               @endguest

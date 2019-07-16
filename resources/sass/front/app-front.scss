@@ -17,6 +17,9 @@
 @import 'activity-detail';
 @import 'activity-create';
 
+// ------ Profile Page
+@import 'profile-edit';
+
 
 // --- Share Style
 body {
@@ -67,6 +70,11 @@ body {
 .display-inline {
   display: inline-flex;
 }
+
+.input-error {
+  color: #761b18;
+}
+
 
 // --- --- Footer Style
 .footer {
