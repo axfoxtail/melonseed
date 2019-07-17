@@ -67,7 +67,8 @@ class RegisterController extends Controller
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'is_provider' => isset($data['is_provider']),
+            'is_provider' => isset($data['is_provider']) ? "1" : "0",
+            'avatar' => "/img/avatars/default.jpg",
         ]);
     }
 }

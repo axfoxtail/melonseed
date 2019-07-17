@@ -17,7 +17,7 @@
             <form id="parents-form" method="POST" action="{{ route('login') }}">
               @csrf
 
-              <input type="text" class="hidden" hidden name="is_provider" value="{{ false }}" required>
+              <input type="text" class="hidden" hidden name="is_provider" value="0" required>
               <div class="form-group">
                 <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                 <a class="h6 trigger-signup" onclick="triggerSignup();">Need to register a new account?</a>
@@ -55,7 +55,7 @@
             <form id="providers-form" method="POST" action="{{ route('login') }}">
               @csrf
 
-              <input type="text" class="hidden" hidden name="is_provider" value="{{ true }}" required>
+              <input type="text" class="hidden" hidden name="is_provider" value="1" required>
               <div class="form-group">
                 <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                 <a class="h6" onclick="triggerSignup();">Need to register a new account?</a>

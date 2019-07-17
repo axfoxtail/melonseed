@@ -55,7 +55,7 @@
             <div class="btn nav-user-info">
               <a class="btn-user-info py-0 dropdown-toggle" data-toggle="dropdown">
                 <div class="avatar-wrapper">
-                  <img class="avatar-img img-thumbnail img-rounded" src="{{ asset('img/avatar-none/avatar11.png') }}">
+                  <img class="avatar-img img-thumbnail img-rounded" src="{{ asset(Auth::user()->avatar) }}">
                 </div>
                 <div class="user-info-wrapper">
                   <div class="user-info-name">

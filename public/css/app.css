@@ -11331,34 +11331,34 @@ a.text-dark:focus {
   text-align: center;
 }
 
-.profile-edit-container .profile-edit-form {
+.profile-edit-container .profile-form-container {
   width: 100%;
 }
 
-.profile-edit-container .profile-edit-form .profile-img-container {
+.profile-edit-container .profile-form-container .profile-avatar-form .profile-img-container {
   margin-top: 5%;
   margin-left: 5%;
   width: 250px;
 }
 
-.profile-edit-container .profile-edit-form .profile-img-container .profile-img-wrapper {
+.profile-edit-container .profile-form-container .profile-avatar-form .profile-img-container .profile-img-wrapper {
   position: relative;
   width: 250px;
   height: 250px;
 }
 
-.profile-edit-container .profile-edit-form .profile-img-container .profile-img-wrapper:hover .profile-img-overlay {
+.profile-edit-container .profile-form-container .profile-avatar-form .profile-img-container .profile-img-wrapper:hover .profile-img-overlay {
   display: block;
 }
 
-.profile-edit-container .profile-edit-form .profile-img-container .profile-img-wrapper .profile-img {
+.profile-edit-container .profile-form-container .profile-avatar-form .profile-img-container .profile-img-wrapper .profile-img {
   position: absolute;
   width: 250px;
   height: 250px;
   max-width: 250px;
 }
 
-.profile-edit-container .profile-edit-form .profile-img-container .profile-img-wrapper .profile-img-overlay {
+.profile-edit-container .profile-form-container .profile-avatar-form .profile-img-container .profile-img-wrapper .profile-img-overlay {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -11368,7 +11368,7 @@ a.text-dark:focus {
   display: none;
 }
 
-.profile-edit-container .profile-edit-form .profile-img-container .profile-img-wrapper .profile-img-overlay a {
+.profile-edit-container .profile-form-container .profile-avatar-form .profile-img-container .profile-img-wrapper .profile-img-overlay a {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -11385,10 +11385,14 @@ a.text-dark:focus {
   cursor: pointer;
 }
 
-.profile-edit-container .profile-edit-form .profile-img-container .avatar-btn-group {
+.profile-edit-container .profile-form-container .profile-avatar-form .profile-img-container .avatar-btn-group {
   margin-left: auto;
   margin-right: auto;
   padding: 20px;
+}
+
+.profile-edit-container .profile-form-container .profile-edit-form {
+  width: 100%;
 }
 
 body {
