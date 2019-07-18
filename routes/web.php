@@ -17,9 +17,7 @@
 
 Route::get('/', 'HomeController@index');
 
-// Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('profile/{id}/edit', 'UserController@edit')->middleware('auth');
 Route::put('profile/{id}', 'UserController@update')->middleware('auth');

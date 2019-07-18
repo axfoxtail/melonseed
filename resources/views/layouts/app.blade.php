@@ -33,6 +33,7 @@
   <!-- Additional CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.10/css/bootstrap-select.min.css">
   <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/css/bootstrap4-toggle.min.css" rel="stylesheet">
+  <link href="{{ asset('plugins/Toastr/build/toastr.css') }}" rel="stylesheet">
 
   @stack('contentCss')
 
@@ -135,10 +136,17 @@
   <!-- Additional JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.10/js/bootstrap-select.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/js/bootstrap4-toggle.min.js"></script>
+  <script src="{{ asset('plugins/Toastr/build/toastr.min.js') }}"></script>
 
   @stack('contentJs')
   
   <script type="text/javascript">
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
+
     function triggerSignup() {
       document.getElementById('loginModal').click();
       document.getElementsByClassName('btn-signup')[0].click();

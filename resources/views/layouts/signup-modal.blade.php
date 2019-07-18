@@ -11,7 +11,7 @@
         <!-- Tab panes -->
         <div class="tab-content">
           <div id="" class="container tab-pane active"><br>
-            <form id="signup-form" method="POST" action="{{ route('register') }}">
+            <form id="signup-form">
               @csrf
 
               <div class="form-group">
@@ -50,7 +50,7 @@
                   <input type="checkbox" id="is_provider" name="is_provider" data-toggle="toggle" data-on="Privider" data-off="Parents" data-onstyle="accent" data-offstyle="primary" data-width="100%" data-height="40" value="1">
                 </div>
                 <div class="col-6">
-                <input type="submit" class="form-control btn btn-primary" value="Sign up">
+                  <input type="button" class="form-control btn btn-primary btn-signup-submit" value="Sign up">
                 </div>
               </div>
               <div class="row">
@@ -66,3 +66,50 @@
       </div>
     </div>
   </div>
+
+  <script type="text/javascript">
+    $('.btn-signup-submit').on('click', function(e) {
+      e.preventDefault();
+      
+      $.ajax({
+        type: 'POST',
+        url: '/register',
+        data: {
+          username: $('#signup-form input[name=username]').val(),
+          email: $('#signup-form input[name=email]').val(),
+          password: $('#signup-form input[name=password]').val(),
+          password_confirmation: $('#signup-form input[name=password_confirmation]').val(),
+          is_provider: $('#signup-form input[name=is_provider]').is(':checked') ? "1" : "0"
+        },
+        success: function(data) {
+          // console.log('res-success: ', data);
+          toastr.success('Successfully logged in.');
+          document.location.reload();
+        },
+        error: function(err) {
+          console.log('err: ', err);
+          if(err.status) {
+            if(err.responseJSON.errors.username) {
+              for (var j=0; j<err.responseJSON.errors.username.length; j++) {
+                toastr.error(err.responseJSON.errors.username[j]);
+              }
+            }
+            if(err.responseJSON.errors.email) {
+              for (var k=0; k<err.responseJSON.errors.email.length; k++) {
+                toastr.error(err.responseJSON.errors.email[k]);
+              }
+            }
+            if(err.responseJSON.errors.password) {
+              for (var l=0; l<err.responseJSON.errors.password.length; l++) {
+                toastr.error(err.responseJSON.errors.password[l]);
+              }
+            }
+            if(err.responseJSON.errors.password) {
+              toastr.error('The username has been already been taken.');
+            }
+          }
+        }
+      });
+
+    })
+  </script>
