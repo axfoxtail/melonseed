@@ -15,7 +15,9 @@
 // ------ Activities Page
 @import 'activities';
 @import 'activity-detail';
-@import 'activity-create';
+
+// ----- Provider Page
+@import 'provider-create';
 
 // ------ Profile Page
 @import 'profile-edit';
@@ -24,6 +26,10 @@
 // --- Share Style
 body {
   font-family: Montserrat;
+}
+
+main {
+  min-height: -webkit-fill-available;
 }
  
 .btn {
@@ -73,6 +79,34 @@ body {
 
 .input-error {
   color: #761b18;
+}
+
+
+// --- --- Notification Section Style
+.notification-section {
+  padding-top: 5px;
+  padding-bottom: 5px;
+
+  .notification-message {
+    color: $white;
+    text-align: left;
+
+    .alert-title {
+      font-size: 17px;
+      font-weight: bold;
+    }
+
+    .alert-content {
+      font-size: 16px;
+    }
+
+    .link-resend {
+      color: darkblue;
+      &:hover, &:active {
+        color: blue;
+      }
+    }
+  }
 }
 
 

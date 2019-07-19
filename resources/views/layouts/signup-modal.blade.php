@@ -44,7 +44,7 @@
                 <input type="password" class="form-control" id="password-confirm" placeholder="Confirm Password" name="password_confirmation" required autocomplete="new-password">
                 <!-- <label for="pwd">Forgot Password?</label> -->
               </div>
-              <div class="row">
+              <div class="row mt-5">
                 <div class="col-6">
                   <label class="h5">Are you parents or provider?</label>
                   <input type="checkbox" id="is_provider" name="is_provider" data-toggle="toggle" data-on="Privider" data-off="Parents" data-onstyle="accent" data-offstyle="primary" data-width="100%" data-height="40" value="1">
@@ -58,6 +58,14 @@
                   <small class="h5">
                     I have already account. <a class="link-login" onclick="triggerLogin();">Log In</a>
                   </small>
+                </div>
+              </div>
+              <div class="row">
+                <div class="container my-3 text-center">
+                  By creating an account you agree to {{ config('app.name', 'Melonseed') }}'s 
+                  <a href="">Privacy Policy</a>
+                   & 
+                  <a href="">Terms</a>.
                 </div>
               </div>
             </form>

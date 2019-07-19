@@ -21,10 +21,10 @@
               </div>
               <div class="form-group">
                 <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-                <a class="h6 trigger-forgetpwd" href="">Forgot Password?</a>
+                <a class="h6 trigger-forgetpwd" style="color: #212529;" href="{{ route('password.request') }}">Forgot Password?</a>
               </div>
               <div class="row">
-                <div class="col-6">
+                <div class="col-6 pt-2">
                 <input type="button" class="form-control btn btn-primary btn-login-submit" value="Login">
                 </div>
                 <div class="col-6">

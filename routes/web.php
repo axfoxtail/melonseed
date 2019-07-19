@@ -22,8 +22,11 @@ Auth::routes(['verify' => true]);
 Route::get('profile/{id}/edit', 'UserController@edit')->middleware('auth');
 Route::put('profile/{id}', 'UserController@update')->middleware('auth');
 
-Route::resources([
-    'activities' => 'ActivityController',
-    'providers' => 'ProviderController'
-]);
+// Route::resources([
+//     'activities' => 'ActivityController'
+// ]);
 
+Route::get('activities', 'ProviderController@index');
+Route::get('activities/{id}', 'ProviderController@show');
+Route::post('providers', 'ProviderController@store')->middleware('auth');
+Route::get('providers/profile', 'ProviderController@create')->middleware('auth');

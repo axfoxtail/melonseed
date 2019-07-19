@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
+use Provider;
 
 class ActivityController extends Controller
 {
@@ -14,6 +16,7 @@ class ActivityController extends Controller
     public function index()
     {
         //
+        
         return view('activities.index');
     }
 

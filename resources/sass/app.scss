@@ -17,6 +17,14 @@
 
 
 // Shared Style
+.bg-accent {
+	background-color: $accent-color !important;
+}
+
+.bg-primary {
+	background-color: $primary-color !important;
+}
+
 .align-middle-center {
 	position: absolute;
 	top: 50%;

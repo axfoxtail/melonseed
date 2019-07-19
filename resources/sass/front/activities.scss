@@ -150,6 +150,8 @@
                 padding: 0 10px;
                 text-align: left;
                 border-left: solid 1px;
+                max-height: 25px;
+                overflow: hidden;
               }
 
               i.fa {

@@ -10666,6 +10666,89 @@ a.text-dark:focus {
   color: #000000;
 }
 
+.navbar .nav-container a.active {
+  text-decoration: none;
+  color: #a845ff;
+}
+
+.navbar .nav-container .dropdown {
+  position: relative;
+  display: inline-block;
+  padding: 15px;
+}
+
+.navbar .nav-container .dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.navbar .nav-container .dropdown a {
+  color: #212529 !important;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.navbar .nav-container .dropdown .dropbtn {
+  background-color: #ffffff;
+}
+
+.navbar .nav-container .dropdown .dropbtn:hover {
+  text-decoration: none;
+  color: #30cbb7;
+}
+
+.navbar .nav-container .dropdown .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  border-radius: 4px;
+  margin-top: 10px;
+  padding: 7px 0;
+}
+
+.navbar .nav-container .dropdown .dropdown-content::before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 12px 10px 12px;
+  border-color: transparent transparent #00000026 transparent;
+  position: absolute;
+  top: -10px;
+  left: 15px;
+}
+
+.navbar .nav-container .dropdown .dropdown-content::after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 12px 12px 12px;
+  border-color: transparent transparent #ffffff transparent;
+  position: absolute;
+  top: -9px;
+  left: 15px;
+}
+
+.navbar .nav-container .dropdown .dropdown-content a {
+  color: #212529;
+  padding: 4px 24px;
+  margin: 0;
+  text-decoration: none;
+  font-size: 16px;
+  text-align: left;
+  display: block;
+}
+
+.navbar .nav-container .dropdown .dropdown-content a:hover,
+.navbar .nav-container .dropdown .dropdown-content a:active {
+  background-color: #30cbb7;
+  color: #ffffff !important;
+}
+
 .navbar .nav-container a {
   font-family: Montserrat;
   font-size: 20px;
@@ -10688,6 +10771,22 @@ a.text-dark:focus {
 .navbar .nav-container .nav-user-info {
   position: relative;
   padding: 0px;
+}
+
+.navbar .nav-container .nav-user-info .dropdown-menu {
+  margin-top: 4px;
+}
+
+.navbar .nav-container .nav-user-info .dropdown-menu .dropdown-item {
+  text-align: left;
+  margin: 0;
+  font-size: 16px;
+}
+
+.navbar .nav-container .nav-user-info .dropdown-menu .dropdown-item:hover,
+.navbar .nav-container .nav-user-info .dropdown-menu .dropdown-item:active {
+  background-color: #30cbb7;
+  color: #ffffff;
 }
 
 .navbar .nav-container .nav-user-info .btn-user-info {
@@ -10731,22 +10830,6 @@ a.text-dark:focus {
   font-size: 14px;
   font-weight: 100;
   color: #30cbb7;
-}
-
-.navbar .nav-container .nav-user-info .dropdown-menu {
-  margin-top: 7px;
-}
-
-.navbar .nav-container .nav-user-info .dropdown-menu .dropdown-item {
-  text-align: left;
-  margin: 0;
-  font-size: 16px;
-}
-
-.navbar .nav-container .nav-user-info .dropdown-menu .dropdown-item:hover,
-.navbar .nav-container .nav-user-info .dropdown-menu .dropdown-item:active {
-  background-color: #30cbb7;
-  color: #ffffff;
 }
 
 .masthead {
@@ -11057,6 +11140,8 @@ a.text-dark:focus {
   padding: 0 10px;
   text-align: left;
   border-left: solid 1px;
+  max-height: 25px;
+  overflow: hidden;
 }
 
 .activities-container .filter-result .filter-result-body .activity-item .activity-item-header .row .col-3 i.fa {
@@ -11201,6 +11286,7 @@ a.text-dark:focus {
   line-height: normal;
   letter-spacing: normal;
   text-align: center;
+  padding: 20px;
   color: #ffffff;
 }
 
@@ -11241,10 +11327,58 @@ a.text-dark:focus {
   color: #393939;
 }
 
-.provider-create-container .banner-img {
+.provider-create-container .banner-upload-form {
+  width: 100%;
+}
+
+.provider-create-container .banner-upload-form .banner-container {
+  position: relative;
+  width: 100%;
+  height: 315px;
+}
+
+.provider-create-container .banner-upload-form .banner-container:hover .banner-overlay {
+  display: block;
+}
+
+.provider-create-container .banner-upload-form .banner-container .banner-img {
+  position: absolute;
   width: 100%;
   height: 315px;
   overflow: hidden;
+}
+
+.provider-create-container .banner-upload-form .banner-container .banner-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #30cbb7;
+  opacity: 0.5;
+  display: none;
+}
+
+.provider-create-container .banner-upload-form .banner-container .banner-overlay .btn-upload-banner {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 80px;
+  height: 80px;
+  border-top-left-radius: 100%;
+  border-top: solid 2px #ffffff;
+  border-left: solid 2px #ffffff;
+  border-opacity: 0.5;
+  color: #ffffff;
+  font-size: 35px;
+  padding: 15px 0 0 15px;
+  background-color: #a845ff;
+  cursor: pointer;
+}
+
+.provider-create-container .banner-upload-form .banner-btn-wrapper {
+  width: 100%;
+  text-align: right;
+  height: 45px;
+  padding-top: 4px;
 }
 
 .provider-create-container .provider-create-form {
@@ -11264,10 +11398,10 @@ a.text-dark:focus {
 
 .provider-create-container .provider-create-form select,
 .provider-create-container .provider-create-form .btn {
-  height: 45px;
+  height: 48px;
   border-width: 2px;
   font-family: Lato;
-  font-size: 16px;
+  font-size: 19px;
   font-weight: normal;
   font-style: normal;
   font-stretch: normal;
@@ -11288,8 +11422,18 @@ a.text-dark:focus {
   color: #262626;
 }
 
+.provider-create-container .provider-create-form label .h2 {
+  font-size: 40px;
+}
+
 .provider-create-container .provider-create-form input {
   height: 48px;
+  font-size: 19px;
+}
+
+.provider-create-container .provider-create-form input.h2 {
+  height: 60px;
+  font-size: 30px;
 }
 
 .provider-create-container .provider-create-form .upload-gird-wrapper {
@@ -11329,6 +11473,68 @@ a.text-dark:focus {
 
 .provider-create-container .provider-create-form .upload-gird-wrapper .upload-item .plus-item-group .plus-text {
   text-align: center;
+}
+
+.provider-create-container .provider-create-form .thumbnail-img-wrapper {
+  position: relative;
+  width: 90px;
+  height: 45px;
+  border: solid 2px #30cbb7;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.provider-create-container .provider-create-form .thumbnail-img-wrapper .thumbnail-img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.provider-create-container .provider-create-form .thumbnail-img-wrapper:hover .btn-hover {
+  display: block;
+}
+
+.provider-create-container .provider-create-form .profile-img-wrapper {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border: solid 2px #30cbb7;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.provider-create-container .provider-create-form .profile-img-wrapper .profile-img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.provider-create-container .provider-create-form .profile-img-wrapper:hover .btn-hover {
+  display: block;
+}
+
+.provider-create-container .provider-create-form .btn-hover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+.provider-create-container .provider-create-form .btn-hover .btn-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #30cbb7;
+  opacity: 0.5;
+}
+
+.provider-create-container .provider-create-form .img-btn-txt {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ffffff;
 }
 
 .profile-edit-container .profile-form-container {
@@ -11399,6 +11605,10 @@ body {
   font-family: Montserrat;
 }
 
+main {
+  min-height: -webkit-fill-available;
+}
+
 .btn {
   text-align: center;
 }
@@ -11446,6 +11656,34 @@ body {
 
 .input-error {
   color: #761b18;
+}
+
+.notification-section {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.notification-section .notification-message {
+  color: #ffffff;
+  text-align: left;
+}
+
+.notification-section .notification-message .alert-title {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.notification-section .notification-message .alert-content {
+  font-size: 16px;
+}
+
+.notification-section .notification-message .link-resend {
+  color: darkblue;
+}
+
+.notification-section .notification-message .link-resend:hover,
+.notification-section .notification-message .link-resend:active {
+  color: blue;
 }
 
 .footer .logo-container a {
@@ -11591,6 +11829,14 @@ body {
 .login-modal .modal-dialog .modal-content form .trigger-login-wrapper .link-login:hover {
   color: #30cbb7;
   text-decoration: underline;
+}
+
+.bg-accent {
+  background-color: #a845ff !important;
+}
+
+.bg-primary {
+  background-color: #30cbb7 !important;
 }
 
 .align-middle-center {

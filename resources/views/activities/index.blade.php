@@ -98,67 +98,68 @@
             </div>
           </div>
           <div class="filter-result-body">
-            @for ($i = 0; $i < 10; $i++)
+            @foreach($activities as $key => $activity)
             <div class="activity-item my-2">
               <div class="activity-item-header">
-                <a href="#activity_{{ $i }}" data-toggle="collapse">
+                <a href="#activity_{{ $activity->id }}" data-toggle="collapse">
                   <div class="row card-header">
                     <div class="col-3">
-                      <img class="activity-img" src="{{ asset('img/Swimming Lesson.jpg') }}">
-                      <div class="activity-title">Swim Lesson</div>
+                      <img class="activity-img" src="{{ $activity->thumbnail_img ? asset($activity->thumbnail_img) : asset('img/defaults/thumbnail.png') }}">
+                      <div class="activity-title">{{ $activity->activity_type ? $activity->activity_type : 'activity Type' }}</div>
                     </div>
                     <div class="col-3">
-                      <div class="activity-address">381 King Street</div>
+                      <div class="activity-address">{{ $activity->location ? $activity->location : 'location' }}</div>
                     </div>
                     <div class="col-3">
-                      <div class="activity-description">Introduce Exercise</div>
+                      <div class="activity-description">{{ $activity->activity_description ? $activity->activity_description : 'activity_description' }}</div>
                     </div>
                     <div class="col-3">
                       <div class="activity-distance">
-                        4.8km
+                        {{ $activity->distance ? $activity->distance : 'distance' }}
                         <i class="fa fa-angle-down"></i>
                       </div>
                     </div>
                   </div>
                 </a>
               </div>
-              <div id="activity_{{ $i }}" class="collapse activity-item-body my-2">
+              <div id="activity_{{ $activity->id }}" class="collapse activity-item-body my-2">
               <div class="row border-1">
                 <div class="col-3">
-                  <img class="activity-detail-img" src="{{ asset('img/Swimming Lesson.jpg') }}">
+                  <img class="activity-detail-img" src="{{ $activity->profile_img ? $activity->profile_img : asset('img/defaults/profile.png') }}">
                 </div>
                 <div class="col-9">
                   <div class="row">
                     <div class="col-8">
                       <div class="row activity-detail-title">
-                        Backwoods Ski School
+                        {{ $activity->business_name ? $activity->business_name : 'business_name' }}
                       </div>
                       <div class="row activity-detail-age">
-                        Ages 14+
+                        Age {{ $activity->age_min }} to {{ $activity->age_max }}
                       </div>
                       <div class="row activity-detail-place">
-                        Blue Mountain Ski Resort (4.8km)
+                        {{ $activity->location ? $activity->location : 'location' }} ({{ $activity->distance }})
                       </div>
                     </div>
                     <div class="col-4">
                       <div class="row">
-                        <a href="" class="btn btn-primary btn-lg">Visit Site</a>
+                        <a href="{{ $activity->website ? $activity->website : '/' }}" class="btn btn-primary btn-lg">Visit Site</a>
                       </div>
                       <div class="row">
-                        <a class="link-detail" href="/activities/{{ $i }}">Now Enrolling</a>
+                        <a class="link-detail" href="/activities/{{ $activity->id }}">View Detail</a>
                       </div>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-12">
-                      Whistler Blackcomb Snow School is regarded as one of the best ski and snowboard schools in North America. Snow School programs offer up the best possible opportunity to improve skills and gain confidence, skip lift lines and discover the wonders of Whistler Blackcomb. We have certified and professional instructors from around the world to help you in your language, ability and style.
+                      <!-- Whistler Blackcomb Snow School is regarded as one of the best ski and snowboard schools in North America. Snow School programs offer up the best possible opportunity to improve skills and gain confidence, skip lift lines and discover the wonders of Whistler Blackcomb. We have certified and professional instructors from around the world to help you in your language, ability and style. -->
+                      {{ $activity->activity_description ? $activity->activity_description : 'activity_description' }}
                     </div>
-                    </div>
+                  </div>
                 </div>
               </div>
               </div>
             </div>
-            @endfor
+            @endforeach
           </div>
         </div>
       </div>

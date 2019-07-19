@@ -47,8 +47,25 @@
           <a class="navbar-brand" href="/">Melonseed</a>
         </div>
         <div class="nav-container">
-          <a class="btn" href="{{ url('/activities') }}">Activities</a>
-          <a class="btn" href="{{ url('/activities/create') }}">Providers</a>
+          <div class="btn dropdown">
+            <a class="btn-activities {{Auth::check() ? 'dropbtn' : ''}}" href="{{ url('/activities') }}">Activities</a>
+            @if(Auth::check())
+              <div class="dropdown-content">
+                <a href="{{ url('/activities') }}/11">My Activity</a>
+                <a href="{{ url('/activities') }}">Find Activities</a>
+              </div>
+            @endif
+          </div>
+          <div class="btn dropdown">
+            <a class="btn-activities {{Auth::check() ? 'dropbtn' : ''}}" href="{{ url('/providers/profile') }}">Providers</a>
+            @if(Auth::check() && Auth::user()->is_provider)
+              <div class="dropdown-content">
+                <a href="{{ url('/providers/profile') }}">Provider Profile</a>
+                <a href="{{ url('/providers/review') }}">Reviews</a>
+              </div>
+            @endif
+          </div>
+
           @guest
             <a class="btn nav-btn btn-accent-border btn-login" data-toggle="modal" data-target="#loginModal">Log In</a>
             <a class="btn nav-btn btn-accent btn-signup" data-toggle="modal" data-target="#signupModal">Sign Up</a>
@@ -81,7 +98,12 @@
       </div>
     </nav>
 
-    <main class="">
+
+    <!-- The Notification Section -->
+    @include('layouts.notification-section')
+    
+
+    <main class="mx-0 h-100">
       @yield('content')
     </main>
 
@@ -94,7 +116,7 @@
               <a class="navbar-brand" href="{{ url('/') }}">Melonseed</a>
             </div>
             <div class="col-4">
-              <a class="btn btn-footer-nav" href="{{ url('/activities/create') }}">Providers</a>
+              <a class="btn btn-footer-nav" href="{{ url('/providers/profile') }}">Providers</a>
             </div>
             <div class="col-4">
               <a class="btn btn-footer-nav" href="{{ url('/activities') }}">Activities</a>
@@ -128,7 +150,7 @@
   @include('layouts.login-modal')
   
   <!-- The Sign Up Modal -->
-  @include('layouts.signup-modal');
+  @include('layouts.signup-modal')
 
   <!-- App JavaScript -->
   <script src="{{ asset('js/app.js') }}"></script>
@@ -141,6 +163,17 @@
   @stack('contentJs')
   
   <script type="text/javascript">
+    var base_url = "{{ url('/') }}";
+    var previous_url = "{{ isset($previous_url) ? $previous_url : '' }}";
+    if (previous_url) {
+      if (previous_url == 'login') {
+        $('.btn-login')[0].click();
+      }
+      if (previous_url == 'register') {
+        $('.btn-signup')[0].click();
+      }
+    }
+    
     $.ajaxSetup({
       headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

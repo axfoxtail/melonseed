@@ -125,17 +125,17 @@
     // Owl Carousel
     $(document).ready(function(){
       $(".owl-carousel").owlCarousel({
-      loop: true,
-      dots: false,
-      responsive: {
-      0:{ items:2.5, margin: 5, nav:true },
-      425:{ items:3, margin: 5, nav:false },
-      768:{ items:3.5, margin: 10, nav:false, },
-      1024:{ items: 4.5, margin: 10, nav:false, },
-      1100:{ items: 4.5, margin: 10, nav:true, }
-      },
-      autoplay: true,
-      autoplayTimeout: 3000
+        loop: true,
+        dots: false,
+        responsive: {
+          0:{ items:2.5, margin: 5, nav:true },
+          425:{ items:3, margin: 5, nav:false },
+          768:{ items:3.5, margin: 10, nav:false, },
+          1024:{ items: 4.5, margin: 10, nav:false, },
+          1100:{ items: 4.5, margin: 10, nav:true, }
+        },
+        autoplay: true,
+        autoplayTimeout: 3000
       });
     });
 

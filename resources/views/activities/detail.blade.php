@@ -14,11 +14,11 @@
         <div class="col-8">
           <div class="row">
             <div class="col-6 detail-img-wrapper">
-              <img class="detail-img" src="{{ asset('img/Swimming Lesson.jpg') }}">
+              <img class="detail-img" src="{{ $activity->profile_img ? $activity->profile_img : asset('img/defaults/profile.png') }}">
             </div>
             <div class="col-6">
               <div class="row activity-title mb-3">
-                Backwoods Ski School
+                {{ $activity->business_name ? $activity->business_name : 'business_name' }}
                 <div class="rate-stars">
                   <span class="fa fa-star checked"></span>
                   <span class="fa fa-star checked"></span>
@@ -28,19 +28,19 @@
                 </div>
               </div>
               <div class="row activity-place mb-3">
-                Blue Mountain, ON
+                {{ $activity->location ? $activity->location : 'location' }}
               </div>
               <div class="mb-3">
                 <div class="row activity-contact mb-2">Contact : </div>
                 <div class="row activity-contact-info mb-2">
-                  (375) 957 - 8124
+                  {{ $activity->phone_number ? $activity->phone_number : 'phone_number' }}
                 </div>
                 <div class="row activity-contact-info mb-2">
-                  bkwoods.com
+                  {{ $activity->website ? $activity->website : 'website' }}
                 </div>
               </div>
               <div class="row">
-                <button class="btn btn-visit btn-primary">Visit Site</button>
+                <a href="{{ $activity->website ? $activity->website : '/' }}" class="btn btn-visit btn-primary">Visit Site</a>
               </div>
             </div>
           </div>
@@ -48,7 +48,8 @@
             <div class="col-12">
               <h2>Description</h2>
               <p class="detail-description">
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                <!-- "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." -->
+                {{ $activity->activity_description ? $activity->activity_description : 'activity_description' }}
               </p>
             </div>
           </div>
