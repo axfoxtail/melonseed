@@ -34,6 +34,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.10/css/bootstrap-select.min.css">
   <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/css/bootstrap4-toggle.min.css" rel="stylesheet">
   <link href="{{ asset('plugins/Toastr/build/toastr.css') }}" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   @stack('contentCss')
 
@@ -44,7 +45,7 @@
     <nav class="navbar navbar-light bg-white static-top">
       <div class="container">
         <div class="logo-container">
-          <a class="navbar-brand" href="/">Melonseed</a>
+          <a class="navbar-brand" href="/">{{ config('app.name', 'Melonseed') }}</a>
         </div>
         <div class="nav-container">
           <div class="btn dropdown">
@@ -86,7 +87,7 @@
               </a>
               <div class="dropdown-menu">
                 <a class="dropdown-item" href="/profile/{{ Auth::user()->id }}/edit">Profile</a>
-                <a class="dropdown-item" href="{{ route('logout') }}"
+                <a class="dropdown-item" 
                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Log Out</a>
               </div>
             </div>
@@ -190,6 +191,21 @@
       document.getElementsByClassName('btn-login')[0].click();
     }
   </script>
+  <script type="text/javascript">
+    function reloadAtivityTypes(index) {
+      console.log('aa==', index);
+      $('.activity-type-option').css('display', 'none');
+      if (index) {
+        $('.category_' + index).css('display', 'block');
+      }
+    }
+    
+    reloadAtivityTypes(0);
 
+    $(document).on('change', 'select.filter-category', function(e) {
+      console.log('bb==', $(this).val());
+      reloadAtivityTypes($(this).val());
+    });
+  </script>
 </body>
 </html>

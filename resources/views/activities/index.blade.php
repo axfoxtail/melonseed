@@ -65,12 +65,17 @@
                   <span class="filter-range-max">100+</span>
                 </div>
               </div>
-              <h3 class="card-title mt-4">Cost</h3>
+              <!-- <h3 class="card-title mt-4">Cost</h3>
               <div class="row">
                 <div class="custom-control filter-range">
                   <input type="range" name="filter-distance" class="filter-distance" id="filter-distance">
                   <span class="filter-range-min">$</span>
                   <span class="filter-range-max">$$$</span>
+                </div>
+              </div> -->
+              <div class="row mt-4">
+                <div class="col-12">
+                  <button type="button" class="btn btn-primary">Apply</button>
                 </div>
               </div>
             </div>
@@ -83,37 +88,37 @@
               <div class="filter-result-label">83 Activities</div>
             </div>
             <div class="col-lg-4 col-md-4, col-sm-4, col-xs-12">
-              <select class="selectpicker filter-category" data-live-search="true" data-style="btn btn-primary-border" name="filter-category" id="filter-category" title="Category">
-                <option data-tokens="ketchup mustard">Education</option>
-                <option data-tokens="mustard">Course</option>
-                <option data-tokens="frosting">Presentation</option>
+              <select class="selectpicker filter-category" data-live-search="false" data-style="btn btn-primary-border" name="filter-category" id="filter-category" title="Category">
+                @foreach($categories as $category)
+                <option data-tokens="{{ $category->id }}" value="{{ $category->id }}">{{ $category->category_name }}</option>
+                @endforeach
               </select>
             </div>
             <div class="col-lg-4 col-md-4, col-sm-4, col-xs-12">
               <select class="selectpicker filter-activity-type" data-live-search="true" name="filter-activiti-type" id="filter-activity-type" data-style="btn btn-primary-border" title="Activity Type">
-                <option data-tokens="ketchup mustard">Computer</option>
-                <option data-tokens="mustard">Sports</option>
-                <option data-tokens="frosting">Musics</option>
+                @foreach($activity_types as $activity_type)                
+                <option class="activity-type-option category_{{ $activity_type->category_id }}" data-tokens="{{ $activity_type->id }}" value="{{ $activity_type->id }}">{{ $activity_type->activity_type_name }}</option>
+                @endforeach
               </select>
             </div>
           </div>
-          <div class="filter-result-body">
+          <div class="filter-result-body" id="search-results">
             @foreach($activities as $key => $activity)
             <div class="activity-item my-2">
               <div class="activity-item-header">
                 <a href="#activity_{{ $activity->id }}" data-toggle="collapse">
                   <div class="row card-header">
-                    <div class="col-3">
+                    <div class="card-header-section col-4">
                       <img class="activity-img" src="{{ $activity->thumbnail_img ? asset($activity->thumbnail_img) : asset('img/defaults/thumbnail.png') }}">
-                      <div class="activity-title">{{ $activity->activity_type ? $activity->activity_type : 'activity Type' }}</div>
+                      <div class="activity-title">{{ $activity->activity_type ? $activity->activityTypes->activity_type_name : '' }}</div>
                     </div>
-                    <div class="col-3">
-                      <div class="activity-address">{{ $activity->location ? $activity->location : 'location' }}</div>
+                    <div class="card-header-section col-4">
+                      <div class="activity-address">{{ $activity->address ? $activity->address : '' }}</div>
                     </div>
-                    <div class="col-3">
+                    <!-- <div class="card-header-section col-4">
                       <div class="activity-description">{{ $activity->activity_description ? $activity->activity_description : 'activity_description' }}</div>
-                    </div>
-                    <div class="col-3">
+                    </div> -->
+                    <div class="card-header-section col-4">
                       <div class="activity-distance">
                         {{ $activity->distance ? $activity->distance : 'distance' }}
                         <i class="fa fa-angle-down"></i>
@@ -134,15 +139,16 @@
                         {{ $activity->business_name ? $activity->business_name : 'business_name' }}
                       </div>
                       <div class="row activity-detail-age">
-                        Age {{ $activity->age_min }} to {{ $activity->age_max }}
+                        Ages {{ $activity->age_min }} to {{ $activity->age_max }}
                       </div>
                       <div class="row activity-detail-place">
-                        {{ $activity->location ? $activity->location : 'location' }} ({{ $activity->distance }})
+                        <i class="material-icons" style="color: #a845ff">location_on</i>
+                        {{ $activity->address ? $activity->address : '' }} {{ $activity->city ? $activity->city : '' }} {{ $activity->state ? $activity->state : '' }} ({{ $activity->distance }})
                       </div>
                     </div>
                     <div class="col-4">
                       <div class="row">
-                        <a href="{{ $activity->website ? $activity->website : '/' }}" class="btn btn-primary btn-lg">Visit Site</a>
+                        <a href="{{ $activity->website ? $activity->website : '/' }}" class="btn btn-primary btn-lg" target="_blank">Visit Site</a>
                       </div>
                       <div class="row">
                         <a class="link-detail" href="/activities/{{ $activity->id }}">View Detail</a>
@@ -173,7 +179,92 @@
 
   <!-- Scripts -->
   @push('contentJs')
-  
+  <script type="text/javascript">
+    // searchActivities();
+
+    function searchActivities() {
+      
+      $.ajax({
+        type: 'GET',
+        url: base_url + '/activities',
+        data: {
+          category: $('select[name=filter-category]').val(),
+        },
+        success: function(data) {
+          console.log('res-success: ', data);
+          if (data.activities && data.activities.length > 0) {
+            for (var i = 0; i < data.activities.length; i++) {
+              $('#search-results').append('<div class="activity-item my-2">' + 
+                '<div class="activity-item-header">' + 
+                  '<a href="#activity_'+ data.activities[i].id +'" data-toggle="collapse">' + 
+                    '<div class="row card-header">' + 
+                      '<div class="card-header-section col-4">' + 
+                        '<img class="activity-img" src="'+ (data.activities[i].thumbnail_img ? data.activities[i].thumbnail_img : base_url + 'img/defaults/thumbnail.png')+'">' + 
+                        '<div class="activity-title">'+ (data.activities[i].activity_type ? data.activities[i].activity_type : '') +'</div>' + 
+                      '</div>' + 
+                      '<div class="card-header-section col-4">' + 
+                        '<div class="activity-address">'+ (data.activities[i].address ? data.activities[i].address : '') +'</div>' + 
+                      '</div>' + 
+                      '<div class="card-header-section col-4">' + 
+                        '<div class="activity-distance">' + (data.activities[i].distance ? data.activities[i].distance : '') +
+                          '<i class="fa fa-angle-down"></i>' + 
+                        '</div>' + 
+                      '</div>' + 
+                    '</div>' + 
+                  '</a>' + 
+                '</div>' + 
+                '<div id="activity_'+ data.activities[i].id +'" class="collapse activity-item-body my-2">' + 
+                '<div class="row border-1">' + 
+                  '<div class="col-3">' + 
+                    '<img class="activity-detail-img" src="'+ (data.activities[i].profile_img ? data.activities[i].profile_img : base_url + 'img/defaults/profile.png') +'">' + 
+                  '</div>' + 
+                  '<div class="col-9">' + 
+                    '<div class="row">' + 
+                      '<div class="col-8">' + 
+                        '<div class="row activity-detail-title">' + (data.activities[i].business_name ? data.activities[i].business_name : '') + 
+                        '</div>' + 
+                        '<div class="row activity-detail-age">Ages ' + (data.activities[i].age_min ? data.activities[i].age_min : '1 month') + 'to' + (data.activities[i].age_max) + 
+                        '</div>' + 
+                        '<div class="row activity-detail-place">' + 
+                          '<i class="material-icons" style="color: #a845ff">location_on</i>' + 
+                          (data.activities[i].address ? data.activities[i].address : '') + (data.activities[i].city ? data.activities[i].city : '') + (data.activities[i].state ? data.activities[i].state : '') + '(' + (data.activities[i].distance ? data.activities[i].distance : '') + ')' + 
+                        '</div>' + 
+                      '</div>' + 
+                      '<div class="col-4">' + 
+                        '<div class="row">' + 
+                          '<a href="'+ (data.activities[i].website ? data.activities[i].website : '/') + '" class="btn btn-primary btn-lg" target="_blank">Visit Site</a>' + 
+                        '</div>' + 
+                        '<div class="row">' + 
+                          '<a class="link-detail" href="'+ base_url +'/activities/'+ data.activities[i].id +'">View Detail</a>' + 
+                        '</div>' + 
+                      '</div>' + 
+                    '</div>' + 
+                    '<div class="row">' + 
+                      '<div class="col-12">' + 
+                        (data.activities[i].activity_description ? data.activities[i].activity_description : '') + 
+                      '</div>' + 
+                    '</div>' + 
+                  '</div>' + 
+                '</div>' + 
+                '</div>' + 
+              '</div>');
+
+            }
+          } else {
+            $('#search-results').html('<div class="alert alert-danger text-center">There is no matched result.</div>');
+          }
+        },
+        error: function(err) {
+          console.log('err: ', err);
+        }
+      });
+    }
+    
+    $(document).on('change', 'select[name=filter-category]', function() {
+      $('#search-results').empty();
+      searchActivities();
+    });
+  </script>
   @endpush
 
 @endsection

@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Provider;
-use Auth;
 use Illuminate\Support\Facades\Storage;
+use Auth;
+use App\Provider;
+use App\Category;
+use App\ActivityType;
 
 class ProviderController extends Controller
 {
@@ -14,12 +16,25 @@ class ProviderController extends Controller
    *
    * @return \Illuminate\Http\Response
    */
-  public function index()
+  public function index(Request $request)
   {
-    //
-    $activities = Provider::all();
+    $categories = Category::all();
+    $activity_types = ActivityType::all();
+    if ($request->ajax()) {
+      $category_id = $request->category;
+      $results['activities'] = Provider::with('activityTypes')->where('category', '=', $category_id)->get();
 
-    return view('activities.index', ['activities' => $activities]);
+      $results['categories'] = $categories;
+      $results['activity_types'] = $activity_types;
+      return response()->json($results, 200);
+
+    } else {
+
+      $activities = Provider::all();
+
+      return view('activities.index', ['activities' => $activities, 'categories' => $categories, 'activity_types' => $activity_types]);
+
+    }
   }
 
   /**
@@ -30,12 +45,14 @@ class ProviderController extends Controller
   public function create()
   {
     //
+    $categories = Category::all();
+    $activity_types = ActivityType::all();
     $provider = Provider::find(Auth::user()->id);
     if (!$provider) {
       $provider = new Provider();
     }
     
-    return view('providers.create', ['provider' => $provider]);
+    return view('providers.create', ['provider' => $provider, 'categories' => $categories, 'activity_types' => $activity_types]);
   }
 
   /**
@@ -91,6 +108,10 @@ class ProviderController extends Controller
       $provider->location = $request->input('location') ? $request->input('location') : $provider->location;
       $provider->category = $request->input('category') ? $request->input('category') : $provider->category;
       $provider->distance = $request->input('distance') ? $request->input('distance') : $provider->distance;
+      $provider->address = $request->input('address') ? $request->input('address') : $provider->address;
+      $provider->state = $request->input('state') ? $request->input('state') : $provider->state;
+      $provider->city = $request->input('city') ? $request->input('city') : $provider->city;
+      $provider->zip_code = $request->input('zip_code') ? $request->input('zip_code') : $provider->zip_code;
       $provider->phone_number = $request->input('phone_number') ? $request->input('phone_number') : $provider->phone_number;
       $provider->website = $request->input('website') ? $request->input('website') : $provider->website;
       $provider->age_min = $request->input('age_min') ? $request->input('age_min') : $provider->age_min;
@@ -118,7 +139,11 @@ class ProviderController extends Controller
   {
     //
     $activity = Provider::find($id);
-    return view('activities.detail', ['activity' => $activity]);
+    if ($activity) {
+      return view('activities.detail', ['activity' => $activity]);
+    } else {
+      return redirect()->back();
+    }
   }
 
   /**

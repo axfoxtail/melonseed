@@ -11118,24 +11118,24 @@ a.text-dark:focus {
   color: #262626;
 }
 
-.activities-container .filter-result .filter-result-body .activity-item .activity-item-header .row .col-3 {
+.activities-container .filter-result .filter-result-body .activity-item .activity-item-header .row .card-header-section {
   padding: 0;
 }
 
-.activities-container .filter-result .filter-result-body .activity-item .activity-item-header .row .col-3 .activity-img {
+.activities-container .filter-result .filter-result-body .activity-item .activity-item-header .row .card-header-section .activity-img {
   width: 90px;
   height: 45px;
   overflow: hidden;
 }
 
-.activities-container .filter-result .filter-result-body .activity-item .activity-item-header .row .col-3 .activity-title {
+.activities-container .filter-result .filter-result-body .activity-item .activity-item-header .row .card-header-section .activity-title {
   padding: 0 10px;
   display: inline-flex;
 }
 
-.activities-container .filter-result .filter-result-body .activity-item .activity-item-header .row .col-3 .activity-address,
-.activities-container .filter-result .filter-result-body .activity-item .activity-item-header .row .col-3 .activity-description,
-.activities-container .filter-result .filter-result-body .activity-item .activity-item-header .row .col-3 .activity-distance {
+.activities-container .filter-result .filter-result-body .activity-item .activity-item-header .row .card-header-section .activity-address,
+.activities-container .filter-result .filter-result-body .activity-item .activity-item-header .row .card-header-section .activity-description,
+.activities-container .filter-result .filter-result-body .activity-item .activity-item-header .row .card-header-section .activity-distance {
   margin: 10px 0;
   padding: 0 10px;
   text-align: left;
@@ -11144,7 +11144,7 @@ a.text-dark:focus {
   overflow: hidden;
 }
 
-.activities-container .filter-result .filter-result-body .activity-item .activity-item-header .row .col-3 i.fa {
+.activities-container .filter-result .filter-result-body .activity-item .activity-item-header .row .card-header-section i.fa {
   float: right;
   font-size: 25px;
   color: #a845ff;
@@ -11204,6 +11204,10 @@ a.text-dark:focus {
   line-height: normal;
   letter-spacing: normal;
   color: #595959;
+}
+
+.activities-container .filter-result .filter-result-body .activity-item .activity-item-body .row .activity-detail-palce i {
+  color: #a845ff;
 }
 
 .activities-container .filter-result .filter-result-body .activity-item .activity-item-body .row .link-detail {

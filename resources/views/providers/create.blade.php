@@ -10,7 +10,7 @@
           @csrf
           <input type="file" class="form-control hidden" hidden name="banner_img" value="">
           <div class="banner-container">
-            <img class="banner-img" src="{{ $provider->banner_img ? asset($provider->banner_img) : asset('assets/img/defaults/banners/banner-sports.jpg') }}">
+            <img class="banner-img" src="{{ $provider->banner_img ? asset($provider->banner_img) : asset('img/defaults/banners/banner_swim.jpg') }}">
             <div class="banner-overlay">
               <a class="btn btn-upload-banner"><i class="fa fa-pencil"></i></a>
             </div>
@@ -35,28 +35,28 @@
           </div>
           <div class="row select-group mb-5">
             <div class="col-3">
-              <select class="selectpicker filter-category" data-live-search="true" data-style="btn btn-primary-border" name="activity_type" itle="Activity Type">
+              <select class="selectpicker filter-category" data-live-search="false" data-style="btn btn-primary-border" name="category" title="Category">
+                @foreach($categories as $category)
+                <option value="{{ $category->id }}" data-tokens="{{ $category->id }}">{{ $category->category_name }}</option>
+                @endforeach
+              </select>
+            </div>
+            <div class="col-3">
+              <select class="selectpicker filter-activity-type" data-live-search="true" data-style="btn btn-primary-border" name="activity_type" title="Activity Type">
+                @foreach($activity_types as $activity_type)
+                <option class="activity-type-option category_{{ $activity_type->category_id }}" data-tokens="{{ $activity_type->id }}" value="{{ $activity_type->id }}">{{ $activity_type->activity_type_name }}</option>
+                @endforeach
+              </select>
+            </div>
+            <div class="col-3">
+              <select class="selectpicker filter-location" data-live-search="true" data-style="btn btn-primary-border" name="location" title="Location">
                 <option data-tokens="ketchup mustard">Education</option>
                 <option data-tokens="mustard">Course</option>
                 <option data-tokens="frosting">Presentation</option>
               </select>
             </div>
             <div class="col-3">
-              <select class="selectpicker filter-category" data-live-search="true" data-style="btn btn-primary-border" name="location" title="Location">
-                <option data-tokens="ketchup mustard">Education</option>
-                <option data-tokens="mustard">Course</option>
-                <option data-tokens="frosting">Presentation</option>
-              </select>
-            </div>
-            <div class="col-3">
-              <select class="selectpicker filter-category" data-live-search="true" data-style="btn btn-primary-border" name="category" title="Category">
-                <option data-tokens="ketchup mustard">Education</option>
-                <option data-tokens="mustard">Course</option>
-                <option data-tokens="frosting">Presentation</option>
-              </select>
-            </div>
-            <div class="col-3">
-              <select class="selectpicker filter-category" data-live-search="true" data-style="btn btn-primary-border" name="distance" title="Distance">
+              <select class="selectpicker filter-distance" data-live-search="true" data-style="btn btn-primary-border" name="distance" title="Distance">
                 <option data-tokens="ketchup mustard">Education</option>
                 <option data-tokens="mustard">Course</option>
                 <option data-tokens="frosting">Presentation</option>
@@ -65,6 +65,32 @@
           </div>
           <div class="row">
             <div class="col-8">
+              <div class="row">
+                <div class="col-12">
+                  <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" class="form-control" name="address" value="{{ $provider->address }}" aria-describedby="address" placeholder="Address">
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="form-group">
+                    <label for="state">State</label>
+                    <input type="text" class="form-control" name="state" value="{{ $provider->state }}" aria-describedby="state" placeholder="State">
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="form-group">
+                    <label for="city">City</label>
+                    <input type="text" class="form-control" name="city" value="{{ $provider->city }}" aria-describedby="city" placeholder="City">
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="form-group">
+                    <label for="zip_code">Zip Code</label>
+                    <input type="text" class="form-control" name="zip_code" value="{{ $provider->zip_code }}" aria-describedby="zip_code" placeholder="Zip Code">
+                  </div>
+                </div>
+              </div>
               <div class="row">
                 <div class="col-8">
                   <div class="form-group">
@@ -80,23 +106,23 @@
                   <div class="form-group">
                     <label for="age">Min Age</label>
                     <select class="selectpicker filter-category" data-live-search="true" data-style="btn btn-primary-border btn-age" name="age_min" value="{{ $provider->age_min }}" title="Min Age">
-                      <option value="1m" data-tokens="1m" {{$provider->age_min == '1m' ? 'selected' : '' }}>1 Month</option>
-                      <option value="6m" data-tokens="6m" {{$provider->age_min == '6m' ? 'selected' : '' }}>6 Months</option>
+                      <option value="1 month" data-tokens="1 month" {{$provider->age_min == '1month' ? 'selected' : '' }}>1 Month</option>
+                      <option value="6 months" data-tokens="6 months" {{$provider->age_min == '6months' ? 'selected' : '' }}>6 Months</option>
                       @for($age_i = 1; $age_i < 19; $age_i++)
-                      <option value="{{$age_i}}y" data-tokens="{{$age_i}}" {{$provider->age_min == ($age_i . 'y') ? 'selected' : '' }}>{{ $age_i }} {{ $age_i == 1 ? 'Year' : 'Years' }}</option>
+                      <option value="{{$age_i}} {{ $age_i == 1 ? 'Year' : 'Years' }}" data-tokens="{{$age_i}} {{ $age_i == 1 ? 'Year' : 'Years' }}" {{$provider->age_min == ($age_i . ($age_i == 1 ? ' Year' : ' Years')) ? 'selected' : '' }}>{{ $age_i }} {{ $age_i == 1 ? 'Year' : 'Years' }}</option>
                       @endfor
-                      <option value="18+" data-tokens="18+" {{$provider->age_min == '18+' ? 'selected' : '' }}>18+ Year</option>
+                      <option value="18+ Years" data-tokens="18+ Years" {{$provider->age_min == '18+ Years' ? 'selected' : '' }}>18+ Years</option>
                     </select>
                   </div>
                   <div class="form-group">
                     <label for="age">Max Age</label>
                     <select class="selectpicker filter-category" data-live-search="true" data-style="btn btn-primary-border btn-age" name="age_max" value="{{ $provider->age_max }}" title="Max Age">
-                      <option value="1m" data-tokens="1m" {{$provider->age_max == '1m' ? 'selected' : '' }}>1 Month</option>
-                      <option value="6m" data-tokens="6m" {{$provider->age_max == '6m' ? 'selected' : '' }}>6 Months</option>
+                      <option value="1 month" data-tokens="1 month" {{$provider->age_max == '1 month' ? 'selected' : '' }}>1 Month</option>
+                      <option value="6 months" data-tokens="6 months" {{$provider->age_max == '6 months' ? 'selected' : '' }}>6 Months</option>
                       @for($age_i = 1; $age_i < 19; $age_i++)
-                      <option value="{{$age_i}}y" data-tokens="{{$age_i}}" {{$provider->age_max == ($age_i . 'y') ? 'selected' : '' }}>{{ $age_i }} {{ $age_i == 1 ? 'Year' : 'Years' }}</option>
+                      <option value="{{$age_i}} {{ $age_i == 1 ? 'Year' : 'Years' }}" data-tokens="{{$age_i}} {{ $age_i == 1 ? 'Year' : 'Years' }}" {{$provider->age_max == ($age_i . ($age_i == 1 ? ' Year' : ' Years')) ? 'selected' : '' }}>{{ $age_i }} {{ $age_i == 1 ? 'Year' : 'Years' }}</option>
                       @endfor
-                      <option value="18+" data-tokens="18+" {{$provider->age_max == '18+' ? 'selected' : '' }}>18+ Year</option>
+                      <option value="18+ Year" data-tokens="18+ Years" {{$provider->age_max == '18+ Years' ? 'selected' : '' }}>18+ Year</option>
                     </select>
                   </div>
                 </div>

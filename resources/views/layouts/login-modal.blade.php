@@ -59,7 +59,7 @@
       
       $.ajax({
         type: 'POST',
-        url: '/login',
+        url: base_url + '/login',
         data: {
           email: $('#login-form input[name=email]').val(),
           password: $('#login-form input[name=password]').val()

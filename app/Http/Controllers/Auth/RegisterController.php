@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -71,5 +72,19 @@ class RegisterController extends Controller
             'avatar' => "/img/avatars/default.jpg",
             'slug' => $data['username'],
         ]);
+    }
+
+    /**
+     * The user has been registered.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
+     */
+    protected function registered(Request $request, $user)
+    {
+        $registered_user = User::find($user->id);
+        $registered_user->register_ip = $request->server('REMOTE_ADDR');
+        $registered_user->save();
     }
 }

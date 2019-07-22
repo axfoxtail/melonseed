@@ -28,7 +28,9 @@
                 </div>
               </div>
               <div class="row activity-place mb-3">
-                {{ $activity->location ? $activity->location : 'location' }}
+                {{ $activity->address ? $activity->address : '' }}
+                {{ $activity->city ? $activity->city : '' }}
+                {{ $activity->state ? $activity->state : '' }}
               </div>
               <div class="mb-3">
                 <div class="row activity-contact mb-2">Contact : </div>
@@ -40,7 +42,7 @@
                 </div>
               </div>
               <div class="row">
-                <a href="{{ $activity->website ? $activity->website : '/' }}" class="btn btn-visit btn-primary">Visit Site</a>
+                <a href="{{ $activity->website ? $activity->website : '/' }}" class="btn btn-visit btn-primary" target="_blank">Visit Site</a>
               </div>
             </div>
           </div>

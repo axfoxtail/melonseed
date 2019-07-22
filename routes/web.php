@@ -28,5 +28,18 @@ Route::put('profile/{id}', 'UserController@update')->middleware('auth');
 
 Route::get('activities', 'ProviderController@index');
 Route::get('activities/{id}', 'ProviderController@show');
-Route::post('providers', 'ProviderController@store')->middleware('auth');
-Route::get('providers/profile', 'ProviderController@create')->middleware('auth');
+
+Route::group(['middleware' => 'auth'], function() {
+	Route::post('providers', 'ProviderController@store');
+	Route::get('providers/profile', 'ProviderController@create');
+});
+
+
+
+Route::get('admin/login', 'AdminController@login')->name('admin.login');
+Route::post('admin/login', 'AdminController@login');
+
+Route::group(['middleware' => 'is.admin'], function() {
+	Route::get('admin', 'AdminController@index');
+	Route::post('admin/logout', 'AdminController@logout');
+});

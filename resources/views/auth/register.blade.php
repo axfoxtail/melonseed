@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('contents')
+@section('content')
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-8">
@@ -81,7 +81,7 @@
 <!-- Scripts -->
 @push('contentJs')
 <script type="text/javascript">
-  window.location.href = '/?route=register';
+  // window.location.href = '/?route=register';
 </script>
 @endpush
 @endsection
