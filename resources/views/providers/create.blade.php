@@ -21,8 +21,7 @@
         </form>
       </div>
       <div class="row">
-        <form class="provider-create-form" action="{{ url('/providers') }}" method="POST" enctype="multipart/form-data">
-          @csrf
+        <form class="provider-create-form" id="provider-create-form">
           <input type="text" class="form-control hidden" hidden name="user_id" value="{{ Auth::user()->id }}">
           <input type="text" class="form-control hidden" hidden name="slug" value="{{ Auth::user()->slug }}">
           <div class="row mt-2 mb-5">
@@ -37,31 +36,31 @@
             <div class="col-3">
               <select class="selectpicker filter-category" data-live-search="false" data-style="btn btn-primary-border" name="category" title="Category">
                 @foreach($categories as $category)
-                <option value="{{ $category->id }}" data-tokens="{{ $category->id }}">{{ $category->category_name }}</option>
+                <option value="{{ $category->id }}" data-tokens="{{ $category->id }}" {{ $provider->category == $category->id ? 'selected' : '' }}>{{ $category->category_name }}</option>
                 @endforeach
               </select>
             </div>
             <div class="col-3">
               <select class="selectpicker filter-activity-type" data-live-search="true" data-style="btn btn-primary-border" name="activity_type" title="Activity Type">
                 @foreach($activity_types as $activity_type)
-                <option class="activity-type-option category_{{ $activity_type->category_id }}" data-tokens="{{ $activity_type->id }}" value="{{ $activity_type->id }}">{{ $activity_type->activity_type_name }}</option>
+                <option class="activity-type-option category_{{ $activity_type->category_id }}" data-tokens="{{ $activity_type->id }}" value="{{ $activity_type->id }}" {{ $provider->activity_type == $activity_type->id ? 'selected' : '' }}>{{ $activity_type->activity_type_name }}</option>
                 @endforeach
               </select>
             </div>
             <div class="col-3">
-              <select class="selectpicker filter-location" data-live-search="true" data-style="btn btn-primary-border" name="location" title="Location">
-                <option data-tokens="ketchup mustard">Education</option>
-                <option data-tokens="mustard">Course</option>
-                <option data-tokens="frosting">Presentation</option>
+              <select class="selectpicker filter-location" data-live-search="true" data-style="btn btn-primary-border" name="location" title=" {{ $provider->location ? $provider->location : 'Location' }}">
+                @foreach(getCityListFromIP($ip) as $location)
+                  <option data-tokens="{{ $location->city }}" value="{{ $location->city }}" {{ $provider->location == $location->city ? 'selected' : '' }}>{{ $location->city }}</option>
+                @endforeach
               </select>
             </div>
-            <div class="col-3">
+            <!-- <div class="col-3">
               <select class="selectpicker filter-distance" data-live-search="true" data-style="btn btn-primary-border" name="distance" title="Distance">
                 <option data-tokens="ketchup mustard">Education</option>
                 <option data-tokens="mustard">Course</option>
                 <option data-tokens="frosting">Presentation</option>
               </select>
-            </div>
+            </div> -->
           </div>
           <div class="row">
             <div class="col-8">
@@ -72,27 +71,27 @@
                     <input type="text" class="form-control" name="address" value="{{ $provider->address }}" aria-describedby="address" placeholder="Address">
                   </div>
                 </div>
-                <div class="col-4">
+                <!-- <div class="col-4">
                   <div class="form-group">
                     <label for="state">State</label>
-                    <input type="text" class="form-control" name="state" value="{{ $provider->state }}" aria-describedby="state" placeholder="State">
+                    <input type="text" class="form-control" name="state" value="{{ $provider->state ? $provider->state : getArrLocationFromIP($ip)->region_name }}" aria-describedby="state" placeholder="State">
                   </div>
                 </div>
                 <div class="col-4">
                   <div class="form-group">
                     <label for="city">City</label>
-                    <input type="text" class="form-control" name="city" value="{{ $provider->city }}" aria-describedby="city" placeholder="City">
+                    <input type="text" class="form-control" name="city" value="{{ $provider->city ? $provider->city : getArrLocationFromIP($ip)->city }}" aria-describedby="city" placeholder="City">
                   </div>
                 </div>
                 <div class="col-4">
                   <div class="form-group">
                     <label for="zip_code">Zip Code</label>
-                    <input type="text" class="form-control" name="zip_code" value="{{ $provider->zip_code }}" aria-describedby="zip_code" placeholder="Zip Code">
+                    <input type="text" class="form-control" name="zip_code" value="{{ $provider->zip_code ? $provider->zip_code : getArrLocationFromIP($ip)->zip }}" aria-describedby="zip_code" placeholder="Zip Code">
                   </div>
-                </div>
+                </div> -->
               </div>
               <div class="row">
-                <div class="col-8">
+                <div class="col-7">
                   <div class="form-group">
                     <label for="phoneNumber">Contact Info</label>
                     <input type="text" class="form-control" name="phone_number" value="{{ $provider->phone_number }}" aria-describedby="phoneNumber" placeholder="Company Phone Number(###) ### - ####">
@@ -102,28 +101,45 @@
                     <input type="text" class="form-control" name="website" value="{{ $provider->website }}" aria-describedby="website" placeholder="https://www.yoursite.com">
                   </div>
                 </div>
-                <div class="col-4">
-                  <div class="form-group">
-                    <label for="age">Min Age</label>
-                    <select class="selectpicker filter-category" data-live-search="true" data-style="btn btn-primary-border btn-age" name="age_min" value="{{ $provider->age_min }}" title="Min Age">
-                      <option value="1 month" data-tokens="1 month" {{$provider->age_min == '1month' ? 'selected' : '' }}>1 Month</option>
-                      <option value="6 months" data-tokens="6 months" {{$provider->age_min == '6months' ? 'selected' : '' }}>6 Months</option>
-                      @for($age_i = 1; $age_i < 19; $age_i++)
-                      <option value="{{$age_i}} {{ $age_i == 1 ? 'Year' : 'Years' }}" data-tokens="{{$age_i}} {{ $age_i == 1 ? 'Year' : 'Years' }}" {{$provider->age_min == ($age_i . ($age_i == 1 ? ' Year' : ' Years')) ? 'selected' : '' }}>{{ $age_i }} {{ $age_i == 1 ? 'Year' : 'Years' }}</option>
-                      @endfor
-                      <option value="18+ Years" data-tokens="18+ Years" {{$provider->age_min == '18+ Years' ? 'selected' : '' }}>18+ Years</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="age">Max Age</label>
-                    <select class="selectpicker filter-category" data-live-search="true" data-style="btn btn-primary-border btn-age" name="age_max" value="{{ $provider->age_max }}" title="Max Age">
-                      <option value="1 month" data-tokens="1 month" {{$provider->age_max == '1 month' ? 'selected' : '' }}>1 Month</option>
-                      <option value="6 months" data-tokens="6 months" {{$provider->age_max == '6 months' ? 'selected' : '' }}>6 Months</option>
-                      @for($age_i = 1; $age_i < 19; $age_i++)
-                      <option value="{{$age_i}} {{ $age_i == 1 ? 'Year' : 'Years' }}" data-tokens="{{$age_i}} {{ $age_i == 1 ? 'Year' : 'Years' }}" {{$provider->age_max == ($age_i . ($age_i == 1 ? ' Year' : ' Years')) ? 'selected' : '' }}>{{ $age_i }} {{ $age_i == 1 ? 'Year' : 'Years' }}</option>
-                      @endfor
-                      <option value="18+ Year" data-tokens="18+ Years" {{$provider->age_max == '18+ Years' ? 'selected' : '' }}>18+ Year</option>
-                    </select>
+                <div class="col-5">
+                  <h3 class="card-title">Age Range</h3>
+                  <div class="row">
+                    <div class="col-6 pr-0">
+                      <div class="custom-control custom-checkbox mb-3">
+                        <input type="checkbox" class="custom-control-input age-checkbox" id="age1" name="age1" value="age1" {{ checkAvailableAge($provider->age_range, 'age1') ? 'checked' : '' }}>
+                        <label class="custom-control-label available-age-label" style="font-size: 22px;" for="age1">1-6 months</label>
+                      </div>
+                      <div class="custom-control custom-checkbox mb-3">
+                        <input type="checkbox" class="custom-control-input age-checkbox" id="age3" name="age3" value="age3" {{ checkAvailableAge($provider->age_range, 'age3') ? 'checked' : '' }}>
+                        <label class="custom-control-label available-age-label" style="font-size: 22px;" for="age3">1-3 Years</label>
+                      </div>
+                      <div class="custom-control custom-checkbox mb-3">
+                        <input type="checkbox" class="custom-control-input age-checkbox" id="age5" name="age5" value="age5" {{ checkAvailableAge($provider->age_range, 'age5') ? 'checked' : '' }}>
+                        <label class="custom-control-label available-age-label" style="font-size: 22px;" for="age5">8-10 Years</label>
+                      </div>
+                      <div class="custom-control custom-checkbox mb-3">
+                        <input type="checkbox" class="custom-control-input age-checkbox" id="age7" name="age7" value="age7" {{ checkAvailableAge($provider->age_range, 'age7') ? 'checked' : '' }}>
+                        <label class="custom-control-label available-age-label" style="font-size: 22px;" for="age7">14-17 Years</label>
+                      </div>
+                    </div>
+                    <div class="col-6 pr-0">
+                      <div class="custom-control custom-checkbox mb-3">
+                        <input type="checkbox" class="custom-control-input age-checkbox" id="age2" name="age2" value="age2" {{ checkAvailableAge($provider->age_range, 'age2') ? 'checked' : '' }}>
+                        <label class="custom-control-label available-age-label" style="font-size: 22px;" for="age2">1 Year</label>
+                      </div>
+                      <div class="custom-control custom-checkbox mb-3">
+                        <input type="checkbox" class="custom-control-input age-checkbox" id="age4" name="age4" value="age4" {{ checkAvailableAge($provider->age_range, 'age4') ? 'checked' : '' }}>
+                        <label class="custom-control-label available-age-label" style="font-size: 22px;" for="age4">4-7 Years</label>
+                      </div>
+                      <div class="custom-control custom-checkbox mb-3">
+                        <input type="checkbox" class="custom-control-input age-checkbox" id="age6" name="age6" value="age6" {{ checkAvailableAge($provider->age_range, 'age6') ? 'checked' : '' }}>
+                        <label class="custom-control-label available-age-label" style="font-size: 22px;" for="age6">11-13 Years</label>
+                      </div>
+                      <div class="custom-control custom-checkbox mb-3">
+                        <input type="checkbox" class="custom-control-input age-checkbox" id="age8" name="age8" value="age8" {{ checkAvailableAge($provider->age_range, 'age8') ? 'checked' : '' }}>
+                        <label class="custom-control-label available-age-label" style="font-size: 22px;" for="age8">18+ Years</label>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -172,6 +188,135 @@
                   </div>
                 </div>
               </div>
+              <div class="row my-5">
+                <h3 class="ml-3">Schedule - Pattern</h3>
+                <div class="col-12 d-inline-flex my-2">
+                  <div class="col-3">
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input available-day" id="monday" name="monday" value="1" {{ ($provider->business_hours && getAvailableDayObj($provider->business_hours, 'monday')->available) ? 'checked' : '' }}>
+                      <label class="custom-control-label" for="monday">Monday</label>
+                    </div>
+                  </div>
+                  <div class="col-9 d-inline-flex">
+                    <div class="col-6 form-inline">
+                      <label style="font-size: 20px;">Start time</label>
+                      <input class="form-control available-time ml-2" type="time" name="monday_start" value="{{ ($provider->business_hours && getAvailableDayObj($provider->business_hours, 'monday')->start) ? getAvailableDayObj($provider->business_hours, 'monday')->start : '10:00' }}">
+                    </div>
+                    <div class="col-6 form-inline">
+                      <label style="font-size: 20px;">End time</label>
+                      <input class="form-control available-time ml-2" type="time" name="monday_end" value="{{ ($provider->business_hours && getAvailableDayObj($provider->business_hours, 'monday')->end) ? getAvailableDayObj($provider->business_hours, 'monday')->end : '17:00' }}">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 d-inline-flex my-2">
+                  <div class="col-3">
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input available-day" id="tuesday" name="tuesday" value="1" {{ ($provider->business_hours && getAvailableDayObj($provider->business_hours, 'tuesday')->available) ? 'checked' : '' }}>
+                      <label class="custom-control-label" for="tuesday">Tuesday</label>
+                    </div>
+                  </div>
+                  <div class="col-9 d-inline-flex">
+                    <div class="col-6 form-inline">
+                      <label style="font-size: 20px;">Start time</label>
+                      <input class="form-control available-time ml-2" type="time" name="tuesday_start" value="{{ ($provider->business_hours && getAvailableDayObj($provider->business_hours, 'tuesday')->start) ? getAvailableDayObj($provider->business_hours, 'tuesday')->start : '10:00' }}">
+                    </div>
+                    <div class="col-6 form-inline">
+                      <label style="font-size: 20px;">End time</label>
+                      <input class="form-control available-time ml-2" type="time" name="tuesday_end" value="{{ ($provider->business_hours && getAvailableDayObj($provider->business_hours, 'tuesday')->end) ? getAvailableDayObj($provider->business_hours, 'tuesday')->end : '17:00' }}">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 d-inline-flex my-2">
+                  <div class="col-3">
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input available-day" id="wednesday" name="wednesday" value="1" {{ ($provider->business_hours && getAvailableDayObj($provider->business_hours, 'wednesday')->available) ? 'checked' : '' }}>
+                      <label class="custom-control-label" for="wednesday">Wednesday</label>
+                    </div>
+                  </div>
+                  <div class="col-9 d-inline-flex">
+                    <div class="col-6 form-inline">
+                      <label style="font-size: 20px;">Start time</label>
+                      <input class="form-control available-time ml-2" type="time" name="wednesday_start" value="{{ ($provider->business_hours && getAvailableDayObj($provider->business_hours, 'wednesday')->start) ? getAvailableDayObj($provider->business_hours, 'wednesday')->start : '10:00' }}">
+                    </div>
+                    <div class="col-6 form-inline">
+                      <label style="font-size: 20px;">End time</label>
+                      <input class="form-control available-time ml-2" type="time" name="wednesday_end" value="{{ ($provider->business_hours && getAvailableDayObj($provider->business_hours, 'wednesday')->end) ? getAvailableDayObj($provider->business_hours, 'wednesday')->end : '17:00' }}">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 d-inline-flex my-2">
+                  <div class="col-3">
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input available-day" id="thursday" name="thursday" value="1" {{ ($provider->business_hours && getAvailableDayObj($provider->business_hours, 'thursday')->available) ? 'checked' : '' }}>
+                      <label class="custom-control-label" for="thursday">Thursday</label>
+                    </div>
+                  </div>
+                  <div class="col-9 d-inline-flex">
+                    <div class="col-6 form-inline">
+                      <label style="font-size: 20px;">Start time</label>
+                      <input class="form-control available-time ml-2" type="time" name="thursday_start" value="{{ ($provider->business_hours && getAvailableDayObj($provider->business_hours, 'thursday')->start) ? getAvailableDayObj($provider->business_hours, 'thursday')->start : '10:00' }}">
+                    </div>
+                    <div class="col-6 form-inline">
+                      <label style="font-size: 20px;">End time</label>
+                      <input class="form-control available-time ml-2" type="time" name="thursday_end" value="{{ ($provider->business_hours && getAvailableDayObj($provider->business_hours, 'thursday')->end) ? getAvailableDayObj($provider->business_hours, 'thursday')->end : '17:00' }}">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 d-inline-flex my-2">
+                  <div class="col-3">
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input available-day" id="friday" name="friday" value="1" {{ ($provider->business_hours && getAvailableDayObj($provider->business_hours, 'friday')->available) ? 'checked' : '' }}>
+                      <label class="custom-control-label" for="friday">Friday</label>
+                    </div>
+                  </div>
+                  <div class="col-9 d-inline-flex">
+                    <div class="col-6 form-inline">
+                      <label style="font-size: 20px;">Start time</label>
+                      <input class="form-control available-time ml-2" type="time" name="friday_start" value="{{ ($provider->business_hours && getAvailableDayObj($provider->business_hours, 'friday')->start) ? getAvailableDayObj($provider->business_hours, 'friday')->start : '10:00' }}">
+                    </div>
+                    <div class="col-6 form-inline">
+                      <label style="font-size: 20px;">End time</label>
+                      <input class="form-control available-time ml-2" type="time" name="friday_end" value="{{ ($provider->business_hours && getAvailableDayObj($provider->business_hours, 'friday')->end) ? getAvailableDayObj($provider->business_hours, 'friday')->end : '17:00' }}">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 d-inline-flex my-2">
+                  <div class="col-3">
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input available-day" id="saturday" name="saturday" value="1" {{ ($provider->business_hours && getAvailableDayObj($provider->business_hours, 'saturday')->available) ? 'checked' : '' }}>
+                      <label class="custom-control-label" for="saturday">Saturday</label>
+                    </div>
+                  </div>
+                  <div class="col-9 d-inline-flex">
+                    <div class="col-6 form-inline">
+                      <label style="font-size: 20px;">Start time</label>
+                      <input class="form-control available-time ml-2" type="time" name="saturday_start" value="{{ ($provider->business_hours && getAvailableDayObj($provider->business_hours, 'saturday')->start) ? getAvailableDayObj($provider->business_hours, 'saturday')->start : '10:00' }}">
+                    </div>
+                    <div class="col-6 form-inline">
+                      <label style="font-size: 20px;">End time</label>
+                      <input class="form-control available-time ml-2" type="time" name="saturday_end" value="{{ ($provider->business_hours && getAvailableDayObj($provider->business_hours, 'saturday')->end) ? getAvailableDayObj($provider->business_hours, 'saturday')->end : '17:00' }}">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 d-inline-flex my-2">
+                  <div class="col-3">
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input available-day" id="sunday" name="sunday" value="1" {{ ($provider->business_hours && getAvailableDayObj($provider->business_hours, 'sunday')->available) ? 'checked' : '' }}>
+                      <label class="custom-control-label" for="sunday">Sunday</label>
+                    </div>
+                  </div>
+                  <div class="col-9 d-inline-flex">
+                    <div class="col-6 form-inline">
+                      <label style="font-size: 20px;">Start time</label>
+                      <input class="form-control available-time ml-2" type="time" name="sunday_start" value="{{ ($provider->business_hours && getAvailableDayObj($provider->business_hours, 'sunday')->start) ? getAvailableDayObj($provider->business_hours, 'sunday')->start : '10:00' }}">
+                    </div>
+                    <div class="col-6 form-inline">
+                      <label style="font-size: 20px;">End time</label>
+                      <input class="form-control available-time ml-2" type="time" name="sunday_end" value="{{ ($provider->business_hours && getAvailableDayObj($provider->business_hours, 'sunday')->end) ? getAvailableDayObj($provider->business_hours, 'sunday')->end : '17:00' }}">
+                    </div>
+                  </div>
+                </div>
+              </div>
               <div class="row">
                 <div class="col-8">
                   <div class="form-group">
@@ -183,7 +328,7 @@
               <div class="row">
                 <div class="col-8">
                   <div class="form-group">
-                    <input type="submit" class="btn btn-primary btn-lg" value="{{ $provider->business_name ? 'Update' : 'Save' }}" style="color: #fff !important;">
+                    <input type="button" class="btn btn-primary btn-lg btn-submit-provider-form" value="{{ $provider->business_name ? 'Update' : 'Save' }}" style="color: #fff !important;">
                   </div>
                 </div>
               </div>
@@ -291,6 +436,171 @@
                       .find('.img-btn-txt').text('Remove');
     });
 
+  </script>
+
+  <script type="text/javascript">
+    $(function() {
+      checkAvailableDays();
+    });
+
+    function checkAvailableDays() {
+      if ($('input[name=monday]')[0].checked) {
+        $('input[name=monday_start]')[0].removeAttribute('disabled');
+        $('input[name=monday_end]')[0].removeAttribute('disabled');
+      } else {
+        $('input[name=monday_start]').attr('disabled', 'true');
+        $('input[name=monday_end]').attr('disabled', 'true');
+      }
+
+      if ($('input[name=tuesday]')[0].checked) {
+        $('input[name=tuesday_start]')[0].removeAttribute('disabled');
+        $('input[name=tuesday_end]')[0].removeAttribute('disabled');
+      } else {
+        $('input[name=tuesday_start]').attr('disabled', 'true');
+        $('input[name=tuesday_end]').attr('disabled', 'true');
+      }
+
+      if ($('input[name=wednesday]')[0].checked) {
+        $('input[name=wednesday_start]')[0].removeAttribute('disabled');
+        $('input[name=wednesday_end]')[0].removeAttribute('disabled');
+      } else {
+        $('input[name=wednesday_start]').attr('disabled', 'true');
+        $('input[name=wednesday_end]').attr('disabled', 'true');
+      }
+
+      if ($('input[name=thursday]')[0].checked) {
+        $('input[name=thursday_start]')[0].removeAttribute('disabled');
+        $('input[name=thursday_end]')[0].removeAttribute('disabled');
+      } else {
+        $('input[name=thursday_start]').attr('disabled', 'true');
+        $('input[name=thursday_end]').attr('disabled', 'true');
+      }
+
+      if ($('input[name=friday]')[0].checked) {
+        $('input[name=friday_start]')[0].removeAttribute('disabled');
+        $('input[name=friday_end]')[0].removeAttribute('disabled');
+      } else {
+        $('input[name=friday_start]').attr('disabled', 'true');
+        $('input[name=friday_end]').attr('disabled', 'true');
+      }
+
+      if ($('input[name=saturday]')[0].checked) {
+        $('input[name=saturday_start]')[0].removeAttribute('disabled');
+        $('input[name=saturday_end]')[0].removeAttribute('disabled');
+      } else {
+        $('input[name=saturday_start]').attr('disabled', 'true');
+        $('input[name=saturday_end]').attr('disabled', 'true');
+      }
+
+      if ($('input[name=sunday]')[0].checked) {
+        $('input[name=sunday_start]')[0].removeAttribute('disabled');
+        $('input[name=sunday_end]')[0].removeAttribute('disabled');
+      } else {
+        $('input[name=sunday_start]').attr('disabled', 'true');
+        $('input[name=sunday_end]').attr('disabled', 'true');
+      }
+    }
+
+    $(document).on('change', '.available-day', function() {
+      checkAvailableDays();
+    });
+
+  </script>
+
+  <script type="text/javascript">
+    function getBusinessHoursJsonString() {
+      var business_hours = {
+        monday: {
+          available: $('input[name=monday]')[0].checked, 
+          start: $('input[name=monday_start]').val(), 
+          end: $('input[name=monday_end]').val()
+        }, 
+        tuesday: {
+          available: $('input[name=tuesday]')[0].checked, 
+          start: $('input[name=tuesday_start]').val(), 
+          end: $('input[name=tuesday_end]').val()
+        }, 
+        wednesday: {
+          available: $('input[name=wednesday]')[0].checked, 
+          start: $('input[name=wednesday_start]').val(), 
+          end: $('input[name=wednesday_end]').val()
+        }, 
+        thursday: {
+          available: $('input[name=thursday]')[0].checked, 
+          start: $('input[name=thursday_start]').val(), 
+          end: $('input[name=thursday_end]').val()
+        }, 
+        friday: {
+          available: $('input[name=friday]')[0].checked, 
+          start: $('input[name=friday_start]').val(), 
+          end: $('input[name=friday_end]').val()
+        }, 
+        saturday: {
+          available: $('input[name=saturday]')[0].checked, 
+          start: $('input[name=saturday_start]').val(), 
+          end: $('input[name=saturday_end]').val()
+        }, 
+        sunday: {
+          available: $('input[name=sunday]')[0].checked, 
+          start: $('input[name=sunday_start]').val(), 
+          end: $('input[name=sunday_end]').val()
+        }
+      };
+
+      return JSON.stringify(business_hours);
+    }
+
+    function getAvailableAgeRange() {
+      var ages = $('.age-checkbox');
+      var range_string = '';
+      for (var i = 0; i < ages.length; i++) {
+        if (ages[i].checked) {
+          range_string += ', ' + ages[i].value;
+        }
+      }
+      return range_string;
+    }
+
+    $(document).on('click', '.btn-submit-provider-form', function() {
+      var fd = new FormData();
+      fd.append('user_id', $('input[name=user_id]').val());
+      fd.append('business_name', $('input[name=business_name]').val());
+      fd.append('category', $('select[name=category]').val());
+      fd.append('activity_type', $('select[name=activity_type]').val());
+      fd.append('location', $('select[name=location]').val());
+      // fd.append('distance', $('input[name=distance]').val());
+      fd.append('address', $('input[name=address]').val());
+      // fd.append('state', $('input[name=state]').val());
+      // fd.append('city', $('input[name=city]').val());
+      // fd.append('zip_code', $('input[name=zip_code]').val());
+      fd.append('phone_number', $('input[name=phone_number]').val());
+      fd.append('website', $('input[name=website]').val());
+      fd.append('age_range', getAvailableAgeRange());
+      fd.append('activity_description', $('textarea[name=activity_description]').val());
+      fd.append('social_media_links', $('input[name=social_media_links]').val());
+      fd.append('thumbnail_img', $('input[name=thumbnail_img]')[0].files[0]);
+      fd.append('profile_img', $('input[name=profile_img]')[0].files[0]);
+      fd.append('business_hours', getBusinessHoursJsonString());
+      fd.append('slug', $('input[name=slug]').val());
+
+      $.LoadingOverlay("show");
+      $.ajax({
+        type: 'POST',
+        url: base_url + '/providers',
+        data: fd,
+        processData: false,
+        contentType: false,
+        success: function(data) {
+          $.LoadingOverlay("hide");
+          toastr.success(data.message);
+          console.log('res-success: ', data);
+        },
+        error: function(err) {
+          $.LoadingOverlay("hide");
+          console.log('err: ', err);
+        }
+      });
+    });
   </script>
   @endpush
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Session;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -24,9 +25,9 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        $ip_address = '104.247.132.212';
-        // dd(getArrLocationFromIP($ip_address));
-
-        return view('home', ['previous_url' => $request->input('route') ? $request->input('route') : '']);
+        $ip = $request->ip();
+        // $ip = '104.247.132.212';
+        $ip = '162.253.129.2';
+        return view('home', ['ip' => $ip, 'previous_url' => $request->input('route') ? $request->input('route') : '']);
     }
 }

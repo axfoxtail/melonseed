@@ -11,48 +11,49 @@
             <div class="card-body">
               <h3 class="card-title">Location</h3>
               <div class="form-group">
-                <select class=" selectpicker filter-location" data-style="btn-primary-border">
-                <option>United Status</option>
-                <option>United Kingdom</option>
-                <option>Australia</option>
-                </select>
+                <select class="selectpicker filter-location" data-live-search="true" data-style="btn btn-primary-border" name="filter-location" id="filter-location" title="Location">
+                  <!-- <option data-tokens="0" value="0">All</option> -->
+                  @foreach($location_list as $location)
+                  <option data-tokens="{{ $location->city }}" value="{{ $location->city }}">{{ $location->city }}</option>
+                  @endforeach
+              </select>
               <i class="arrow down"></i>
               </div>
               <h3 class="card-title">Age Range</h3>
               <div class="row">
                 <div class="col-6 pr-0">
                   <div class="custom-control custom-checkbox mb-3">
-                    <input type="checkbox" class="custom-control-input" id="age1" name="age1">
+                    <input type="checkbox" class="custom-control-input age-checkbox" id="age1" name="age1" value="age1">
                     <label class="custom-control-label" for="age1">1-6 months</label>
                   </div>
                   <div class="custom-control custom-checkbox mb-3">
-                    <input type="checkbox" class="custom-control-input" id="age3" name="age3">
+                    <input type="checkbox" class="custom-control-input age-checkbox" id="age3" name="age3" value="age3">
                     <label class="custom-control-label" for="age3">1-3 Years</label>
                   </div>
                   <div class="custom-control custom-checkbox mb-3">
-                    <input type="checkbox" class="custom-control-input" id="age5" name="age5">
+                    <input type="checkbox" class="custom-control-input age-checkbox" id="age5" name="age5" value="age5">
                     <label class="custom-control-label" for="age5">8-10 Years</label>
                   </div>
                   <div class="custom-control custom-checkbox mb-3">
-                    <input type="checkbox" class="custom-control-input" id="age7" name="age7">
+                    <input type="checkbox" class="custom-control-input age-checkbox" id="age7" name="age7" value="age7">
                     <label class="custom-control-label" for="age7">14-17 Years</label>
                   </div>
                 </div>
                 <div class="col-6 pr-0">
                   <div class="custom-control custom-checkbox mb-3">
-                    <input type="checkbox" class="custom-control-input" id="age2" name="age2">
+                    <input type="checkbox" class="custom-control-input age-checkbox" id="age2" name="age2" value="age2">
                     <label class="custom-control-label" for="age2">1 Year</label>
                   </div>
                   <div class="custom-control custom-checkbox mb-3">
-                    <input type="checkbox" class="custom-control-input" id="age4" name="age4">
+                    <input type="checkbox" class="custom-control-input age-checkbox" id="age4" name="age4" value="age4">
                     <label class="custom-control-label" for="age4">4-7 Years</label>
                   </div>
                   <div class="custom-control custom-checkbox mb-3">
-                    <input type="checkbox" class="custom-control-input" id="age6" name="age6">
+                    <input type="checkbox" class="custom-control-input age-checkbox" id="age6" name="age6" value="age6">
                     <label class="custom-control-label" for="age6">11-13 Years</label>
                   </div>
                   <div class="custom-control custom-checkbox mb-3">
-                    <input type="checkbox" class="custom-control-input" id="age8" name="age8">
+                    <input type="checkbox" class="custom-control-input age-checkbox" id="age8" name="age8" value="age8">
                     <label class="custom-control-label" for="age8">18+ Years</label>
                   </div>
                 </div>
@@ -73,11 +74,6 @@
                   <span class="filter-range-max">$$$</span>
                 </div>
               </div> -->
-              <div class="row mt-4">
-                <div class="col-12">
-                  <button type="button" class="btn btn-primary">Apply</button>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -89,16 +85,15 @@
             </div>
             <div class="col-lg-4 col-md-4, col-sm-4, col-xs-12">
               <select class="selectpicker filter-category" data-live-search="false" data-style="btn btn-primary-border" name="filter-category" id="filter-category" title="Category">
+                <option data-tokens="0" value="0">All</option>
                 @foreach($categories as $category)
                 <option data-tokens="{{ $category->id }}" value="{{ $category->id }}">{{ $category->category_name }}</option>
                 @endforeach
               </select>
             </div>
             <div class="col-lg-4 col-md-4, col-sm-4, col-xs-12">
-              <select class="selectpicker filter-activity-type" data-live-search="true" name="filter-activiti-type" id="filter-activity-type" data-style="btn btn-primary-border" title="Activity Type">
-                @foreach($activity_types as $activity_type)                
-                <option class="activity-type-option category_{{ $activity_type->category_id }}" data-tokens="{{ $activity_type->id }}" value="{{ $activity_type->id }}">{{ $activity_type->activity_type_name }}</option>
-                @endforeach
+              <select class="selectpicker filter-activity-type" data-live-search="true" name="filter-activity-type" id="filter-activity-type" data-style="btn btn-primary-border" title="Activity Type">
+                
               </select>
             </div>
           </div>
@@ -120,7 +115,7 @@
                     </div> -->
                     <div class="card-header-section col-4">
                       <div class="activity-distance">
-                        {{ $activity->distance ? $activity->distance : 'distance' }}
+                        {{ $activity->distance ? $activity->distance : '' }}
                         <i class="fa fa-angle-down"></i>
                       </div>
                     </div>
@@ -139,11 +134,11 @@
                         {{ $activity->business_name ? $activity->business_name : 'business_name' }}
                       </div>
                       <div class="row activity-detail-age">
-                        Ages {{ $activity->age_min }} to {{ $activity->age_max }}
+                        Ages: {{ displayAgeRange($activity->age_range) }}
                       </div>
                       <div class="row activity-detail-place">
                         <i class="material-icons" style="color: #a845ff">location_on</i>
-                        {{ $activity->address ? $activity->address : '' }} {{ $activity->city ? $activity->city : '' }} {{ $activity->state ? $activity->state : '' }} ({{ $activity->distance }})
+                        {{ $activity->address ? $activity->address : '' }} {{ $activity->city ? $activity->city : '' }} {{ $activity->state ? $activity->state : '' }} {{ $activity->distance ? '(' . $activity->distance . ')' : '' }}
                       </div>
                     </div>
                     <div class="col-4">
@@ -181,89 +176,148 @@
   @push('contentJs')
   <script type="text/javascript">
     // searchActivities();
+    $(document).on('change', 'select[name=filter-category], select[name=filter-activity-type], select[name=filter-location], .age-checkbox', function() {
+      $('#search-results').empty();
+      searchActivities();
+    });
 
     function searchActivities() {
       
+      $.LoadingOverlay("show");
       $.ajax({
         type: 'GET',
         url: base_url + '/activities',
         data: {
           category: $('select[name=filter-category]').val(),
+          activity_type: $('select[name=filter-activity-type]').val(),
+          location: $('select[name=filter-location]').val(),
+          age1: $('#age1')[0].checked,
+          age2: $('#age2')[0].checked,
+          age3: $('#age3')[0].checked,
+          age4: $('#age4')[0].checked,
+          age5: $('#age5')[0].checked,
+          age6: $('#age6')[0].checked,
+          age7: $('#age7')[0].checked,
+          age8: $('#age8')[0].checked,
         },
         success: function(data) {
           console.log('res-success: ', data);
-          if (data.activities && data.activities.length > 0) {
-            for (var i = 0; i < data.activities.length; i++) {
-              $('#search-results').append('<div class="activity-item my-2">' + 
-                '<div class="activity-item-header">' + 
-                  '<a href="#activity_'+ data.activities[i].id +'" data-toggle="collapse">' + 
-                    '<div class="row card-header">' + 
-                      '<div class="card-header-section col-4">' + 
-                        '<img class="activity-img" src="'+ (data.activities[i].thumbnail_img ? data.activities[i].thumbnail_img : base_url + 'img/defaults/thumbnail.png')+'">' + 
-                        '<div class="activity-title">'+ (data.activities[i].activity_type ? data.activities[i].activity_type : '') +'</div>' + 
-                      '</div>' + 
-                      '<div class="card-header-section col-4">' + 
-                        '<div class="activity-address">'+ (data.activities[i].address ? data.activities[i].address : '') +'</div>' + 
-                      '</div>' + 
-                      '<div class="card-header-section col-4">' + 
-                        '<div class="activity-distance">' + (data.activities[i].distance ? data.activities[i].distance : '') +
-                          '<i class="fa fa-angle-down"></i>' + 
-                        '</div>' + 
-                      '</div>' + 
-                    '</div>' + 
-                  '</a>' + 
-                '</div>' + 
-                '<div id="activity_'+ data.activities[i].id +'" class="collapse activity-item-body my-2">' + 
-                '<div class="row border-1">' + 
-                  '<div class="col-3">' + 
-                    '<img class="activity-detail-img" src="'+ (data.activities[i].profile_img ? data.activities[i].profile_img : base_url + 'img/defaults/profile.png') +'">' + 
-                  '</div>' + 
-                  '<div class="col-9">' + 
-                    '<div class="row">' + 
-                      '<div class="col-8">' + 
-                        '<div class="row activity-detail-title">' + (data.activities[i].business_name ? data.activities[i].business_name : '') + 
-                        '</div>' + 
-                        '<div class="row activity-detail-age">Ages ' + (data.activities[i].age_min ? data.activities[i].age_min : '1 month') + 'to' + (data.activities[i].age_max) + 
-                        '</div>' + 
-                        '<div class="row activity-detail-place">' + 
-                          '<i class="material-icons" style="color: #a845ff">location_on</i>' + 
-                          (data.activities[i].address ? data.activities[i].address : '') + (data.activities[i].city ? data.activities[i].city : '') + (data.activities[i].state ? data.activities[i].state : '') + '(' + (data.activities[i].distance ? data.activities[i].distance : '') + ')' + 
-                        '</div>' + 
-                      '</div>' + 
-                      '<div class="col-4">' + 
-                        '<div class="row">' + 
-                          '<a href="'+ (data.activities[i].website ? data.activities[i].website : '/') + '" class="btn btn-primary btn-lg" target="_blank">Visit Site</a>' + 
-                        '</div>' + 
-                        '<div class="row">' + 
-                          '<a class="link-detail" href="'+ base_url +'/activities/'+ data.activities[i].id +'">View Detail</a>' + 
-                        '</div>' + 
-                      '</div>' + 
-                    '</div>' + 
-                    '<div class="row">' + 
-                      '<div class="col-12">' + 
-                        (data.activities[i].activity_description ? data.activities[i].activity_description : '') + 
-                      '</div>' + 
-                    '</div>' + 
-                  '</div>' + 
-                '</div>' + 
-                '</div>' + 
-              '</div>');
-
-            }
-          } else {
-            $('#search-results').html('<div class="alert alert-danger text-center">There is no matched result.</div>');
-          }
+          appendActivities(data.activities);
+          reloadActivityTypes(data.activity_types);
+          $.LoadingOverlay("hide");
         },
         error: function(err) {
+          $.LoadingOverlay("hide");
           console.log('err: ', err);
         }
       });
     }
+
+    function reloadActivityTypes(activity_types) {
+      if (activity_types && activity_types.length > 0) {
+        $('#filter-activity-type').html('<option class="activity-type-option category_0" data-tokens="0" value="0">All</option>');
+        for (var i = 0; i < activity_types.length; i++) {
+          $('#filter-activity-type').append('<option class="activity-type-option category_'+ activity_types[i].category_id +'" data-tokens="'+ activity_types[i].id +'" value="'+ activity_types[i].id +'">'+ activity_types[i].activity_type_name +'</option>');
+        }
+        $('#filter-activity-type').selectpicker('refresh');
+      } else {
+        $('#filter-activity-type').html('<option class="activity-type-option category_0" data-tokens="0" value="0">All</option>');
+      }
+      $('#filter-activity-type').selectpicker('refresh');
+    }
+
+    function appendActivities(activities) {
+      if (activities && activities.length > 0) {
+        for (var i = 0; i < activities.length; i++) {
+          $('#search-results').append('<div class="activity-item my-2">' + 
+            '<div class="activity-item-header">' + 
+              '<a href="#activity_'+ activities[i].id +'" data-toggle="collapse">' + 
+                '<div class="row card-header">' + 
+                  '<div class="card-header-section col-4">' + 
+                    '<img class="activity-img" src="'+ (activities[i].thumbnail_img ? activities[i].thumbnail_img : base_url + 'img/defaults/thumbnail.png')+'">' + 
+                    '<div class="activity-title">'+ (activities[i].activity_type ? activities[i].activity_types.activity_type_name : '') +'</div>' + 
+                  '</div>' + 
+                  '<div class="card-header-section col-4">' + 
+                    '<div class="activity-address">'+ (activities[i].address ? activities[i].address : '') +'</div>' + 
+                  '</div>' + 
+                  '<div class="card-header-section col-4">' + 
+                    '<div class="activity-distance">' + (activities[i].distance ? activities[i].distance : '') +
+                      '<i class="fa fa-angle-down"></i>' + 
+                    '</div>' + 
+                  '</div>' + 
+                '</div>' + 
+              '</a>' + 
+            '</div>' + 
+            '<div id="activity_'+ activities[i].id +'" class="collapse activity-item-body my-2">' + 
+            '<div class="row border-1">' + 
+              '<div class="col-3">' + 
+                '<img class="activity-detail-img" src="'+ (activities[i].profile_img ? activities[i].profile_img : base_url + 'img/defaults/profile.png') +'">' + 
+              '</div>' + 
+              '<div class="col-9">' + 
+                '<div class="row">' + 
+                  '<div class="col-8">' + 
+                    '<div class="row activity-detail-title">' + (activities[i].business_name ? activities[i].business_name : '') + 
+                    '</div>' + 
+                    '<div class="row activity-detail-age">Ages: ' + displayAgeRange(activities[i].age_range) + 
+                    '</div>' + 
+                    '<div class="row activity-detail-place">' + 
+                      '<i class="material-icons" style="color: #a845ff">location_on</i>' + 
+                      (activities[i].address ? activities[i].address : '') + (activities[i].city ? activities[i].city : '') + (activities[i].state ? activities[i].state : '') + (activities[i].distance ? '(' + activities[i].distance + ')' : '') + 
+                    '</div>' + 
+                  '</div>' + 
+                  '<div class="col-4">' + 
+                    '<div class="row">' + 
+                      '<a href="'+ (activities[i].website ? activities[i].website : '/') + '" class="btn btn-primary btn-lg" target="_blank">Visit Site</a>' + 
+                    '</div>' + 
+                    '<div class="row">' + 
+                      '<a class="link-detail" href="'+ base_url +'/activities/'+ activities[i].id +'">View Detail</a>' + 
+                    '</div>' + 
+                  '</div>' + 
+                '</div>' + 
+                '<div class="row">' + 
+                  '<div class="col-12">' + 
+                    (activities[i].activity_description ? activities[i].activity_description : '') + 
+                  '</div>' + 
+                '</div>' + 
+              '</div>' + 
+            '</div>' + 
+            '</div>' + 
+          '</div>');
+
+        }
+      } else {
+        $('#search-results').html('<div class="alert alert-danger text-center">There is no matched result.</div>');
+      }
+    }
     
-    $(document).on('change', 'select[name=filter-category]', function() {
-      $('#search-results').empty();
-      searchActivities();
-    });
+    function displayAgeRange(age_range) {
+      var age_pattern = '';
+      if (age_range.includes('age1')) {
+        age_pattern += '<div class="age-pattern">1-6 months</div>';
+      }
+      if (age_range.includes('age2')) {
+        age_pattern += '<div class="age-pattern">1 Year</div>';
+      }
+      if (age_range.includes('age3')) {
+        age_pattern += '<div class="age-pattern">1-3 Years</div>';
+      }
+      if (age_range.includes('age4')) {
+        age_pattern += '<div class="age-pattern">4-7 Years</div>';
+      }
+      if (age_range.includes('age5')) {
+        age_pattern += '<div class="age-pattern">8-10 Years</div>';
+      }
+      if (age_range.includes('age6')) {
+        age_pattern += '<div class="age-pattern">11-13 Years</div>';
+      }
+      if (age_range.includes('age7')) {
+        age_pattern += '<div class="age-pattern">14-17 Years</div>';
+      }
+      if (age_range.includes('age8')) {
+        age_pattern += '<div class="age-pattern">18+ Years</div>';
+      }
+      return age_pattern;
+    }
   </script>
   @endpush
 

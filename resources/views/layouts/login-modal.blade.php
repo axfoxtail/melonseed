@@ -27,7 +27,7 @@
                 <div class="col-6 pt-2">
                 <input type="button" class="form-control btn btn-primary btn-login-submit" value="Login">
                 </div>
-                <div class="col-6">
+                <div class="col-6 hidden" style="display: none;">
                   <button class="btn btn-outline-dark btn-google-login">
                     <div class="btn-text">
                       Login with Google 

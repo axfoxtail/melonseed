@@ -84,7 +84,7 @@ class RegisterController extends Controller
     protected function registered(Request $request, $user)
     {
         $registered_user = User::find($user->id);
-        $registered_user->register_ip = $request->server('REMOTE_ADDR');
+        $registered_user->register_ip = $request->ip();
         $registered_user->save();
     }
 }

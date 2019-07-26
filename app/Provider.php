@@ -17,14 +17,14 @@ class Provider extends Model
   protected $table = 'providers';
 
   protected $fillable = [
-    'user_id', 'business_name', 'activity_type', 'location', 'category', 'distance', 'address', 'state', 'city', 'zip_code', 'phone_number', 'website', 'age_min', 'age_max', 'activity_description', 'social_media_links', 'banner_img', 'thumbnail_img', 'profile_img', 'business_hours', 'slug',
+    'user_id', 'business_name', 'activity_type', 'location', 'category', 'distance', 'address', 'state', 'city', 'zip_code', 'phone_number', 'website', 'age_range', 'activity_description', 'social_media_links', 'banner_img', 'thumbnail_img', 'profile_img', 'business_hours', 'permission', 'slug',
   ];
 
   public $timestamps= true;
 
-  // public function users() {
-  //   return $this->belongsTo(User::class);
-  // }
+  public function users() {
+    return $this->belongsTo(User::class, 'user_id', 'id');
+  }
 
   public function categories() {
     return $this->hasOne(Category::class, 'id', 'category');
@@ -32,5 +32,9 @@ class Provider extends Model
 
   public function activityTypes() {
     return $this->hasOne(ActivityType::class, 'id', 'activity_type');
+  }
+
+  public function reviews() {
+    return $this->hasMany(Review::class);
   }
 }

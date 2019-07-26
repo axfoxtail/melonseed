@@ -1,5 +1,23 @@
 .masthead {
   background-position: center -400px !important;
+  .search-prefix {
+    position: absolute;
+    color: #495057;
+    font-size: 30px;
+    font-weight: 600;
+    padding: 20px;
+  }
+  .search-location {
+    padding-left: 245px;
+    padding-right: 60px;
+  }
+  .search-subfix {
+    color: #30cbb7;
+    font-size: 50px;
+    position: absolute;
+    right: 0;
+    padding: 20px 5px;
+  }
 }
 
 // Popular Activities Carousel

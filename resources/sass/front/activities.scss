@@ -205,6 +205,16 @@
               line-height: normal;
               letter-spacing: normal;
               color: #595959;
+
+              .age-pattern {
+                border: solid 1px $primary-color;
+                border-radius: 15px;
+                background-color: $primary-color;
+                color: $white;
+                padding: 2px 8px;
+                margin: 3px;
+                font-size: 15px;
+              }
             }
 
             .activity-detail-palce {

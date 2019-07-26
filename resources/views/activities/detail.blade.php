@@ -19,13 +19,9 @@
             <div class="col-6">
               <div class="row activity-title mb-3">
                 {{ $activity->business_name ? $activity->business_name : 'business_name' }}
-                <div class="rate-stars">
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star checked"></span>
-                  <span class="fa fa-star"></span>
-                  <span class="fa fa-star"></span>
-                </div>
+                @if(count($activity->reviews))
+                <div class="read-rating" data-rating="{{ calcTotalRate($activity->reviews) }}"></div>
+                @endif
               </div>
               <div class="row activity-place mb-3">
                 {{ $activity->address ? $activity->address : '' }}
@@ -38,11 +34,13 @@
                   {{ $activity->phone_number ? $activity->phone_number : 'phone_number' }}
                 </div>
                 <div class="row activity-contact-info mb-2">
-                  {{ $activity->website ? $activity->website : 'website' }}
+                  <a href="{{ $activity->website ? $activity->website : '/' }}" target="_blank">
+                    {{ $activity->website ? $activity->website : 'website' }}
+                  </a>
                 </div>
               </div>
               <div class="row">
-                <a href="{{ $activity->website ? $activity->website : '/' }}" class="btn btn-visit btn-primary" target="_blank">Visit Site</a>
+                <a disabled class="btn btn-visit btn-primary" data-toggle="modal" data-target="{{ Auth::check() ? '#enrollingModal' : '#loginModal' }}">Now Enrolling</a>
               </div>
             </div>
           </div>
@@ -50,7 +48,6 @@
             <div class="col-12">
               <h2>Description</h2>
               <p class="detail-description">
-                <!-- "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." -->
                 {{ $activity->activity_description ? $activity->activity_description : 'activity_description' }}
               </p>
             </div>
@@ -73,7 +70,7 @@
       </div>
       <div class="row">
         <div class="col-12">
-          <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Eiffel+Tower+Paris+France" width="100%" height="379" frameborder="0" style="border:0" allowfullscreen></iframe>
+          <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=381+King+St+W+Toronto" width="100%" height="379" frameborder="0" style="border:0" allowfullscreen></iframe>
         </div>
       </div>
     </div>
@@ -83,40 +80,65 @@
   <section class="reviews-container bg-white my-5">
     <div class="container">
       <div class="row">
-        <div class="col-9">
+        <div class="col-9 d-flex">
           <h2 class="mr-3">
             Reviews
           </h2>
-          <div class="rate-stars">
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-          </div>
+          @if(count($activity->reviews))
+          <div class="read-rating" data-rating="{{ calcTotalRate($activity->reviews) }}"></div>
+          @endif
         </div>
       </div>
       <div class="row">
-        @for($i = 0; $i < 5; $i++)
-        <div class="col-9">
-          <h3>Jordan Robin - 2018</h3>
-          <p class="reviews-content">
-            The activities were great, my kids loved it and were really excited to go back again this coming summer! Thanks again to activity name for hosting such a great summer cmap for kids of all age :D 
-          </p>
-        </div>
-        @endfor
+        @foreach($activity->reviews as $review)
+          <div class="col-9">
+            <div class="d-flex">
+              <h3>{{ ($review->users->first_name && $review->users->first_name) ? getFullName($review->users->first_name, $review->users->last_name) : $review->users->username }} - {{ $review->created_at ? catchYearFromDateTime($review->created_at) : '(unknown)' }}</h3>
+              <div class="read-rating-sm pt-1 ml-3" data-rating="{{ $review->rate }}"></div>
+            </div>
+            <p class="reviews-content">
+              {{ $review->content }}
+            </p>
+          </div>
+        @endforeach
       </div>
     </div>
   </section>
 
+  <!-- The Enrolling Modal -->
+  @include('activities.enrolling-modal')
+
   <!-- Styles -->
   @push('contentCss')
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="{{ asset('plugins/star-rating-svg/src/css/star-rating-svg.css') }}">
   @endpush
 
   <!-- Scripts -->
   @push('contentJs')
-  
+  <script src="{{ asset('plugins/star-rating-svg/src/jquery.star-rating-svg.js') }}"></script>
+  <script type="text/javascript">
+    $(".read-rating").starRating({
+      starSize: 30,
+      readOnly: true,
+      hoverColor: '#38cbb7',
+      activeColor: '#38cbb7',
+      useGradient: false,
+      callback: function(currentRating, $el){
+          // make a server call here
+      }
+    });
+    $(".read-rating-sm").starRating({
+      starSize: 25,
+      readOnly: true,
+      hoverColor: '#38cbb7',
+      activeColor: '#38cbb7',
+      useGradient: false,
+      callback: function(currentRating, $el){
+          // make a server call here
+      }
+    });
+  </script>
   @endpush
 
 @endsection

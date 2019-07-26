@@ -52,17 +52,17 @@
             <a class="btn-activities {{Auth::check() ? 'dropbtn' : ''}}" href="{{ url('/activities') }}">Activities</a>
             @if(Auth::check())
               <div class="dropdown-content">
-                <a href="{{ url('/activities') }}/11">My Activity</a>
+                <a href="{{ url('/dashboard') }}">My Activity</a>
                 <a href="{{ url('/activities') }}">Find Activities</a>
               </div>
             @endif
           </div>
           <div class="btn dropdown">
-            <a class="btn-activities {{Auth::check() ? 'dropbtn' : ''}}" href="{{ url('/providers/profile') }}">Providers</a>
-            @if(Auth::check() && Auth::user()->is_provider)
+            <a class="btn-activities {{Auth::check() ? 'dropbtn' : ''}}" href="{{ url('/providers') }}">Providers</a>
+            @if(Auth::check() && Auth::user()->role != 'parent')
               <div class="dropdown-content">
-                <a href="{{ url('/providers/profile') }}">Provider Profile</a>
-                <a href="{{ url('/providers/review') }}">Reviews</a>
+                <a href="{{ url('/providers/profile') }}">Profile</a>
+                <a href="{{ url('/providers/reviews') }}">Reviews</a>
               </div>
             @endif
           </div>
@@ -81,7 +81,16 @@
                     {{ Auth::user()->first_name ? Auth::user()->first_name : Auth::user()->username }}
                   </div>
                   <div class="user-info-role">
-                    {{ Auth::user()->is_provider ? 'Provider' : 'Parents' }}
+                    @switch(Auth::user()->role)
+                      @case ('admin')
+                        Administrator
+                        @break
+                      @case ('provider')
+                        Provider
+                        @break
+                      @default
+                        Parent
+                    @endswitch
                   </div>
                 </div>
               </a>
@@ -159,6 +168,7 @@
   <!-- Additional JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.10/js/bootstrap-select.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/js/bootstrap4-toggle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.6/dist/loadingoverlay.min.js"></script>
   <script src="{{ asset('plugins/Toastr/build/toastr.min.js') }}"></script>
 
   @stack('contentJs')
@@ -174,6 +184,12 @@
         $('.btn-signup')[0].click();
       }
     }
+    // Google Map
+    var myip;
+    $.getJSON("https://api.ipify.org/?format=json", function(e) {
+      myip = e.ip;
+      console.log(myip);
+    })
     
     $.ajaxSetup({
       headers: {
@@ -192,20 +208,20 @@
     }
   </script>
   <script type="text/javascript">
-    function reloadAtivityTypes(index) {
-      console.log('aa==', index);
-      $('.activity-type-option').css('display', 'none');
-      if (index) {
-        $('.category_' + index).css('display', 'block');
-      }
-    }
+    // function reloadAtivityTypes(index) {
+    //   console.log('aa==', index);
+    //   $('.activity-type-option').css('display', 'none');
+    //   if (index) {
+    //     $('.category_' + index).css('display', 'block');
+    //   }
+    // }
     
-    reloadAtivityTypes(0);
+    // reloadAtivityTypes(0);
 
-    $(document).on('change', 'select.filter-category', function(e) {
-      console.log('bb==', $(this).val());
-      reloadAtivityTypes($(this).val());
-    });
+    // $(document).on('change', 'select.filter-category', function(e) {
+    //   console.log('bb==', $(this).val());
+    //   reloadAtivityTypes($(this).val());
+    // });
   </script>
 </body>
 </html>

@@ -81,7 +81,7 @@
       
       $.ajax({
         type: 'POST',
-        url: '/register',
+        url: base_url + '/register',
         data: {
           username: $('#signup-form input[name=username]').val(),
           email: $('#signup-form input[name=email]').val(),

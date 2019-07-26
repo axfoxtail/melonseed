@@ -49,7 +49,7 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {
         $logged_in_user = User::find($user->id);
-        $logged_in_user->login_ip = $request->server('REMOTE_ADDR');
+        $logged_in_user->login_ip = $request->ip();
         $logged_in_user->save();
     }
 }

@@ -3,7 +3,7 @@
 @section('content')
 
   <!-- Provider Create -->
-  <section class="provider-create-container bg-white my-5">
+<!--   <section class="provider-create-container bg-white my-5">
     <div class="container">
       <div class="row mb-4">
         <img class="banner-img" src="{{ asset('assets/img/bg-masthead.jpg') }}">
@@ -97,7 +97,7 @@
         
       </div>
     </div>
-  </section>
+  </section> -->
 
   <!-- Styles -->
   @push('contentCss')

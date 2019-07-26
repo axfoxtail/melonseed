@@ -16,7 +16,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'username', 'first_name', 'last_name', 'email', 'phone_number', 'is_provider', 'role', 'avatar', 'password', 'slug', 'register_ip', 'login_ip',
+        'username', 'first_name', 'last_name', 'email', 'phone_number', 'role', 'avatar', 'password', 'permission', 'slug', 'register_ip', 'login_ip',
     ];
 
     /**
@@ -37,7 +37,11 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    // public function providers() {
-    //     return $this->hasOne(Provider::class);
-    // }
+    public function providers() {
+        return $this->hasOne(Provider::class, 'id', 'user_id');
+    }
+
+    public function reviews() {
+        return $this->hasMany(Review::class);
+    }
 }

@@ -21,11 +21,11 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('phone_number')->nullable();
-            $table->string('is_provider')->default("0");
-            $table->string('role')->default("0");
+            $table->string('role')->default("parent");
             $table->string('avatar')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->string('permission')->default("0");
             $table->string('slug')->nullable();
             $table->string('register_ip')->nullable();
             $table->string('login_ip')->nullable();

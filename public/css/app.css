@@ -10863,6 +10863,27 @@ a.text-dark:focus {
   background-position: center -400px !important;
 }
 
+.masthead .search-prefix {
+  position: absolute;
+  color: #495057;
+  font-size: 30px;
+  font-weight: 600;
+  padding: 20px;
+}
+
+.masthead .search-location {
+  padding-left: 245px;
+  padding-right: 60px;
+}
+
+.masthead .search-subfix {
+  color: #30cbb7;
+  font-size: 50px;
+  position: absolute;
+  right: 0;
+  padding: 20px 5px;
+}
+
 .popular-carousel {
   padding-top: 50px;
   padding-bottom: 50px;
@@ -11195,6 +11216,16 @@ a.text-dark:focus {
   color: #595959;
 }
 
+.activities-container .filter-result .filter-result-body .activity-item .activity-item-body .row .activity-detail-age .age-pattern {
+  border: solid 1px #30cbb7;
+  border-radius: 15px;
+  background-color: #30cbb7;
+  color: #ffffff;
+  padding: 2px 8px;
+  margin: 3px;
+  font-size: 15px;
+}
+
 .activities-container .filter-result .filter-result-body .activity-item .activity-item-body .row .activity-detail-palce {
   font-family: Montserrat;
   font-size: 20px;
@@ -11204,10 +11235,6 @@ a.text-dark:focus {
   line-height: normal;
   letter-spacing: normal;
   color: #595959;
-}
-
-.activities-container .filter-result .filter-result-body .activity-item .activity-item-body .row .activity-detail-palce i {
-  color: #a845ff;
 }
 
 .activities-container .filter-result .filter-result-body .activity-item .activity-item-body .row .link-detail {
@@ -11690,6 +11717,20 @@ main {
   color: blue;
 }
 
+.odd-even-row:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.age-pattern {
+  border: solid 1px #30cbb7;
+  border-radius: 15px;
+  background-color: #30cbb7;
+  color: #ffffff;
+  padding: 2px 8px;
+  margin: 3px;
+  font-size: 15px;
+}
+
 .footer .logo-container a {
   font-family: Helvetica;
   font-size: 36px;
@@ -11833,6 +11874,39 @@ main {
 .login-modal .modal-dialog .modal-content form .trigger-login-wrapper .link-login:hover {
   color: #30cbb7;
   text-decoration: underline;
+}
+
+.hover {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  padding: 0.25rem;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.hover:hover .hover-title {
+  left: 0;
+}
+
+.hover:hover .hover-description {
+  right: 0;
+}
+
+.hover .hover-title {
+  width: 100%;
+  height: 20%;
+  left: calc(-100% - 10px);
+  transition: left 2s;
+}
+
+.hover .hover-description {
+  width: 100%;
+  height: 80%;
+  right: calc(-100% - 10px);
+  transition: right 2s;
 }
 
 .bg-accent {

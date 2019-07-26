@@ -27,14 +27,14 @@ class CreateProvidersTable extends Migration
             $table->string('zip_code')->nullable();
             $table->string('phone_number')->nullable();
             $table->string('website')->nullable();
-            $table->string('age_min')->nullable();
-            $table->string('age_max')->nullable();
+            $table->string('age_range')->nullable();
             $table->text('activity_description')->nullable();
             $table->string('social_media_links')->nullable();
             $table->string('banner_img')->nullable();
             $table->string('thumbnail_img')->nullable();
             $table->string('profile_img')->nullable();
-            $table->string('business_hours')->nullable();
+            $table->text('business_hours')->nullable();
+            $table->string('permission')->default("0");
             $table->string('slug')->nullable();
             $table->timestamps();
         });

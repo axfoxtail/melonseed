@@ -109,6 +109,19 @@ main {
   }
 }
 
+.odd-even-row:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.age-pattern {
+  border: solid 1px $primary-color;
+  border-radius: 15px;
+  background-color: $primary-color;
+  color: $white;
+  padding: 2px 8px;
+  margin: 3px;
+  font-size: 15px;
+}
 
 // --- --- Footer Style
 .footer {
@@ -265,4 +278,39 @@ main {
       }
     }
   }
+}
+
+// featured providers style
+.hover {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  padding: 0.25rem;
+  overflow: hidden;
+  cursor: pointer;
+
+  &:hover {
+    .hover-title {
+      left: 0;
+    }
+    .hover-description {
+      right: 0;
+    }
+  }
+  
+  .hover-title {
+    width: 100%;
+    height: 20%;
+    left: calc(-100% - 10px);
+    transition: left 2s;
+  }
+  .hover-description {
+    width: 100%;
+    height: 80%;
+    right: calc(-100% - 10px);
+    transition: right 2s;
+  }
+
 }
