@@ -11071,10 +11071,16 @@ a.text-dark:focus {
   left: 22px;
 }
 
+.activities-container .filter-sidebar .filter-range .filter-range-current {
+  position: absolute;
+  top: 20px;
+  left: 47%;
+}
+
 .activities-container .filter-sidebar .filter-range .filter-range-max {
   position: absolute;
   top: 20px;
-  right: 20px;
+  right: 10px;
 }
 
 .activities-container .filter-sidebar .filter-range .filter-distance {

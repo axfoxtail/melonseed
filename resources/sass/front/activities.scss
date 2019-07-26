@@ -55,10 +55,16 @@
         left: 22px;
       }
 
+      .filter-range-current {
+        position: absolute;
+        top: 20px;
+        left: 47%;
+      }
+
       .filter-range-max {
         position: absolute;
         top: 20px;
-        right: 20px;
+        right: 10px;
       }
 
       .filter-distance {

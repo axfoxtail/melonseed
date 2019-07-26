@@ -66,16 +66,38 @@ class ProviderController extends Controller
         $activities_query->where('age_range', 'like', '%age8%');
       }
         
-      $results['activities'] = $activities_query->get();
+      $activities = $activities_query->get();
+      $_activities = [];
+      if ($request->distance && intval($request->distance) < 101) {
+        foreach ($activities as $activity) {
+          if ($activity->latitude && $activity->latitude && (distanceWithMyIP2ProviderPlace($ip, $activity->latitude, $activity->longitude, 'K', 2) <= intval($request->distance))) {
+            $_activities.push($activity);
+          }
+        }
+      } else {
+        $_activities = $activities;
+      }
+
+      $results['my_location'] = (object) array(
+        'ip' => $ip,
+        'latitude' => getArrLocationFromIP($ip)->latitude, 
+        'longitude' => getArrLocationFromIP($ip)->longitude
+      );
+      $results['activities'] = $_activities;
       $results['categories'] = $categories;
       $results['activity_types'] = ActivityType::where('category_id', '=', $request->category)->get();
 
       return response()->json($results, 200);
     } else {
+      $my_location = (object) array(
+        'ip' => $ip,
+        'latitude' => getArrLocationFromIP($ip)->latitude, 
+        'longitude' => getArrLocationFromIP($ip)->longitude
+      );
 
       $activities = Provider::all();
 
-      return view('activities.index', ['activities' => $activities, 'categories' => $categories, 'activity_types' => $activity_types, 'location_list' => $location_list]);
+      return view('activities.index', ['my_location' => $my_location, 'activities' => $activities, 'categories' => $categories, 'activity_types' => $activity_types, 'location_list' => $location_list]);
     }
   }
 
@@ -114,6 +136,7 @@ class ProviderController extends Controller
     $profile_dir = 'public/providers/' . Auth::user()->id . '/profiles';
 
     if ($request->ajax()) {
+      
 
       // $validator = Validator::make($request->all(), [
       //   'business_name' => ['required', 'string', 'max:255'],
@@ -151,6 +174,18 @@ class ProviderController extends Controller
 
         $provider = new Provider();
       }
+
+      $address = $request->input('address');
+      if ($provider->address != $address) {
+        $geo_location = getGeoLocationFromAddress($address);
+        if (!$geo_location['status']) {
+          return response()->json([], 400);
+        }
+
+        $provider->latitude = $geo_location['latitude'];
+        $provider->longitude = $geo_location['longitude'];
+        $provider->address = $request->input('address') ? $geo_location['address'] : $provider->address;
+      }
       
       $provider->user_id = $request->input('user_id') ? $request->input('user_id') : $provider->user_id;
       $provider->business_name = $request->input('business_name') ? $request->input('business_name') : $provider->business_name;
@@ -158,7 +193,6 @@ class ProviderController extends Controller
       $provider->activity_type = $request->input('activity_type') ? $request->input('activity_type') : $provider->activity_type;
       $provider->location = $request->input('location') ? $request->input('location') : $provider->location;
       $provider->distance = $request->input('distance') ? $request->input('distance') : $provider->distance;
-      $provider->address = $request->input('address') ? $request->input('address') : $provider->address;
       $provider->state = $request->input('state') ? $request->input('state') : $provider->state;
       $provider->city = $request->input('city') ? $request->input('city') : $provider->city;
       $provider->zip_code = $request->input('zip_code') ? $request->input('zip_code') : $provider->zip_code;
@@ -174,7 +208,7 @@ class ProviderController extends Controller
       
       $provider->save();
 
-      return response()->json(['message' => 'Successfully saved!'], 200);
+      return response()->json(['message' => 'Successfully saved!', 'formatted_address' => $provider->address], 200);
     }
 
     else if ($request->file('banner_img')) {

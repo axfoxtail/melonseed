@@ -593,6 +593,7 @@
         success: function(data) {
           $.LoadingOverlay("hide");
           toastr.success(data.message);
+          $('input[name=address]').val(data.formatted_address);
           console.log('res-success: ', data);
         },
         error: function(err) {

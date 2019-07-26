@@ -20,6 +20,8 @@ class CreateProvidersTable extends Migration
             $table->string('category')->nullable();
             $table->string('activity_type')->nullable();
             $table->string('location')->nullable();
+            $table->string('latitude')->nullable();
+            $table->string('longitude')->nullable();
             $table->string('distance')->nullable();
             $table->string('address')->nullable();
             $table->string('state')->nullable();

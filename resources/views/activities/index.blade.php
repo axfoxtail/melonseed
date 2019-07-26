@@ -58,11 +58,12 @@
                   </div>
                 </div>
               </div>
-              <h3 class="card-title mt-3">Distance <small>(miles)</small></h3>
+              <h3 class="card-title mt-3">Distance <small>(km)</small></h3>
               <div class="row">
                 <div class="custom-control filter-range">
-                  <input type="range" name="filter-distance" class="filter-distance" id="filter-distance">
+                  <input type="range" name="filter-distance" class="filter-distance" id="filter-distance" min="5" max="101" step="1">
                   <span class="filter-range-min">5</span>
+                  <span class="filter-range-current"></span>
                   <span class="filter-range-max">100+</span>
                 </div>
               </div>
@@ -81,7 +82,7 @@
         <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 filter-result">
           <div class="row filter-result-header">
             <div class="col-lg-4 col-md-4, col-sm-4, col-xs-12">
-              <div class="filter-result-label">83 Activities</div>
+              <div class="filter-result-label">{{ count($activities) ? count($activities) . (count($activities) == 1 ? ' Activity' : ' Activities') : 'No Activity' }}</div>
             </div>
             <div class="col-lg-4 col-md-4, col-sm-4, col-xs-12">
               <select class="selectpicker filter-category" data-live-search="false" data-style="btn btn-primary-border" name="filter-category" id="filter-category" title="Category">
@@ -115,7 +116,7 @@
                     </div> -->
                     <div class="card-header-section col-4">
                       <div class="activity-distance">
-                        {{ $activity->distance ? $activity->distance : '' }}
+                        {{ ($activity->latitude && $activity->longitude) ? distanceWithMyIP2ProviderPlace($my_location->ip, $activity->latitude, $activity->longitude, 'K', 2) . ' km' : 'unknown' }}
                         <i class="fa fa-angle-down"></i>
                       </div>
                     </div>
@@ -138,7 +139,7 @@
                       </div>
                       <div class="row activity-detail-place">
                         <i class="material-icons" style="color: #a845ff">location_on</i>
-                        {{ $activity->address ? $activity->address : '' }} {{ $activity->city ? $activity->city : '' }} {{ $activity->state ? $activity->state : '' }} {{ $activity->distance ? '(' . $activity->distance . ')' : '' }}
+                        {{ $activity->address ? $activity->address : '' }} {{ $activity->city ? $activity->city : '' }} {{ $activity->state ? $activity->state : '' }} {{ ($activity->latitude && $activity->longitude) ? '(' . distanceWithMyIP2ProviderPlace($my_location->ip, $activity->latitude, $activity->longitude, 'K', 2) . ' km' . ')' : '' }}
                       </div>
                     </div>
                     <div class="col-4">
@@ -152,7 +153,6 @@
                   </div>
                   <div class="row">
                     <div class="col-12">
-                      <!-- Whistler Blackcomb Snow School is regarded as one of the best ski and snowboard schools in North America. Snow School programs offer up the best possible opportunity to improve skills and gain confidence, skip lift lines and discover the wonders of Whistler Blackcomb. We have certified and professional instructors from around the world to help you in your language, ability and style. -->
                       {{ $activity->activity_description ? $activity->activity_description : 'activity_description' }}
                     </div>
                   </div>
@@ -161,6 +161,9 @@
               </div>
             </div>
             @endforeach
+          </div>
+          <div class="row text-center">
+            <button class="btn btn-primary btn-load-more mx-auto px-5 d-none">LOAD MORE</button>
           </div>
         </div>
       </div>
@@ -176,7 +179,8 @@
   @push('contentJs')
   <script type="text/javascript">
     // searchActivities();
-    $(document).on('change', 'select[name=filter-category], select[name=filter-activity-type], select[name=filter-location], .age-checkbox', function() {
+    $(document).on('change', 'select[name=filter-category], select[name=filter-activity-type], select[name=filter-location], .age-checkbox, input[name=filter-distance]', function() {
+      $('.filter-range-current').text(parseInt($('input[name=filter-distance]').val()) > 100 ? '100+' : $('input[name=filter-distance]').val());
       $('#search-results').empty();
       searchActivities();
     });
@@ -199,10 +203,11 @@
           age6: $('#age6')[0].checked,
           age7: $('#age7')[0].checked,
           age8: $('#age8')[0].checked,
+          distance: $('input[name=filter-distance]').val(),
         },
         success: function(data) {
           console.log('res-success: ', data);
-          appendActivities(data.activities);
+          appendActivities(data.activities, data.my_location);
           reloadActivityTypes(data.activity_types);
           $.LoadingOverlay("hide");
         },
@@ -226,8 +231,11 @@
       $('#filter-activity-type').selectpicker('refresh');
     }
 
-    function appendActivities(activities) {
+    function appendActivities(activities, my_location) {
       if (activities && activities.length > 0) {
+        var result_length = activities.length + (activities.length == 1 ? ' Activity' : ' Activities');
+        $('.filter-result-label').text(result_length);
+
         for (var i = 0; i < activities.length; i++) {
           $('#search-results').append('<div class="activity-item my-2">' + 
             '<div class="activity-item-header">' + 
@@ -241,7 +249,7 @@
                     '<div class="activity-address">'+ (activities[i].address ? activities[i].address : '') +'</div>' + 
                   '</div>' + 
                   '<div class="card-header-section col-4">' + 
-                    '<div class="activity-distance">' + (activities[i].distance ? activities[i].distance : '') +
+                    '<div class="activity-distance">' + ((activities[i].latitude && activities[i].longitude) ? distance(my_location.latitude, my_location.longitude, activities[i].latitude, activities[i].longitude, 'K', 2) + ' km' : '') +
                       '<i class="fa fa-angle-down"></i>' + 
                     '</div>' + 
                   '</div>' + 
@@ -262,7 +270,7 @@
                     '</div>' + 
                     '<div class="row activity-detail-place">' + 
                       '<i class="material-icons" style="color: #a845ff">location_on</i>' + 
-                      (activities[i].address ? activities[i].address : '') + (activities[i].city ? activities[i].city : '') + (activities[i].state ? activities[i].state : '') + (activities[i].distance ? '(' + activities[i].distance + ')' : '') + 
+                      (activities[i].address ? activities[i].address : '') + (activities[i].city ? activities[i].city : '') + (activities[i].state ? activities[i].state : '') + ((activities[i].latitude && activities[i].longitude) ? '(' + distance(my_location.latitude, my_location.longitude, activities[i].latitude, activities[i].longitude, 'K', 2) + ' km)' : '') + 
                     '</div>' + 
                   '</div>' + 
                   '<div class="col-4">' + 
@@ -286,6 +294,7 @@
 
         }
       } else {
+        $('.filter-result-label').text('No Activity');
         $('#search-results').html('<div class="alert alert-danger text-center">There is no matched result.</div>');
       }
     }
@@ -318,6 +327,35 @@
       }
       return age_pattern;
     }
+
+    function distance(lat1, lon1, lat2, lon2, unit, round) {
+      if ((lat1 == lat2) && (lon1 == lon2)) {
+        return 0;
+      }
+      else {
+        var radlat1 = Math.PI * lat1/180;
+        var radlat2 = Math.PI * lat2/180;
+        var theta = lon1-lon2;
+        var radtheta = Math.PI * theta/180;
+        var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+        if (dist > 1) {
+          dist = 1;
+        }
+        dist = Math.acos(dist);
+        dist = dist * 180/Math.PI;
+        dist = dist * 60 * 1.1515;
+        if (unit=="K") { dist = dist * 1.609344 }
+        if (unit=="N") { dist = dist * 0.8684 }
+        
+        var round_digit = parseInt(round);
+        if (round_digit) {
+          return Math.round(dist * Math.pow(10, round_digit)) / Math.pow(10, round_digit);
+        } 
+        return dist;
+      }
+    }
+
+
   </script>
   @endpush
 
