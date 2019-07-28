@@ -4,6 +4,7 @@
     </IfModule>
 
     RewriteEngine On
+    RewriteBase /var/www/gloops/public/
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
