@@ -5,7 +5,8 @@
   <!-- Provider Create -->
   <section class="provider-create-container my-5">
     <div class="container">
-      <div class="row mt-5">
+      <h2>Featured Providers</h2>
+      <div class="row mt-3">
         @if(count($providers))
           @foreach($providers as $provider)
           <div class="col-4 mb-3">

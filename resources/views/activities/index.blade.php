@@ -61,7 +61,7 @@
               <h3 class="card-title mt-3">Distance <small>(km)</small></h3>
               <div class="row">
                 <div class="custom-control filter-range">
-                  <input type="range" name="filter-distance" class="filter-distance" id="filter-distance" min="5" max="101" step="1">
+                  <input type="range" name="filter-distance" class="filter-distance" id="filter-distance" min="5" max="101" step="1" value="101">
                   <span class="filter-range-min">5</span>
                   <span class="filter-range-current"></span>
                   <span class="filter-range-max">100+</span>
@@ -139,7 +139,8 @@
                       </div>
                       <div class="row activity-detail-place">
                         <i class="material-icons" style="color: #a845ff">location_on</i>
-                        {{ $activity->address ? $activity->address : '' }} {{ $activity->city ? $activity->city : '' }} {{ $activity->state ? $activity->state : '' }} {{ ($activity->latitude && $activity->longitude) ? '(' . distanceWithMyIP2ProviderPlace($my_location->ip, $activity->latitude, $activity->longitude, 'K', 2) . ' km' . ')' : '' }}
+                        <div class="activity-address">{{ $activity->address ? $activity->address : '' }}</div>
+                         {{ ($activity->latitude && $activity->longitude) ? '(' . distanceWithMyIP2ProviderPlace($my_location->ip, $activity->latitude, $activity->longitude, 'K', 2) . ' km' . ')' : '' }}
                       </div>
                     </div>
                     <div class="col-4">
@@ -270,7 +271,8 @@
                     '</div>' + 
                     '<div class="row activity-detail-place">' + 
                       '<i class="material-icons" style="color: #a845ff">location_on</i>' + 
-                      (activities[i].address ? activities[i].address : '') + (activities[i].city ? activities[i].city : '') + (activities[i].state ? activities[i].state : '') + ((activities[i].latitude && activities[i].longitude) ? '(' + distance(my_location.latitude, my_location.longitude, activities[i].latitude, activities[i].longitude, 'K', 2) + ' km)' : '') + 
+                      '<div class="activity-address">' + (activities[i].address ? activities[i].address : '') + '</div>' + 
+                      ((activities[i].latitude && activities[i].longitude) ? '(' + distance(my_location.latitude, my_location.longitude, activities[i].latitude, activities[i].longitude, 'K', 2) + ' km)' : '') + 
                     '</div>' + 
                   '</div>' + 
                   '<div class="col-4">' + 

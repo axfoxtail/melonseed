@@ -217,9 +217,10 @@
                 border-radius: 15px;
                 background-color: $primary-color;
                 color: $white;
-                padding: 2px 8px;
+                padding: 3px 8px;
                 margin: 3px;
                 font-size: 15px;
+                height: 25px;
               }
             }
 
@@ -243,6 +244,12 @@
               line-height: normal;
               letter-spacing: normal;
               color: #595959;
+            }
+
+            .activity-address {
+              width: 250px;
+              height: 25px;
+              overflow: hidden;
             }
           }
         }

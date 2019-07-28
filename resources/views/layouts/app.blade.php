@@ -207,21 +207,5 @@
       document.getElementsByClassName('btn-login')[0].click();
     }
   </script>
-  <script type="text/javascript">
-    // function reloadAtivityTypes(index) {
-    //   console.log('aa==', index);
-    //   $('.activity-type-option').css('display', 'none');
-    //   if (index) {
-    //     $('.category_' + index).css('display', 'block');
-    //   }
-    // }
-    
-    // reloadAtivityTypes(0);
-
-    // $(document).on('change', 'select.filter-category', function(e) {
-    //   console.log('bb==', $(this).val());
-    //   reloadAtivityTypes($(this).val());
-    // });
-  </script>
 </body>
 </html>

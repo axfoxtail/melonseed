@@ -17,6 +17,10 @@
 
 Route::get('/', 'HomeController@index');
 
+Route::get('test', function() {
+	return view('test');
+});
+
 Auth::routes(['verify' => true]);
 
 Route::get('activities', 'ProviderController@index');

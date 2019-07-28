@@ -79,6 +79,7 @@
     $('.btn-signup-submit').on('click', function(e) {
       e.preventDefault();
       
+      $('#signupModal .modal-content').LoadingOverlay("show");
       $.ajax({
         type: 'POST',
         url: base_url + '/register',
@@ -91,11 +92,13 @@
         },
         success: function(data) {
           // console.log('res-success: ', data);
+          $('#signupModal .modal-content').LoadingOverlay("hide");
           toastr.success('Successfully logged in.');
           document.location.reload();
         },
         error: function(err) {
           console.log('err: ', err);
+          $('#signupModal .modal-content').LoadingOverlay("hide");
           if(err.status) {
             if(err.responseJSON.errors.username) {
               for (var j=0; j<err.responseJSON.errors.username.length; j++) {

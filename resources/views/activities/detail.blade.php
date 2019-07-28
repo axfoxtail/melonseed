@@ -25,8 +25,9 @@
               </div>
               <div class="row activity-place mb-3">
                 {{ $activity->address ? $activity->address : '' }}
-                {{ $activity->city ? $activity->city : '' }}
-                {{ $activity->state ? $activity->state : '' }}
+              </div>
+              <div class="row activity-place mb-3">
+                Ages: {{ displayAgeRange($activity->age_range) }}
               </div>
               <div class="mb-3">
                 <div class="row activity-contact mb-2">Contact : </div>
@@ -70,7 +71,8 @@
       </div>
       <div class="row">
         <div class="col-12">
-          <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=381+King+St+W+Toronto" width="100%" height="379" frameborder="0" style="border:0" allowfullscreen></iframe>
+          <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q={{ $activity->latitude . ',' . $activity->longitude }}" width="100%" height="379" frameborder="0" style="border:0" allowfullscreen></iframe>
+          <!-- <div id="maps-detail" class="w-100" style="height: 400px"></div> -->
         </div>
       </div>
     </div>
@@ -138,6 +140,17 @@
           // make a server call here
       }
     });
+  </script>
+  <script type="text/javascript">
+    var my_lat = "{{ getArrLocationFromIP($ip)->latitude }}";
+    my_lat = parseFloat(my_lat);
+    var my_lng = "{{ getArrLocationFromIP($ip)->longitude }}";
+    my_lng = parseFloat(my_lng);
+    var provider_lat = "{{ $activity->latitude }}";
+    provider_lat = parseFloat(provider_lat);
+    var provider_lng = "{{ $activity->longitude }}";
+    provider_lng = parseFloat(provider_lng);
+
   </script>
   @endpush
 

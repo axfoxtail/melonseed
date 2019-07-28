@@ -57,6 +57,7 @@
     $('.btn-login-submit').on('click', function(e) {
       e.preventDefault();
       
+      $('#loginModal .modal-content').LoadingOverlay("show");
       $.ajax({
         type: 'POST',
         url: base_url + '/login',
@@ -66,11 +67,13 @@
         },
         success: function(data) {
           // console.log('res-success: ', data);
+          $('#loginModal .modal-content').LoadingOverlay("hide");
           toastr.success('Successfully logged in.');
           document.location.reload();
         },
         error: function(err) {
           console.log('err: ', err);
+          $('#loginModal .modal-content').LoadingOverlay("hide");
           if(err.status) {
             if(err.responseJSON.errors.email) {
               for (var i=0; i<err.responseJSON.errors.email.length; i++) {

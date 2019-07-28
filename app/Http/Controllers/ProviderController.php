@@ -136,33 +136,21 @@ class ProviderController extends Controller
     $profile_dir = 'public/providers/' . Auth::user()->id . '/profiles';
 
     if ($request->ajax()) {
-      
-
-      // $validator = Validator::make($request->all(), [
-      //   'business_name' => ['required', 'string', 'max:255'],
-      //   'category' => ['required'],
-      //   'activity_type' => ['required'],
-      //   'location' => ['required'],
-      //   'address' => ['required', 'string'],
-      //   'state' => ['required', 'string'],
-      //   'city' => ['required', 'string'],
-      //   'zip_code' => ['required'],
-      //   'phone_number' => ['required'],
-      //   'website' => ['required'],
-      //   'age_min' => ['required'],
-      //   'age_max' => ['required'],
-      //   'activity_description' => ['required'],
-      //   'thumbnail_img' => ['required', 'mimes:jpeg,bmp,png'],
-      //   'profile_img' => ['required', 'mimes:jpeg,bmp,png'],
-      // ]);
-      // // dd($validator->errors()->messages()['business_name']);
-      // if ($validator->fails()) {
-      //   return redirect()->back()->with(['errors' => $validator->errors()]);
-      // }
 
       $provider = Provider::find(Auth::user()->id);
 
       if ($provider) {
+        $validator = Validator::make($request->all(), [
+          'business_name' => ['required', 'string', 'max:255'],
+          'category' => ['required'],
+          'activity_type' => ['required'],
+          'location' => ['required'],
+          'address' => ['required', 'string'],
+          'phone_number' => ['required'],
+          'website' => ['required'],
+          'age_range' => ['required'],
+          'activity_description' => ['required'],
+        ]);
 
         if ($request->file('thumbnail_img') && $provider->thumbnail_img && Storage::exists($thumbnail_dir . '/' . basename($provider->thumbnail_img))) {
           Storage::delete($thumbnail_dir . '/' . basename($provider->thumbnail_img));
@@ -170,9 +158,24 @@ class ProviderController extends Controller
         if ($request->file('profile_img') && $provider->profile_img && Storage::exists($profile_dir . '/' . basename($provider->profile_img))) {
           Storage::delete($profile_dir . '/' . basename($provider->profile_img));
         }
+        $results['message'] = 'Successfully updated.';
       } else {
+        $validator = Validator::make($request->all(), [
+          'business_name' => ['required', 'string', 'max:255'],
+          'category' => ['required'],
+          'activity_type' => ['required'],
+          'location' => ['required'],
+          'address' => ['required', 'string'],
+          'phone_number' => ['required'],
+          'website' => ['required'],
+          'age_range' => ['required'],
+          'activity_description' => ['required'],
+          'thumbnail_img' => ['required', 'mimes:jpeg,bmp,png'],
+          'profile_img' => ['required', 'mimes:jpeg,bmp,png'],
+        ]);
 
         $provider = new Provider();
+        $results['message'] = 'Successfully saved.';
       }
 
       $address = $request->input('address');
@@ -208,7 +211,15 @@ class ProviderController extends Controller
       
       $provider->save();
 
-      return response()->json(['message' => 'Successfully saved!', 'formatted_address' => $provider->address], 200);
+      if ($validator->fails()) {
+        $results['status'] = false;
+        $results['errors'] = $validator->errors();
+      } else {
+        $results['status'] = true;
+        $results['formatted_address'] = $provider->address;
+      }
+
+      return response()->json($results, 200);
     }
 
     else if ($request->file('banner_img')) {
@@ -242,12 +253,14 @@ class ProviderController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function show($id)
+  public function show(Request $request, $id)
   {
-    //
+    $ip = $request->ip();
+    // $ip = '104.247.132.212';
+    $ip = '162.253.129.2';
     $activity = Provider::with('reviews')->find($id);
     if ($activity) {
-      return view('activities.detail', ['activity' => $activity]);
+      return view('activities.detail', ['ip' => $ip, 'activity' => $activity]);
     } else {
       return redirect()->back();
     }

@@ -591,10 +591,69 @@
         processData: false,
         contentType: false,
         success: function(data) {
+          // console.log('res-success: ', data);
           $.LoadingOverlay("hide");
-          toastr.success(data.message);
-          $('input[name=address]').val(data.formatted_address);
-          console.log('res-success: ', data);
+          if (data.status) {
+            toastr.success(data.message);
+            $('input[name=address]').val(data.formatted_address);
+          } else {
+            if (data.errors.business_name) {
+              for (var i = 0; i < data.errors.business_name.length; i++) {
+                toastr.error(data.errors.business_name[i]);
+              }
+            }
+            if (data.errors.category) {
+              for (var i = 0; i < data.errors.category.length; i++) {
+                toastr.error(data.errors.category[i]);
+              }
+            }
+            if (data.errors.activity_type) {
+              for (var i = 0; i < data.errors.activity_type.length; i++) {
+                toastr.error(data.errors.activity_type[i]);
+              }
+            }
+            if (data.errors.location) {
+              for (var i = 0; i < data.errors.location.length; i++) {
+                toastr.error(data.errors.location[i]);
+              }
+            }
+            if (data.errors.address) {
+              for (var i = 0; i < data.errors.address.length; i++) {
+                toastr.error(data.errors.address[i]);
+              }
+            }
+            if (data.errors.phone_number) {
+              for (var i = 0; i < data.errors.phone_number.length; i++) {
+                toastr.error(data.errors.phone_number[i]);
+              }
+            }
+            if (data.errors.website) {
+              for (var i = 0; i < data.errors.website.length; i++) {
+                toastr.error(data.errors.website[i]);
+              }
+            }
+            if (data.errors.age_range) {
+              for (var i = 0; i < data.errors.age_range.length; i++) {
+                toastr.error(data.errors.age_range[i]);
+              }
+            }
+            if (data.errors.activity_description) {
+              for (var i = 0; i < data.errors.activity_description.length; i++) {
+                toastr.error(data.errors.activity_description[i]);
+              }
+            }
+            if (data.errors.thumbnail_img) {
+              for (var i = 0; i < data.errors.thumbnail_img.length; i++) {
+                toastr.error(data.errors.thumbnail_img[i]);
+              }
+            }
+            if (data.errors.profile_img) {
+              for (var i = 0; i < data.errors.profile_img.length; i++) {
+                toastr.error(data.errors.profile_img[i]);
+              }
+            }
+          }
+
         },
         error: function(err) {
           $.LoadingOverlay("hide");
