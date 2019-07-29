@@ -26,7 +26,7 @@ class ProviderController extends Controller
     $activity_types = ActivityType::all();
     $ip = $request->ip();
     // $ip = '104.247.132.212';
-    $ip = '162.253.129.2';
+    // $ip = '162.253.129.2';
     $location_list = getCityListFromIP($ip);
 
     if ($request->ajax()) {
@@ -111,7 +111,7 @@ class ProviderController extends Controller
   {
     $ip = $request->ip();
     // $ip = '104.247.132.212';
-    $ip = '162.253.129.2';
+    // $ip = '162.253.129.2';
 
     $categories = Category::all();
     $activity_types = ActivityType::all();
@@ -258,7 +258,7 @@ class ProviderController extends Controller
   {
     $ip = $request->ip();
     // $ip = '104.247.132.212';
-    $ip = '162.253.129.2';
+    // $ip = '162.253.129.2';
     $my_location = getArrLocationFromIP($ip);
     $activity = Provider::with('reviews')->where('permission', '=', '1')->find($id);
     if ($activity) {
