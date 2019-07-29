@@ -32,6 +32,7 @@ class ProviderController extends Controller
     if ($request->ajax()) {
 
       $activities_query = Provider::with('activityTypes');
+        $activities_query->where('permission', '=', '1');
       if ($request->category) {
         $activities_query->where('category', '=', $request->category);
       }
@@ -70,7 +71,7 @@ class ProviderController extends Controller
       $_activities = [];
       if ($request->distance && intval($request->distance) < 101) {
         foreach ($activities as $activity) {
-          if ($activity->latitude && $activity->latitude && (distanceWithMyIP2ProviderPlace($ip, $activity->latitude, $activity->longitude, 'K', 2) <= intval($request->distance))) {
+          if ($activity->latitude && $activity->longitude && (distanceWithMyIP2ProviderPlace($ip, $activity->latitude, $activity->longitude, 'K', 2) <= intval($request->distance))) {
             $_activities.push($activity);
           }
         }
@@ -95,7 +96,7 @@ class ProviderController extends Controller
         'longitude' => getArrLocationFromIP($ip)->longitude
       );
 
-      $activities = Provider::all();
+      $activities = Provider::where('permission', '=', '1')->get();
 
       return view('activities.index', ['my_location' => $my_location, 'activities' => $activities, 'categories' => $categories, 'activity_types' => $activity_types, 'location_list' => $location_list]);
     }
@@ -259,7 +260,7 @@ class ProviderController extends Controller
     // $ip = '104.247.132.212';
     $ip = '162.253.129.2';
     $my_location = getArrLocationFromIP($ip);
-    $activity = Provider::with('reviews')->find($id);
+    $activity = Provider::with('reviews')->where('permission', '=', '1')->find($id);
     if ($activity) {
       if ($request->ajax()) {
         $results['my_location'] = $my_location;
@@ -340,8 +341,8 @@ class ProviderController extends Controller
   }
 
   public function reviews() {
-    $provider = Provider::where('user_id', '=', Auth::user()->id)->first();
-    $reviews = Review::where('provider_id', '=', $provider->id)->get();
+    $provider = Provider::where('user_id', '=', Auth::user()->id)->where('permission', '=', '1')->first();
+    $reviews = Review::where('provider_id', '=', $provider->id)->where('permission', '=', '1')->get();
 
     return view('providers.reviews', ['reviews' => $reviews]);
   }

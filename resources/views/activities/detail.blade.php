@@ -181,7 +181,7 @@
       }
     }
   </script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&callback=initMap"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAP_API_KEY', 'AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc') }}&callback=initMap"></script>
   @endpush
 
 @endsection

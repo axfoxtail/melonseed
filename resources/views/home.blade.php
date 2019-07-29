@@ -107,7 +107,8 @@
     <div class="container">
       <h2 class="mb-4">Classes in your area</h2>
       <div class="row">
-        <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q={{ getCurrentLatLonKeywardFromIP($ip) }}" width="100%" height="532" frameborder="0" style="border:0" allowfullscreen></iframe>
+        <!-- <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q={{ getCurrentLatLonKeywardFromIP($ip) }}" width="100%" height="532" frameborder="0" style="border:0" allowfullscreen></iframe> -->
+        <div id="maps-home" class="w-100" style="height: 550px"></div>
       </div>
     </div>
   </section>
@@ -145,8 +146,53 @@
     // Google Map
 
   </script>
+  <script type="text/javascript">
+    // initMap();
+    function initMap() {
+      $.ajax({
+        type: 'GET', 
+        url: window.location.href, 
+        data: {},
+        processData: false, 
+        contentType: false, 
+        success: function(data) {
+          var locations = [
+            ['My position', parseFloat(data.my_location.latitude), parseFloat(data.my_location.longitude)]
+          ];
+          for (var i = 0; i < data.providers.length; i++) {
+            if (data.providers[i].latitude && data.providers[i].longitude) {
+              locations.push([
+                data.providers[i].business_name, parseFloat(data.providers[i].latitude), parseFloat(data.providers[i].longitude)
+              ]);
+            }
+          }
+          drawMap(locations);
+        }, 
+        error: function(err) {
+          console.log('err: ', err);
+        }
+      });
+    }
 
+    function drawMap(locations) {
 
+      var map = new google.maps.Map(document.getElementById('maps-home'), {
+        center: new google.maps.LatLng(locations[0][1], locations[0][2]), 
+        zoom: 7
+      });
+
+      var marker;
+      
+      for (var i = 0; i < locations.length; i++) {
+        marker = new google.maps.Marker({
+          position: new google.maps.LatLng(locations[i][1], locations[i][2]), 
+          map: map, 
+          title: locations[i][0]
+        });
+      }
+    }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAP_API_KEY', 'AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc') }}&callback=initMap"></script>
   @endpush
 
 @endsection

@@ -356,8 +356,6 @@
         return dist;
       }
     }
-
-
   </script>
   @endpush
 
