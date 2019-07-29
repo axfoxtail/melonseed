@@ -110,7 +110,7 @@
 
 
     <!-- The Notification Section -->
-    @include('layouts.notification-section')
+    <!-- include('layouts.notification-section') -->
     
 
     <main class="mx-0 h-100">

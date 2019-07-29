@@ -26,14 +26,44 @@
   <script type="text/javascript">
     // Google Map
     function myMap() {
+      var locations = [
+        ['Los Angeles', 34.052235, -118.243683],
+        ['Santa Monica', 34.024212, -118.496475],
+        ['Redondo Beach', 33.849182, -118.388405],
+        ['Newport Beach', 33.628342, -117.927933],
+        ['Long Beach', 33.770050, -118.193739]
+      ];
+
+      var center = new google.maps.LatLng(locations[0][1], locations[0][2]);
+      
       var mapProp= {
-        center:new google.maps.LatLng(51.508742,-0.120850),
-        zoom:5,
+        center: center,
+        zoom:10,
       };
+      
       var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+      var marker = new google.maps.Marker({
+        position: center,
+        map: map
+      });
+
+      var infowindow = new google.maps.InfoWindow({});
+
+      var marker, count;
+
+      for (count = 0; count < locations.length; count++) {
+        marker = new google.maps.Marker({
+          position: new google.maps.LatLng(locations[count][1], locations[count][2]),
+          map: map,
+          title: locations[count][0]
+        });
+      }
+
+
     }
   </script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGanHZo00WmfUKCi46LYXqc_kXkYbsklk&callback=myMap"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&callback=myMap"></script>
 
   @endpush
 

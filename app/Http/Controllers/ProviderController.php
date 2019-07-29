@@ -258,9 +258,16 @@ class ProviderController extends Controller
     $ip = $request->ip();
     // $ip = '104.247.132.212';
     $ip = '162.253.129.2';
+    $my_location = getArrLocationFromIP($ip);
     $activity = Provider::with('reviews')->find($id);
     if ($activity) {
-      return view('activities.detail', ['ip' => $ip, 'activity' => $activity]);
+      if ($request->ajax()) {
+        $results['my_location'] = $my_location;
+        $results['activity'] = $activity;
+        return response()->json($results, 200);
+      } else {
+        return view('activities.detail', ['my_location' => $my_location, 'activity' => $activity]);
+      }
     } else {
       return redirect()->back();
     }

@@ -71,8 +71,8 @@
       </div>
       <div class="row">
         <div class="col-12">
-          <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q={{ $activity->latitude . ',' . $activity->longitude }}" width="100%" height="379" frameborder="0" style="border:0" allowfullscreen></iframe>
-          <!-- <div id="maps-detail" class="w-100" style="height: 400px"></div> -->
+          <!-- <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q={{ $activity->latitude . ',' . $activity->longitude }}" width="100%" height="379" frameborder="0" style="border:0" allowfullscreen></iframe> -->
+          <div id="maps-detail" class="w-100" style="height: 400px"></div>
         </div>
       </div>
     </div>
@@ -142,16 +142,46 @@
     });
   </script>
   <script type="text/javascript">
-    var my_lat = "{{ getArrLocationFromIP($ip)->latitude }}";
-    my_lat = parseFloat(my_lat);
-    var my_lng = "{{ getArrLocationFromIP($ip)->longitude }}";
-    my_lng = parseFloat(my_lng);
-    var provider_lat = "{{ $activity->latitude }}";
-    provider_lat = parseFloat(provider_lat);
-    var provider_lng = "{{ $activity->longitude }}";
-    provider_lng = parseFloat(provider_lng);
+    // initMap();
+    function initMap() {
+      $.ajax({
+        type: 'GET', 
+        url: window.location.href, 
+        data: {},
+        processData: false, 
+        contentType: false, 
+        success: function(data) {
+          var locations = [
+            ['My position', parseFloat(data.my_location.latitude), parseFloat(data.my_location.longitude)],
+            [data.activity.business_name, parseFloat(data.activity.latitude), parseFloat(data.activity.longitude)]
+          ];
+          drawMap(locations);
+        }, 
+        error: function(err) {
+          console.log('err: ', err);
+        }
+      });
+    }
 
+    function drawMap(locations) {
+
+      var map = new google.maps.Map(document.getElementById('maps-detail'), {
+        center: new google.maps.LatLng(locations[0][1], locations[0][2]), 
+        zoom: 7
+      });
+
+      var marker;
+      
+      for (var i = 0; i < locations.length; i++) {
+        marker = new google.maps.Marker({
+          position: new google.maps.LatLng(locations[i][1], locations[i][2]), 
+          map: map, 
+          title: locations[i][0]
+        });
+      }
+    }
   </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&callback=initMap"></script>
   @endpush
 
 @endsection
