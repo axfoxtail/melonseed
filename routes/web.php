@@ -21,7 +21,7 @@ Route::get('test', function() {
 	return view('test');
 });
 
-Auth::routes(['verify' => false]);
+Auth::routes(['verify' => true]);
 
 Route::get('activities', 'ProviderController@index');
 Route::get('activities/{id}', 'ProviderController@show');
