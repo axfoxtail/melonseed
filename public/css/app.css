@@ -10666,6 +10666,34 @@ a.text-dark:focus {
   color: #000000;
 }
 
+.navbar .toggle-nav {
+  font-size: 30px;
+  position: absolute;
+  right: 20px;
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .navbar .toggle-nav {
+    display: block;
+  }
+}
+
+.navbar .nav-container {
+  position: absolute;
+  right: 20px;
+}
+
+.navbar .nav-container.nav-web {
+  display: block;
+}
+
+@media (max-width: 767px) {
+  .navbar .nav-container.nav-web {
+    display: none;
+  }
+}
+
 .navbar .nav-container a.active {
   text-decoration: none;
   color: #a845ff;
@@ -10830,6 +10858,99 @@ a.text-dark:focus {
   font-size: 14px;
   font-weight: 100;
   color: #30cbb7;
+}
+
+.nav-mob {
+  display: none;
+  position: fixed;
+  top: 68px;
+  right: -100%;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+}
+
+@media (max-width: 767px) {
+  .nav-mob {
+    display: block;
+  }
+}
+
+.nav-mob.open {
+  right: 0;
+}
+
+.nav-mob.open .nav-container {
+  transition: right 0.3s;
+  right: 0;
+}
+
+.nav-mob .overlay {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: #00000080;
+}
+
+.nav-mob .nav-container {
+  position: absolute;
+  top: 0px;
+  right: -300px;
+  width: 300px;
+  height: 100%;
+  transition: right 0.3s;
+  background-color: #ffffff;
+}
+
+.nav-mob .nav-container .inline-flex .nav-btn {
+  width: 115px;
+  height: 45px;
+  font-size: 20px;
+}
+
+.nav-mob .nav-container .mob-nav-item {
+  display: block;
+  padding: 5px 20px;
+}
+
+.nav-mob .nav-container .mob-nav-item a {
+  font-size: 25px;
+  color: #000000;
+  text-decoration: none;
+}
+
+.nav-mob .nav-container .mob-nav-item .sub-nav a {
+  display: block;
+  font-size: 20px;
+  padding-left: 20px;
+}
+
+.nav-mob .nav-container .nav-user-info {
+  display: inline-flex;
+  width: 100%;
+  border-bottom: solid 1px #393939;
+}
+
+.nav-mob .nav-container .nav-user-info .avatar-wrapper {
+  padding: 10px;
+}
+
+.nav-mob .nav-container .nav-user-info .avatar-wrapper .avatar-img {
+  width: 60px;
+}
+
+.nav-mob .nav-container .nav-user-info .user-info-wrapper {
+  padding: 10px;
+}
+
+.nav-mob .nav-container .nav-user-info .user-info-wrapper .user-info-name {
+  font-size: 20px;
+}
+
+.nav-mob .nav-container .nav-user-info .user-info-wrapper .user-info-role {
+  font-size: 17px;
 }
 
 .masthead {
@@ -11651,6 +11772,7 @@ body {
 
 main {
   min-height: -webkit-fill-available;
+  top: 68px;
 }
 
 .btn {

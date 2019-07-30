@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('content')
+@section('contents')
 
   <!-- Area | Location -->
   <section class="area-classes text-center bg-white">
@@ -15,13 +15,13 @@
   
   
   <!-- Styles -->
-  @push('contentCss')
+  @push('contentsCss')
   <link rel="stylesheet" href="{{ asset('plugins/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css') }}">
   <link rel="stylesheet" href="{{ asset('plugins/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css') }}">
   @endpush
 
   <!-- Scripts -->
-  @push('contentJs')
+  @push('contentsJs')
   <script src="{{ asset('plugins/OwlCarousel2-2.3.4/dist/owl.carousel.min.js') }}"></script>
   <script type="text/javascript">
     // Google Map

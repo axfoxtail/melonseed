@@ -43,11 +43,11 @@
   <div id="app">
     <!-- Navigation -->
     <nav class="navbar navbar-light bg-white static-top">
-      <div class="container">
+      <div class="container position-relative">
         <div class="logo-container">
           <a class="navbar-brand" href="/">{{ config('app.name', 'Melonseed') }}</a>
         </div>
-        <div class="nav-container">
+        <div class="nav-container nav-web">
           <div class="btn dropdown">
             <a class="btn-activities {{Auth::check() ? 'dropbtn' : ''}}" href="{{ url('/activities') }}">Activities</a>
             @if(Auth::check())
@@ -95,7 +95,7 @@
                 </div>
               </a>
               <div class="dropdown-menu">
-                <a class="dropdown-item" href="/profile/{{ Auth::user()->id }}/edit">Profile</a>
+                <a class="dropdown-item" href="/profile/{{ Auth::user()->id }}/edit">My Profile</a>
                 <a class="dropdown-item" 
                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Log Out</a>
               </div>
@@ -105,8 +105,73 @@
             </form>
           @endguest
         </div>
+        <a class="toggle-nav"><i class="fa fa-bars"></i></a>
       </div>
     </nav>
+    <!-- mobile nav -->
+    <div class="nav-mob">
+      <div class="overlay"></div>
+      <div class="nav-container">
+        @guest
+          <div class="inline-flex p-3">
+            <a class="btn nav-btn btn-accent-border btn-login" data-toggle="modal" data-target="#loginModal">Log In</a>
+            <a class="btn nav-btn btn-accent btn-signup float-right" data-toggle="modal" data-target="#signupModal">Sign Up</a>
+          </div>
+        @else
+          <div class="btn nav-user-info">
+            <div class="avatar-wrapper">
+              <img class="avatar-img img-thumbnail img-rounded" src="{{ asset(Auth::user()->avatar) }}">
+            </div>
+            <div class="user-info-wrapper">
+              <div class="user-info-name">
+                {{ Auth::user()->first_name ? Auth::user()->first_name : Auth::user()->username }}
+              </div>
+              <div class="user-info-role">
+                @switch(Auth::user()->role)
+                  @case ('admin')
+                    Administrator
+                    @break
+                  @case ('provider')
+                    Provider
+                    @break
+                  @default
+                    Parent
+                @endswitch
+              </div>
+            </div>
+          </div>
+        @endguest
+        
+        @if(Auth::check())
+        <div class="mob-nav-item">
+          <a class="" href="/profile/{{ Auth::user()->id }}/edit">My Profile</a>
+        </div>
+        @endif
+        <div class="mob-nav-item">
+          <a class="btn-activities {{Auth::check() ? 'dropbtn' : ''}}" href="{{ url('/activities') }}">Activities</a>
+          @if(Auth::check())
+            <div class="sub-nav">
+              <a href="{{ url('/dashboard') }}">My Activity</a>
+              <a href="{{ url('/activities') }}">Find Activities</a>
+            </div>
+          @endif
+        </div>
+        <div class="mob-nav-item">
+          <a class="btn-activities {{Auth::check() ? 'dropbtn' : ''}}" href="{{ url('/providers') }}">Providers</a>
+          @if(Auth::check() && Auth::user()->role != 'parent')
+            <div class="sub-nav">
+              <a href="{{ url('/providers/profile') }}">Profile</a>
+              <a href="{{ url('/providers/reviews') }}">Reviews</a>
+            </div>
+          @endif
+        </div>
+        @if(Auth::check())
+        <div class="mob-nav-item">
+          <a class="" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Log Out</a>
+        </div>
+        @endif
+      </div>
+    </div>
 
 
     <!-- The Notification Section -->
@@ -121,18 +186,18 @@
     <footer class="footer bg-dark">
       <div class="container">
         <div class="row">
-          <div class="col-lg-7 h-100 text-center text-lg-left my-auto display-inline">
-            <div class="col-4 logo-container">
+          <div class="col-lg-7 col-md-12 col-sm-12 col-12 h-100 text-center text-lg-left my-auto display-inline">
+            <div class="col-lg-4 col-md-4 logo-container">
               <a class="navbar-brand" href="{{ url('/') }}">Melonseed</a>
             </div>
-            <div class="col-4">
+            <div class="col-lg-4 col-md-4">
               <a class="btn btn-footer-nav" href="{{ url('/providers/profile') }}">Providers</a>
             </div>
-            <div class="col-4">
+            <div class="col-lg-4 col-md-4">
               <a class="btn btn-footer-nav" href="{{ url('/activities') }}">Activities</a>
             </div>
           </div>
-          <div class="col-lg-5 h-100 text-center text-lg-right my-auto">
+          <div class="col-lg-5 col-md-12 col-sm-12 col-12 h-100 text-center text-lg-right my-auto">
             <ul class="list-inline mb-0">
               @guest
                 <li class="list-inline-item">
@@ -206,6 +271,14 @@
       document.getElementById('signupModal').click();
       document.getElementsByClassName('btn-login')[0].click();
     }
+
+    $(document).on('click', '.toggle-nav', function(e) {
+      $('.nav-mob').toggleClass('open');
+    });
+    
+    $(document).on('click', '.nav-mob .overlay', function(e) {
+      $('.nav-mob').removeClass('open');
+    });
   </script>
 </body>
 </html>

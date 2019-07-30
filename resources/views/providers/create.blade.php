@@ -589,7 +589,8 @@
         url: base_url + '/providers',
         data: fd,
         processData: false,
-        contentType: false,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
         success: function(data) {
           // console.log('res-success: ', data);
           $.LoadingOverlay("hide");
