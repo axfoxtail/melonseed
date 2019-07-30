@@ -141,17 +141,17 @@ class ProviderController extends Controller
       $provider = Provider::find(Auth::user()->id);
 
       if ($provider) {
-        $validator = Validator::make($request->all(), [
-          'business_name' => ['required', 'string', 'max:255'],
-          'category' => ['required'],
-          'activity_type' => ['required'],
-          'location' => ['required'],
-          'address' => ['required', 'string'],
-          'phone_number' => ['required'],
-          'website' => ['required'],
-          'age_range' => ['required'],
-          'activity_description' => ['required'],
-        ]);
+        // $validator = Validator::make($request->all(), [
+        //   'business_name' => ['required', 'string', 'max:255'],
+        //   'category' => ['required'],
+        //   'activity_type' => ['required'],
+        //   'location' => ['required'],
+        //   'address' => ['required', 'string'],
+        //   'phone_number' => ['required'],
+        //   'website' => ['required'],
+        //   'age_range' => ['required'],
+        //   'activity_description' => ['required'],
+        // ]);
 
         if ($request->file('thumbnail_img') && $provider->thumbnail_img && Storage::exists($thumbnail_dir . '/' . basename($provider->thumbnail_img))) {
           Storage::delete($thumbnail_dir . '/' . basename($provider->thumbnail_img));
@@ -161,19 +161,19 @@ class ProviderController extends Controller
         }
         $results['message'] = 'Successfully updated.';
       } else {
-        $validator = Validator::make($request->all(), [
-          'business_name' => ['required', 'string', 'max:255'],
-          'category' => ['required'],
-          'activity_type' => ['required'],
-          'location' => ['required'],
-          'address' => ['required', 'string'],
-          'phone_number' => ['required'],
-          'website' => ['required'],
-          'age_range' => ['required'],
-          'activity_description' => ['required'],
-          'thumbnail_img' => ['required', 'mimes:jpeg,bmp,png'],
-          'profile_img' => ['required', 'mimes:jpeg,bmp,png'],
-        ]);
+        // $validator = Validator::make($request->all(), [
+        //   'business_name' => ['required', 'string', 'max:255'],
+        //   'category' => ['required'],
+        //   'activity_type' => ['required'],
+        //   'location' => ['required'],
+        //   'address' => ['required', 'string'],
+        //   'phone_number' => ['required'],
+        //   'website' => ['required'],
+        //   'age_range' => ['required'],
+        //   'activity_description' => ['required'],
+        //   'thumbnail_img' => ['required', 'mimes:jpeg,bmp,png'],
+        //   'profile_img' => ['required', 'mimes:jpeg,bmp,png'],
+        // ]);
 
         $provider = new Provider();
         $results['message'] = 'Successfully saved.';
@@ -212,13 +212,13 @@ class ProviderController extends Controller
       
       $provider->save();
 
-      if ($validator->fails()) {
-        $results['status'] = false;
-        $results['errors'] = $validator->errors();
-      } else {
+      // if ($validator->fails()) {
+      //   $results['status'] = false;
+      //   $results['errors'] = $validator->errors();
+      // } else {
         $results['status'] = true;
         $results['formatted_address'] = $provider->address;
-      }
+      // }
 
       return response()->json($results, 200);
     }

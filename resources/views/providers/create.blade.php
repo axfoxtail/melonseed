@@ -590,7 +590,6 @@
         data: fd,
         processData: false,
         contentType: false,
-        dataType: false,
         success: function(data) {
           // console.log('res-success: ', data);
           $.LoadingOverlay("hide");
