@@ -69,8 +69,8 @@
                     </div>
                     <div class="form-group">
                       <label for="role">User Role</label>
-                      <input type="text" class="form-control" name="is_provider" disabled value="{{ Auth::user()->is_provider ? 'Provider' : 'Parents' }}" placeholder="" >
-                      <input type="text" class="hidden" name="is_provider" hidden value="{{ Auth::user()->is_provider }}" placeholder="" >
+                      <input type="text" class="form-control" name="" disabled value="{{ Auth::user()->role }}" placeholder="" >
+                      <input type="text" class="hidden" name="role" hidden value="{{ Auth::user()->role }}" placeholder="" >
                     </div>
                     <div class="form-group">
                       <label for="current password">Current Password</label>

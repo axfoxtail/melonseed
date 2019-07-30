@@ -40,7 +40,7 @@ class UserController extends Controller
         'last_name' => 'required|max:25',
         'email' => 'required|email|max:50',
         'phone_number' => 'required|numeric|digits_between:7, 15',
-        'is_provider' => 'required',
+        'role' => 'required',
         'current_password' => 'required',
       ]);
 
