@@ -89,7 +89,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-7 order-lg-2 text-white showcase-img">
-          <img src="{{ asset('img/melonseed-home-02.png') }}">
+          <img class="mt-5" src="{{ asset('img/melonseed-home-02.png') }}">
         </div>
         <div class="col-lg-5 order-lg-1 my-auto showcase-text">
           <h2>What we do <br> “Helping busy parents”</h2>
@@ -108,7 +108,7 @@
       <h2 class="mb-4">Classes in your area</h2>
       <div class="row">
         <!-- <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q={{ getCurrentLatLonKeywardFromIP($ip) }}" width="100%" height="532" frameborder="0" style="border:0" allowfullscreen></iframe> -->
-        <div id="maps-home" class="w-100" style="height: 550px"></div>
+        <div id="maps-home" class="w-100"></div>
       </div>
     </div>
   </section>
@@ -131,7 +131,7 @@
         loop: true,
         dots: false,
         responsive: {
-          0:{ items:2.5, margin: 5, nav:true },
+          0:{ items:2.5, margin: 5, nav:false },
           425:{ items:3, margin: 5, nav:false },
           768:{ items:3.5, margin: 10, nav:false, },
           1024:{ items: 4.5, margin: 10, nav:false, },

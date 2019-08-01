@@ -11,36 +11,36 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-8">
+        <div class="col-md-8 col-sm-12 col-12">
           <div class="row">
-            <div class="col-6 detail-img-wrapper">
+            <div class="col-sm-6 col-12 detail-img-wrapper">
               <img class="detail-img" src="{{ $activity->profile_img ? $activity->profile_img : asset('img/defaults/profile.png') }}">
             </div>
-            <div class="col-6">
-              <div class="row activity-title mb-3">
+            <div class="col-sm-6 col-12">
+              <div class="row activity-title mb-3 mob-m-0">
                 {{ $activity->business_name ? $activity->business_name : 'business_name' }}
                 @if(count($activity->reviews))
                 <div class="read-rating" data-rating="{{ calcTotalRate($activity->reviews) }}"></div>
                 @endif
               </div>
-              <div class="row activity-place mb-3">
+              <div class="row activity-place mb-3 mob-m-0">
                 {{ $activity->address ? $activity->address : '' }}
               </div>
-              <div class="row activity-place mb-3">
+              <div class="row activity-place mb-3 mob-m-0">
                 Ages: {{ displayAgeRange($activity->age_range) }}
               </div>
               <div class="mb-3">
-                <div class="row activity-contact mb-2">Contact : </div>
-                <div class="row activity-contact-info mb-2">
+                <div class="row activity-contact mb-2 mob-m-0">Contact : </div>
+                <div class="row activity-contact-info mb-2 mob-m-0">
                   {{ $activity->phone_number ? $activity->phone_number : 'phone_number' }}
                 </div>
-                <div class="row activity-contact-info mb-2">
+                <div class="row activity-contact-info mb-2 mob-m-0">
                   <a href="{{ $activity->website ? $activity->website : '/' }}" target="_blank">
                     {{ $activity->website ? $activity->website : 'website' }}
                   </a>
                 </div>
               </div>
-              <div class="row">
+              <div class="row mob-m-0">
                 <a disabled class="btn btn-visit btn-primary" data-toggle="modal" data-target="{{ Auth::check() ? '#enrollingModal' : '#loginModal' }}">Now Enrolling</a>
               </div>
             </div>
@@ -54,8 +54,8 @@
             </div>
           </div>
         </div>
-        <div class="col-4">
-          <iframe class="ad-sidebar" src="" width="246" height="651"></iframe>
+        <div class="col-md-4 mob-hidden">
+          <iframe class="ad-sidebar" src="" style="width: 100%; max-width: 245px; height: 650px;"></iframe>
         </div>
       </div>
     </div>

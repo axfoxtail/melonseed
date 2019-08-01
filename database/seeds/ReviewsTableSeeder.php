@@ -14,7 +14,7 @@ class ReviewsTableSeeder extends Seeder
         DB::table('reviews')->insert(['provider_id' => 1, 
                         'content' => 'The activities were great.', 
                         'rate' => 5.0, 
-                        'rated_by' => 3, 
+                        'rated_by' => 8, 
                         'permission' => '0', 
                     ]);
     }

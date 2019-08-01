@@ -42,7 +42,7 @@
 <body class="bg-white">
   <div id="app">
     <!-- Navigation -->
-    <nav class="navbar navbar-light bg-white static-top">
+    <nav class="navbar navbar-light bg-white fixed-top">
       <div class="container position-relative">
         <div class="logo-container">
           <a class="navbar-brand" href="/">{{ config('app.name', 'Melonseed') }}</a>
@@ -173,12 +173,11 @@
       </div>
     </div>
 
+      
 
-    <!-- The Notification Section -->
-    <!-- include('layouts.notification-section') -->
-    
-
-    <main class="mx-0 h-100">
+    <main class="mx-0 h-100" style="margin-top: 68px;">
+      <!-- The Notification Section -->
+      @include('layouts.notification-section')
       @yield('content')
     </main>
 
@@ -186,7 +185,7 @@
     <footer class="footer bg-dark">
       <div class="container">
         <div class="row">
-          <div class="col-lg-7 col-md-12 col-sm-12 col-12 h-100 text-center text-lg-left my-auto display-inline">
+          <div class="col-lg-7 col-md-12 col-sm-12 col-12 h-100 text-center text-lg-left my-auto display-inline mob-hidden">
             <div class="col-lg-4 col-md-4 logo-container">
               <a class="navbar-brand" href="{{ url('/') }}">Melonseed</a>
             </div>

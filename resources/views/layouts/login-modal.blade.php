@@ -5,15 +5,13 @@
         <!-- Nav tabs -->
         <ul class="nav nav-tabs">
           <li class="nav-item" style="width: 100%;">
-            <a class="nav-link" data-toggle="tab" href="#login-form-container">Log In</a>
+            <a class="nav-link" data-toggle="tab" href="#login-form-container" style="background-color: #a845ff; color: #fff;">Log In</a>
           </li>
         </ul>
         <!-- Tab panes -->
         <div class="tab-content">
           <div id="login-form-container" class="container tab-pane active"><br>
-            <form id="login-form">
-              @csrf
-
+            <div id="login-form" class="login-signup-form">
               <!-- <input type="text" class="hidden" hidden name="is_provider" value="0" required> -->
               <div class="form-group">
                 <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
@@ -25,7 +23,7 @@
               </div>
               <div class="row">
                 <div class="col-6 pt-2">
-                <input type="button" class="form-control btn btn-primary btn-login-submit" value="Login">
+                  <input type="button" class="form-control btn btn-primary btn-login-submit" value="Login">
                 </div>
                 <div class="col-6 hidden" style="display: none;">
                   <button class="btn btn-outline-dark btn-google-login">
@@ -46,7 +44,7 @@
                   </button>
                 </div>
               </div>
-            </form>
+            </div>
           </div>
         </div>
       </div>
@@ -54,9 +52,29 @@
   </div>
 
   <script type="text/javascript">
+    $(document).on('keyup', '#login-form input', function(e) {
+      e.preventDefault();
+      if (e.keyCode == '13') {
+        if (!$('#login-form input[name=email]').val()) {
+          $('#login-form input[name=email]').focus();
+          return;
+        }
+        if (!$('#login-form input[name=password]').val()) {
+          $('#login-form input[name=password]').focus();
+          return;
+        }
+        if ($('#login-form input[name=email]').val() && $('#login-form input[name=password]').val()) {
+          submitLoginForm();
+        }
+      }
+    });
+
     $('.btn-login-submit').on('click', function(e) {
       e.preventDefault();
-      
+      submitLoginForm();
+    });
+
+    function submitLoginForm() {
       $('#loginModal .modal-content').LoadingOverlay("show");
       $.ajax({
         type: 'POST',
@@ -83,6 +101,5 @@
           }
         }
       });
-
-    })
+    }
   </script>

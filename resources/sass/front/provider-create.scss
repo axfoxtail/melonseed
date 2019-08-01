@@ -1,212 +1,206 @@
 .provider-create-container {
-
-  .banner-upload-form {
-    width: 100%;
-
-    .banner-container {
-      position: relative;
-      width: 100%;
-      height: 315px;
-
-      &:hover .banner-overlay {
-        display: block;
-      }
-
-      .banner-img {
-        position: absolute;
+    .banner-upload-form {
         width: 100%;
-        height: 315px;
-        overflow: hidden;
-      }
-
-      .banner-overlay {
-        position: absolute;
+        .banner-container {
+            position: relative;
+            width: 100%;
+            height: 315px;
+            @media (max-width: $breakpoint-md - 1px) {
+                height: 200px;
+            }
+            &:hover .banner-overlay {
+                display: block;
+            }
+            .banner-img {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+            }
+            .banner-overlay {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background-color: $primary-color;
+                opacity: 0.5;
+                display: none;
+                .btn-upload-banner {
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                    width: 80px;
+                    height: 80px;
+                    border-top-left-radius: 100%;
+                    border-top: solid 2px $white;
+                    border-left: solid 2px $white;
+                    border-opacity: 0.5;
+                    color: $white;
+                    font-size: 35px;
+                    padding: 15px 0 0 15px;
+                    background-color: $accent-color;
+                    cursor: pointer;
+                }
+            }
+        }
+        .banner-btn-wrapper {
+            width: 100%;
+            text-align: right;
+            height: 45px;
+            padding-top: 4px;
+        }
+    }
+    .provider-create-form {
         width: 100%;
-        height: 100%;
-        background-color: $primary-color;
-        opacity: 0.5;
-        display: none;
-
-        .btn-upload-banner {
-          position: absolute;
-          bottom: 0;
-          right: 0;
-          width: 80px;
-          height: 80px;
-          border-top-left-radius: 100%;
-          border-top: solid 2px $white;
-          border-left: solid 2px $white;
-          border-opacity: 0.5;
-          color: $white;
-          font-size: 35px;
-          padding: 15px 0 0 15px;
-          background-color: $accent-color;
-          cursor: pointer;
+        &>.row {
+            @media (max-width: $breakpoint-md - 1px) {
+                margin: 0px;
+            }
         }
-      }
-    }
-
-    .banner-btn-wrapper {
-      width: 100%;
-      text-align: right;
-      height: 45px;
-      padding-top: 4px;
-    }
-  }
-
-
-  .provider-create-form {
-    width: 100%;
-
-    h2 {
-      font-family: Montserrat;
-      font-size: 40px;
-      font-weight: 500;
-      font-style: normal;
-      font-stretch: normal;
-      line-height: normal;
-      letter-spacing: normal;
-      color: #262626;
-    }
-
-    select, .btn {
-      height: 48px;
-      border-width: 2px;
-      font-family: Lato;
-      font-size: 19px;
-      font-weight: normal;
-      font-style: normal;
-      font-stretch: normal;
-      line-height: normal;
-      letter-spacing: normal;
-      color: $dark !important;
-    }
-
-    label {
-      font-family: Montserrat;
-      font-size: 30px;
-      font-weight: normal;
-      font-style: normal;
-      font-stretch: normal;
-      line-height: normal;
-      letter-spacing: normal;
-      text-align: justify;
-      color: #262626;
-
-      .h2 {
-        font-size: 40px;
-      }
-    }
-
-    input {
-      height: 48px;
-      font-size: 19px;
-
-      &.h2 {
-        height: 60px;
-        font-size: 30px;
-      }
-    }
-
-    .upload-gird-wrapper {
-      display: grid;
-      grid-template-columns: 90px 90px 90px 90px 90px 90px;
-      grid-gap: 10px 10px;
-
-      .upload-item {
-        width: 90px;
-        height: 90px;
-        border-radius: 8px;
-        border: solid 1px #393939;
-        cursor: pointer;
-
-        &:hover {
-          background-color: $primary-color;
-          color: $white;
+        h2 {
+            font-family: Montserrat;
+            font-size: 40px;
+            font-weight: 500;
+            font-style: normal;
+            font-stretch: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            color: #262626;
         }
-
-        &:active {
-          background-color: $primary-color;
-          opacity: 0.7;
-          color: $white;
+        select,
+        .btn {
+            height: 48px;
+            border-width: 2px;
+            font-family: Lato;
+            font-size: 19px;
+            font-weight: normal;
+            font-style: normal;
+            font-stretch: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            color: $dark !important;
         }
-
-        .plus-item-group {
-          padding: 20px 0;
-
-          .plus-icon {
-              font-size: 25px;
-            line-height: 20px;
+        label {
+            font-family: Montserrat;
+            font-size: 30px;
+            font-weight: normal;
+            font-style: normal;
+            font-stretch: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            text-align: justify;
+            color: #262626;
+            @media (max-width: $breakpoint-sm - 1px) {
+                font-size: 25px;
+            }
+            .h2 {
+                font-size: 40px;
+            }
+        }
+        input {
+            height: 48px;
+            font-size: 19px;
+            &.h2 {
+                height: 60px;
+                font-size: 30px;
+                @media (max-width: $breakpoint-sm - 1px) {
+                    font-size: 25px;
+                }
+            }
+        }
+        .upload-gird-wrapper {
+            display: grid;
+            grid-template-columns: 90px 90px 90px 90px 90px 90px;
+            grid-gap: 10px 10px;
+            .upload-item {
+                width: 90px;
+                height: 90px;
+                border-radius: 8px;
+                border: solid 1px #393939;
+                cursor: pointer;
+                &:hover {
+                    background-color: $primary-color;
+                    color: $white;
+                }
+                &:active {
+                    background-color: $primary-color;
+                    opacity: 0.7;
+                    color: $white;
+                }
+                .plus-item-group {
+                    padding: 20px 0;
+                    .plus-icon {
+                        font-size: 25px;
+                        line-height: 20px;
+                        text-align: center;
+                    }
+                    .plus-text {
+                        text-align: center;
+                    }
+                }
+            }
+        }
+        .thumbnail-img-wrapper {
+            position: relative;
+            width: 90px;
+            height: 45px;
+            border: solid 2px $primary-color;
+            border-radius: 5px;
+            cursor: pointer;
+            .thumbnail-img {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+            }
+            &:hover .btn-hover {
+                display: block;
+            }
+        }
+        .profile-img-wrapper {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            border: solid 2px $primary-color;
+            border-radius: 5px;
+            cursor: pointer;
+            .profile-img {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+            }
+            &:hover .btn-hover {
+                display: block;
+            }
+        }
+        .btn-hover {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: none;
+            .btn-overlay {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background-color: $primary-color;
+                opacity: 0.5;
+            }
+        }
+        .img-btn-txt {
+            position: absolute;
+            width: 100%;
             text-align: center;
-          }
-          
-          .plus-text {
-              text-align: center;
-          }
+            top: 50%;
+            transform: translateY(-50%);
+            color: $white;
         }
-      }
+        .schedule-pattern-row {
+            display: inline-flex;
+            @media (max-width: $breakpoint-sm - 1px) {
+                display: block;
+                input[type=time] {
+                    font-size: 15px;
+                    padding: 5px;
+                }
+            }
+        }
     }
-
-    .thumbnail-img-wrapper {
-      position: relative;
-      width: 90px;
-      height: 45px;
-      border: solid 2px $primary-color;
-      border-radius: 5px;
-      cursor: pointer;
-
-      .thumbnail-img {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-      }
-
-      &:hover .btn-hover {
-        display: block;
-      }
-    }
-
-    .profile-img-wrapper {
-      position: relative;
-      width: 150px;
-      height: 150px;
-      border: solid 2px $primary-color;
-      border-radius: 5px;
-      cursor: pointer;
-
-      .profile-img {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-      }
-      
-      &:hover .btn-hover {
-        display: block;
-      }
-    }
-
-    .btn-hover {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      display: none;
-      
-      .btn-overlay {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background-color: $primary-color;
-        opacity: 0.5;
-      }
-    }
-
-    .img-btn-txt {
-      position: absolute;
-      width: 100%;
-      text-align: center;
-      top: 50%;
-      transform: translateY(-50%);
-      color: $white;
-    }
-  }
 }

@@ -1,15 +1,25 @@
 .masthead {
-  background-position: center -400px !important;
+  max-height: 656px;
+  height: 100vw;
+  min-height: 320px;
+  // background-position: center -400px !important;
   .search-prefix {
     position: absolute;
     color: #495057;
     font-size: 30px;
     font-weight: 600;
     padding: 20px;
+    @media (max-width: $breakpoint-md - 1px) {
+      display: none;
+    }
   }
   .search-location {
     padding-left: 245px;
     padding-right: 60px;
+    @media (max-width: $breakpoint-md - 1px) {
+      padding-left: 20px;
+      padding-right: 30px;
+    }
   }
   .search-subfix {
     color: #30cbb7;
@@ -17,6 +27,40 @@
     position: absolute;
     right: 0;
     padding: 20px 5px;
+    @media (max-width: $breakpoint-md - 1px) {
+      padding: 10px 5px;
+      font-size: 30px;
+    }
+  }
+  input {
+    height: 89px;
+    border-radius: 8px;
+    font-family: Montserrat;
+    font-size: 30px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    padding: 20px;
+    @media (max-width: $breakpoint-md - 1px) {
+      height: 50px;
+      font-size: 25px;
+      padding: 10px;
+    }
+
+    &[type=submit] {
+      width: calc(100% - 5px);
+      margin-left: 5px;
+      @media (max-width: $breakpoint-md - 1px) {
+        margin-left: 0
+      }
+      
+      &:hover {
+        background-color: $primary-color;
+        border-color: $primary-color;
+      }
+    }
   }
 }
 
@@ -35,6 +79,9 @@
     line-height: normal;
     letter-spacing: normal;
     color: #262626;
+    @media (max-width: $breakpoint-sm - 1px) {
+      font-size: 25px;
+    }
   }
 
   .owl-carousel {
@@ -173,4 +220,11 @@
     color: #262626;
   }
   
+}
+
+#maps-home {
+  height: 550px;
+  @media (max-width: $breakpoint-sm - 1px) {
+    height: 500px;
+  }
 }

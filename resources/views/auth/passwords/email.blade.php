@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container mt-5">
-  <div class="row justify-content-center">
+  <div class="row justify-content-center pt-3">
     <div class="col-md-8">
       <div class="card">
         <div class="card-header bg-accent text-white h3">{{ __('Reset Password') }}</div>

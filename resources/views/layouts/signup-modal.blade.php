@@ -11,7 +11,7 @@
         <!-- Tab panes -->
         <div class="tab-content">
           <div id="" class="container tab-pane active"><br>
-            <form id="signup-form">
+            <div id="signup-form" class="login-signup-form">
               @csrf
 
               <div class="form-group">
@@ -45,11 +45,11 @@
                 <!-- <label for="pwd">Forgot Password?</label> -->
               </div>
               <div class="row mt-5">
-                <div class="col-6">
+                <div class="col-12 col-sm-6 col-md-6 col-lg-6">
                   <label class="h5">Are you parents or provider?</label>
                   <input type="checkbox" id="is_provider" name="is_provider" data-toggle="toggle" data-on="Privider" data-off="Parents" data-onstyle="accent" data-offstyle="primary" data-width="100%" data-height="40" value="1">
                 </div>
-                <div class="col-6">
+                <div class="col-12 col-sm-6 col-md-6 col-lg-6">
                   <input type="button" class="form-control btn btn-primary btn-signup-submit" value="Sign up">
                 </div>
               </div>
@@ -68,7 +68,7 @@
                   <a href="">Terms</a>.
                 </div>
               </div>
-            </form>
+            </div>
           </div>
         </div>
       </div>
@@ -76,9 +76,37 @@
   </div>
 
   <script type="text/javascript">
+    $(document).on('keyup', '#signup-form input', function(e) {
+      e.preventDefault();
+      if (e.keyCode == '13') {
+        if (!$('#signup-form input[name=username]').val()) {
+          $('#signup-form input[name=username]').focus();
+          return;
+        }
+        if (!$('#signup-form input[name=email]').val()) {
+          $('#signup-form input[name=email]').focus();
+          return;
+        }
+        if (!$('#signup-form input[name=password]').val()) {
+          $('#signup-form input[name=password]').focus();
+          return;
+        }
+        if (!$('#signup-form input[name=password_confirmation]').val()) {
+          $('#signup-form input[name=password_confirmation]').focus();
+          return;
+        }
+        if ($('#signup-form input[name=username]').val() && $('#signup-form input[name=email]').val() && $('#signup-form input[name=password]').val() && $('#signup-form input[name=password_confirmation]').val()) {
+          submitSignupForm();
+        }
+      }
+    });
+
     $('.btn-signup-submit').on('click', function(e) {
       e.preventDefault();
-      
+      submitSignupForm();
+    });
+
+    function submitSignupForm() {
       $('#signupModal .modal-content').LoadingOverlay("show");
       $.ajax({
         type: 'POST',
@@ -121,6 +149,5 @@
           }
         }
       });
-
-    })
+    }
   </script>

@@ -4,7 +4,7 @@
 
   <!-- Provider Create -->
   <section class="provider-create-container my-5">
-    <div class="container">
+    <div class="container mt-3">
       <div class="row">
         <form class="banner-upload-form" id="banner-upload-form" action="{{ url('/providers') }}" method="POST" enctype="multipart/form-data">
           @csrf
@@ -24,46 +24,39 @@
         <form class="provider-create-form" id="provider-create-form">
           <input type="text" class="form-control hidden" hidden name="user_id" value="{{ Auth::user()->id }}">
           <input type="text" class="form-control hidden" hidden name="slug" value="{{ Auth::user()->slug }}">
-          <div class="row mt-2 mb-5">
-            <div class="col-8">
+          <div class="row mt-2 mb-3">
+            <div class="col-md-8 col-sm-10 col-12">
               <div class="form-group">
                 <label for="businessName h2">Provider Business Name</label>
                 <input type="text" class="form-control h2" name="business_name" value="{{ $provider->business_name }}" aria-describedby="" placeholder="Backwoods Ski School">
               </div>
             </div>
           </div>
-          <div class="row select-group mb-5">
-            <div class="col-3">
+          <div class="row select-group mb-3">
+            <div class="col-lg-3 col-md-4 col-sm-4 col-12 mb-2">
               <select class="selectpicker filter-category" data-live-search="false" data-style="btn btn-primary-border" name="category" title="Category">
                 @foreach($categories as $category)
                 <option value="{{ $category->id }}" data-tokens="{{ $category->id }}" {{ $provider->category == $category->id ? 'selected' : '' }}>{{ $category->category_name }}</option>
                 @endforeach
               </select>
             </div>
-            <div class="col-3">
+            <div class="col-lg-3 col-md-4 col-sm-4 col-12 mb-2">
               <select class="selectpicker filter-activity-type" data-live-search="true" data-style="btn btn-primary-border" name="activity_type" title="Activity Type">
                 @foreach($activity_types as $activity_type)
                 <option class="activity-type-option category_{{ $activity_type->category_id }}" data-tokens="{{ $activity_type->id }}" value="{{ $activity_type->id }}" {{ $provider->activity_type == $activity_type->id ? 'selected' : '' }}>{{ $activity_type->activity_type_name }}</option>
                 @endforeach
               </select>
             </div>
-            <div class="col-3">
+            <div class="col-lg-3 col-md-4 col-sm-4 col-12 mb-2">
               <select class="selectpicker filter-location" data-live-search="true" data-style="btn btn-primary-border" name="location" title=" {{ $provider->location ? $provider->location : 'Location' }}">
                 @foreach(getCityListFromIP($ip) as $location)
                   <option data-tokens="{{ $location->city }}" value="{{ $location->city }}" {{ $provider->location == $location->city ? 'selected' : '' }}>{{ $location->city }}</option>
                 @endforeach
               </select>
             </div>
-            <!-- <div class="col-3">
-              <select class="selectpicker filter-distance" data-live-search="true" data-style="btn btn-primary-border" name="distance" title="Distance">
-                <option data-tokens="ketchup mustard">Education</option>
-                <option data-tokens="mustard">Course</option>
-                <option data-tokens="frosting">Presentation</option>
-              </select>
-            </div> -->
           </div>
           <div class="row">
-            <div class="col-8">
+            <div class="col-md-10 col-sm-12 col-12">
               <div class="row">
                 <div class="col-12">
                   <div class="form-group">
@@ -71,19 +64,19 @@
                     <input type="text" class="form-control" name="address" value="{{ $provider->address }}" aria-describedby="address" placeholder="Address">
                   </div>
                 </div>
-                <!-- <div class="col-4">
+                <!-- <div class="col-md-4 col-sm-4 col-4">
                   <div class="form-group">
                     <label for="state">State</label>
                     <input type="text" class="form-control" name="state" value="{{ $provider->state ? $provider->state : getArrLocationFromIP($ip)->region_name }}" aria-describedby="state" placeholder="State">
                   </div>
                 </div>
-                <div class="col-4">
+                <div class="col-md-4 col-sm-4 col-4">
                   <div class="form-group">
                     <label for="city">City</label>
                     <input type="text" class="form-control" name="city" value="{{ $provider->city ? $provider->city : getArrLocationFromIP($ip)->city }}" aria-describedby="city" placeholder="City">
                   </div>
                 </div>
-                <div class="col-4">
+                <div class="col-md-4 col-sm-4 col-4">
                   <div class="form-group">
                     <label for="zip_code">Zip Code</label>
                     <input type="text" class="form-control" name="zip_code" value="{{ $provider->zip_code ? $provider->zip_code : getArrLocationFromIP($ip)->zip }}" aria-describedby="zip_code" placeholder="Zip Code">
@@ -91,7 +84,7 @@
                 </div> -->
               </div>
               <div class="row">
-                <div class="col-7">
+                <div class="col-md-7 col-sm-12 col-12">
                   <div class="form-group">
                     <label for="phoneNumber">Contact Info</label>
                     <input type="text" class="form-control" name="phone_number" value="{{ $provider->phone_number }}" aria-describedby="phoneNumber" placeholder="Company Phone Number(###) ### - ####">
@@ -101,10 +94,10 @@
                     <input type="text" class="form-control" name="website" value="{{ $provider->website }}" aria-describedby="website" placeholder="https://www.yoursite.com">
                   </div>
                 </div>
-                <div class="col-5">
+                <div class="col-md-5 col-sm-12 col-12">
                   <h3 class="card-title">Age Range</h3>
                   <div class="row">
-                    <div class="col-6 pr-0">
+                    <div class="col-md-6 col-sm-6 col-6 pr-0">
                       <div class="custom-control custom-checkbox mb-3">
                         <input type="checkbox" class="custom-control-input age-checkbox" id="age1" name="age1" value="age1" {{ checkAvailableAge($provider->age_range, 'age1') ? 'checked' : '' }}>
                         <label class="custom-control-label available-age-label" style="font-size: 22px;" for="age1">1-6 months</label>
@@ -122,7 +115,7 @@
                         <label class="custom-control-label available-age-label" style="font-size: 22px;" for="age7">14-17 Years</label>
                       </div>
                     </div>
-                    <div class="col-6 pr-0">
+                    <div class="col-md-6 col-sm-6 col-6 pr-0">
                       <div class="custom-control custom-checkbox mb-3">
                         <input type="checkbox" class="custom-control-input age-checkbox" id="age2" name="age2" value="age2" {{ checkAvailableAge($provider->age_range, 'age2') ? 'checked' : '' }}>
                         <label class="custom-control-label available-age-label" style="font-size: 22px;" for="age2">1 Year</label>
@@ -144,13 +137,13 @@
                 </div>
               </div>
               <div class="row">
-                <div class="form-group col-12">
+                <div class="form-group col-md-10 col-sm-12 col-12">
                   <label for="activityDescription">Activity Description</label>
                   <textarea class="form-control" name="activity_description" rows="7" placeholder="Write a description of your activity, under 500 words">{{ $provider->activity_description }}</textarea>
                 </div>
               </div>
               <div class="row">
-                <div class="form-group col-12">
+                <div class="form-group col-log-8 col-md-10 col-sm-12 col-12">
                   <label for="photos">Upload Images</label>
                   <!-- <div class="upload-gird-wrapper"> -->
                     <!-- <div class="upload-item">
@@ -161,7 +154,7 @@
                     </div> -->
                   <!-- </div> -->
                   <div class="row">
-                    <div class="col-6">
+                    <div class="col-md-6 col-sm-6 col-12 mb-3">
                       <label style="font-size: 17px;">Thumbnail Image</label>
                       <input type="file" class="hidden" hidden name="thumbnail_img">
                       <div class="thumbnail-img-wrapper">
@@ -173,7 +166,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col-6">
+                    <div class="col-md-6 col-sm-6 col-12">
                       <label style="font-size: 17px;">Profile Image</label>
                       <input type="file" class="hidden" hidden name="profile_img">
                       <div class="profile-img-wrapper">
@@ -190,127 +183,127 @@
               </div>
               <div class="row my-5">
                 <h3 class="ml-3">Schedule - Pattern</h3>
-                <div class="col-12 d-inline-flex my-2">
-                  <div class="col-3">
+                <div class="col-lg-10 col-md-12 col-sm-12 col-12 schedule-pattern-row my-2">
+                  <div class="col-md-3 col-sm-3 col-12">
                     <div class="custom-control custom-checkbox">
                       <input type="checkbox" class="custom-control-input available-day" id="monday" name="monday" value="1" {{ ($provider->business_hours && getAvailableDayObj($provider->business_hours, 'monday')->available) ? 'checked' : '' }}>
                       <label class="custom-control-label" for="monday">Monday</label>
                     </div>
                   </div>
-                  <div class="col-9 d-inline-flex">
-                    <div class="col-6 form-inline">
+                  <div class="col-md-9 col-sm-9 col-12 d-inline-flex">
+                    <div class="col-md-6 col-sm-6 col-6 form-inline">
                       <label style="font-size: 20px;">Start time</label>
                       <input class="form-control available-time ml-2" type="time" name="monday_start" value="{{ ($provider->business_hours && getAvailableDayObj($provider->business_hours, 'monday')->start) ? getAvailableDayObj($provider->business_hours, 'monday')->start : '10:00' }}">
                     </div>
-                    <div class="col-6 form-inline">
+                    <div class="col-md-6 col-sm-6 col-6 form-inline">
                       <label style="font-size: 20px;">End time</label>
                       <input class="form-control available-time ml-2" type="time" name="monday_end" value="{{ ($provider->business_hours && getAvailableDayObj($provider->business_hours, 'monday')->end) ? getAvailableDayObj($provider->business_hours, 'monday')->end : '17:00' }}">
                     </div>
                   </div>
                 </div>
-                <div class="col-12 d-inline-flex my-2">
-                  <div class="col-3">
+                <div class="col-lg-10 col-md-12 col-sm-12 col-12 schedule-pattern-row my-2">
+                  <div class="col-md-3 col-sm-3 col-12">
                     <div class="custom-control custom-checkbox">
                       <input type="checkbox" class="custom-control-input available-day" id="tuesday" name="tuesday" value="1" {{ ($provider->business_hours && getAvailableDayObj($provider->business_hours, 'tuesday')->available) ? 'checked' : '' }}>
                       <label class="custom-control-label" for="tuesday">Tuesday</label>
                     </div>
                   </div>
-                  <div class="col-9 d-inline-flex">
-                    <div class="col-6 form-inline">
+                  <div class="col-md-9 col-sm-9 col-12 d-inline-flex">
+                    <div class="col-md-6 col-sm-6 col-6 form-inline">
                       <label style="font-size: 20px;">Start time</label>
                       <input class="form-control available-time ml-2" type="time" name="tuesday_start" value="{{ ($provider->business_hours && getAvailableDayObj($provider->business_hours, 'tuesday')->start) ? getAvailableDayObj($provider->business_hours, 'tuesday')->start : '10:00' }}">
                     </div>
-                    <div class="col-6 form-inline">
+                    <div class="col-md-6 col-sm-6 col-6 form-inline">
                       <label style="font-size: 20px;">End time</label>
                       <input class="form-control available-time ml-2" type="time" name="tuesday_end" value="{{ ($provider->business_hours && getAvailableDayObj($provider->business_hours, 'tuesday')->end) ? getAvailableDayObj($provider->business_hours, 'tuesday')->end : '17:00' }}">
                     </div>
                   </div>
                 </div>
-                <div class="col-12 d-inline-flex my-2">
-                  <div class="col-3">
+                <div class="col-lg-10 col-md-12 col-sm-12 col-12 schedule-pattern-row my-2">
+                  <div class="col-md-3 col-sm-3 col-12">
                     <div class="custom-control custom-checkbox">
                       <input type="checkbox" class="custom-control-input available-day" id="wednesday" name="wednesday" value="1" {{ ($provider->business_hours && getAvailableDayObj($provider->business_hours, 'wednesday')->available) ? 'checked' : '' }}>
                       <label class="custom-control-label" for="wednesday">Wednesday</label>
                     </div>
                   </div>
-                  <div class="col-9 d-inline-flex">
-                    <div class="col-6 form-inline">
+                  <div class="col-md-9 col-sm-9 col-12 d-inline-flex">
+                    <div class="col-md-6 col-sm-6 col-6 form-inline">
                       <label style="font-size: 20px;">Start time</label>
                       <input class="form-control available-time ml-2" type="time" name="wednesday_start" value="{{ ($provider->business_hours && getAvailableDayObj($provider->business_hours, 'wednesday')->start) ? getAvailableDayObj($provider->business_hours, 'wednesday')->start : '10:00' }}">
                     </div>
-                    <div class="col-6 form-inline">
+                    <div class="col-md-6 col-sm-6 col-6 form-inline">
                       <label style="font-size: 20px;">End time</label>
                       <input class="form-control available-time ml-2" type="time" name="wednesday_end" value="{{ ($provider->business_hours && getAvailableDayObj($provider->business_hours, 'wednesday')->end) ? getAvailableDayObj($provider->business_hours, 'wednesday')->end : '17:00' }}">
                     </div>
                   </div>
                 </div>
-                <div class="col-12 d-inline-flex my-2">
-                  <div class="col-3">
+                <div class="col-lg-10 col-md-12 col-sm-12 col-12 schedule-pattern-row my-2">
+                  <div class="col-md-3 col-sm-3 col-12">
                     <div class="custom-control custom-checkbox">
                       <input type="checkbox" class="custom-control-input available-day" id="thursday" name="thursday" value="1" {{ ($provider->business_hours && getAvailableDayObj($provider->business_hours, 'thursday')->available) ? 'checked' : '' }}>
                       <label class="custom-control-label" for="thursday">Thursday</label>
                     </div>
                   </div>
-                  <div class="col-9 d-inline-flex">
-                    <div class="col-6 form-inline">
+                  <div class="col-md-9 col-sm-9 col-12 d-inline-flex">
+                    <div class="col-md-6 col-sm-6 col-6 form-inline">
                       <label style="font-size: 20px;">Start time</label>
                       <input class="form-control available-time ml-2" type="time" name="thursday_start" value="{{ ($provider->business_hours && getAvailableDayObj($provider->business_hours, 'thursday')->start) ? getAvailableDayObj($provider->business_hours, 'thursday')->start : '10:00' }}">
                     </div>
-                    <div class="col-6 form-inline">
+                    <div class="col-md-6 col-sm-6 col-6 form-inline">
                       <label style="font-size: 20px;">End time</label>
                       <input class="form-control available-time ml-2" type="time" name="thursday_end" value="{{ ($provider->business_hours && getAvailableDayObj($provider->business_hours, 'thursday')->end) ? getAvailableDayObj($provider->business_hours, 'thursday')->end : '17:00' }}">
                     </div>
                   </div>
                 </div>
-                <div class="col-12 d-inline-flex my-2">
-                  <div class="col-3">
+                <div class="col-lg-10 col-md-12 col-sm-12 col-12 schedule-pattern-row my-2">
+                  <div class="col-md-3 col-sm-3 col-12">
                     <div class="custom-control custom-checkbox">
                       <input type="checkbox" class="custom-control-input available-day" id="friday" name="friday" value="1" {{ ($provider->business_hours && getAvailableDayObj($provider->business_hours, 'friday')->available) ? 'checked' : '' }}>
                       <label class="custom-control-label" for="friday">Friday</label>
                     </div>
                   </div>
-                  <div class="col-9 d-inline-flex">
-                    <div class="col-6 form-inline">
+                  <div class="col-md-9 col-sm-9 col-12 d-inline-flex">
+                    <div class="col-md-6 col-sm-6 col-6 form-inline">
                       <label style="font-size: 20px;">Start time</label>
                       <input class="form-control available-time ml-2" type="time" name="friday_start" value="{{ ($provider->business_hours && getAvailableDayObj($provider->business_hours, 'friday')->start) ? getAvailableDayObj($provider->business_hours, 'friday')->start : '10:00' }}">
                     </div>
-                    <div class="col-6 form-inline">
+                    <div class="col-md-6 col-sm-6 col-6 form-inline">
                       <label style="font-size: 20px;">End time</label>
                       <input class="form-control available-time ml-2" type="time" name="friday_end" value="{{ ($provider->business_hours && getAvailableDayObj($provider->business_hours, 'friday')->end) ? getAvailableDayObj($provider->business_hours, 'friday')->end : '17:00' }}">
                     </div>
                   </div>
                 </div>
-                <div class="col-12 d-inline-flex my-2">
-                  <div class="col-3">
+                <div class="col-lg-10 col-md-12 col-sm-12 col-12 schedule-pattern-row my-2">
+                  <div class="col-md-3 col-sm-3 col-12">
                     <div class="custom-control custom-checkbox">
                       <input type="checkbox" class="custom-control-input available-day" id="saturday" name="saturday" value="1" {{ ($provider->business_hours && getAvailableDayObj($provider->business_hours, 'saturday')->available) ? 'checked' : '' }}>
                       <label class="custom-control-label" for="saturday">Saturday</label>
                     </div>
                   </div>
-                  <div class="col-9 d-inline-flex">
-                    <div class="col-6 form-inline">
+                  <div class="col-md-9 col-sm-9 col-12 d-inline-flex">
+                    <div class="col-md-6 col-sm-6 col-6 form-inline">
                       <label style="font-size: 20px;">Start time</label>
                       <input class="form-control available-time ml-2" type="time" name="saturday_start" value="{{ ($provider->business_hours && getAvailableDayObj($provider->business_hours, 'saturday')->start) ? getAvailableDayObj($provider->business_hours, 'saturday')->start : '10:00' }}">
                     </div>
-                    <div class="col-6 form-inline">
+                    <div class="col-md-6 col-sm-6 col-6 form-inline">
                       <label style="font-size: 20px;">End time</label>
                       <input class="form-control available-time ml-2" type="time" name="saturday_end" value="{{ ($provider->business_hours && getAvailableDayObj($provider->business_hours, 'saturday')->end) ? getAvailableDayObj($provider->business_hours, 'saturday')->end : '17:00' }}">
                     </div>
                   </div>
                 </div>
-                <div class="col-12 d-inline-flex my-2">
-                  <div class="col-3">
+                <div class="col-lg-10 col-md-12 col-sm-12 col-12 schedule-pattern-row my-2">
+                  <div class="col-md-3 col-sm-3 col-12">
                     <div class="custom-control custom-checkbox">
                       <input type="checkbox" class="custom-control-input available-day" id="sunday" name="sunday" value="1" {{ ($provider->business_hours && getAvailableDayObj($provider->business_hours, 'sunday')->available) ? 'checked' : '' }}>
                       <label class="custom-control-label" for="sunday">Sunday</label>
                     </div>
                   </div>
-                  <div class="col-9 d-inline-flex">
-                    <div class="col-6 form-inline">
+                  <div class="col-md-9 col-sm-9 col-12 d-inline-flex">
+                    <div class="col-md-6 col-sm-6 col-6 form-inline">
                       <label style="font-size: 20px;">Start time</label>
                       <input class="form-control available-time ml-2" type="time" name="sunday_start" value="{{ ($provider->business_hours && getAvailableDayObj($provider->business_hours, 'sunday')->start) ? getAvailableDayObj($provider->business_hours, 'sunday')->start : '10:00' }}">
                     </div>
-                    <div class="col-6 form-inline">
+                    <div class="col-md-6 col-sm-6 col-6 form-inline">
                       <label style="font-size: 20px;">End time</label>
                       <input class="form-control available-time ml-2" type="time" name="sunday_end" value="{{ ($provider->business_hours && getAvailableDayObj($provider->business_hours, 'sunday')->end) ? getAvailableDayObj($provider->business_hours, 'sunday')->end : '17:00' }}">
                     </div>
@@ -318,7 +311,7 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col-8">
+                <div class="col-md-8 col-sm-10 col-12">
                   <div class="form-group">
                     <label for="socialMediaLinks">Social Media Links</label>
                     <input type="text" class="form-control" name="social_media_links" value="{{ $provider->social_media_links }}" aria-describedby="socialMediaLinks" placeholder="Add your Social tag(/{{ config('app.name') ? config('app.name') : 'melonseed' }})">
@@ -326,7 +319,7 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col-8">
+                <div class="col-md-8 col-sm-10 col-12">
                   <div class="form-group">
                     <input type="button" class="btn btn-primary btn-lg btn-submit-provider-form" value="{{ $provider->business_name ? 'Update' : 'Save' }}" style="color: #fff !important;">
                   </div>

@@ -1,259 +1,223 @@
 .activities-container {
-
-  .filter-sidebar {
-
-    h3 {
-      font-family: Montserrat;
-    }
-
-    .filter-location {
-
-      &::after {
-      display: none;
-      }
-
-      .btn-primary-border {
-        height: 53px;
-        border-width: 2px;
-        font-family: BrownPro;
-        font-size: 25px;
-        font-weight: normal;
-        font-style: normal;
-        font-stretch: normal;
-        line-height: normal;
-        letter-spacing: normal;
-        color: #4c4c4c !important;
-        padding-left: 5px;
-      }
-    }
-
-    .arrow.down {
-      position: absolute;
-    }
-
-    .filter-range {
-      width: 100%;
-      padding-left: 20px;
-      padding-right: 20px;
-
-      input[type=range] {
-        &::before, &::after {
-        content: "";
-        display: inline-block;
-        width: 15px;
-        height: 15px;
-        border-radius: 7.5px;
-        background-color: $white;
-        border: solid 2px $primary-color;
-        margin-top: 7px;
+    .filter-sidebar {
+        h3 {
+            font-family: Montserrat;
         }
-      }
-
-      .filter-range-min {
-        position: absolute;
-        top: 20px;
-        left: 22px;
-      }
-
-      .filter-range-current {
-        position: absolute;
-        top: 20px;
-        left: 47%;
-      }
-
-      .filter-range-max {
-        position: absolute;
-        top: 20px;
-        right: 10px;
-      }
-
-      .filter-distance {
-        width: 100%;
-      }
-    }
-  }
-
-  .filter-result {
-
-    .filter-result-header {
-
-      .filter-result-label {
-        font-family: BrownPro;
-        font-size: 35px;
-        font-weight: normal;
-        font-style: normal;
-        font-stretch: normal;
-        line-height: normal;
-        letter-spacing: normal;
-        color: #4c4c4c
-      }
-
-      .filter-category, 
-      .filter-activity-type {
-        float: right;
-
-        .btn-primary-border {
-          height: 45px;
-          border-width: 2px;
-          font-family: Lato;
-          font-size: 16px;
-          font-weight: normal;
-          font-style: normal;
-          font-stretch: normal;
-          line-height: normal;
-          letter-spacing: normal;
-          color: #262626 !important;
-        }
-      }
-    }
-    
-    .filter-result-body {
-      padding: 10px 0;
-
-      .activity-item {
-
-        .activity-item-header {
-          a {
-            text-decoration: none;
-          }
-
-          .row {
-          margin-left: 0;
-          margin-right: 0;
-
-            &.card-header {
-              height: 45px;
-              border-radius: 3px;
-              border: solid 1px #c2c2c2;
-              background-color: $white;
-              padding: 0;
-              font-family: Montserrat;
-              font-size: 15px;
-              font-weight: normal;
-              font-style: normal;
-              font-stretch: normal;
-              letter-spacing: normal;
-              color: #262626;
+        .filter-location {
+            &::after {
+                display: none;
             }
-
-            .card-header-section {
-              padding: 0;
-
-              .activity-img {
-                width: 90px;
-                height: 45px;
-                overflow: hidden;
-              }
-
-              .activity-title {
-                padding: 0 10px;
-                display: inline-flex;
-              }
-
-              .activity-address, 
-              .activity-description, 
-              .activity-distance {
-                margin: 10px 0;
-                padding: 0 10px;
-                text-align: left;
-                border-left: solid 1px;
-                max-height: 25px;
-                overflow: hidden;
-              }
-
-              i.fa {
-                float: right;
+            .btn-primary-border {
+                height: 53px;
+                border-width: 2px;
+                font-family: BrownPro;
                 font-size: 25px;
-                color: $accent-color;
-              }
+                font-weight: normal;
+                font-style: normal;
+                font-stretch: normal;
+                line-height: normal;
+                letter-spacing: normal;
+                color: #4c4c4c !important;
+                padding-left: 5px;
             }
-          }
         }
-
-        .activity-item-body {
-          border-radius: 8px;
-          border: solid 2px rgba(89, 89, 89, 0.46);
-
-          .row {
-            margin-left: 0;
-            margin-right: 0;
-            padding: 10px 0;
-            border-radius: 3px;
-            background-color: $white;
-
-            &.border-1 {
-              border-radius: 8px;
-            }
-
-            .activity-detail-img {
+        .arrow.down {
+            position: absolute;
+        }
+        .filter-range {
             width: 100%;
-            overflow: hidden;
-            border-radius: 8px;
+            padding-left: 20px;
+            padding-right: 20px;
+            input[type=range] {
+                &::before,
+                &::after {
+                    content: "";
+                    display: inline-block;
+                    width: 15px;
+                    height: 15px;
+                    border-radius: 7.5px;
+                    background-color: $white;
+                    border: solid 2px $primary-color;
+                    margin-top: 7px;
+                }
             }
-
-            .activity-detail-title {
-              font-family: Montserrat;
-              font-size: 22px;
-              font-weight: 500;
-              font-style: normal;
-              font-stretch: normal;
-              line-height: normal;
-              letter-spacing: normal;
-              color: #595959;
+            .filter-range-min {
+                position: absolute;
+                top: 20px;
+                left: 22px;
             }
-
-            .activity-detail-age {
-              font-family: Montserrat;
-              font-size: 20px;
-              font-weight: 500;
-              font-style: normal;
-              font-stretch: normal;
-              line-height: normal;
-              letter-spacing: normal;
-              color: #595959;
-
-              .age-pattern {
-                border: solid 1px $primary-color;
-                border-radius: 15px;
-                background-color: $primary-color;
-                color: $white;
-                padding: 3px 8px;
-                margin: 3px;
-                font-size: 15px;
-                height: 25px;
-              }
+            .filter-range-current {
+                position: absolute;
+                top: 20px;
+                left: 47%;
             }
-
-            .activity-detail-palce {
-              font-family: Montserrat;
-              font-size: 20px;
-              font-weight: 500;
-              font-style: normal;
-              font-stretch: normal;
-              line-height: normal;
-              letter-spacing: normal;
-              color: #595959;
+            .filter-range-max {
+                position: absolute;
+                top: 20px;
+                right: 10px;
             }
-          
-            .link-detail{
-              font-family: Montserrat;
-              font-size: 22px;
-              font-weight: 500;
-              font-style: normal;
-              font-stretch: normal;
-              line-height: normal;
-              letter-spacing: normal;
-              color: #595959;
+            .filter-distance {
+                width: 100%;
             }
-
-            .activity-address {
-              width: 250px;
-              height: 25px;
-              overflow: hidden;
-            }
-          }
         }
-      }
     }
-  }
+    .filter-result {
+        .filter-result-header {
+            .filter-result-label {
+                font-family: BrownPro;
+                font-size: 35px;
+                font-weight: normal;
+                font-style: normal;
+                font-stretch: normal;
+                line-height: normal;
+                letter-spacing: normal;
+                color: #4c4c4c
+            }
+            .filter-category,
+            .filter-activity-type {
+                float: right;
+                .btn-primary-border {
+                    height: 45px;
+                    border-width: 2px;
+                    font-family: Lato;
+                    font-size: 16px;
+                    font-weight: normal;
+                    font-style: normal;
+                    font-stretch: normal;
+                    line-height: normal;
+                    letter-spacing: normal;
+                    color: #262626 !important;
+                }
+            }
+        }
+        .filter-result-body {
+            .activity-item {
+                .activity-item-header {
+                    a {
+                        text-decoration: none;
+                    }
+                    .row {
+                        margin-left: 0;
+                        margin-right: 0;
+                        &.card-header {
+                            height: 45px;
+                            border-radius: 3px;
+                            border: solid 1px #c2c2c2;
+                            background-color: $white;
+                            padding: 0;
+                            font-family: Montserrat;
+                            font-size: 15px;
+                            font-weight: normal;
+                            font-style: normal;
+                            font-stretch: normal;
+                            letter-spacing: normal;
+                            color: #262626;
+                        }
+                        .card-header-section {
+                            padding: 0;
+                            .activity-img {
+                                width: 90px;
+                                height: 43px;
+                                overflow: hidden;
+                            }
+                            .activity-title {
+                                padding: 0 10px;
+                                display: inline-flex;
+                            }
+                            .activity-address,
+                            .activity-description,
+                            .activity-distance {
+                                margin: 10px 0;
+                                padding: 0 10px;
+                                text-align: left;
+                                border-left: solid 1px;
+                                max-height: 25px;
+                                overflow: hidden;
+                            }
+                            i.fa {
+                                float: right;
+                                font-size: 25px;
+                                color: $accent-color;
+                            }
+                        }
+                    }
+                }
+                .activity-item-body {
+                    border-radius: 8px;
+                    border: solid 2px rgba(89, 89, 89, 0.46);
+                    .row {
+                        margin-left: 0;
+                        margin-right: 0;
+                        padding: 10px 0;
+                        border-radius: 3px;
+                        background-color: $white;
+                        &.border-1 {
+                            border-radius: 8px;
+                        }
+                        .activity-detail-img {
+                            width: 100%;
+                            overflow: hidden;
+                            border-radius: 8px;
+                        }
+                        .activity-detail-title {
+                            font-family: Montserrat;
+                            font-size: 22px;
+                            font-weight: 500;
+                            font-style: normal;
+                            font-stretch: normal;
+                            line-height: normal;
+                            letter-spacing: normal;
+                            color: #595959;
+                        }
+                        .activity-detail-age {
+                            font-family: Montserrat;
+                            font-size: 20px;
+                            font-weight: 500;
+                            font-style: normal;
+                            font-stretch: normal;
+                            line-height: normal;
+                            letter-spacing: normal;
+                            color: #595959;
+                            .age-pattern {
+                                border: solid 1px $primary-color;
+                                border-radius: 15px;
+                                background-color: $primary-color;
+                                color: $white;
+                                padding: 3px 8px;
+                                margin: 3px;
+                                font-size: 15px;
+                                height: 25px;
+                            }
+                        }
+                        .activity-detail-palce {
+                            font-family: Montserrat;
+                            font-size: 20px;
+                            font-weight: 500;
+                            font-style: normal;
+                            font-stretch: normal;
+                            line-height: normal;
+                            letter-spacing: normal;
+                            color: #595959;
+                        }
+                        .link-detail {
+                            font-family: Montserrat;
+                            font-size: 22px;
+                            font-weight: 500;
+                            font-style: normal;
+                            font-stretch: normal;
+                            line-height: normal;
+                            letter-spacing: normal;
+                            color: #595959;
+                            padding: 10px;
+                        }
+                        .activity-address {
+                            width: 200px;
+                            height: 25px;
+                            overflow: hidden;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

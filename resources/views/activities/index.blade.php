@@ -6,7 +6,7 @@
   <section class="activities-container bg-white my-5">
     <div class="container">
       <div class="row">
-        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 filter-sidebar">
+        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 filter-sidebar mt-4">
           <div class="card">
             <div class="card-body">
               <h3 class="card-title">Location</h3>
@@ -79,12 +79,12 @@
           </div>
         </div>
 
-        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 filter-result">
+        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 filter-result mt-4">
           <div class="row filter-result-header">
-            <div class="col-lg-4 col-md-4, col-sm-4, col-xs-12">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 mb-2">
               <div class="filter-result-label">{{ count($activities) ? count($activities) . (count($activities) == 1 ? ' Activity' : ' Activities') : 'No Activity' }}</div>
             </div>
-            <div class="col-lg-4 col-md-4, col-sm-4, col-xs-12">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 mb-2">
               <select class="selectpicker filter-category" data-live-search="false" data-style="btn btn-primary-border" name="filter-category" id="filter-category" title="Category">
                 <option data-tokens="0" value="0">All</option>
                 @foreach($categories as $category)
@@ -92,7 +92,7 @@
                 @endforeach
               </select>
             </div>
-            <div class="col-lg-4 col-md-4, col-sm-4, col-xs-12">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 mb-2">
               <select class="selectpicker filter-activity-type" data-live-search="true" name="filter-activity-type" id="filter-activity-type" data-style="btn btn-primary-border" title="Activity Type">
                 
               </select>
@@ -104,17 +104,17 @@
               <div class="activity-item-header">
                 <a href="#activity_{{ $activity->id }}" data-toggle="collapse">
                   <div class="row card-header">
-                    <div class="card-header-section col-4">
+                    <div class="card-header-section col-md-5 col-sm-6 col-8">
                       <img class="activity-img" src="{{ $activity->thumbnail_img ? asset($activity->thumbnail_img) : asset('img/defaults/thumbnail.png') }}">
                       <div class="activity-title">{{ $activity->activity_type ? $activity->activityTypes->activity_type_name : '' }}</div>
                     </div>
-                    <div class="card-header-section col-4">
+                    <div class="card-header-section col-md-4 col-sm-6 col-6 mob-hidden">
                       <div class="activity-address">{{ $activity->address ? $activity->address : '' }}</div>
                     </div>
-                    <!-- <div class="card-header-section col-4">
+                    <!-- <div class="card-header-section col-md-4 col-sm-6 col-6">
                       <div class="activity-description">{{ $activity->activity_description ? $activity->activity_description : 'activity_description' }}</div>
                     </div> -->
-                    <div class="card-header-section col-4">
+                    <div class="card-header-section col-md-3 col-sm-6 col-4">
                       <div class="activity-distance">
                         {{ ($activity->latitude && $activity->longitude) ? distanceWithMyIP2ProviderPlace($my_location->ip, $activity->latitude, $activity->longitude, 'K', 2) . ' km' : 'unknown' }}
                         <i class="fa fa-angle-down"></i>
@@ -125,12 +125,12 @@
               </div>
               <div id="activity_{{ $activity->id }}" class="collapse activity-item-body my-2">
               <div class="row border-1">
-                <div class="col-3">
+                <div class="col-sm-3 col-12">
                   <img class="activity-detail-img" src="{{ $activity->profile_img ? $activity->profile_img : asset('img/defaults/profile.png') }}">
                 </div>
-                <div class="col-9">
+                <div class="col-sm-9 col-12">
                   <div class="row">
-                    <div class="col-8">
+                    <div class="col-sm-8 col-12">
                       <div class="row activity-detail-title">
                         {{ $activity->business_name ? $activity->business_name : 'business_name' }}
                       </div>
@@ -143,7 +143,7 @@
                          {{ ($activity->latitude && $activity->longitude) ? '(' . distanceWithMyIP2ProviderPlace($my_location->ip, $activity->latitude, $activity->longitude, 'K', 2) . ' km' . ')' : '' }}
                       </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-sm-4 col-12 mob-inline-flex">
                       <div class="row">
                         <a href="{{ $activity->website ? $activity->website : '/' }}" class="btn btn-primary btn-lg" target="_blank">Visit Site</a>
                       </div>
@@ -242,14 +242,14 @@
             '<div class="activity-item-header">' + 
               '<a href="#activity_'+ activities[i].id +'" data-toggle="collapse">' + 
                 '<div class="row card-header">' + 
-                  '<div class="card-header-section col-4">' + 
-                    '<img class="activity-img" src="'+ (activities[i].thumbnail_img ? activities[i].thumbnail_img : base_url + 'img/defaults/thumbnail.png')+'">' + 
+                  '<div class="card-header-section col-md-5 col-sm-6 col-8">' + 
+                    '<img class="activity-img" src="'+ (activities[i].thumbnail_img ? activities[i].thumbnail_img : base_url + '/img/defaults/thumbnail.png')+'">' + 
                     '<div class="activity-title">'+ (activities[i].activity_type ? activities[i].activity_types.activity_type_name : '') +'</div>' + 
                   '</div>' + 
-                  '<div class="card-header-section col-4">' + 
+                  '<div class="card-header-section col-md-4 col-sm-6 col-6 mob-hidden">' + 
                     '<div class="activity-address">'+ (activities[i].address ? activities[i].address : '') +'</div>' + 
                   '</div>' + 
-                  '<div class="card-header-section col-4">' + 
+                  '<div class="card-header-section col-md-3 col-sm-6 col-4">' + 
                     '<div class="activity-distance">' + ((activities[i].latitude && activities[i].longitude) ? distance(my_location.latitude, my_location.longitude, activities[i].latitude, activities[i].longitude, 'K', 2) + ' km' : '') +
                       '<i class="fa fa-angle-down"></i>' + 
                     '</div>' + 
@@ -259,12 +259,12 @@
             '</div>' + 
             '<div id="activity_'+ activities[i].id +'" class="collapse activity-item-body my-2">' + 
             '<div class="row border-1">' + 
-              '<div class="col-3">' + 
-                '<img class="activity-detail-img" src="'+ (activities[i].profile_img ? activities[i].profile_img : base_url + 'img/defaults/profile.png') +'">' + 
+              '<div class="col-sm-3 col-12">' + 
+                '<img class="activity-detail-img" src="'+ (activities[i].profile_img ? activities[i].profile_img : base_url + '/img/defaults/profile.png') +'">' + 
               '</div>' + 
-              '<div class="col-9">' + 
+              '<div class="col-md-9 col-12">' + 
                 '<div class="row">' + 
-                  '<div class="col-8">' + 
+                  '<div class="col-sm-8 col-12">' + 
                     '<div class="row activity-detail-title">' + (activities[i].business_name ? activities[i].business_name : '') + 
                     '</div>' + 
                     '<div class="row activity-detail-age">Ages: ' + displayAgeRange(activities[i].age_range) + 
@@ -275,7 +275,7 @@
                       ((activities[i].latitude && activities[i].longitude) ? '(' + distance(my_location.latitude, my_location.longitude, activities[i].latitude, activities[i].longitude, 'K', 2) + ' km)' : '') + 
                     '</div>' + 
                   '</div>' + 
-                  '<div class="col-4">' + 
+                  '<div class="col-sm-4 col-12 mob-inline-flex">' + 
                     '<div class="row">' + 
                       '<a href="'+ (activities[i].website ? activities[i].website : '/') + '" class="btn btn-primary btn-lg" target="_blank">Visit Site</a>' + 
                     '</div>' + 

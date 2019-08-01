@@ -4,11 +4,11 @@
 
   <!-- Provider Create -->
   <section class="profile-edit-container bg-white my-5">
-    <div class="container">
+    <div class="container mt-3">
       <div class="row">
         <div class="profile-form-container">
           <div class="row">
-            <div class="col-4">
+            <div class="col-md-4 col-sm-4 col-12" style="min-height: 200px;">
               <form class="profile-avatar-form" id="profile-avatar-form" action="{{ url('/profile') }}/{{ Auth::user()->id }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
@@ -26,12 +26,12 @@
                 </div>
               </form>
             </div>
-            <div class="col-8">
+            <div class="col-md-8 col-sm-8 col-12">
               <div class="row">
                 <form class="profile-edit-form" id="profile-edit-form" action="{{ url('/profile') }}/{{ Auth::user()->id }}" method="POST">
                   @csrf
                   @method('PUT')
-                  <div class="col-8">
+                  <div class="col-8 mx-auto mt-3">
                     <div class="form-group">
                       <label for="first name">First Name</label>
                       <input type="text" class="form-control" name="first_name" value="{{ old('first_name') ? old('first_name') : Auth::user()->first_name }}" placeholder="" >

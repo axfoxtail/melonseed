@@ -15,7 +15,7 @@
       <div class="row mt-5">
         @if(count($reviews))
           @foreach($reviews as $review)
-          <div class="col-6 mb-3">
+          <div class="col-md-6 col-sm-12 col-12 mb-3">
             <div class="card">
               <div class="card-body d-inline-flex">
                 <img class="img-thumbnail rounded-circle" style="width: 100px; height: 100px;" src="{{ asset($review->users->avatar) }}">
@@ -29,7 +29,7 @@
           </div>
           @endforeach
         @else
-          <div class="col-6 mb-3">
+          <div class="col-md-6 col-sm-12 col-12 mb-3">
             <div class="alert alert-danger p-4 text-center">
               There is no review yet.
             </div>

@@ -22,20 +22,20 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col-6">
+                <div class="col-sm-6 col-12">
                   <div class="form-group">
                     <label class="h3">Start date</label>
                     <input type="date" class="form-control" id="start_date" name="start_date" value="" required autocomplete="start_date" autofocus>
                   </div>
                 </div>
-                <div class="col-6">
+                <div class="col-sm-6 col-12">
                   <div class="form-group">
                     <label class="h3">End date</label>
                     <input type="date" class="form-control" id="end_date" name="end_date" value="" required autocomplete="end_date" autofocus>
                   </div>
                 </div>
               </div>
-              <div class="row mt-5">
+              <div class="row my-3">
                 <div class="col-12 text-center">
                   <input type="button" class="form-control btn btn-primary btn-enrolling-submit" value="Submit">
                 </div>

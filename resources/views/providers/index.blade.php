@@ -1,17 +1,16 @@
 @extends('../layouts.app')
 
 @section('content')
-
   <!-- Provider Create -->
   <section class="provider-create-container my-5">
-    <div class="container">
+    <div class="container mt-3">
       <h2>Featured Providers</h2>
       <div class="row mt-3">
         @if(count($providers))
           @foreach($providers as $provider)
-          <div class="col-4 mb-3">
+          <div class="col-lg-4 col-md-6 col-sm-12 col-12 mb-3">
             <div class="card position-relative">
-              <img class="img-thumbnail" style="width: 100%; height: 20vw;" src="{{ asset($provider->profile_img) }}">
+              <img class="img-thumbnail featured" src="{{ asset($provider->profile_img) }}">
               <div class="hover">
                 <div class="hover-title position-relative">
                   <div class="position-absolute w-100 h-100" style="z-index: 10">
@@ -34,7 +33,7 @@
         @else
           <div class="col-12 mb-3">
             <div class="alert alert-danger p-4 text-center">
-              There is no review yet.
+              There is no featured provider yet.
             </div>
           </div>
         @endif

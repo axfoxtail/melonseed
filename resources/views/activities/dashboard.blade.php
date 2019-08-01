@@ -4,9 +4,9 @@
 
   <!-- Activity Detail -->
   <section class="detail-container bg-white my-5">
-    <div class="container">
+    <div class="container mt-3">
       <div class="row">
-        <div class="col-4">
+        <div class="col-md-4 col-sm-4 col-12 mt-2">
           <div class="card">
             <div class="card-body">
               <div class="text-center">PAST ACTIVITIES</div>
@@ -14,7 +14,7 @@
             </div>
           </div>
         </div>
-        <div class="col-4">
+        <div class="col-md-4 col-sm-4 col-12 mt-2">
           <div class="card">
             <div class="card-body">
               <div class="text-center">TOTAL ACTIVITIES</div>
@@ -22,7 +22,7 @@
             </div>
           </div>
         </div>
-        <div class="col-4">
+        <div class="col-md-4 col-sm-4 col-12 mt-2">
           <div class="card">
             <div class="card-body">
               <div class="text-center">CURRENT ACTIVITIES</div>
@@ -44,8 +44,8 @@
       </div>
       <div class="row">
         <div class="col-12">
-          <div class="card text-center">
-            <div class="card-header">
+          <div class="card text-center" style="overflow: scroll;">
+            <div class="card-header" style="min-width: 1000px;">
               <div class="row">
                 <div class="col-2">Activity</div>
                 <div class="col-1">Type</div>
@@ -55,7 +55,7 @@
                 <div class="col-2">Reviews</div>
               </div>
             </div>
-            <div class="card-body">
+            <div class="card-body" style="min-width: 1000px;">
               @foreach($bookings as $index => $booking)
               <div class="row odd-even-row py-2">
                 <div class="col-2">
@@ -130,9 +130,9 @@
                   <textarea class="form-control" name="review_content" rows="5" style="height: 150px;"></textarea>
                 </div>
               </div>
-              <div class="row mt-5">
+              <div class="row my-3">
                 <div class="col-12 text-center">
-                  <input type="button" class="form-control btn btn-primary btn-feedback-submit" value="Submit">
+                  <input type="button" class="form-control btn btn-primary btn-feedback-submit" value="Submit" style="height: 50px; font-size: 25px;">
                 </div>
               </div>
             </form>

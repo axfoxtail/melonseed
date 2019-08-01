@@ -1,109 +1,113 @@
 .detail-container {
-  font-family: Montserrat;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: normal;
-
-  .btn-back {
     font-family: Montserrat;
-    font-size: 22px;
-    font-weight: normal;
     font-style: normal;
     font-stretch: normal;
     line-height: normal;
     letter-spacing: normal;
-    color: #262626;
-    text-decoration: none;
-  }
-
-  .detail-img-wrapper {
-    padding-right: 10%;
-    padding-bottom: 5%;
-
-    .detail-img {
-      width: 100%;
-      border-radius: 8px;
+    .btn-back {
+        font-family: Montserrat;
+        font-size: 22px;
+        font-weight: normal;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: #262626;
+        text-decoration: none;
     }
-  }
-
-  .activity-title {
-    font-size: 40px;
-    font-weight: 500;
-    color: #262626;
-
-    .rate-stars {
-    position: absolute;
-    font-size: 30px;
-    line-height: 50px;
-    right: -200px;
+    .detail-img-wrapper {
+        padding-right: 10%;
+        padding-bottom: 5%;
+        @media (max-width: $breakpoint-sm - 1px) {
+            padding: 15px;
+        }
+        .detail-img {
+            width: 100%;
+            border-radius: 8px;
+        }
     }
-  }
-
-  .activity-place {
-    font-family: Montserrat;
-    font-size: 30px;
-    font-weight: 500;
-    color: #262626;
-  }
-
-  .activity-contact {
-    font-size: 30px;
-  }
-
-  .activity-contact-info {
-    font-size: 20px;
-  }
-
-  .btn-visit {
-    width: 296px;
-    height: 93px;
-    font-family: BrownPro;
-    font-size: 40px;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    text-align: center;
-    padding: 20px;
-    color: $white;
-  }
-
-  .detail-description {
-    font-family: Montserrat;
-    font-size: 25px;
-    font-weight: normal;
-    color: #343434;
-  }
-
-  .ad-sidebar {
-    float: right;
-    margin-top: 50px;
-  }
+    .activity-title {
+        font-size: 40px;
+        font-weight: 500;
+        color: #262626;
+        .rate-stars {
+            position: absolute;
+            font-size: 30px;
+            line-height: 50px;
+            right: -200px;
+        }
+    }
+    .activity-place {
+        font-family: Montserrat;
+        font-size: 30px;
+        font-weight: 500;
+        color: #262626;
+    }
+    .activity-contact {
+        font-size: 30px;
+    }
+    .activity-contact-info {
+        font-size: 20px;
+    }
+    .btn-visit {
+        width: 296px;
+        height: 93px;
+        font-family: BrownPro;
+        font-size: 40px;
+        font-weight: normal;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        text-align: center;
+        padding: 20px;
+        color: $white;
+        @media (max-width: $breakpoint-lg - 1px) and (min-width: $breakpoint-sm) {
+            font-size: 30px;
+            height: 73px;
+        }
+    }
+    .detail-description {
+        font-family: Montserrat;
+        font-size: 25px;
+        font-weight: normal;
+        color: #343434;
+    }
+    .ad-sidebar {
+        float: right;
+        margin-top: 50px;
+    }
 }
 
 .reviews-container {
-  font-family: Montserrat;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  color: $black;
-  
-  h2 {
-  display: inline-flex;
-  }
-  
-  .rate-stars {
-  font-size: 30px;
-  line-height: 50px;
-  display: inline-block;
-  }
-  
-  .reviews-content {
-    font-size: 25px;
-    font-weight: normal;
-    color: $dark;
-  }
+    font-family: Montserrat;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: $black;
+    h2 {
+        display: inline-flex;
+    }
+    .rate-stars {
+        font-size: 30px;
+        line-height: 50px;
+        display: inline-block;
+    }
+    .reviews-content {
+        font-size: 25px;
+        font-weight: normal;
+        color: $dark;
+    }
+}
+
+#enrollingModal {
+    input {
+        height: 70px;
+        font-size: 30px;
+        @media (max-width: $breakpoint-md - 1px) {
+            height: 50px;
+            font-size: 25px;
+        }
+    }
 }
