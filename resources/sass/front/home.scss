@@ -1,230 +1,206 @@
+// Variables
+@import '../variables';
 .masthead {
-  max-height: 656px;
-  height: 100vw;
-  min-height: 320px;
-  // background-position: center -400px !important;
-  .search-prefix {
-    position: absolute;
-    color: #495057;
-    font-size: 30px;
-    font-weight: 600;
-    padding: 20px;
-    @media (max-width: $breakpoint-md - 1px) {
-      display: none;
+    max-height: 656px;
+    height: 100vw;
+    min-height: 320px;
+    // background-position: center -400px !important;
+    .search-prefix {
+        position: absolute;
+        color: #495057;
+        font-size: 30px;
+        font-weight: 600;
+        padding: 20px;
+        @media (max-width: $breakpoint-md - 1px) {
+            display: none;
+        }
     }
-  }
-  .search-location {
-    padding-left: 245px;
-    padding-right: 60px;
-    @media (max-width: $breakpoint-md - 1px) {
-      padding-left: 20px;
-      padding-right: 30px;
+    .search-location {
+        padding-left: 245px;
+        padding-right: 60px;
+        @media (max-width: $breakpoint-md - 1px) {
+            padding-left: 20px;
+            padding-right: 30px;
+        }
     }
-  }
-  .search-subfix {
-    color: #30cbb7;
-    font-size: 50px;
-    position: absolute;
-    right: 0;
-    padding: 20px 5px;
-    @media (max-width: $breakpoint-md - 1px) {
-      padding: 10px 5px;
-      font-size: 30px;
+    .search-subfix {
+        color: #30cbb7;
+        font-size: 50px;
+        position: absolute;
+        right: 0;
+        padding: 20px 5px;
+        @media (max-width: $breakpoint-md - 1px) {
+            padding: 10px 5px;
+            font-size: 30px;
+        }
     }
-  }
-  input {
-    height: 89px;
-    border-radius: 8px;
-    font-family: Montserrat;
-    font-size: 30px;
-    font-weight: 600;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    padding: 20px;
-    @media (max-width: $breakpoint-md - 1px) {
-      height: 50px;
-      font-size: 25px;
-      padding: 10px;
+    input {
+        height: 89px;
+        border-radius: 8px;
+        font-family: Montserrat;
+        font-size: 30px;
+        font-weight: 600;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        padding: 20px;
+        @media (max-width: $breakpoint-md - 1px) {
+            height: 50px;
+            font-size: 25px;
+            padding: 10px;
+        }
+        &[type=submit] {
+            width: calc(100% - 5px);
+            margin-left: 5px;
+            @media (max-width: $breakpoint-md - 1px) {
+                margin-left: 0
+            }
+            &:hover {
+                background-color: $primary-color;
+                border-color: $primary-color;
+            }
+        }
     }
-
-    &[type=submit] {
-      width: calc(100% - 5px);
-      margin-left: 5px;
-      @media (max-width: $breakpoint-md - 1px) {
-        margin-left: 0
-      }
-      
-      &:hover {
-        background-color: $primary-color;
-        border-color: $primary-color;
-      }
-    }
-  }
 }
 
 // Popular Activities Carousel
 .popular-carousel {
-  padding-top: 50px;
-  padding-bottom: 50px;
-  
-  h2 {
-    text-align: left;
-    font-family: Montserrat;
-    font-size: 30px;
-    font-weight: 500;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    color: #262626;
-    @media (max-width: $breakpoint-sm - 1px) {
-      font-size: 25px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    h2 {
+        text-align: left;
+        font-family: Montserrat;
+        font-size: 30px;
+        font-weight: 500;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: #262626;
+        @media (max-width: $breakpoint-sm - 1px) {
+            font-size: 25px;
+        }
     }
-  }
-
-  .owl-carousel {
-
-    .owl-ele {
-      position: relative;
-      border-radius: 8px;
-      overflow: hidden;
-
-      .owl-img {
-        
-      }
-
-      .owl-hover {
-        position: absolute;
-        top: 0;
-        width: 100%;
-        height: 100%;
-
-        &:hover {
-          background-color: rgba(0, 0, 0, 0.1);
+    .owl-carousel {
+        .owl-ele {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            .owl-hover {
+                position: absolute;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                &:hover {
+                    background-color: rgba(0, 0, 0, 0.1);
+                }
+                a {
+                    -webkit-text-stroke: 0.5px #000000;
+                    font-family: Montserrat;
+                    font-size: 24px;
+                    font-weight: 600;
+                    font-style: normal;
+                    font-stretch: normal;
+                    line-height: normal;
+                    letter-spacing: normal;
+                    text-align: center;
+                    text-decoration: none;
+                    width: 100%;
+                    color: $white;
+                }
+            }
         }
-
-        a {
-          -webkit-text-stroke: 0.5px #000000;
-          font-family: Montserrat;
-          font-size: 24px;
-          font-weight: 600;
-          font-style: normal;
-          font-stretch: normal;
-          line-height: normal;
-          letter-spacing: normal;
-          text-align: center;
-          text-decoration: none;
-          width: 100%;
-          color: $white;
+        .owl-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 30px;
+            width: 100%;
+            button {
+                position: absolute;
+                width: 30px;
+                height: 30px;
+                background-color: $primary-color !important;
+                border-radius: 50%;
+                &:focus,
+                &:active {
+                    outline: none;
+                    border: none;
+                }
+                &.owl-prev {
+                    left: -35px;
+                }
+                &.owl-next {
+                    right: -35px;
+                }
+                span {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    padding-bottom: 10px;
+                    font-size: 50px;
+                    line-height: 30px;
+                    color: $white;
+                }
+            }
         }
-      }
     }
-
-    .owl-nav {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      height: 30px;
-      width: 100%;
-
-      button {
-        position: absolute;
-        width: 30px;
-        height: 30px;
-        background-color: $primary-color !important;
-        border-radius: 50%;
-
-        &:focus, &:active {
-        outline: none;
-          border: none;
-        }
-
-        &.owl-prev {
-          left: -35px;
-        }
-
-        &.owl-next {
-          right: -35px;
-        }
-
-        span {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          padding-bottom: 10px;
-          font-size: 50px;
-          line-height: 30px;
-          color: $white;
-        }
-      }
-    }
-  }
 }
-
 
 // Image Showcase Section
 .showcase {
-
-  .showcase-img {
-
-    img {
-      width: 100%;
+    .showcase-img {
+        img {
+            width: 100%;
+        }
     }
-  }
-
-  .showcase-text {
-    padding: 3rem;
-
-    h2 {
-      font-family: Montserrat;
-      font-size: 40px;
-      font-weight: 500;
-      font-style: normal;
-      font-stretch: normal;
-      line-height: normal;
-      letter-spacing: normal;
-      color: #000000;
+    .showcase-text {
+        padding: 3rem;
+        h2 {
+            font-family: Montserrat;
+            font-size: 40px;
+            font-weight: 500;
+            font-style: normal;
+            font-stretch: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            color: #000000;
+        }
+        .lead {
+            font-family: Montserrat;
+            font-size: 18px;
+            font-weight: 500;
+            font-style: normal;
+            font-stretch: normal;
+            line-height: 1.39;
+            letter-spacing: normal;
+            color: #000000;
+        }
     }
-
-    .lead {
-      font-family: Montserrat;
-      font-size: 18px;
-      font-weight: 500;
-      font-style: normal;
-      font-stretch: normal;
-      line-height: 1.39;
-      letter-spacing: normal;
-      color: #000000;
-    }
-  }
 }
-
 
 // Classes in your area
 .area-classes {
-  padding-top: 50px;
-  padding-bottom: 50px;
-  
-  h2 {
-    text-align: left;
-    font-family: Montserrat;
-    font-size: 30px;
-    font-weight: 500;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    color: #262626;
-  }
-  
+    padding-top: 50px;
+    padding-bottom: 50px;
+    h2 {
+        text-align: left;
+        font-family: Montserrat;
+        font-size: 30px;
+        font-weight: 500;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: #262626;
+    }
 }
 
 #maps-home {
-  height: 550px;
-  @media (max-width: $breakpoint-sm - 1px) {
-    height: 500px;
-  }
+    height: 550px;
+    @media (max-width: $breakpoint-sm - 1px) {
+        height: 500px;
+    }
 }

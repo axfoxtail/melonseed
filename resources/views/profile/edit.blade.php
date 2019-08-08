@@ -3,7 +3,7 @@
 @section('content')
 
   <!-- Provider Create -->
-  <section class="profile-edit-container bg-white my-5">
+  <section class="profile-edit-container bg-white">
     <div class="container mt-3">
       <div class="row">
         <div class="profile-form-container">
@@ -107,6 +107,7 @@
   <!-- Styles -->
   @push('contentCss')
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="{{ asset('css/front/profile-edit.css') }}" rel="stylesheet">
   @endpush
 
   <!-- Scripts -->

@@ -1,0 +1,237 @@
+.activities-container .filter-sidebar h3 {
+  font-family: Montserrat;
+}
+
+.activities-container .filter-sidebar .filter-location::after {
+  display: none;
+}
+
+.activities-container .filter-sidebar .filter-location .btn-primary-border {
+  height: 53px;
+  border-width: 2px;
+  font-family: BrownPro;
+  font-size: 25px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #4c4c4c !important;
+  padding-left: 5px;
+}
+
+.activities-container .filter-sidebar .arrow.down {
+  position: absolute;
+}
+
+.activities-container .filter-sidebar .filter-range {
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.activities-container .filter-sidebar .filter-range input[type=range]::before,
+.activities-container .filter-sidebar .filter-range input[type=range]::after {
+  content: "";
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-radius: 7.5px;
+  background-color: #ffffff;
+  border: solid 2px #30cbb7;
+  margin-top: 7px;
+}
+
+.activities-container .filter-sidebar .filter-range .filter-range-min {
+  position: absolute;
+  top: 20px;
+  left: 22px;
+}
+
+.activities-container .filter-sidebar .filter-range .filter-range-current {
+  position: absolute;
+  top: 20px;
+  left: 47%;
+}
+
+.activities-container .filter-sidebar .filter-range .filter-range-max {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+}
+
+.activities-container .filter-sidebar .filter-range .filter-distance {
+  width: 100%;
+}
+
+.activities-container .filter-result .filter-result-header .filter-result-label {
+  font-family: BrownPro;
+  font-size: 35px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #4c4c4c;
+}
+
+.activities-container .filter-result .filter-result-header .filter-category,
+.activities-container .filter-result .filter-result-header .filter-activity-type {
+  float: right;
+}
+
+.activities-container .filter-result .filter-result-header .filter-category .btn-primary-border,
+.activities-container .filter-result .filter-result-header .filter-activity-type .btn-primary-border {
+  height: 45px;
+  border-width: 2px;
+  font-family: Lato;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #262626 !important;
+}
+
+.activities-container .filter-result .filter-result-body .activity-item .activity-item-header a {
+  text-decoration: none;
+}
+
+.activities-container .filter-result .filter-result-body .activity-item .activity-item-header .row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.activities-container .filter-result .filter-result-body .activity-item .activity-item-header .row.card-header {
+  height: 45px;
+  border-radius: 3px;
+  border: solid 1px #c2c2c2;
+  background-color: #ffffff;
+  padding: 0;
+  font-family: Montserrat;
+  font-size: 15px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: normal;
+  color: #262626;
+}
+
+.activities-container .filter-result .filter-result-body .activity-item .activity-item-header .row .card-header-section {
+  padding: 0;
+}
+
+.activities-container .filter-result .filter-result-body .activity-item .activity-item-header .row .card-header-section .activity-img {
+  width: 90px;
+  height: 43px;
+  overflow: hidden;
+}
+
+.activities-container .filter-result .filter-result-body .activity-item .activity-item-header .row .card-header-section .activity-title {
+  padding: 0 10px;
+  display: inline-flex;
+}
+
+.activities-container .filter-result .filter-result-body .activity-item .activity-item-header .row .card-header-section .activity-address,
+.activities-container .filter-result .filter-result-body .activity-item .activity-item-header .row .card-header-section .activity-description,
+.activities-container .filter-result .filter-result-body .activity-item .activity-item-header .row .card-header-section .activity-distance {
+  margin: 10px 0;
+  padding: 0 10px;
+  text-align: left;
+  border-left: solid 1px;
+  max-height: 25px;
+  overflow: hidden;
+}
+
+.activities-container .filter-result .filter-result-body .activity-item .activity-item-header .row .card-header-section i.fa {
+  float: right;
+  font-size: 25px;
+  color: #a845ff;
+}
+
+.activities-container .filter-result .filter-result-body .activity-item .activity-item-body {
+  border-radius: 8px;
+  border: solid 2px rgba(89, 89, 89, 0.46);
+}
+
+.activities-container .filter-result .filter-result-body .activity-item .activity-item-body .row {
+  margin-left: 0;
+  margin-right: 0;
+  padding: 10px 0;
+  border-radius: 3px;
+  background-color: #ffffff;
+}
+
+.activities-container .filter-result .filter-result-body .activity-item .activity-item-body .row.border-1 {
+  border-radius: 8px;
+}
+
+.activities-container .filter-result .filter-result-body .activity-item .activity-item-body .row .activity-detail-img {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.activities-container .filter-result .filter-result-body .activity-item .activity-item-body .row .activity-detail-title {
+  font-family: Montserrat;
+  font-size: 22px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #595959;
+}
+
+.activities-container .filter-result .filter-result-body .activity-item .activity-item-body .row .activity-detail-age {
+  font-family: Montserrat;
+  font-size: 20px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #595959;
+}
+
+.activities-container .filter-result .filter-result-body .activity-item .activity-item-body .row .activity-detail-age .age-pattern {
+  border: solid 1px #30cbb7;
+  border-radius: 15px;
+  background-color: #30cbb7;
+  color: #ffffff;
+  padding: 3px 8px;
+  margin: 3px;
+  font-size: 15px;
+  height: 25px;
+}
+
+.activities-container .filter-result .filter-result-body .activity-item .activity-item-body .row .activity-detail-palce {
+  font-family: Montserrat;
+  font-size: 20px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #595959;
+}
+
+.activities-container .filter-result .filter-result-body .activity-item .activity-item-body .row .link-detail {
+  font-family: Montserrat;
+  font-size: 22px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #595959;
+  padding: 10px;
+}
+
+.activities-container .filter-result .filter-result-body .activity-item .activity-item-body .row .activity-address {
+  width: 200px;
+  height: 25px;
+  overflow: hidden;
+}
+

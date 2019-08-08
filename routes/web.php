@@ -21,6 +21,14 @@ Route::get('test', function() {
 	return view('test');
 });
 
+Route::get('privacy-policy', function() {
+	return view('privacy-policy');
+});
+
+Route::get('terms-of-use', function() {
+	return view('terms-of-use');
+});
+
 Auth::routes(['verify' => true]);
 
 Route::get('activities', 'ProviderController@index');
@@ -60,6 +68,9 @@ Route::group(['middleware' => 'is.admin'], function() {
 	Route::post('admin/users/permission', 'AdminController@users_permission');
 	Route::get('admin/providers', 'AdminController@providers');
 	Route::post('admin/providers/permission', 'AdminController@providers_permission');
+	Route::get('admin/providers/profile/{id}', 'AdminController@providers_profile');
 	Route::get('admin/reviews', 'AdminController@reviews');
 	Route::post('admin/reviews/permission', 'AdminController@reviews_permission');
+	Route::get('admin/locations', 'AdminController@locations');
+	Route::post('admin/locations', 'AdminController@locations_add');
 });

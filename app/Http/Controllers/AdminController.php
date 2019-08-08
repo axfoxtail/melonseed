@@ -11,6 +11,7 @@ use App\Provider;
 use App\Category;
 use App\ActivityType;
 use App\Review;
+use App\Location;
 use Auth;
 
 class AdminController extends Controller
@@ -99,6 +100,20 @@ class AdminController extends Controller
     }
   }
 
+  public function providers_profile(Request $request, $id) {
+    $active_class = 'providers';
+    $ip = $request->ip();
+    // $ip = '104.247.132.212';
+    $ip = $ip == '127.0.0.1' ? '162.253.129.2' : $ip;
+
+    $categories = Category::all();
+    $activity_types = ActivityType::all();
+    $locations = Location::all();
+    $provider = Provider::find($id);
+
+    return view('admin.provider-profile', ['ip' => $ip, 'active_class' => $active_class, 'categories' => $categories, 'activity_types' => $activity_types, 'locations' => $locations, 'provider' => $provider]);
+  }
+
   public function reviews(Request $request) {
     $active_class = 'reviews';
     $reviews = Review::with(['providers', 'users'])->get();
@@ -114,5 +129,28 @@ class AdminController extends Controller
 
       return response()->json(['message' => 'successfully changed.'], 200);
     }
+  }
+
+  public function locations() {
+    $active_class = 'locations';
+    $locations = Location::all();
+
+    return view('admin.locations', ['active_class' => $active_class, 'locations' => $locations]);
+  }
+
+  public function locations_add(Request $request) {
+    $validator = Validator::make($request->all(), [
+      'location_name' => ['required', 'string', 'max:30', 'unique:locations'],
+    ]);
+
+    if ($validator->fails()) {
+      return response()->json($validator->errors(), 400);
+    }
+
+    $location = new Location();
+    $location->location_name = $request->location_name;
+    $location->save();
+
+    return response()->json(['message' => 'Successfully added.'], 200);
   }
 }

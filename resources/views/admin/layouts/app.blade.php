@@ -12,8 +12,9 @@
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <!--     Fonts and icons     -->
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+  {{-- <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" /> --}}
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
   <!-- CSS Files -->
   <link href="{{ asset('assets/admin/css/bootstrap.min.css') }}" rel="stylesheet" />
   <link href="{{ asset('assets/admin/css/light-bootstrap-dashboard.css?v=2.0.0') }}" rel="stylesheet" />
@@ -21,10 +22,56 @@
   <link href="{{ asset('assets/admin/css/demo.css') }}" rel="stylesheet" />
   <!-- Plugins CSS -->
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-  <link href="{{ asset('plugins/Toastr/build/toastr.css') }}" rel="stylesheet">
+  
   <!-- App Css -->
-  <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
+  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/admin/app-admin.css') }}" rel="stylesheet">
+  <!-- Additional CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.10/css/bootstrap-select.min.css">
+  <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/css/bootstrap4-toggle.min.css" rel="stylesheet">
+  <link href="{{ asset('plugins/Toastr/build/toastr.css') }}" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   @stack('adminContentCss')
+  <style>
+    .business-hours-pattern {
+      display: inline-flex;
+      margin: 3px;
+      border: solid 2px #a845ff;
+      border-radius: 4px;
+      color: #fff;
+      background-color: #30cbb7;
+    }
+    .pattern-day {
+      padding: 3px;
+      width: 70px;
+      text-align: center;
+      color: #fff;
+      background-color: #a845ff;
+    }
+    .pattern-start {
+      padding: 3px;
+      padding-left: 5px;
+    }
+    .pattern-to {
+      padding: 3px;
+    }
+    .pattern-end {
+      padding: 3px;
+      padding-right: 5px;
+    }
+    .age-pattern {
+      border: solid 1px #30cbb7;
+      border-radius: 15px;
+      background-color: #30cbb7;
+      color: #fff;
+      padding: 0px 8px;
+      margin: 3px;
+      font-size: 15px;
+      height: 25px;
+      text-align: center;
+      width: auto;
+    }
+  </style>
 </head>
 
 <body>
@@ -62,19 +109,19 @@
               <p>Reviews List</p>
             </a>
           </li>
-          <!-- <li>
+          {{-- <li>
             <a class="nav-link" href="./icons.html">
               <i class="nc-icon nc-atom"></i>
               <p>Icons</p>
             </a>
-          </li>
-          <li>
-            <a class="nav-link" href="./maps.html">
+          </li> --}}
+          <li class="{{ $active_class == 'locations' ? 'active' : '' }}">
+            <a class="nav-link" href="{{ url('admin/locations') }}">
               <i class="nc-icon nc-pin-3"></i>
-              <p>Maps</p>
+              <p>Locations</p>
             </a>
           </li>
-          <li>
+          {{-- <li>
             <a class="nav-link" href="./notifications.html">
               <i class="nc-icon nc-bell-55"></i>
               <p>Notifications</p>
@@ -85,7 +132,7 @@
               <i class="nc-icon nc-alien-33"></i>
               <p>Upgrade to PRO</p>
             </a>
-          </li> -->
+          </li> --}}
         </ul>
       </div>
     </div>
@@ -221,6 +268,10 @@
 <script src="{{ asset('assets/admin/js/demo.js') }}"></script>
 <!-- Plugins JS -->
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+<!-- Additional JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.10/js/bootstrap-select.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.5.0/js/bootstrap4-toggle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.6/dist/loadingoverlay.min.js"></script>
 <script src="{{ asset('plugins/Toastr/build/toastr.min.js') }}"></script>
 <script type="text/javascript">
   var base_url = "{{ url('/') }}";

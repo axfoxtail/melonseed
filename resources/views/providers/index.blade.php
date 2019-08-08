@@ -2,7 +2,7 @@
 
 @section('content')
   <!-- Provider Create -->
-  <section class="provider-create-container my-5">
+  <section class="provider-create-container">
     <div class="container mt-3">
       <h2>Featured Providers</h2>
       <div class="row mt-3">

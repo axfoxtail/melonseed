@@ -11,6 +11,7 @@ use App\Category;
 use App\ActivityType;
 use App\Booking;
 use App\Review;
+use App\Location;
 use DB;
 
 class ProviderController extends Controller
@@ -26,8 +27,9 @@ class ProviderController extends Controller
     $activity_types = ActivityType::all();
     $ip = $request->ip();
     // $ip = '104.247.132.212';
-    // $ip = $ip == '127.0.0.1' ? '162.253.129.2' : $ip;
-    $location_list = getCityListFromIP($ip);
+    $ip = $ip == '127.0.0.1' ? '162.253.129.2' : $ip;
+    // $location_list = getCityListFromIP($ip);
+    $location_list = Location::all();
 
     if ($request->ajax()) {
 
@@ -86,7 +88,11 @@ class ProviderController extends Controller
       );
       $results['activities'] = $_activities;
       $results['categories'] = $categories;
-      $results['activity_types'] = ActivityType::where('category_id', '=', $request->category)->get();
+      if ($request->category) {
+        $results['activity_types'] = ActivityType::where('category_id', '=', $request->category)->get();
+      } else {
+        $results['activity_types'] = $activity_types;
+      }
 
       return response()->json($results, 200);
     } else {
@@ -111,16 +117,17 @@ class ProviderController extends Controller
   {
     $ip = $request->ip();
     // $ip = '104.247.132.212';
-    // $ip = $ip == '127.0.0.1' ? '162.253.129.2' : $ip;
+    $ip = $ip == '127.0.0.1' ? '162.253.129.2' : $ip;
 
     $categories = Category::all();
     $activity_types = ActivityType::all();
+    $locations = Location::all();
     $provider = Provider::find(Auth::user()->id);
     if (!$provider) {
       $provider = new Provider();
     }
     
-    return view('providers.create', ['provider' => $provider, 'categories' => $categories, 'activity_types' => $activity_types, 'ip' => $ip]);
+    return view('providers.create', ['provider' => $provider, 'categories' => $categories, 'activity_types' => $activity_types, 'locations' => $locations, 'ip' => $ip]);
   }
 
   /**

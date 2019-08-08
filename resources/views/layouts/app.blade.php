@@ -22,6 +22,7 @@
 
   <!-- App Css -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/front/app-front.css') }}" rel="stylesheet">
 
   <!-- Bootstrap core JavaScript -->
   <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
@@ -175,7 +176,7 @@
 
       
 
-    <main class="mx-0 h-100" style="margin-top: 68px;">
+    <main class="mx-0 h-100 py-5" style="margin-top: 68px;">
       <!-- The Notification Section -->
       @include('layouts.notification-section')
       @yield('content')

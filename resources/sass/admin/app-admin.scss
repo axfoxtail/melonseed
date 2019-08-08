@@ -1,4 +1,6 @@
 // Variables
 @import '../variables';
-
 // Admin Panel Style
+.dropdown-menu>li:first-child>a {
+    border-radius: 0px;
+}

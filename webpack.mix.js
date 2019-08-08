@@ -12,4 +12,12 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+    .sass('resources/sass/app.scss', 'public/css')
+    .sass('resources/sass/front/app-front.scss', 'public/css/front')
+    .sass('resources/sass/front/activities.scss', 'public/css/front')
+    .sass('resources/sass/front/activity-detail.scss', 'public/css/front')
+    .sass('resources/sass/front/home.scss', 'public/css/front')
+    .sass('resources/sass/front/profile-edit.scss', 'public/css/front')
+    .sass('resources/sass/front/provider-create.scss', 'public/css/front')
+    .sass('resources/sass/admin/app-admin.scss', 'public/css/admin')
+    .sass('resources/sass/admin/provider-edit.scss', 'public/css/admin');

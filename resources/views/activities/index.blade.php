@@ -3,7 +3,7 @@
 @section('content')
 
   <!-- Image Showcases -->
-  <section class="activities-container bg-white my-5">
+  <section class="activities-container bg-white">
     <div class="container">
       <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 filter-sidebar mt-4">
@@ -14,7 +14,7 @@
                 <select class="selectpicker filter-location" data-live-search="true" data-style="btn btn-primary-border" name="filter-location" id="filter-location" title="Location">
                   <!-- <option data-tokens="0" value="0">All</option> -->
                   @foreach($location_list as $location)
-                  <option data-tokens="{{ $location->city }}" value="{{ $location->city }}">{{ $location->city }}</option>
+                  <option data-tokens="{{ $location->location_name }}" value="{{ $location->location_name }}">{{ $location->location_name }}</option>
                   @endforeach
               </select>
               <i class="arrow down"></i>
@@ -24,37 +24,29 @@
                 <div class="col-6 pr-0">
                   <div class="custom-control custom-checkbox mb-3">
                     <input type="checkbox" class="custom-control-input age-checkbox" id="age1" name="age1" value="age1">
-                    <label class="custom-control-label" for="age1">1-6 months</label>
+                    <label class="custom-control-label" for="age1">1 Year</label>
                   </div>
                   <div class="custom-control custom-checkbox mb-3">
                     <input type="checkbox" class="custom-control-input age-checkbox" id="age3" name="age3" value="age3">
-                    <label class="custom-control-label" for="age3">1-3 Years</label>
+                    <label class="custom-control-label" for="age3">4-7 Years</label>
                   </div>
                   <div class="custom-control custom-checkbox mb-3">
                     <input type="checkbox" class="custom-control-input age-checkbox" id="age5" name="age5" value="age5">
-                    <label class="custom-control-label" for="age5">8-10 Years</label>
-                  </div>
-                  <div class="custom-control custom-checkbox mb-3">
-                    <input type="checkbox" class="custom-control-input age-checkbox" id="age7" name="age7" value="age7">
-                    <label class="custom-control-label" for="age7">14-17 Years</label>
+                    <label class="custom-control-label" for="age5">11-13 Years</label>
                   </div>
                 </div>
                 <div class="col-6 pr-0">
                   <div class="custom-control custom-checkbox mb-3">
                     <input type="checkbox" class="custom-control-input age-checkbox" id="age2" name="age2" value="age2">
-                    <label class="custom-control-label" for="age2">1 Year</label>
+                    <label class="custom-control-label" for="age2">1-3 Years</label>
                   </div>
                   <div class="custom-control custom-checkbox mb-3">
                     <input type="checkbox" class="custom-control-input age-checkbox" id="age4" name="age4" value="age4">
-                    <label class="custom-control-label" for="age4">4-7 Years</label>
+                    <label class="custom-control-label" for="age4">8-10 Years</label>
                   </div>
                   <div class="custom-control custom-checkbox mb-3">
                     <input type="checkbox" class="custom-control-input age-checkbox" id="age6" name="age6" value="age6">
-                    <label class="custom-control-label" for="age6">11-13 Years</label>
-                  </div>
-                  <div class="custom-control custom-checkbox mb-3">
-                    <input type="checkbox" class="custom-control-input age-checkbox" id="age8" name="age8" value="age8">
-                    <label class="custom-control-label" for="age8">18+ Years</label>
+                    <label class="custom-control-label" for="age6">14-16 Years</label>
                   </div>
                 </div>
               </div>
@@ -94,7 +86,10 @@
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 mb-2">
               <select class="selectpicker filter-activity-type" data-live-search="true" name="filter-activity-type" id="filter-activity-type" data-style="btn btn-primary-border" title="Activity Type">
-                
+                <option data-tokens="0" value="0">All</option>
+                @foreach($activity_types as $activity_type)
+                <option data-tokens="{{ $activity_type->id }}" value="{{ $activity_type->id }}">{{ $activity_type->activity_type_name }}</option>
+                @endforeach
               </select>
             </div>
           </div>
@@ -173,7 +168,7 @@
 
   <!-- Styles -->
   @push('contentCss')
-  
+  <link href="{{ asset('css/front/activities.css') }}" rel="stylesheet">
   @endpush
 
   <!-- Scripts -->
@@ -202,8 +197,8 @@
           age4: $('#age4')[0].checked,
           age5: $('#age5')[0].checked,
           age6: $('#age6')[0].checked,
-          age7: $('#age7')[0].checked,
-          age8: $('#age8')[0].checked,
+          // age7: $('#age7')[0].checked,
+          // age8: $('#age8')[0].checked,
           distance: $('input[name=filter-distance]').val(),
         },
         success: function(data) {

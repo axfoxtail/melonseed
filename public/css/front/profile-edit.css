@@ -1,0 +1,100 @@
+.profile-edit-container .profile-form-container {
+  width: 100%;
+}
+
+.profile-edit-container .profile-form-container .profile-avatar-form .profile-img-container {
+  margin-top: 5%;
+  margin-left: 5%;
+  width: 250px;
+}
+
+@media (max-width: 991px) {
+  .profile-edit-container .profile-form-container .profile-avatar-form .profile-img-container {
+    width: 200px;
+  }
+}
+
+.profile-edit-container .profile-form-container .profile-avatar-form .profile-img-container .profile-img-wrapper {
+  position: relative;
+  width: 250px;
+  height: 250px;
+}
+
+@media (max-width: 991px) {
+  .profile-edit-container .profile-form-container .profile-avatar-form .profile-img-container .profile-img-wrapper {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media (max-width: 575px) {
+  .profile-edit-container .profile-form-container .profile-avatar-form .profile-img-container .profile-img-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.profile-edit-container .profile-form-container .profile-avatar-form .profile-img-container .profile-img-wrapper:hover .profile-img-overlay {
+  display: block;
+}
+
+.profile-edit-container .profile-form-container .profile-avatar-form .profile-img-container .profile-img-wrapper .profile-img {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  max-width: 250px;
+}
+
+@media (max-width: 991px) {
+  .profile-edit-container .profile-form-container .profile-avatar-form .profile-img-container .profile-img-wrapper .profile-img {
+    width: 200px;
+    height: 200px;
+    max-height: 200px;
+  }
+}
+
+.profile-edit-container .profile-form-container .profile-avatar-form .profile-img-container .profile-img-wrapper .profile-img-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  max-width: 250px;
+  background-color: #30cbb7;
+  opacity: 0.5;
+  display: none;
+}
+
+@media (max-width: 991px) {
+  .profile-edit-container .profile-form-container .profile-avatar-form .profile-img-container .profile-img-wrapper .profile-img-overlay {
+    max-width: 200px;
+  }
+}
+
+.profile-edit-container .profile-form-container .profile-avatar-form .profile-img-container .profile-img-wrapper .profile-img-overlay a {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 80px;
+  height: 80px;
+  border-top-left-radius: 100%;
+  border-top: solid 2px #ffffff;
+  border-left: solid 2px #ffffff;
+  opacity: 0.5;
+  color: #ffffff;
+  font-size: 35px;
+  padding: 15px 0 0 15px;
+  background-color: #a845ff;
+  cursor: pointer;
+}
+
+.profile-edit-container .profile-form-container .profile-avatar-form .profile-img-container .avatar-btn-group {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+}
+
+.profile-edit-container .profile-form-container .profile-edit-form {
+  width: 100%;
+}
+

@@ -1,10 +1,9 @@
-@extends('../layouts.app')
+@extends('admin.layouts.app')
 
-@section('content')
-
-  <!-- Provider Create -->
-  <section class="provider-create-container">
-    <div class="container mt-3">
+@section('admin-content')
+<div class="content">
+  <div class="container-fluid">
+    <div class="container provider-edit-container mt-3">
       <div class="row">
         <form class="banner-upload-form" id="banner-upload-form" action="{{ url('/providers') }}" method="POST" enctype="multipart/form-data">
           @csrf
@@ -138,14 +137,6 @@
               <div class="row">
                 <div class="form-group col-log-8 col-md-10 col-sm-12 col-12">
                   <label for="photos">Upload Images</label>
-                  <!-- <div class="upload-gird-wrapper"> -->
-                    <!-- <div class="upload-item">
-                      <div class="plus-item-group">
-                        <div class="plus-icon">+</div>
-                        <div class="plus-text">Add Photo</div>
-                      </div>
-                    </div> -->
-                  <!-- </div> -->
                   <div class="row">
                     <div class="col-md-6 col-sm-6 col-12 mb-3">
                       <label style="font-size: 17px;">Thumbnail Image</label>
@@ -176,7 +167,7 @@
               </div>
               <div class="row my-5">
                 <h3 class="ml-3">Schedule - Pattern</h3>
-                <div class="col-lg-10 col-md-12 col-sm-12 col-12 schedule-pattern-row my-2">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12 schedule-pattern-row my-2">
                   <div class="col-md-3 col-sm-3 col-12">
                     <div class="custom-control custom-checkbox">
                       <input type="checkbox" class="custom-control-input available-day" id="monday" name="monday" value="1" {{ ($provider->business_hours && getAvailableDayObj($provider->business_hours, 'monday')->available) ? 'checked' : '' }}>
@@ -194,7 +185,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-lg-10 col-md-12 col-sm-12 col-12 schedule-pattern-row my-2">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12 schedule-pattern-row my-2">
                   <div class="col-md-3 col-sm-3 col-12">
                     <div class="custom-control custom-checkbox">
                       <input type="checkbox" class="custom-control-input available-day" id="tuesday" name="tuesday" value="1" {{ ($provider->business_hours && getAvailableDayObj($provider->business_hours, 'tuesday')->available) ? 'checked' : '' }}>
@@ -212,7 +203,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-lg-10 col-md-12 col-sm-12 col-12 schedule-pattern-row my-2">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12 schedule-pattern-row my-2">
                   <div class="col-md-3 col-sm-3 col-12">
                     <div class="custom-control custom-checkbox">
                       <input type="checkbox" class="custom-control-input available-day" id="wednesday" name="wednesday" value="1" {{ ($provider->business_hours && getAvailableDayObj($provider->business_hours, 'wednesday')->available) ? 'checked' : '' }}>
@@ -230,7 +221,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-lg-10 col-md-12 col-sm-12 col-12 schedule-pattern-row my-2">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12 schedule-pattern-row my-2">
                   <div class="col-md-3 col-sm-3 col-12">
                     <div class="custom-control custom-checkbox">
                       <input type="checkbox" class="custom-control-input available-day" id="thursday" name="thursday" value="1" {{ ($provider->business_hours && getAvailableDayObj($provider->business_hours, 'thursday')->available) ? 'checked' : '' }}>
@@ -248,7 +239,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-lg-10 col-md-12 col-sm-12 col-12 schedule-pattern-row my-2">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12 schedule-pattern-row my-2">
                   <div class="col-md-3 col-sm-3 col-12">
                     <div class="custom-control custom-checkbox">
                       <input type="checkbox" class="custom-control-input available-day" id="friday" name="friday" value="1" {{ ($provider->business_hours && getAvailableDayObj($provider->business_hours, 'friday')->available) ? 'checked' : '' }}>
@@ -266,7 +257,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-lg-10 col-md-12 col-sm-12 col-12 schedule-pattern-row my-2">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12 schedule-pattern-row my-2">
                   <div class="col-md-3 col-sm-3 col-12">
                     <div class="custom-control custom-checkbox">
                       <input type="checkbox" class="custom-control-input available-day" id="saturday" name="saturday" value="1" {{ ($provider->business_hours && getAvailableDayObj($provider->business_hours, 'saturday')->available) ? 'checked' : '' }}>
@@ -284,7 +275,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-lg-10 col-md-12 col-sm-12 col-12 schedule-pattern-row my-2">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12 schedule-pattern-row my-2">
                   <div class="col-md-3 col-sm-3 col-12">
                     <div class="custom-control custom-checkbox">
                       <input type="checkbox" class="custom-control-input available-day" id="sunday" name="sunday" value="1" {{ ($provider->business_hours && getAvailableDayObj($provider->business_hours, 'sunday')->available) ? 'checked' : '' }}>
@@ -321,21 +312,21 @@
             </div>
           </div>
         </form>
-        
       </div>
     </div>
-  </section>
+  </div>
+</div>
 
-  <!-- Styles -->
-  @push('contentCss')
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.10/css/bootstrap-select.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link href="{{ asset('css/front/provider-create.css') }}" rel="stylesheet">
-  @endpush
-
-  <!-- Scripts -->
-  @push('contentJs')
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.10/js/bootstrap-select.min.js"></script>
+@push('adminContentCss')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.10/css/bootstrap-select.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="{{ asset('css/admin/provider-edit.css') }}" rel="stylesheet">
+<style type="text/css">
+  
+</style>
+@endpush
+@push('adminContentJs')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.10/js/bootstrap-select.min.js"></script>
   <script type="text/javascript">
     $('.btn-upload-banner').on('click', function() {
       $('input[name=banner_img]').click();
@@ -649,6 +640,5 @@
       });
     });
   </script>
-  @endpush
-
+@endpush
 @endsection

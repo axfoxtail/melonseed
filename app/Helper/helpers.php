@@ -156,30 +156,30 @@ if (! function_exists('getAvailableDayObj')) {
 if (! function_exists('displayAgeRange')) {
   function displayAgeRange($age_range) {
     $age_pattern = '';
+    // if (strpos($age_range, 'age1')) {
+    //   $age_pattern .= '<div class="age-pattern">1-6 months</div>';
+    // }
     if (strpos($age_range, 'age1')) {
-      $age_pattern .= '<div class="age-pattern">1-6 months</div>';
-    }
-    if (strpos($age_range, 'age2')) {
       $age_pattern .= '<div class="age-pattern">1 Year</div>';
     }
-    if (strpos($age_range, 'age3')) {
+    if (strpos($age_range, 'age2')) {
       $age_pattern .= '<div class="age-pattern">1-3 Years</div>';
     }
-    if (strpos($age_range, 'age4')) {
+    if (strpos($age_range, 'age3')) {
       $age_pattern .= '<div class="age-pattern">4-7 Years</div>';
     }
-    if (strpos($age_range, 'age5')) {
+    if (strpos($age_range, 'age4')) {
       $age_pattern .= '<div class="age-pattern">8-10 Years</div>';
     }
-    if (strpos($age_range, 'age6')) {
+    if (strpos($age_range, 'age5')) {
       $age_pattern .= '<div class="age-pattern">11-13 Years</div>';
     }
-    if (strpos($age_range, 'age7')) {
-      $age_pattern .= '<div class="age-pattern">14-17 Years</div>';
+    if (strpos($age_range, 'age6')) {
+      $age_pattern .= '<div class="age-pattern">14-16 Years</div>';
     }
-    if (strpos($age_range, 'age8')) {
-      $age_pattern .= '<div class="age-pattern">18+ Years</div>';
-    }
+    // if (strpos($age_range, 'age8')) {
+    //   $age_pattern .= '<div class="age-pattern">18+ Years</div>';
+    // }
     
     echo $age_pattern;
   }
@@ -305,5 +305,73 @@ if (! function_exists('distanceWithMyIP2ProviderPlace')) {
     $lng1 = getArrLocationFromIP($ip)->longitude;
 
     return distance($lat1, $lng1, $lat2, $lng2, $unit, $round);
+  }
+}
+
+if (! function_exists('displayBusinessHoursPattern')) {
+  function displayBusinessHoursPattern($business_hours_str) {
+    $business_hours_str = '{"monday":{"available":true,"start":"10:00","end":"17:00"},"tuesday":{"available":false,"start":"10:00","end":"17:00"},"wednesday":{"available":false,"start":"10:00","end":"17:00"},"thursday":{"available":false,"start":"10:00","end":"17:00"},"friday":{"available":false,"start":"10:00","end":"17:00"},"saturday":{"available":true,"start":"10:00","end":"17:00"},"sunday":{"available":true,"start":"10:00","end":"17:00"}}';
+    $business_hours = json_decode($business_hours_str);
+    $business_hours_pattern = '';
+    if ($business_hours->monday->available) {
+      $business_hours_pattern .= '<div class="business-hours-pattern">' . 
+                                    '<div class="pattern-day">Monday</div>' .
+                                    '<div class="pattern-start">'. $business_hours->monday->start .'</div>' .
+                                    '<div class="pattern-to">~</div>' .
+                                    '<div class="pattern-end">'. $business_hours->monday->end .'</div>' .
+                                  '</div>';
+    }
+    if ($business_hours->tuesday->available) {
+      $business_hours_pattern .= '<div class="business-hours-pattern">' . 
+                                    '<div class="pattern-day">Tuesday</div>' .
+                                    '<div class="pattern-start">'. $business_hours->tuesday->start .'</div>' .
+                                    '<div class="pattern-to">~</div>' .
+                                    '<div class="pattern-end">'. $business_hours->tuesday->end .'</div>' .
+                                  '</div>';
+    }
+    if ($business_hours->wednesday->available) {
+      $business_hours_pattern .= '<div class="business-hours-pattern">' . 
+                                    '<div class="pattern-day">Wednesday</div>' .
+                                    '<div class="pattern-start">'. $business_hours->wednesday->start .'</div>' .
+                                    '<div class="pattern-to">~</div>' .
+                                    '<div class="pattern-end">'. $business_hours->wednesday->end .'</div>' .
+                                  '</div>';
+    }
+    if ($business_hours->thursday->available) {
+      $business_hours_pattern .= '<div class="business-hours-pattern">' . 
+                                    '<div class="pattern-day">Thursday</div>' .
+                                    '<div class="pattern-start">'. $business_hours->thursday->start .'</div>' .
+                                    '<div class="pattern-to">~</div>' .
+                                    '<div class="pattern-end">'. $business_hours->thursday->end .'</div>' .
+                                  '</div>';
+    }
+    if ($business_hours->friday->available) {
+      $business_hours_pattern .= '<div class="business-hours-pattern">' . 
+                                    '<div class="pattern-day">Friday</div>' .
+                                    '<div class="pattern-start">'. $business_hours->friday->start .'</div>' .
+                                    '<div class="pattern-to">~</div>' .
+                                    '<div class="pattern-end">'. $business_hours->friday->end .'</div>' .
+                                  '</div>';
+    }
+    if ($business_hours->saturday->available) {
+      $business_hours_pattern .= '<div class="business-hours-pattern">' . 
+                                    '<div class="pattern-day">Saturday</div>' .
+                                    '<div class="pattern-start">'. $business_hours->saturday->start .'</div>' .
+                                    '<div class="pattern-to">~</div>' .
+                                    '<div class="pattern-end">'. $business_hours->saturday->end .'</div>' .
+                                  '</div>';
+    }
+    if ($business_hours->sunday->available) {
+      $business_hours_pattern .= '<div class="business-hours-pattern">' . 
+                                    '<div class="pattern-day">Sunday</div>' .
+                                    '<div class="pattern-start">'. $business_hours->sunday->start .'</div>' .
+                                    '<div class="pattern-to">~</div>' .
+                                    '<div class="pattern-end">'. $business_hours->sunday->end .'</div>' .
+                                  '</div>';
+    }
+    if (!$business_hours_pattern) {
+      $business_hours = '<div class="business-hours-pattern"> Business is not available. </div>';
+    }
+    echo $business_hours_pattern;
   }
 }

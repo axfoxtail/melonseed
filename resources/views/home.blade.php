@@ -3,7 +3,7 @@
 @section('content')
 
   <!-- Masthead -->
-  <header class="masthead text-white text-center">
+  <header class="masthead text-white text-center" style="margin-top: -3rem">
     <div class="overlay"></div>
     <div class="container align-middle-center">
       <div class="my-auto">
@@ -93,10 +93,7 @@
         </div>
         <div class="col-lg-5 order-lg-1 my-auto showcase-text">
           <h2>What we do <br> “Helping busy parents”</h2>
-          <p class="lead mb-0">Melonseed helps parents find the perfect activities for 
-          their kids! With certified instructors and activities
-          across hundreds of cities we’re confident that 
-          there’s something for everyone. </p>
+          <p class="lead mb-0">Melonseed helps parents find the perfect activities for their kids! With hundreds of activities listed, we’re confident that there’s something for everyone. </p>
         </div>
       </div>
     </div>
@@ -119,6 +116,7 @@
   @push('contentCss')
   <link rel="stylesheet" href="{{ asset('plugins/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css') }}">
   <link rel="stylesheet" href="{{ asset('plugins/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css') }}">
+  <link href="{{ asset('css/front/home.css') }}" rel="stylesheet">
   @endpush
 
   <!-- Scripts -->

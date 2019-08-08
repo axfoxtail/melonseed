@@ -3,7 +3,7 @@
 @section('content')
 
   <!-- Activity Detail -->
-  <section class="detail-container bg-white my-5">
+  <section class="detail-container bg-white">
     <div class="container mt-3">
       <div class="row">
         <div class="col-md-4 col-sm-4 col-12 mt-2">

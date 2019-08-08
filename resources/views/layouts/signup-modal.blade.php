@@ -47,7 +47,17 @@
               <div class="row mt-5">
                 <div class="col-12 col-sm-6 col-md-6 col-lg-6">
                   <label class="h5">Are you parents or provider?</label>
-                  <input type="checkbox" id="is_provider" name="is_provider" data-toggle="toggle" data-on="Privider" data-off="Parents" data-onstyle="accent" data-offstyle="primary" data-width="100%" data-height="40" value="1">
+                  {{-- <input type="checkbox" id="is_provider" name="is_provider" data-toggle="toggle" data-on="Provider" data-off="Parents" data-onstyle="accent" data-offstyle="primary" data-width="100%" data-height="40" value="1"> --}}
+                  <div class="d-inline-flex">
+                    <label class="radio-container">Parents
+                      <input type="radio" id="role-parent" checked name="role">
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="radio-container">Provider
+                      <input type="radio" id="role-provider" name="role">
+                      <span class="checkmark"></span>
+                    </label>
+                  </div>
                 </div>
                 <div class="col-12 col-sm-6 col-md-6 col-lg-6">
                   <input type="button" class="form-control btn btn-primary btn-signup-submit" value="Sign up">
@@ -63,9 +73,9 @@
               <div class="row">
                 <div class="container my-3 text-center">
                   By creating an account you agree to {{ config('app.name', 'Melonseed') }}'s 
-                  <a href="">Privacy Policy</a>
+                  <a href="{{ url('/privacy-policy') }}">Privacy Policy</a>
                    & 
-                  <a href="">Terms</a>.
+                  <a href="{{ url('/terms-of-use') }}">Terms</a>.
                 </div>
               </div>
             </div>
@@ -116,7 +126,7 @@
           email: $('#signup-form input[name=email]').val(),
           password: $('#signup-form input[name=password]').val(),
           password_confirmation: $('#signup-form input[name=password_confirmation]').val(),
-          is_provider: $('#signup-form input[name=is_provider]').is(':checked') ? "1" : "0"
+          role: $('#signup-form #role-parent').is(':checked') ? "parent" : "provider"
         },
         success: function(data) {
           // console.log('res-success: ', data);

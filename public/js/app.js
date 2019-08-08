@@ -49348,6 +49348,28 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/sass/admin/app-admin.scss":
+/*!*********************************************!*\
+  !*** ./resources/sass/admin/app-admin.scss ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/admin/provider-edit.scss":
+/*!*************************************************!*\
+  !*** ./resources/sass/admin/provider-edit.scss ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ "./resources/sass/app.scss":
 /*!*********************************!*\
   !*** ./resources/sass/app.scss ***!
@@ -49359,15 +49381,89 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/sass/front/activities.scss":
+/*!**********************************************!*\
+  !*** ./resources/sass/front/activities.scss ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/front/activity-detail.scss":
+/*!***************************************************!*\
+  !*** ./resources/sass/front/activity-detail.scss ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/front/app-front.scss":
+/*!*********************************************!*\
+  !*** ./resources/sass/front/app-front.scss ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/front/home.scss":
+/*!****************************************!*\
+  !*** ./resources/sass/front/home.scss ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/front/profile-edit.scss":
+/*!************************************************!*\
+  !*** ./resources/sass/front/profile-edit.scss ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/front/provider-create.scss":
+/*!***************************************************!*\
+  !*** ./resources/sass/front/provider-create.scss ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ 0:
-/*!*************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.scss ***!
-  \*************************************************************/
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/front/app-front.scss ./resources/sass/front/activities.scss ./resources/sass/front/activity-detail.scss ./resources/sass/front/home.scss ./resources/sass/front/profile-edit.scss ./resources/sass/front/provider-create.scss ./resources/sass/admin/app-admin.scss ./resources/sass/admin/provider-edit.scss ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! /home/blade/Documents/Workspace/melonseed/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/blade/Documents/Workspace/melonseed/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/blade/Documents/Workspace/melonseed/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/blade/Documents/Workspace/melonseed/resources/sass/front/app-front.scss */"./resources/sass/front/app-front.scss");
+__webpack_require__(/*! /home/blade/Documents/Workspace/melonseed/resources/sass/front/activities.scss */"./resources/sass/front/activities.scss");
+__webpack_require__(/*! /home/blade/Documents/Workspace/melonseed/resources/sass/front/activity-detail.scss */"./resources/sass/front/activity-detail.scss");
+__webpack_require__(/*! /home/blade/Documents/Workspace/melonseed/resources/sass/front/home.scss */"./resources/sass/front/home.scss");
+__webpack_require__(/*! /home/blade/Documents/Workspace/melonseed/resources/sass/front/profile-edit.scss */"./resources/sass/front/profile-edit.scss");
+__webpack_require__(/*! /home/blade/Documents/Workspace/melonseed/resources/sass/front/provider-create.scss */"./resources/sass/front/provider-create.scss");
+__webpack_require__(/*! /home/blade/Documents/Workspace/melonseed/resources/sass/admin/app-admin.scss */"./resources/sass/admin/app-admin.scss");
+module.exports = __webpack_require__(/*! /home/blade/Documents/Workspace/melonseed/resources/sass/admin/provider-edit.scss */"./resources/sass/admin/provider-edit.scss");
 
 
 /***/ })

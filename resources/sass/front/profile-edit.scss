@@ -1,89 +1,82 @@
+// Variables
+@import '../variables';
 .profile-edit-container {
-  
-  .profile-form-container {
-    width: 100%;
-
-    .profile-avatar-form {
-      
-      .profile-img-container {
-        margin-top: 5%;
-        margin-left: 5%;
-        width: 250px;
-        @media (max-width: $breakpoint-lg - 1) {
-          width: 200px;
-        }
-        .profile-img-wrapper {
-          position: relative;
-          width: 250px;
-          height: 250px;
-          @media (max-width: $breakpoint-lg - 1) {
-            width: 200px;
-            height: 200px;
-          }
-          @media (max-width: $breakpoint-sm - 1) {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-          }
-          
-          &:hover .profile-img-overlay {
-            display: block;
-          }
-
-          .profile-img {
-            position: absolute;
-            width: 250px;
-            height: 250px;
-            max-width: 250px;
-            @media (max-width: $breakpoint-lg - 1) {
-              width: 200px;
-              height: 200px;
-              max-height: 200px;
+    .profile-form-container {
+        width: 100%;
+        .profile-avatar-form {
+            .profile-img-container {
+                margin-top: 5%;
+                margin-left: 5%;
+                width: 250px;
+                @media (max-width: $breakpoint-lg - 1) {
+                    width: 200px;
+                }
+                .profile-img-wrapper {
+                    position: relative;
+                    width: 250px;
+                    height: 250px;
+                    @media (max-width: $breakpoint-lg - 1) {
+                        width: 200px;
+                        height: 200px;
+                    }
+                    @media (max-width: $breakpoint-sm - 1) {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                    }
+                    &:hover .profile-img-overlay {
+                        display: block;
+                    }
+                    .profile-img {
+                        position: absolute;
+                        width: 250px;
+                        height: 250px;
+                        max-width: 250px;
+                        @media (max-width: $breakpoint-lg - 1) {
+                            width: 200px;
+                            height: 200px;
+                            max-height: 200px;
+                        }
+                    }
+                    .profile-img-overlay {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        max-width: 250px;
+                        @media (max-width: $breakpoint-lg - 1) {
+                            max-width: 200px;
+                        }
+                        background-color: $primary-color;
+                        opacity: 0.5;
+                        display: none;
+                        a {
+                            position: absolute;
+                            bottom: 0;
+                            right: 0;
+                            width: 80px;
+                            height: 80px;
+                            border-top-left-radius: 100%;
+                            border-top: solid 2px $white;
+                            border-left: solid 2px $white;
+                            opacity: 0.5;
+                            color: $white;
+                            font-size: 35px;
+                            padding: 15px 0 0 15px;
+                            background-color: $accent-color;
+                            cursor: pointer;
+                        }
+                    }
+                }
+                .avatar-btn-group {
+                    margin-left: auto;
+                    margin-right: auto;
+                    padding: 20px;
+                }
             }
-          }
-
-          .profile-img-overlay {
-            position: absolute;
+        }
+        .profile-edit-form {
             width: 100%;
-            height: 100%;
-            max-width: 250px;
-            @media (max-width: $breakpoint-lg - 1) {
-              max-width: 200px;
-            }
-            background-color: $primary-color;
-            opacity: 0.5;
-            display: none;
-
-            a {
-              position: absolute;
-              bottom: 0;
-              right: 0;
-              width: 80px;
-              height: 80px;
-              border-top-left-radius: 100%;
-              border-top: solid 2px $white;
-              border-left: solid 2px $white;
-              opacity: 0.5;
-              color: $white;
-              font-size: 35px;
-              padding: 15px 0 0 15px;
-              background-color: $accent-color;
-              cursor: pointer;
-            }
-          }
         }
-
-        .avatar-btn-group {
-          margin-left: auto;
-          margin-right: auto;
-          padding: 20px;
-        }
-      }
     }
-
-    .profile-edit-form {
-      width: 100%;
-    }
-  }
 }

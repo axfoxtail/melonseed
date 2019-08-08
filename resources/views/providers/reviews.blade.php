@@ -3,7 +3,7 @@
 @section('content')
 
   <!-- Provider Create -->
-  <section class="provider-create-container my-5">
+  <section class="provider-create-container">
     <div class="container">
       <div class="row">
         <div class="banner-upload-form" id="banner-upload-form">
@@ -44,6 +44,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.10/css/bootstrap-select.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="{{ asset('plugins/star-rating-svg/src/css/star-rating-svg.css') }}">
+  <link href="{{ asset('css/front/provider-create.css') }}" rel="stylesheet">
   @endpush
 
   <!-- Scripts -->

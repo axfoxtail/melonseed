@@ -1,4 +1,12 @@
 {
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css"
+    "/css/app.css": "/css/app.css",
+    "/css/front/app-front.css": "/css/front/app-front.css",
+    "/css/front/activities.css": "/css/front/activities.css",
+    "/css/front/activity-detail.css": "/css/front/activity-detail.css",
+    "/css/front/home.css": "/css/front/home.css",
+    "/css/front/profile-edit.css": "/css/front/profile-edit.css",
+    "/css/front/provider-create.css": "/css/front/provider-create.css",
+    "/css/admin/app-admin.css": "/css/admin/app-admin.css",
+    "/css/admin/provider-edit.css": "/css/admin/provider-edit.css"
 }
