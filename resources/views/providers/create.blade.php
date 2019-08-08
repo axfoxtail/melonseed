@@ -8,6 +8,7 @@
       <div class="row">
         <form class="banner-upload-form" id="banner-upload-form" action="{{ url('/providers') }}" method="POST" enctype="multipart/form-data">
           @csrf
+          <input type="text" class="form-control hidden" hidden name="user_id" value="{{ Auth::user()->id }}">
           <input type="file" class="form-control hidden" hidden name="banner_img" value="">
           <div class="banner-container">
             <img class="banner-img" src="{{ $provider->banner_img ? asset($provider->banner_img) : asset('img/defaults/banners/banner_swim.jpg') }}">

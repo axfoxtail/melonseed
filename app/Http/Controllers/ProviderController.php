@@ -186,6 +186,12 @@ class ProviderController extends Controller
         $results['message'] = 'Successfully saved.';
       }
 
+      if ($validator->fails()) {
+        $results['status'] = false;
+        $results['errors'] = $validator->errors();
+        return response()->json($results, 200);
+      }
+
       $address = $request->input('address');
       if ($provider->address != $address) {
         $geo_location = getGeoLocationFromAddress($address);
@@ -218,21 +224,16 @@ class ProviderController extends Controller
       $provider->slug = $request->input('slug') ? $request->input('slug') : $provider->slug;
       
       $provider->save();
-
-      if ($validator->fails()) {
-        $results['status'] = false;
-        $results['errors'] = $validator->errors();
-      } else {
-        $results['status'] = true;
-        $results['formatted_address'] = $provider->address;
-      }
+      
+      $results['status'] = true;
+      $results['formatted_address'] = $provider->address;
 
       return response()->json($results, 200);
     }
 
     else if ($request->file('banner_img')) {
 
-      $provider = Provider::find(Auth::user()->id);
+      $provider = Provider::find($request->input('user_id'));
 
       if ($provider && $provider->banner_img && Storage::exists($banner_dir . '/' . basename($provider->banner_img))) {
         Storage::delete($banner_dir . '/' . basename($provider->banner_img));
@@ -240,7 +241,7 @@ class ProviderController extends Controller
       
       if (!$provider) {
         $provider = new Provider();
-        $provider->user_id = Auth::user()->id;
+        $provider->user_id = $request->input('user_id');
       }
       
       $provider->banner_img = Storage::url($request->file('banner_img')->store($banner_dir));
