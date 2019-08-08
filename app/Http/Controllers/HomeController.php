@@ -28,7 +28,7 @@ class HomeController extends Controller
     {
         $ip = $request->ip();
         // $ip = '104.247.132.212';
-        $ip = '162.253.129.2';
+        $ip = ($ip == '127.0.0.1') ? '162.253.129.2' : $ip;
         if ($request->ajax()) {
             $results['my_location'] = getArrLocationFromIP($ip);
             $results['providers'] = Provider::all();

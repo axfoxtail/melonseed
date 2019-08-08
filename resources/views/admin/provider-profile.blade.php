@@ -21,8 +21,8 @@
       </div>
       <div class="row">
         <form class="provider-create-form" id="provider-create-form">
-          <input type="text" class="form-control hidden" hidden name="user_id" value="{{ Auth::user()->id }}">
-          <input type="text" class="form-control hidden" hidden name="slug" value="{{ Auth::user()->slug }}">
+          <input type="text" class="form-control hidden" hidden name="user_id" value="{{ $provider->user_id }}">
+          <input type="text" class="form-control hidden" hidden name="slug" value="{{ $provider->slug }}">
           <div class="row mt-2 mb-3">
             <div class="col-md-8 col-sm-10 col-12">
               <div class="form-group">

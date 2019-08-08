@@ -27,7 +27,7 @@ class ProviderController extends Controller
     $activity_types = ActivityType::all();
     $ip = $request->ip();
     // $ip = '104.247.132.212';
-    $ip = $ip == '127.0.0.1' ? '162.253.129.2' : $ip;
+    $ip = ($ip == '127.0.0.1') ? '162.253.129.2' : $ip;
     // $location_list = getCityListFromIP($ip);
     $location_list = Location::all();
 
@@ -62,12 +62,12 @@ class ProviderController extends Controller
       if ($request->age6 == 'true') { 
         $activities_query->where('age_range', 'like', '%age6%');
       }
-      if ($request->age7 == 'true') { 
-        $activities_query->where('age_range', 'like', '%age7%');
-      }
-      if ($request->age8 == 'true') { 
-        $activities_query->where('age_range', 'like', '%age8%');
-      }
+      // if ($request->age7 == 'true') { 
+      //   $activities_query->where('age_range', 'like', '%age7%');
+      // }
+      // if ($request->age8 == 'true') { 
+      //   $activities_query->where('age_range', 'like', '%age8%');
+      // }
         
       $activities = $activities_query->get();
       $_activities = [];
@@ -117,7 +117,7 @@ class ProviderController extends Controller
   {
     $ip = $request->ip();
     // $ip = '104.247.132.212';
-    $ip = $ip == '127.0.0.1' ? '162.253.129.2' : $ip;
+    // $ip = $ip == '127.0.0.1' ? '162.253.129.2' : $ip;
 
     $categories = Category::all();
     $activity_types = ActivityType::all();
@@ -139,13 +139,13 @@ class ProviderController extends Controller
   public function store(Request $request)
   {
     //
-    $banner_dir = 'public/providers/' . Auth::user()->id . '/banners';
-    $thumbnail_dir = 'public/providers/' . Auth::user()->id . '/thumbnails';
-    $profile_dir = 'public/providers/' . Auth::user()->id . '/profiles';
+    $banner_dir = 'public/providers/' . $request->input('user_id') . '/banners';
+    $thumbnail_dir = 'public/providers/' . $request->input('user_id') . '/thumbnails';
+    $profile_dir = 'public/providers/' . $request->input('user_id') . '/profiles';
 
     if ($request->ajax()) {
 
-      $provider = Provider::find(Auth::user()->id);
+      $provider = Provider::find($request->input('user_id'));
 
       if ($provider) {
         $validator = Validator::make($request->all(), [
