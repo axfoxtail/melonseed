@@ -1,5 +1,5 @@
 @if(Auth::check() && !Auth::user()->email_verified_at)
-  <section class="bg-accent text-center notification-section">
+  <section class="bg-accent text-center notification-section position-relative" style="top: 68px;">
     <div class="container">
       <div class="row">
         <div class="notification-message">

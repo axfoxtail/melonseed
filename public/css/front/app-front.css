@@ -564,11 +564,11 @@ main {
 
 .bootstrap-select {
   width: 100% !important;
-  max-width: 400px;
 }
 
 .bootstrap-select .dropdown-menu {
   z-index: 9999;
+  min-width: 260px !important;
 }
 
 .img-thumbnail.featured {

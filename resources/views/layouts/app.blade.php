@@ -174,16 +174,15 @@
       </div>
     </div>
 
-      
+    <!-- The Notification Section -->
+    @include('layouts.notification-section')
 
-    <main class="mx-0 h-100 py-5" style="margin-top: 68px;">
-      <!-- The Notification Section -->
-      @include('layouts.notification-section')
+    <main class="mx-0 h-100 position-relative py-5">
       @yield('content')
     </main>
 
     <!-- Footer -->
-    <footer class="footer bg-dark">
+    <footer class="footer bg-dark" style="margin-top: 5rem">
       <div class="container">
         <div class="row">
           <div class="col-lg-7 col-md-12 col-sm-12 col-12 h-100 text-center text-lg-left my-auto display-inline mob-hidden">
