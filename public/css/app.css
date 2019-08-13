@@ -10755,6 +10755,15 @@ input[type=range]:focus::-webkit-slider-runnable-track {
   cursor: pointer;
 }
 
+.btn-accent-border.active,
+.btn-accent-border:hover.active,
+.btn-accent-border:active.active,
+.btn-accent-border:focus.active {
+  background-color: #a845ff;
+  color: #ffffff !important;
+  font-weight: bold;
+}
+
 .btn-primary,
 .btn-primary:hover,
 .btn-primary:active,
@@ -10772,6 +10781,15 @@ input[type=range]:focus::-webkit-slider-runnable-track {
   border-color: #30cbb7;
   color: #30cbb7 !important;
   cursor: pointer;
+}
+
+.btn-primary-border.active,
+.btn-primary-border:hover.active,
+.btn-primary-border:active.active,
+.btn-primary-border:focus.active {
+  background-color: #30cbb7;
+  color: #ffffff !important;
+  font-weight: bold;
 }
 
 .display-inline {
@@ -10858,5 +10876,36 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 
 .business-hours-pattern {
   display: inline-flex;
+}
+
+@media (max-width: 575px) {
+  .py-5 {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
+}
+
+/* width */
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+  background: #a845ffbd;
+}
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a845ff;
 }
 

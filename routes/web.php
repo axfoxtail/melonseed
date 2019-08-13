@@ -73,4 +73,6 @@ Route::group(['middleware' => 'is.admin'], function() {
 	Route::post('admin/reviews/permission', 'AdminController@reviews_permission');
 	Route::get('admin/locations', 'AdminController@locations');
 	Route::post('admin/locations', 'AdminController@locations_add');
+	Route::get('admin/adwords', 'AdminController@adwords');
+	Route::post('admin/adwords', 'AdminController@adwords_save');
 });

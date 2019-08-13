@@ -119,6 +119,11 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     border-color: $accent-color;
     color: $accent-color !important;
     cursor: pointer;
+    &.active {
+        background-color: $accent-color;
+        color: $white !important;
+        font-weight: bold;
+    }
 }
 
 .btn-primary,
@@ -138,6 +143,11 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     border-color: $primary-color;
     color: $primary-color !important;
     cursor: pointer;
+    &.active {
+        background-color: $primary-color;
+        color: $white !important;
+        font-weight: bold;
+    }
 }
 
 .display-inline {
@@ -235,4 +245,40 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 // ===== ./Custome Radio Style ====== //
 .business-hours-pattern {
     display: inline-flex;
+}
+
+// ===== margin, padding class redeclare ===== //
+.py-5 {
+    @media (max-width: $breakpoint-sm - 1px) {
+        padding-top: 1rem !important;
+        padding-bottom: 1rem !important;
+    }
+}
+
+
+/* width */
+
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+
+/* Track */
+
+ ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+
+/* Handle */
+
+ ::-webkit-scrollbar-thumb {
+    background: #a845ffbd;
+}
+
+
+/* Handle on hover */
+
+ ::-webkit-scrollbar-thumb:hover {
+    background: $accent-color;
 }

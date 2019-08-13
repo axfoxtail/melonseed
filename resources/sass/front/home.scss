@@ -34,7 +34,8 @@
             font-size: 30px;
         }
     }
-    input {
+    input,
+    a {
         height: 89px;
         border-radius: 8px;
         font-family: Montserrat;
@@ -44,13 +45,13 @@
         font-stretch: normal;
         line-height: normal;
         letter-spacing: normal;
-        padding: 20px;
+        padding: 27px 20px;
         @media (max-width: $breakpoint-md - 1px) {
             height: 50px;
             font-size: 25px;
             padding: 10px;
         }
-        &[type=submit] {
+        &.btn-go {
             width: calc(100% - 5px);
             margin-left: 5px;
             @media (max-width: $breakpoint-md - 1px) {

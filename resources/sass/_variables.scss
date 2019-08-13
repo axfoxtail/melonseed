@@ -1,11 +1,10 @@
 // Body
 $body-bg: #f8fafc;
-
 // Typography
-$font-family-sans-serif: 'Nunito', sans-serif;
+$font-family-sans-serif: 'Nunito',
+sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
-
 // Colors
 $blue: #3490dc;
 $indigo: #6574cd;
@@ -20,15 +19,13 @@ $cyan: #6cb2eb;
 $white: #ffffff;
 $black: #000000;
 $dark: #393939;
-
 // Melonseed Theme Color
 $accent-color: #a845ff;
 $primary-color: #30cbb7;
-
 $breakpoint-xl: 1200px;
 $breakpoint-lg: 992px;
 $breakpoint-md: 768px;
 $breakpoint-sm: 576px;
+$breakpoint-mob: 425px;
 $breakpoint-xs: 350px;
-
 $dark-overlay: #00000080;

@@ -69,6 +69,9 @@
               </div> -->
             </div>
           </div>
+          <div class="ad-unit my-4" id="ad-unit-square">
+            {!! html_entity_decode($adwords->value) !!}
+          </div>
         </div>
 
         <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 filter-result mt-4">

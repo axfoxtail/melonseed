@@ -56,37 +56,6 @@
 
 @push('adminContentCss')
 <style type="text/css">
-  /* .dataTables_length {
-    padding: 15px;
-  }
-  table select, .dataTables_length select {
-    border: none;
-    font-size: 17px;
-    outline: none;
-  }
-  .dataTables_filter label {
-    padding: 15px;
-  }
-  .dataTables_filter label input {
-    border: solid 1px #dcdcdc;
-    font-size: 17px;
-  }
-  .dataTables_info {
-    padding: 15px
-  }
-  table {
-    overflow-x: auto;
-    display: block;
-  }
-  th {
-    min-width: 80px;
-  }
-  th:first-child {
-    min-width: 20px;
-  }
-  td.dataTables_empty {
-    display: table-cell !important;
-  } */
   .table-head {
     font-weight: bold;
   }

@@ -55,7 +55,10 @@
           </div>
         </div>
         <div class="col-md-4 mob-hidden">
-          <iframe class="ad-sidebar" src="" style="width: 100%; max-width: 245px; height: 650px;"></iframe>
+          {{-- <iframe class="ad-sidebar" src="" style="width: 100%; max-width: 245px; height: 650px;"></iframe> --}}
+          <div class="ad-unit" id="ad-unit-skyscraper" style="float: right;">
+            {!! html_entity_decode($adwords->value) !!}
+          </div>
         </div>
       </div>
     </div>
@@ -114,6 +117,7 @@
   @push('contentCss')
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="{{ asset('plugins/star-rating-svg/src/css/star-rating-svg.css') }}">
+  <link href="{{ asset('css/front/activity-detail.css') }}" rel="stylesheet">
   @endpush
 
   <!-- Scripts -->

@@ -12,6 +12,7 @@ use App\ActivityType;
 use App\Booking;
 use App\Review;
 use App\Location;
+use App\Settings;
 use DB;
 
 class ProviderController extends Controller
@@ -62,12 +63,6 @@ class ProviderController extends Controller
       if ($request->age6 == 'true') { 
         $activities_query->where('age_range', 'like', '%age6%');
       }
-      // if ($request->age7 == 'true') { 
-      //   $activities_query->where('age_range', 'like', '%age7%');
-      // }
-      // if ($request->age8 == 'true') { 
-      //   $activities_query->where('age_range', 'like', '%age8%');
-      // }
         
       $activities = $activities_query->get();
       $_activities = [];
@@ -96,15 +91,17 @@ class ProviderController extends Controller
 
       return response()->json($results, 200);
     } else {
+      $my_location_obj = getArrLocationFromIP($ip);
       $my_location = (object) array(
         'ip' => $ip,
-        'latitude' => getArrLocationFromIP($ip)->latitude, 
-        'longitude' => getArrLocationFromIP($ip)->longitude
+        'latitude' => $my_location_obj->latitude, 
+        'longitude' => $my_location_obj->longitude
       );
+      $adwords = Settings::where('key', 'adwords_square')->first();
 
       $activities = Provider::where('permission', '=', '1')->get();
 
-      return view('activities.index', ['my_location' => $my_location, 'activities' => $activities, 'categories' => $categories, 'activity_types' => $activity_types, 'location_list' => $location_list]);
+      return view('activities.index', ['my_location' => $my_location, 'adwords' => $adwords, 'activities' => $activities, 'categories' => $categories, 'activity_types' => $activity_types, 'location_list' => $location_list]);
     }
   }
 
@@ -268,6 +265,7 @@ class ProviderController extends Controller
     // $ip = '104.247.132.212';
     // $ip = $ip == '127.0.0.1' ? '162.253.129.2' : $ip;
     $my_location = getArrLocationFromIP($ip);
+    $adwords = Settings::where('key', 'adwords_skyscraper')->first();
     $activity = Provider::with('reviews')->where('permission', '=', '1')->find($id);
     if ($activity) {
       if ($request->ajax()) {
@@ -275,7 +273,7 @@ class ProviderController extends Controller
         $results['activity'] = $activity;
         return response()->json($results, 200);
       } else {
-        return view('activities.detail', ['my_location' => $my_location, 'activity' => $activity]);
+        return view('activities.detail', ['my_location' => $my_location, 'adwords' => $adwords, 'activity' => $activity]);
       }
     } else {
       return redirect()->back();
@@ -317,9 +315,10 @@ class ProviderController extends Controller
   }
 
   public function featured(Request $request) {
-    $providers = DB::table('providers')->limit(10)->get();
+    $providers = Provider::with(['categories', 'activityTypes'])->limit(10)->get();
+    $categories = Category::all();
 
-    return view('providers.index', ['providers' => $providers]);
+    return view('providers.index', ['categories' => $categories, 'providers' => $providers]);
   }
 
   public function enrolling(Request $request) {

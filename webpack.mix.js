@@ -19,5 +19,6 @@ mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/front/home.scss', 'public/css/front')
     .sass('resources/sass/front/profile-edit.scss', 'public/css/front')
     .sass('resources/sass/front/provider-create.scss', 'public/css/front')
+    .sass('resources/sass/front/provider-featured.scss', 'public/css/front')
     .sass('resources/sass/admin/app-admin.scss', 'public/css/admin')
     .sass('resources/sass/admin/provider-edit.scss', 'public/css/admin');

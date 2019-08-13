@@ -109,16 +109,16 @@
               <p>Reviews List</p>
             </a>
           </li>
-          {{-- <li>
-            <a class="nav-link" href="./icons.html">
-              <i class="nc-icon nc-atom"></i>
-              <p>Icons</p>
-            </a>
-          </li> --}}
           <li class="{{ $active_class == 'locations' ? 'active' : '' }}">
             <a class="nav-link" href="{{ url('admin/locations') }}">
               <i class="nc-icon nc-pin-3"></i>
               <p>Locations</p>
+            </a>
+          </li>
+          <li class="{{ $active_class == 'adwords' ? 'active' : '' }}">
+            <a class="nav-link" href="{{ url('admin/adwords') }}">
+              <i class="nc-icon nc-atom"></i>
+              <p>Adwords</p>
             </a>
           </li>
           {{-- <li>

@@ -45,7 +45,8 @@
   }
 }
 
-.masthead input {
+.masthead input,
+.masthead a {
   height: 89px;
   border-radius: 8px;
   font-family: Montserrat;
@@ -55,29 +56,33 @@
   font-stretch: normal;
   line-height: normal;
   letter-spacing: normal;
-  padding: 20px;
+  padding: 27px 20px;
 }
 
 @media (max-width: 767px) {
-  .masthead input {
+  .masthead input,
+  .masthead a {
     height: 50px;
     font-size: 25px;
     padding: 10px;
   }
 }
 
-.masthead input[type=submit] {
+.masthead input.btn-go,
+.masthead a.btn-go {
   width: calc(100% - 5px);
   margin-left: 5px;
 }
 
 @media (max-width: 767px) {
-  .masthead input[type=submit] {
+  .masthead input.btn-go,
+  .masthead a.btn-go {
     margin-left: 0;
   }
 }
 
-.masthead input[type=submit]:hover {
+.masthead input.btn-go:hover,
+.masthead a.btn-go:hover {
   background-color: #30cbb7;
   border-color: #30cbb7;
 }

@@ -46,10 +46,10 @@
               </div>
               <div class="row mt-5">
                 <div class="col-12 col-sm-6 col-md-6 col-lg-6">
-                  <label class="h5">Are you parents or provider?</label>
+                  <label class="h5">Are you a parent or a provider?</label>
                   {{-- <input type="checkbox" id="is_provider" name="is_provider" data-toggle="toggle" data-on="Provider" data-off="Parents" data-onstyle="accent" data-offstyle="primary" data-width="100%" data-height="40" value="1"> --}}
                   <div class="d-inline-flex">
-                    <label class="radio-container">Parents
+                    <label class="radio-container">Parent
                       <input type="radio" id="role-parent" checked name="role">
                       <span class="checkmark"></span>
                     </label>

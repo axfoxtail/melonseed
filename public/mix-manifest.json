@@ -7,6 +7,7 @@
     "/css/front/home.css": "/css/front/home.css",
     "/css/front/profile-edit.css": "/css/front/profile-edit.css",
     "/css/front/provider-create.css": "/css/front/provider-create.css",
+    "/css/front/provider-featured.css": "/css/front/provider-featured.css",
     "/css/admin/app-admin.css": "/css/admin/app-admin.css",
     "/css/admin/provider-edit.css": "/css/admin/provider-edit.css"
 }

@@ -16,7 +16,7 @@
                 <i class="material-icons search-subfix">location_on</i>
               </div>
               <div class="col-12 col-md-3 px-1">
-                <input type="submit" class="btn btn-primary" value="Let's Go">
+                <a class="btn btn-primary btn-go" href="{{ url('/activities') }}">Let's Go</a>
               </div>
             </div>
           </form>
@@ -32,52 +32,68 @@
       <div class="row">
         <div class="owl-carousel">
           <div class="owl-ele">
-          <div class="owl-img">
-            <img src="{{ asset('img/Swimming Lesson.jpg') }}">
-          </div>
-          <div class="owl-hover">
-            <a class="align-middle-center" href="">Swimming Lessons</a>
-          </div>
-          </div>
-          <div class="owl-ele">
-          <div class="owl-img">
-            <img src="{{ asset('img/Skiing.jpg') }}">
-          </div>
-          <div class="owl-hover">
-            <a class="align-middle-center" href="">Skiing</a>
-          </div>
+            <div class="owl-img">
+              <img src="{{ asset('img/home/swimming.png') }}">
+            </div>
+            <div class="owl-hover">
+              <a class="align-middle-center" href="">Swimming</a>
+            </div>
           </div>
           <div class="owl-ele">
-          <div class="owl-img">
-            <img src="{{ asset('img/Indoor Climbing.jpg') }}">
-          </div>
-          <div class="owl-hover">
-            <a class="align-middle-center" href="">Indoor Climbing</a>
-          </div>
-          </div>
-          <div class="owl-ele">
-          <div class="owl-img">
-            <img src="{{ asset('img/Soccer.jpg') }}">
-          </div>
-          <div class="owl-hover">
-            <a class="align-middle-center" href="">Soccer</a>
-          </div>
+            <div class="owl-img">
+              <img src="{{ asset('img/home/soccer.png') }}">
+            </div>
+            <div class="owl-hover">
+              <a class="align-middle-center" href="">Soccer</a>
+            </div>
           </div>
           <div class="owl-ele">
-          <div class="owl-img">
-            <img src="{{ asset('img/Music Lesson.jpg') }}">
-          </div>
-          <div class="owl-hover">
-            <a class="align-middle-center" href="">Music Lesson</a>
-          </div>
+            <div class="owl-img">
+              <img src="{{ asset('img/home/music.png') }}">
+            </div>
+            <div class="owl-hover">
+              <a class="align-middle-center" href="">Music Lessons</a>
+            </div>
           </div>
           <div class="owl-ele">
-          <div class="owl-img">
-            <img src="{{ asset('img/Drawing.jpg') }}">
+            <div class="owl-img">
+              <img src="{{ asset('img/home/gymnastics.png') }}">
+            </div>
+            <div class="owl-hover">
+              <a class="align-middle-center" href="">Gymnastics</a>
+            </div>
           </div>
-          <div class="owl-hover">
-            <a class="align-middle-center" href="">Drawing</a>
+          <div class="owl-ele">
+            <div class="owl-img">
+              <img src="{{ asset('img/home/baseball.png') }}">
+            </div>
+            <div class="owl-hover">
+              <a class="align-middle-center" href="">Baseball</a>
+            </div>
           </div>
+          <div class="owl-ele">
+            <div class="owl-img">
+              <img src="{{ asset('img/home/dance.png') }}">
+            </div>
+            <div class="owl-hover">
+              <a class="align-middle-center" href="">Dance Lessons</a>
+            </div>
+          </div>
+          <div class="owl-ele">
+            <div class="owl-img">
+              <img src="{{ asset('img/home/ice-skating.png') }}">
+            </div>
+            <div class="owl-hover">
+              <a class="align-middle-center" href="">Ice Skating</a>
+            </div>
+          </div>
+          <div class="owl-ele">
+            <div class="owl-img">
+              <img src="{{ asset('img/home/skiing.png') }}">
+            </div>
+            <div class="owl-hover">
+              <a class="align-middle-center" href="">Skiing</a>
+            </div>
           </div>
         </div>
       </div>
@@ -139,10 +155,6 @@
         autoplayTimeout: 3000
       });
     });
-
-
-    // Google Map
-
   </script>
   <script type="text/javascript">
     // initMap();
@@ -176,7 +188,7 @@
 
       var map = new google.maps.Map(document.getElementById('maps-home'), {
         center: new google.maps.LatLng(locations[0][1], locations[0][2]), 
-        zoom: 7
+        zoom: 9
       });
 
       var marker;

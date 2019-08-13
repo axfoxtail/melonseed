@@ -12,6 +12,7 @@ use App\Category;
 use App\ActivityType;
 use App\Review;
 use App\Location;
+use App\Settings;
 use Auth;
 
 class AdminController extends Controller
@@ -152,5 +153,46 @@ class AdminController extends Controller
     $location->save();
 
     return response()->json(['message' => 'Successfully added.'], 200);
+  }
+
+  public function adwords() {
+    $active_class = 'adwords';
+    $adwords_skyscraper = Settings::where('key', 'adwords_skyscraper')->first();
+    if (!$adwords_skyscraper) {
+      $adwords_skyscraper = new Settings();
+    }
+    $adwords_square = Settings::where('key', 'adwords_square')->first();
+    if (!$adwords_square) {
+      $adwords_square = new Settings();
+    }
+
+    return view('admin.adwords', ['active_class' => $active_class, 'adwords_skyscraper' => $adwords_skyscraper, 'adwords_square' => $adwords_square]);
+  }
+
+  public function adwords_save(Request $request) {
+    $validator = Validator::make($request->all(), [
+
+    ]);
+
+    if ($validator->fails()) {
+      return response()->json($validator->errors(), 400);
+    }
+
+    $adwords_skyscraper = Settings::where('key', 'adwords_skyscraper')->first();
+    if ($adwords_skyscraper) {
+      $adwords_skyscraper->value = $request->adwords_skyscraper ? $request->adwords_skyscraper : '';
+      $adwords_skyscraper->save();
+    } else {
+      Settings::create(['key' => 'adwords_skyscraper', 'value' => $request->adwords_skyscraper ? $request->adwords_skyscraper : '']);
+    }
+    $adwords_square = Settings::where('key', 'adwords_square')->first();
+    if ($adwords_square) {
+      $adwords_square->value = $request->adwords_square ? $request->adwords_square : '';
+      $adwords_square->save();
+    } else {
+      Settings::create(['key' => 'adwords_square', 'value' => $request->adwords_square ? $request->adwords_square : '']);
+    }
+
+    return response()->json(['message' => 'Successfully saved.'], 200);
   }
 }
