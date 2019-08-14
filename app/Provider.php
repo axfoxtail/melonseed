@@ -17,7 +17,7 @@ class Provider extends Model
   protected $table = 'providers';
 
   protected $fillable = [
-    'user_id', 'business_name', 'category', 'activity_type', 'location', 'latitude', 'longitude', 'distance', 'address', 'state', 'city', 'zip_code', 'phone_number', 'website', 'age_range', 'activity_description', 'social_media_links', 'banner_img', 'thumbnail_img', 'profile_img', 'business_hours', 'permission', 'slug',
+    'user_id', 'business_name', 'category', 'activity_type', 'region', 'location', 'latitude', 'longitude', 'distance', 'address', 'state', 'city', 'zip_code', 'phone_number', 'website', 'age_range', 'activity_description', 'social_media_links', 'banner_img', 'thumbnail_img', 'profile_img', 'business_hours', 'permission', 'slug',
   ];
 
   public $timestamps= true;

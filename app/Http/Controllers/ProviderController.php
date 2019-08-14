@@ -42,6 +42,9 @@ class ProviderController extends Controller
       if ($request->activity_type) {
         $activities_query->where('activity_type', '=', $request->activity_type);
       }
+      if ($request->region) {
+        $activities_query->where('region', '=', $request->region);
+      }
       if ($request->location) {
         $activities_query->where('location', '=', $request->location);
       }
@@ -91,6 +94,7 @@ class ProviderController extends Controller
 
       return response()->json($results, 200);
     } else {
+      $region = $request->get('region') ? $request->get('region') : '';
       $my_location_obj = getArrLocationFromIP($ip);
       $my_location = (object) array(
         'ip' => $ip,
@@ -99,7 +103,11 @@ class ProviderController extends Controller
       );
       $adwords = Settings::where('key', 'adwords_square')->first();
 
-      $activities = Provider::where('permission', '=', '1')->get();
+      $activities_query = Provider::where('permission', '=', '1');
+      if ($region) {
+        $activities_query = $activities_query->where('region', '=', $region);
+      }
+      $activities = $activities_query->get();
 
       return view('activities.index', ['my_location' => $my_location, 'adwords' => $adwords, 'activities' => $activities, 'categories' => $categories, 'activity_types' => $activity_types, 'location_list' => $location_list]);
     }
@@ -149,6 +157,7 @@ class ProviderController extends Controller
           'business_name' => ['required', 'string', 'max:255'],
           'category' => ['required'],
           'activity_type' => ['required'],
+          'region' => ['required'],
           'location' => ['required'],
           'address' => ['required', 'string'],
           'phone_number' => ['required'],
@@ -169,6 +178,7 @@ class ProviderController extends Controller
           'business_name' => ['required', 'string', 'max:255'],
           'category' => ['required'],
           'activity_type' => ['required'],
+          'region' => ['required'],
           'location' => ['required'],
           'address' => ['required', 'string'],
           'phone_number' => ['required'],
@@ -205,6 +215,7 @@ class ProviderController extends Controller
       $provider->business_name = $request->input('business_name') ? $request->input('business_name') : $provider->business_name;
       $provider->category = $request->input('category') ? $request->input('category') : $provider->category;
       $provider->activity_type = $request->input('activity_type') ? $request->input('activity_type') : $provider->activity_type;
+      $provider->region = $request->input('region') ? $request->input('region') : $provider->region;
       $provider->location = $request->input('location') ? $request->input('location') : $provider->location;
       $provider->distance = $request->input('distance') ? $request->input('distance') : $provider->distance;
       $provider->state = $request->input('state') ? $request->input('state') : $provider->state;

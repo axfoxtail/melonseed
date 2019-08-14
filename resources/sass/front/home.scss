@@ -6,21 +6,57 @@
     min-height: 320px;
     // background-position: center -400px !important;
     .search-prefix {
-        position: absolute;
+        position: relative;
         color: #495057;
         font-size: 30px;
         font-weight: 600;
-        padding: 20px;
+        top: 12px;
+        left: 0;
         @media (max-width: $breakpoint-md - 1px) {
             display: none;
         }
     }
-    .search-location {
-        padding-left: 245px;
-        padding-right: 60px;
+    .select-region {
+        width: 150px !important;
+        top: 3px;
+        &:focus {
+            outline: none !important;
+            border: none !important;
+        }
+        select,
+        button {
+            font-size: 30px;
+            line-height: 30px;
+            padding: 0;
+            // color: #495057 !important;
+            color: #000 !important;
+            border: 0;
+            font-weight: bold;
+            top: 7px;
+            &.selectpicker {
+                left: 0;
+            }
+            &.btn {
+                padding: 5px 0;
+            }
+            &:focus {
+                outline: none !important;
+                border: none !important;
+                box-shadow: none;
+            }
+            &::after {
+                display: none;
+            }
+        }
+        ul {
+            li {
+                a {
+                    height: auto;
+                }
+            }
+        }
         @media (max-width: $breakpoint-md - 1px) {
-            padding-left: 20px;
-            padding-right: 30px;
+            top: -12px;
         }
     }
     .search-subfix {
@@ -28,13 +64,14 @@
         font-size: 50px;
         position: absolute;
         right: 0;
+        top: 0;
         padding: 20px 5px;
         @media (max-width: $breakpoint-md - 1px) {
             padding: 10px 5px;
             font-size: 30px;
         }
     }
-    input,
+    .form-control,
     a {
         height: 89px;
         border-radius: 8px;
@@ -45,17 +82,21 @@
         font-stretch: normal;
         line-height: normal;
         letter-spacing: normal;
-        padding: 27px 20px;
+        padding: 15px 20px;
+        text-align: left;
         @media (max-width: $breakpoint-md - 1px) {
             height: 50px;
             font-size: 25px;
             padding: 10px;
         }
         &.btn-go {
+            text-align: center;
             width: calc(100% - 5px);
             margin-left: 5px;
+            padding: 27px 20px;
             @media (max-width: $breakpoint-md - 1px) {
-                margin-left: 0
+                margin-left: 0;
+                padding: 12px 20px;
             }
             &:hover {
                 background-color: $primary-color;

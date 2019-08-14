@@ -34,28 +34,34 @@
             </div>
           </div>
           <div class="row select-group mb-3">
-            <div class="col-lg-3 col-md-4 col-sm-4 col-12 mb-2">
-              <select class="selectpicker filter-category" data-live-search="false" data-style="btn btn-primary-border" name="category" title="Category">
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-2">
+              <select class="selectpicker filter-category" data-live-search="false" data-style="btn btn-primary-border" name="category" title="--Category--">
                 @foreach($categories as $category)
                 <option value="{{ $category->id }}" data-tokens="{{ $category->id }}" {{ $provider->category == $category->id ? 'selected' : '' }}>{{ $category->category_name }}</option>
                 @endforeach
               </select>
             </div>
-            <div class="col-lg-3 col-md-4 col-sm-4 col-12 mb-2">
-              <select class="selectpicker filter-activity-type" data-live-search="true" data-style="btn btn-primary-border" name="activity_type" title="Activity Type">
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-2">
+              <select class="selectpicker filter-activity-type" data-live-search="true" data-style="btn btn-primary-border" name="activity_type" title="--Activity Type--">
                 @foreach($activity_types as $activity_type)
                 <option class="activity-type-option category_{{ $activity_type->category_id }}" data-tokens="{{ $activity_type->id }}" value="{{ $activity_type->id }}" {{ $provider->activity_type == $activity_type->id ? 'selected' : '' }}>{{ $activity_type->activity_type_name }}</option>
                 @endforeach
               </select>
             </div>
-            <div class="col-lg-3 col-md-4 col-sm-4 col-12 mb-2">
-              <select class="selectpicker filter-location" data-live-search="true" data-style="btn btn-primary-border" name="location" title=" {{ $provider->location ? $provider->location : 'Location' }}">
-                {{-- @foreach(getCityListFromIP($ip) as $location) --}}
-                @foreach($locations as $location)
-                  <option data-tokens="{{ $location->location_name }}" value="{{ $location->location_name }}" {{ $provider->location == $location->location_name ? 'selected' : '' }}>{{ $location->location_name }}</option>
-                @endforeach
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-2">
+              <select class="selectpicker filter-region" data-live-search="true" data-style="btn btn-primary-border" name="region" title="--Region--">
+                <option data-tokens="Toronto" value="Toronto" {{ $provider->region == 'Toronto' ? 'selected' : '' }}>Toronto</option>
+                <option data-tokens="York" value="York" {{ $provider->region == 'York' ? 'selected' : '' }}>York</option>
+                <option data-tokens="Peel" value="Peel" {{ $provider->region == 'Peel' ? 'selected' : '' }}>Peel</option>
               </select>
             </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-2">
+                <select class="selectpicker filter-location" data-live-search="true" data-style="btn btn-primary-border" name="location" title="--Location--">
+                  @foreach($locations as $location)
+                  <option data-region="{{ $location->region }}" data-tokens="{{ $location->location_name }}" value="{{ $location->location_name }}" {{ $provider->location == $location->location_name ? 'selected' : '' }}>{{ $location->location_name }}</option>
+                  @endforeach
+                </select>
+              </div>
           </div>
           <div class="row">
             <div class="col-md-10 col-sm-12 col-12">
@@ -338,6 +344,23 @@
   @push('contentJs')
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.10/js/bootstrap-select.min.js"></script>
   <script type="text/javascript">
+    function refreshLocationOptions() {
+      var selected_region = $('select[name=region]').val();
+      if (selected_region) {
+        $('select[name=location] option').hide();
+        $('option[data-region='+ selected_region +']').show();
+        $('.filter-location').selectpicker('refresh');
+      }
+    }
+
+    $(document).ready(function() {
+      refreshLocationOptions();
+    });
+
+    $(document).on('change', 'select[name=region]', function() {
+      refreshLocationOptions();
+    })
+
     $('.btn-upload-banner').on('click', function() {
       $('input[name=banner_img]').click();
     });
@@ -555,8 +578,8 @@
       fd.append('business_name', $('input[name=business_name]').val());
       fd.append('category', $('select[name=category]').val());
       fd.append('activity_type', $('select[name=activity_type]').val());
+      fd.append('region', $('select[name=region]').val());
       fd.append('location', $('select[name=location]').val());
-      // fd.append('distance', $('input[name=distance]').val());
       fd.append('address', $('input[name=address]').val());
       // fd.append('state', $('input[name=state]').val());
       // fd.append('city', $('input[name=city]').val());

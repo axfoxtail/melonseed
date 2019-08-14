@@ -10,6 +10,12 @@
       <div class="row px-3">
         <div class="card-body table-full-width table-responsive m-0 col-md-6 col-12">
           <div class="form-group">
+            <label>Region Name</label>
+            <select class="form-control" name="region" maxlength="30">
+              <option value="Toronto" selected>Toronto</option>
+              <option value="York">York</option>
+              <option value="Peel">Peel</option>
+            </select>
             <label>Location Name</label>
             <input type="text" class="form-control" name="location_name" maxlength="30">
           </div>
@@ -18,24 +24,11 @@
           </div>
         </div>
         <div class="card-body table-full-width table-responsive m-0 col-md-6 col-12">
-          {{-- <table class="table table-hover table-striped border-0" id="locations-table">
-            <thead>
-              <th class="border-0">ID</th>
-              <th class="border-0">Location Name</th>
-            </thead>
-            <tbody>
-              @foreach($locations as $index => $location)
-              <tr>
-                <td>{{ $location->id }}</td>
-                <td>{{ $location->location_name }}</td>
-              </tr>
-              @endforeach
-            </tbody>
-          </table> --}}
           <div class="table">
             <div class="table-head">
               <li class="list-item">
                 <div class="location-id">ID</div>
+                <div class="location-region">Region</div>
                 <div class="location-name">Location Name</div>
               </li>
             </div>
@@ -43,6 +36,7 @@
               @foreach ($locations as $location)
               <li class="list-item">
                 <div class="location-id">{{ $location->id }}</div>
+                <div class="location-region">{{ $location->region }}</div>
                 <div class="location-name">{{ $location->location_name }}</div>
               </li>
               @endforeach
@@ -68,7 +62,8 @@
   .list-item {
     display: inline-block;
     padding: 10px;
-    width: 300px;
+    min-width: 300px;
+    width: 100%;
     border-bottom: solid 1px #eee;
     cursor: pointer;
   }
@@ -78,6 +73,10 @@
   .location-id {
     display: inline-flex;
     width: 50px;
+  }
+  .location-region {
+    display: inline-flex;
+    width: 70px;
   }
   .location-name {
     display: inline-flex;
@@ -94,7 +93,10 @@
     $.ajax({
       type: 'POST',
       url: base_url + '/admin/locations',
-      data: { location_name: $('input[name=location_name]').val() },
+      data: { 
+        region: $('input[name=region]').val(), 
+        location_name: $('input[name=location_name]').val() 
+      },
       success: function(data) {
         // console.log('res-success: ', data);
         $.LoadingOverlay("hide");
@@ -104,6 +106,11 @@
       error: function(err) {
         $.LoadingOverlay("hide");
         console.log('err: ', err);
+        if(err.responseJSON.region.length) {
+          for(var i = 0; i < err.responseJSON.region.length; i++) {
+            toastr.error(err.responseJSON.region[i]);
+          }
+        }
         if(err.responseJSON.location_name.length) {
           for(var i = 0; i < err.responseJSON.location_name.length; i++) {
             toastr.error(err.responseJSON.location_name[i]);

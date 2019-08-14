@@ -37,4 +37,15 @@ class HomeController extends Controller
             return view('home', ['ip' => $ip, 'previous_url' => $request->input('route') ? $request->input('route') : '']);
         }
     }
+
+    public function get_map_data(Request $request) {
+        $ip = $request->ip();
+        // $ip = '104.247.132.212';
+        $ip = ($ip == '127.0.0.1') ? '162.253.129.2' : $ip;
+        if ($request->ajax()) {
+            $results['my_location'] = getArrLocationFromIP($ip);
+            $results['providers'] = Provider::all();
+            return response()->json($results, 200);
+        }
+    }
 }

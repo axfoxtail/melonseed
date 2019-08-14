@@ -10,7 +10,7 @@ class Location extends Model
     protected $table = 'locations';
 
     protected $fillable = [
-        'location_name',
+        'region', 'location_name',
     ];
 
     public $timestamps= true;

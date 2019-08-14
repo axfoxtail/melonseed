@@ -185,7 +185,14 @@
     });
 
     function searchActivities() {
-      
+      var region = '';
+      if( window.location.href.includes('Toronto') ) {
+        region = 'Toronto';
+      } else if( window.location.href.includes('York') ) {
+        region = 'York';
+      } else if( window.location.href.includes('Peel') ) {
+        region = 'Peel';
+      }
       $.LoadingOverlay("show");
       $.ajax({
         type: 'GET',
@@ -193,6 +200,7 @@
         data: {
           category: $('select[name=filter-category]').val(),
           activity_type: $('select[name=filter-activity-type]').val(),
+          region: region,
           location: $('select[name=filter-location]').val(),
           age1: $('#age1')[0].checked,
           age2: $('#age2')[0].checked,
@@ -200,8 +208,6 @@
           age4: $('#age4')[0].checked,
           age5: $('#age5')[0].checked,
           age6: $('#age6')[0].checked,
-          // age7: $('#age7')[0].checked,
-          // age8: $('#age8')[0].checked,
           distance: $('input[name=filter-distance]').val(),
         },
         success: function(data) {

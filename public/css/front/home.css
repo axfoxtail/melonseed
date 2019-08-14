@@ -5,11 +5,12 @@
 }
 
 .masthead .search-prefix {
-  position: absolute;
+  position: relative;
   color: #495057;
   font-size: 30px;
   font-weight: 600;
-  padding: 20px;
+  top: 12px;
+  left: 0;
 }
 
 @media (max-width: 767px) {
@@ -18,15 +19,56 @@
   }
 }
 
-.masthead .search-location {
-  padding-left: 245px;
-  padding-right: 60px;
+.masthead .select-region {
+  width: 150px !important;
+  top: 3px;
+}
+
+.masthead .select-region:focus {
+  outline: none !important;
+  border: none !important;
+}
+
+.masthead .select-region select,
+.masthead .select-region button {
+  font-size: 30px;
+  line-height: 30px;
+  padding: 0;
+  color: #000 !important;
+  border: 0;
+  font-weight: bold;
+  top: 7px;
+}
+
+.masthead .select-region select.selectpicker,
+.masthead .select-region button.selectpicker {
+  left: 0;
+}
+
+.masthead .select-region select.btn,
+.masthead .select-region button.btn {
+  padding: 5px 0;
+}
+
+.masthead .select-region select:focus,
+.masthead .select-region button:focus {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none;
+}
+
+.masthead .select-region select::after,
+.masthead .select-region button::after {
+  display: none;
+}
+
+.masthead .select-region ul li a {
+  height: auto;
 }
 
 @media (max-width: 767px) {
-  .masthead .search-location {
-    padding-left: 20px;
-    padding-right: 30px;
+  .masthead .select-region {
+    top: -12px;
   }
 }
 
@@ -35,6 +77,7 @@
   font-size: 50px;
   position: absolute;
   right: 0;
+  top: 0;
   padding: 20px 5px;
 }
 
@@ -45,7 +88,7 @@
   }
 }
 
-.masthead input,
+.masthead .form-control,
 .masthead a {
   height: 89px;
   border-radius: 8px;
@@ -56,11 +99,12 @@
   font-stretch: normal;
   line-height: normal;
   letter-spacing: normal;
-  padding: 27px 20px;
+  padding: 15px 20px;
+  text-align: left;
 }
 
 @media (max-width: 767px) {
-  .masthead input,
+  .masthead .form-control,
   .masthead a {
     height: 50px;
     font-size: 25px;
@@ -68,20 +112,23 @@
   }
 }
 
-.masthead input.btn-go,
+.masthead .form-control.btn-go,
 .masthead a.btn-go {
+  text-align: center;
   width: calc(100% - 5px);
   margin-left: 5px;
+  padding: 27px 20px;
 }
 
 @media (max-width: 767px) {
-  .masthead input.btn-go,
+  .masthead .form-control.btn-go,
   .masthead a.btn-go {
     margin-left: 0;
+    padding: 12px 20px;
   }
 }
 
-.masthead input.btn-go:hover,
+.masthead .form-control.btn-go:hover,
 .masthead a.btn-go:hover {
   background-color: #30cbb7;
   border-color: #30cbb7;

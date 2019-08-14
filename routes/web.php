@@ -16,6 +16,7 @@
 // });
 
 Route::get('/', 'HomeController@index');
+Route::get('/get_map_data', 'HomeController@get_map_data');
 
 Route::get('test', function() {
 	return view('test');

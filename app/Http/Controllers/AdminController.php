@@ -134,13 +134,14 @@ class AdminController extends Controller
 
   public function locations() {
     $active_class = 'locations';
-    $locations = Location::all();
+    $locations = Location::orderBy('region', 'ASC')->orderBy('location_name', 'ASC')->get();
 
     return view('admin.locations', ['active_class' => $active_class, 'locations' => $locations]);
   }
 
   public function locations_add(Request $request) {
     $validator = Validator::make($request->all(), [
+      'region' => ['required', 'string', 'max:30'],
       'location_name' => ['required', 'string', 'max:30', 'unique:locations'],
     ]);
 
@@ -149,6 +150,7 @@ class AdminController extends Controller
     }
 
     $location = new Location();
+    $location->region = $request->region;
     $location->location_name = $request->location_name;
     $location->save();
 

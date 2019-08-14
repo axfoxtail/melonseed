@@ -235,8 +235,6 @@
   <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.6/dist/loadingoverlay.min.js"></script>
   <script src="{{ asset('plugins/Toastr/build/toastr.min.js') }}"></script>
 
-  @stack('contentJs')
-  
   <script type="text/javascript">
     var base_url = "{{ url('/') }}";
     var previous_url = "{{ isset($previous_url) ? $previous_url : '' }}";
@@ -279,5 +277,7 @@
       $('.nav-mob').removeClass('open');
     });
   </script>
+
+  @stack('contentJs')
 </body>
 </html>

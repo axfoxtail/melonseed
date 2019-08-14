@@ -11,12 +11,18 @@
           <form>
             <div class="form-row">
               <div class="col-12 col-md-9 mb-2 mb-md-0 px-1 d-flex">
-                <span class="search-prefix">You’re located in </span>
-                <input type="text" class="form-control form-control-lg search-location" value="{{ getUserSimpleLocationFromIP($ip) }}">
-                <i class="material-icons search-subfix">location_on</i>
+                <div class="form-control form-control-lg search-location">
+                  <span class="search-prefix">You’re located in </span>
+                  <select class="selectpicker select-region" data-live-search="false" data-style="btn btn-primary-border" name="region" id="region" title="">
+                    <option data-tokens="Toronto" value="Toronto" selected>Toronto</option>
+                    <option data-tokens="York" value="York">York</option>
+                    <option data-tokens="Peel" value="Peel">Peel</option>
+                  </select>
+                  <i class="material-icons search-subfix">location_on</i>
+                </div>
               </div>
               <div class="col-12 col-md-3 px-1">
-                <a class="btn btn-primary btn-go" href="{{ url('/activities') }}">Let's Go</a>
+                <a class="btn btn-primary btn-go" onclick="findActivitiesOnRegion();">Let's Go</a>
               </div>
             </div>
           </form>
@@ -155,13 +161,18 @@
         autoplayTimeout: 3000
       });
     });
+
+    function findActivitiesOnRegion() {
+      var selected_region = $('select[name=region]').val();
+      window.location.href = base_url + '/activities?region=' + selected_region;
+    }
   </script>
   <script type="text/javascript">
     // initMap();
     function initMap() {
       $.ajax({
         type: 'GET', 
-        url: window.location.href, 
+        url: base_url + '/get_map_data', 
         data: {},
         processData: false, 
         contentType: false, 
