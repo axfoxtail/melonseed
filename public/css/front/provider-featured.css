@@ -75,7 +75,7 @@
 }
 
 .provider-featured-container .providers-container .featured-item-container .featured-item-info-wrapper .featured-item-name {
-  background-color: #30cbb788;
+  background-color: #a845ff99;
   color: #ffffff;
   width: 90%;
   float: right;
@@ -112,7 +112,7 @@
 }
 
 .provider-featured-container .providers-container .featured-item-container .featured-item-info-wrapper .featured-item-description {
-  background-color: #a845ff99;
+  background-color: #30cbb788;
   max-height: 50%;
   color: #ffffff;
   margin-right: 0.25rem;
