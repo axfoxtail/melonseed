@@ -195,23 +195,26 @@
       } else if( window.location.href.includes('Peel') ) {
         region = 'Peel';
       }
+      var fd = new FormData();
+      fd.append('category', $('select[name=filter-category]').val());
+      fd.append('activity_type', $('select[name=filter-activity-type]').val());
+      fd.append('region', region);
+      fd.append('location', $('select[name=filter-activity-type]').val());
+      fd.append('age1', $('#age1')[0].checked);
+      fd.append('age2', $('#age2')[0].checked);
+      fd.append('age3', $('#age3')[0].checked);
+      fd.append('age4', $('#age4')[0].checked);
+      fd.append('age5', $('#age5')[0].checked);
+      fd.append('age6', $('#age6')[0].checked);
+      fd.append('distance', $('input[name=filter-distance]').val());
+
       $.LoadingOverlay("show");
       $.ajax({
-        type: 'GET',
+        type: 'POST',
         url: base_url + '/activities',
-        data: {
-          category: $('select[name=filter-category]').val(),
-          activity_type: $('select[name=filter-activity-type]').val(),
-          region: region,
-          location: $('select[name=filter-location]').val(),
-          age1: $('#age1')[0].checked,
-          age2: $('#age2')[0].checked,
-          age3: $('#age3')[0].checked,
-          age4: $('#age4')[0].checked,
-          age5: $('#age5')[0].checked,
-          age6: $('#age6')[0].checked,
-          distance: $('input[name=filter-distance]').val(),
-        },
+        data: fd,
+        processData: false,
+        contentType: false,
         success: function(data) {
           console.log('res-success: ', data);
           appendActivities(data.activities, data.my_location);

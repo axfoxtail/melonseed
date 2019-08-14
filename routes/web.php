@@ -33,6 +33,7 @@ Route::get('terms-of-use', function() {
 Auth::routes(['verify' => true]);
 
 Route::get('activities', 'ProviderController@index');
+Route::post('activities', 'ProviderController@index');
 Route::get('activities/{id}', 'ProviderController@show');
 Route::get('providers', 'ProviderController@featured');
 
