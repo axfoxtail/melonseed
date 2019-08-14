@@ -127,7 +127,7 @@ class ProviderController extends Controller
     $categories = Category::all();
     $activity_types = ActivityType::all();
     $locations = Location::all();
-    $provider = Provider::find(Auth::user()->id);
+    $provider = Provider::where('user_id', Auth::user()->id)->first();
     if (!$provider) {
       $provider = new Provider();
     }
@@ -150,7 +150,7 @@ class ProviderController extends Controller
 
     if ($request->ajax()) {
 
-      $provider = Provider::find($request->input('user_id'));
+      $provider = Provider::where('user_id', $request->input('user_id'))->first();
 
       if ($provider) {
         $validator = Validator::make($request->all(), [
