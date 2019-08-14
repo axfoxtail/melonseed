@@ -115,7 +115,6 @@
   background-color: #30cbb788;
   max-height: 50%;
   color: #ffffff;
-  margin-right: 0.25rem;
   position: absolute;
   bottom: 0px;
   margin-bottom: 0.25rem;
@@ -124,6 +123,7 @@
   overflow: auto;
   text-overflow: ellipsis;
   font-size: 20px;
+  width: calc(100% - 0.5rem);
 }
 
 @media (max-width: 992px) {
