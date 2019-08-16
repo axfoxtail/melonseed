@@ -45,9 +45,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   @stack('contentCss')
-  @if($adwords)
-  {{-- {!! html_entity_decode($adwords->value) !!} --}}
-  @endif
+
 </head>
 <body class="bg-white">
   <div id="app">
