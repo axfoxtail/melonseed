@@ -70,9 +70,9 @@
             </div>
           </div>
           <div class="ad-unit my-4" id="ad-unit-square">
-            @if($adwords)
+            {{-- @if($adwords)
             {!! html_entity_decode($adwords->value) !!}
-            @endif
+            @endif --}}
           </div>
         </div>
 

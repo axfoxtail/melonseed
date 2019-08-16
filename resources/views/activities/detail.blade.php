@@ -58,7 +58,7 @@
           {{-- <iframe class="ad-sidebar" src="" style="width: 100%; max-width: 245px; height: 650px;"></iframe> --}}
           <div class="ad-unit" id="ad-unit-skyscraper" style="float: right; width: 100%; height: 100%;">
             @if($adwords)
-            {!! html_entity_decode($adwords->value) !!}
+            {{-- {!! html_entity_decode($adwords->value) !!} --}}
             @endif
           </div>
         </div>
