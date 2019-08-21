@@ -9,7 +9,7 @@
         <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 filter-sidebar mt-4">
           <div class="card">
             <div class="card-body">
-              <h3 class="card-title">Location</h3>
+              <h1 class="card-title h3">Location</h1>
               <div class="form-group">
                 <select class="selectpicker filter-location" data-live-search="true" data-style="btn btn-primary-border" name="filter-location" id="filter-location" title="Location">
                   <!-- <option data-tokens="0" value="0">All</option> -->
@@ -19,7 +19,7 @@
               </select>
               <i class="arrow down"></i>
               </div>
-              <h3 class="card-title">Age Range</h3>
+              <h1 class="card-title h3">Age Range</h1>
               <div class="row">
                 <div class="col-6 pr-0">
                   <div class="custom-control custom-checkbox mb-3">
@@ -50,7 +50,7 @@
                   </div>
                 </div>
               </div>
-              <h3 class="card-title mt-3">Distance <small>(km)</small></h3>
+              <h1 class="card-title h3 mt-3">Distance <small>(km)</small></h1>
               <div class="row">
                 <div class="custom-control filter-range">
                   <input type="range" name="filter-distance" class="filter-distance" id="filter-distance" min="5" max="101" step="1" value="101">
@@ -59,7 +59,7 @@
                   <span class="filter-range-max">100+</span>
                 </div>
               </div>
-              <!-- <h3 class="card-title mt-4">Cost</h3>
+              <!-- <h1 class="card-title h3 mt-4">Cost</h1>
               <div class="row">
                 <div class="custom-control filter-range">
                   <input type="range" name="filter-distance" class="filter-distance" id="filter-distance">
@@ -105,7 +105,7 @@
                 <a href="#activity_{{ $activity->id }}" data-toggle="collapse">
                   <div class="row card-header">
                     <div class="card-header-section col-md-5 col-sm-6 col-8">
-                      <img class="activity-img" src="{{ $activity->thumbnail_img ? asset($activity->thumbnail_img) : asset('img/defaults/thumbnail.png') }}">
+                      <img class="activity-img" alt="{{ $activity->activity_type ? $activity->activityTypes->activity_type_name : '' }}" src="{{ $activity->thumbnail_img ? asset($activity->thumbnail_img) : asset('img/defaults/thumbnail.png') }}">
                       <div class="activity-title">{{ $activity->activity_type ? $activity->activityTypes->activity_type_name : '' }}</div>
                     </div>
                     <div class="card-header-section col-md-4 col-sm-6 col-6 mob-hidden">
@@ -126,7 +126,7 @@
               <div id="activity_{{ $activity->id }}" class="collapse activity-item-body my-2">
               <div class="row border-1">
                 <div class="col-sm-3 col-12">
-                  <img class="activity-detail-img" src="{{ $activity->profile_img ? $activity->profile_img : asset('img/defaults/profile.png') }}">
+                  <img class="activity-detail-img" alt="{{ $activity->activity_type ? $activity->activityTypes->activity_type_name : '' }}" src="{{ $activity->profile_img ? $activity->profile_img : asset('img/defaults/profile.png') }}">
                 </div>
                 <div class="col-sm-9 col-12">
                   <div class="row">
@@ -252,7 +252,7 @@
               '<a href="#activity_'+ activities[i].id +'" data-toggle="collapse">' + 
                 '<div class="row card-header">' + 
                   '<div class="card-header-section col-md-5 col-sm-6 col-8">' + 
-                    '<img class="activity-img" src="'+ (activities[i].thumbnail_img ? activities[i].thumbnail_img : base_url + '/img/defaults/thumbnail.png')+'">' + 
+                    '<img class="activity-img" alt="'+ (activities[i].activity_type ? activities[i].activity_types.activity_type_name : '') +'" src="'+ (activities[i].thumbnail_img ? activities[i].thumbnail_img : base_url + '/img/defaults/thumbnail.png')+'">' + 
                     '<div class="activity-title">'+ (activities[i].activity_type ? activities[i].activity_types.activity_type_name : '') +'</div>' + 
                   '</div>' + 
                   '<div class="card-header-section col-md-4 col-sm-6 col-6 mob-hidden">' + 
@@ -269,7 +269,7 @@
             '<div id="activity_'+ activities[i].id +'" class="collapse activity-item-body my-2">' + 
             '<div class="row border-1">' + 
               '<div class="col-sm-3 col-12">' + 
-                '<img class="activity-detail-img" src="'+ (activities[i].profile_img ? activities[i].profile_img : base_url + '/img/defaults/profile.png') +'">' + 
+                '<img class="activity-detail-img" alt="'+ (activities[i].activity_type ? activities[i].activity_types.activity_type_name : '') +'" src="'+ (activities[i].profile_img ? activities[i].profile_img : base_url + '/img/defaults/profile.png') +'">' + 
               '</div>' + 
               '<div class="col-md-9 col-12">' + 
                 '<div class="row">' + 

@@ -34,12 +34,12 @@
   <!-- Popular Activities Carousel -->
   <section class="bg-white text-center popular-carousel">
     <div class="container">
-      <h2 class="mb-4">Popular activities in Toronto</h2>
+      <h1 class="mb-4 text-left">Popular activities in Toronto</h1>
       <div class="row">
         <div class="owl-carousel">
           <div class="owl-ele">
             <div class="owl-img">
-              <img src="{{ asset('img/home/swimming.png') }}">
+              <img alt="kids swimming activity" src="{{ asset('img/home/swimming.png') }}">
             </div>
             <div class="owl-hover">
               <a class="align-middle-center" href="">Swimming</a>
@@ -47,7 +47,7 @@
           </div>
           <div class="owl-ele">
             <div class="owl-img">
-              <img src="{{ asset('img/home/soccer.png') }}">
+              <img alt="kids soccer activity" src="{{ asset('img/home/soccer.png') }}">
             </div>
             <div class="owl-hover">
               <a class="align-middle-center" href="">Soccer</a>
@@ -55,7 +55,7 @@
           </div>
           <div class="owl-ele">
             <div class="owl-img">
-              <img src="{{ asset('img/home/music.png') }}">
+              <img alt="kids music lesson" src="{{ asset('img/home/music.png') }}">
             </div>
             <div class="owl-hover">
               <a class="align-middle-center" href="">Music Lessons</a>
@@ -63,7 +63,7 @@
           </div>
           <div class="owl-ele">
             <div class="owl-img">
-              <img src="{{ asset('img/home/gymnastics.png') }}">
+              <img alt="kids gymnastics activity" src="{{ asset('img/home/gymnastics.png') }}">
             </div>
             <div class="owl-hover">
               <a class="align-middle-center" href="">Gymnastics</a>
@@ -71,7 +71,7 @@
           </div>
           <div class="owl-ele">
             <div class="owl-img">
-              <img src="{{ asset('img/home/baseball.png') }}">
+              <img alt="kids baseball activity" src="{{ asset('img/home/baseball.png') }}">
             </div>
             <div class="owl-hover">
               <a class="align-middle-center" href="">Baseball</a>
@@ -79,7 +79,7 @@
           </div>
           <div class="owl-ele">
             <div class="owl-img">
-              <img src="{{ asset('img/home/dance.png') }}">
+              <img alt="kids dance activity" src="{{ asset('img/home/dance.png') }}">
             </div>
             <div class="owl-hover">
               <a class="align-middle-center" href="">Dance Lessons</a>
@@ -87,7 +87,7 @@
           </div>
           <div class="owl-ele">
             <div class="owl-img">
-              <img src="{{ asset('img/home/ice-skating.png') }}">
+              <img alt="kids ice skating acitivty" src="{{ asset('img/home/ice-skating.png') }}">
             </div>
             <div class="owl-hover">
               <a class="align-middle-center" href="">Ice Skating</a>
@@ -95,7 +95,7 @@
           </div>
           <div class="owl-ele">
             <div class="owl-img">
-              <img src="{{ asset('img/home/skiing.png') }}">
+              <img alt="kids skiing activity" src="{{ asset('img/home/skiing.png') }}">
             </div>
             <div class="owl-hover">
               <a class="align-middle-center" href="">Skiing</a>
@@ -111,7 +111,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-7 order-lg-2 text-white showcase-img">
-          <img class="mt-5" src="{{ asset('img/melonseed-home-02.png') }}">
+          <img alt="kis activity banner image" class="mt-5" src="{{ asset('img/melonseed-home-02.png') }}">
         </div>
         <div class="col-lg-5 order-lg-1 my-auto showcase-text">
           <h2>What we do <br> “Helping busy parents”</h2>
@@ -124,7 +124,7 @@
   <!-- Area | Location -->
   <section class="area-classes text-center bg-white">
     <div class="container">
-      <h2 class="mb-4">Classes in your area</h2>
+      <h1 class="mb-4 text-left">Classes in your area</h1>
       <div class="row">
         <!-- <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q={{ getCurrentLatLonKeywardFromIP($ip) }}" width="100%" height="532" frameborder="0" style="border:0" allowfullscreen></iframe> -->
         <div id="maps-home" class="w-100"></div>

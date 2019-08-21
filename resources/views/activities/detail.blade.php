@@ -14,7 +14,7 @@
         <div class="col-md-8 col-sm-12 col-12">
           <div class="row">
             <div class="col-sm-6 col-12 detail-img-wrapper">
-              <img class="detail-img" src="{{ $activity->profile_img ? $activity->profile_img : asset('img/defaults/profile.png') }}">
+              <img class="detail-img" src="{{ $activity->profile_img ? $activity->profile_img : asset('img/defaults/profile.png') }}" alt="{{ $activity->activity_type ? $activity->activityTypes->activity_type_name : '' }}">
             </div>
             <div class="col-sm-6 col-12">
               <div class="row activity-title mb-3 mob-m-0">
@@ -47,7 +47,7 @@
           </div>
           <div class="row">
             <div class="col-12">
-              <h2>Description</h2>
+              <h1 class="h2">Description</h1>
               <p class="detail-description">
                 {{ $activity->activity_description ? $activity->activity_description : 'activity_description' }}
               </p>
@@ -71,7 +71,7 @@
     <div class="container">
       <div class="row">
         <div class="col-9">
-          <h3>Location Map</h3>
+          <h1 class="h2">Location Map</h1>
         </div>
       </div>
       <div class="row">
@@ -88,9 +88,9 @@
     <div class="container">
       <div class="row">
         <div class="col-9 d-flex">
-          <h2 class="mr-3">
+          <h1 class="mr-3">
             Reviews
-          </h2>
+          </h1>
           @if(count($activity->reviews))
           <div class="read-rating" data-rating="{{ calcTotalRate($activity->reviews) }}"></div>
           @endif
